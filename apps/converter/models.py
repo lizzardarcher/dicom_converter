@@ -1,7 +1,13 @@
+import patoolib
+
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.text import slugify
+
+from pathlib import Path
+
+from dicom_converter.settings import BASE_DIR
 
 
 class Research(models.Model):
@@ -19,8 +25,13 @@ class Research(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(f'{self.raw_archive.name}')
+        print(str(BASE_DIR)+'/converter/raw/'+self.raw_archive.name)
+        print(str(BASE_DIR)+'/extract_dir')
+        patoolib.extract_archive(str(BASE_DIR)+'/converter/raw/'+self.raw_archive.name, BASE_DIR/'/extract_dir')
         super(Research, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'
+
+
