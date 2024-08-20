@@ -1,3 +1,7 @@
+import os
+from datetime import datetime
+from time import sleep
+
 import patoolib
 
 from django.contrib.auth.models import User
@@ -7,31 +11,63 @@ from django.utils.text import slugify
 
 from pathlib import Path
 
+from apps.converter.utils import find_directory
 from dicom_converter.settings import BASE_DIR
+from apps.converter import glx
 
 
 class Research(models.Model):
     user = models.ForeignKey(User, related_name='converters', blank=True, null=True, on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
-    raw_archive=models.FileField(upload_to="converter/raw/",null=False,blank=False,
-                            validators=[FileExtensionValidator(['rar','zip'])], verbose_name='Архив от пользователя')
-    is_anonymous=models.BooleanField(null=True,default=True, verbose_name='Анонимизировать данные')
-    ready_archive = models.FileField(upload_to="converter/ready", null=True, blank=True, verbose_name="Архив с готовыми данными")
+    raw_archive = models.FileField(upload_to="converter/raw/", null=False, blank=False,
+                                   validators=[FileExtensionValidator(['rar', 'zip'])],
+                                   verbose_name='Архив от пользователя')
+    is_anonymous = models.BooleanField(null=True, default=True, verbose_name='Анонимизировать данные')
+    ready_archive = models.FileField(upload_to="converter/ready", null=True, blank=True,
+                                     verbose_name="Архив с готовыми данными")
     slug = models.SlugField(unique=True, max_length=200, blank=True)
 
     def __str__(self):
-        return str(self.user) + ' ' +str(self.date_created)
+        return str(self.user) + ' ' + str(self.date_created)
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.raw_archive.name}')
-        print(str(BASE_DIR)+'/converter/raw/'+self.raw_archive.name)
-        print(str(BASE_DIR)+'/extract_dir')
-        patoolib.extract_archive(str(BASE_DIR)+'/converter/raw/'+self.raw_archive.name, BASE_DIR/'/extract_dir')
+            self.slug = slugify(f'{self.user}{str(datetime.now())}')
         super(Research, self).save(*args, **kwargs)
+
+        """
+            1. Получаем архив с исследованием с сайта (OK)
+            
+            2. Разархивируем полученный архив (OK)
+            Используем стороннюю библиотеку patoolib. Архив берется по пути, указанному в модели далее извлекается в
+            динамически создающуюся директорию, соответствующую имени архива без расширения
+            
+        """
+
+        archive_dir = f"{str(BASE_DIR)}/{self.raw_archive.name}"
+        print(archive_dir)
+
+        output_dir = f"{str(BASE_DIR)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
+        print(output_dir)
+
+        patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
+
+        # 2.1 Ищем название файла с исследованием
+        target_dir_name = 'vol_0'
+        glx_src_dir = Path(find_directory(start_path=output_dir, target_dir_name=target_dir_name))
+        print(glx_src_dir)
+        glx_dstr_dir= Path(glx_src_dir).parent
+        print(glx_dstr_dir)
+        # 3. Прогоняем архив через glx.py
+
+        glx.glx2dicom(srcdir=glx_src_dir, dstdir=glx_dstr_dir, dicom_attrs=glx.default_dicom_attrs)
+
+        # 4. Прогоняем полученные файлы через renamer.py
+
+        # 5. Архивируем полученное исследование
+
+        # 6. Сохраняем ссылку на архив в модель
 
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'
-
-
