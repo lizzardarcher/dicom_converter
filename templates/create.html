@@ -7,12 +7,37 @@
         Loading...
     </button>
 </div>
-
-<form onsubmit="openLoader()" method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+{% if messages %}
+    <div class="col-md-6">
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="tim-icons icon-simple-remove"></i>
+                </button>
+                <span><b> <i class="fa fa-check"></i> {{ message|safe }}</b></span>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<body class="bg-light bg-gradient">
+<div class="container">
+    <div class=" col-12 col-md-8">
+        <a href="#"><h3>Назад</h3></a>
+        <br/>
+        <br/>
+        <div class="container form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h6>Upload Research</h6>
+                <div class="mb-3 bg-primary">
+                    {{ form }}
+                </div>
+                <button type="submit" class="btn btn-primary">Подтвердить</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"

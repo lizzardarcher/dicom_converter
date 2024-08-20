@@ -24,5 +24,5 @@ urlpatterns = [
 
     path('', include('apps.converter.urls')),
 
-    path('', include('apps.payments.urls')),
+    # path('', include('apps.payments.urls')),
 ]
