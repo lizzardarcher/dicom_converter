@@ -66,11 +66,15 @@ class Research(models.Model):
 
         # 4. Прогоняем полученные файлы через renamer.py
 
-        rename_files_recursive(glx_dstr_dir)
+        rename_files_recursive(glx_dstr_dir.__str__(), '.dcm')
 
         # 5. Архивируем полученное исследование
 
+        # patoolib.create_archive()
+
         # 6. Сохраняем ссылку на архив в модель
+
+        Research.objects.filter(id=self.id).update(ready_archive="SOME_READY_ARCHIVE")
 
     class Meta:
         verbose_name = 'Исследование'
