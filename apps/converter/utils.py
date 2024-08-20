@@ -1,7 +1,7 @@
 import os
 
 
-def find_directory(start_path: str, target_dir_name: str):
+def find_dir_by_name_part(start_path: str, target_dir_name: str):
     """Ищет директорию с частью заданного имени в указанной директории и ее подкаталогах.
 
     Args:
@@ -18,6 +18,23 @@ def find_directory(start_path: str, target_dir_name: str):
                 return os.path.join(root, _)
 
     return None
+
+def add_dcm_extension(directory):
+  """
+  Проходит по директории и добавляет ".dcm" к именам файлов,
+  если у них нет расширения.
+  """
+  for filename in os.listdir(directory):
+    filepath = os.path.join(directory, filename)
+    if os.path.isfile(filepath):
+      # Проверяем, есть ли у файла расширение
+      if not os.path.splitext(filename)[1]:
+        # Добавляем ".dcm" к имени файла
+        new_filename = filename + ".dcm"
+        new_filepath = os.path.join(directory, new_filename)
+        os.rename(filepath, new_filepath)
+        print(f"Изменено имя файла: {filename} -> {new_filename}")
+
 
 # # Пример использования
 # start_directory = "/home/ansel/PycharmProjects/dicom_converter"

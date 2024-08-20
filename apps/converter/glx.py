@@ -192,23 +192,6 @@ def read_fbp_params(ct_dir: Path) -> Dict[str, Any]:
 
 
 def glx2dicom(srcdir: Path, dstdir: Path, dicom_attrs) -> None:
-    parser = create_argument_parser()
-    args = parser.parse_args()
-    src_dir = Path(args.src_dir)
-    # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
-    # would not work because ``pop(key)`` removes element
-    # from first dict only and next time the ``key`` may be obtained
-    # from second dict.
-    dicom_attrs = default_dicom_attrs.copy()
-    glx_attrs = read_fbp_params(src_dir)
-    dicom_attrs.update(glx_attrs)
-
-    cli_attrs, errors = cli_tags2dict(args.tag)
-    if errors:
-        # "%(prog)s" is not supported here
-        parser.error("\n".join(errors))
-    dicom_attrs.update(cli_attrs)
-
     # It seems trailing "/" does not matter.
     attrs = dicom_attrs.copy()
 
@@ -402,26 +385,26 @@ def readme():
         .replace('\n', '\n\n') % dict(prog=__title__))
 
 
-# if __name__ == '__main__':
-#     parser = create_argument_parser()
-#     args = parser.parse_args()
-#     src_dir = Path(args.src_dir)
-#     # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
-#     # would not work because ``pop(key)`` removes element
-#     # from first dict only and next time the ``key`` may be obtained
-#     # from second dict.
-#     dicom_attrs = default_dicom_attrs.copy()
-#     glx_attrs = read_fbp_params(src_dir)
-#     dicom_attrs.update(glx_attrs)
-#
-#     cli_attrs, errors = cli_tags2dict(args.tag)
-#     if errors:
-#         # "%(prog)s" is not supported here
-#         parser.error("\n".join(errors))
-#     dicom_attrs.update(cli_attrs)
+if __name__ == '__main__':
+    parser = create_argument_parser()
+    args = parser.parse_args()
+    src_dir = Path(args.src_dir)
+    # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
+    # would not work because ``pop(key)`` removes element
+    # from first dict only and next time the ``key`` may be obtained
+    # from second dict.
+    dicom_attrs = default_dicom_attrs.copy()
+    glx_attrs = read_fbp_params(src_dir)
+    dicom_attrs.update(glx_attrs)
+
+    cli_attrs, errors = cli_tags2dict(args.tag)
+    if errors:
+        # "%(prog)s" is not supported here
+        parser.error("\n".join(errors))
+    dicom_attrs.update(cli_attrs)
 
     # TODO --verbose option
     # from pprint import pprint
     # pprint(dicom_attrs)
 
-    # glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
+    glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
