@@ -5,13 +5,14 @@ from time import sleep
 import patoolib
 
 from django.contrib.auth.models import User
+from django.core.files import File
 from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils.text import slugify
 
 from pathlib import Path
 
-from apps.converter.utils import find_dir_by_name_part, add_dcm_extension, rename_files_recursive
+from apps.converter.utils import find_dir_by_name_part, add_dcm_extension, rename_files_recursive, search_file_in_dir
 from dicom_converter.settings import BASE_DIR
 from apps.converter import glx
 
@@ -45,7 +46,7 @@ class Research(models.Model):
         """
 
         archive_dir = f"{str(BASE_DIR)}/{self.raw_archive.name}"
-        print('archive_dir:',archive_dir)
+        print('archive_dir:', archive_dir)
 
         output_dir = f"{str(BASE_DIR)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
         print('output_dir:', output_dir)
@@ -58,13 +59,13 @@ class Research(models.Model):
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
         print('glx_src_dir:', glx_src_dir)
 
-        glx_dstr_dir= Path(glx_src_dir).parent.joinpath('ready')
-        print('glx_dstr_dir: ',glx_dstr_dir)
+        glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
+        print('glx_dstr_dir: ', glx_dstr_dir)
 
         # 3. Прогоняем архив через glx.py
 
         os.system(f"python {BASE_DIR.joinpath('apps/converter/glx.py')} {glx_src_dir} {glx_dstr_dir}")
-
+        sleep(7)
         # glx.glx2dicom(srcdir=glx_src_dir, dstdir=glx_dstr_dir, dicom_attrs={})
 
         # 4. Прогоняем полученные файлы через renamer.py
@@ -72,13 +73,19 @@ class Research(models.Model):
         rename_files_recursive(glx_dstr_dir.__str__(), '.dcm')
 
         # 5. Архивируем полученное исследование
-        ready_archive = f"{archive_dir.replace('raw/', 'ready/')}"
-        patoolib.create_archive(archive=ready_archive, filenames=(glx_dstr_dir.__str__(),))
+        ready_archive = f"{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}{self.raw_archive.name.replace('converter/raw/', '')}"
+        print(ready_archive)
+        print((glx_dstr_dir.__str__(),))
+        patoolib.create_archive(
+            archive=ready_archive,
+            filenames=(glx_dstr_dir.__str__(),))
+
+        file = search_file_in_dir(BASE_DIR, ready_archive)
 
         # 6. Сохраняем ссылку на архив в модель
 
-        Research.objects.filter(id=self.id).update(ready_archive=ready_archive)
-
+        Research.objects.filter(id=self.id).update(ready_archive=File(file))
+        # os.remove(file)
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'

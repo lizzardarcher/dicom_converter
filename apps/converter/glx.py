@@ -280,7 +280,7 @@ def glx2dicom(srcdir: Path, dstdir: Path, dicom_attrs) -> None:
 
     i = 1
     for f in src:
-        print(f'{i:3d} {f}')
+        # print(f'{i:3d} {f}')
 
         # It seems compressing image or adding dataset to fileset
         # resets some attributes
@@ -411,4 +411,4 @@ if __name__ == '__main__':
     glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
     finish_time = datetime.datetime.now()
     # time spent
-    print(f'[glx2dicom] [finished in] [{finish_time - start_time:0.4f }] ')
+    print(f'[glx2dicom] [finished in] [{str(finish_time - start_time)}] ')
