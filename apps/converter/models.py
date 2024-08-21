@@ -53,11 +53,14 @@ class Research(models.Model):
         patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
 
         # 2.1 Ищем название файла с исследованием
+
         target_dir_name = 'vol_0'
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
         print('glx_src_dir:', glx_src_dir)
+
         glx_dstr_dir= Path(glx_src_dir).parent.joinpath('ready')
         print('glx_dstr_dir: ',glx_dstr_dir)
+
         # 3. Прогоняем архив через glx.py
 
         os.system(f"python {BASE_DIR.joinpath('apps/converter/glx.py')} {glx_src_dir} {glx_dstr_dir}")
@@ -69,12 +72,12 @@ class Research(models.Model):
         rename_files_recursive(glx_dstr_dir.__str__(), '.dcm')
 
         # 5. Архивируем полученное исследование
-
-        # patoolib.create_archive()
+        ready_archive = f"{archive_dir.replace('raw/', 'ready/')}"
+        patoolib.create_archive(archive=ready_archive, filenames=(glx_dstr_dir.__str__(),))
 
         # 6. Сохраняем ссылку на архив в модель
 
-        Research.objects.filter(id=self.id).update(ready_archive="SOME_READY_ARCHIVE")
+        Research.objects.filter(id=self.id).update(ready_archive=ready_archive)
 
     class Meta:
         verbose_name = 'Исследование'

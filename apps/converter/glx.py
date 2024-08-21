@@ -376,13 +376,13 @@ def readme():
         use % dict(prog=f'python3 {__title__}.py'),
         flags=re.MULTILINE)
     title_bar = re.sub('.', '=', title)
-    print('\n'.join([
-        title_bar, title, title_bar, '', usage_par,
-        '', usage_cmd, '', body, '']),
-        end='')
-    print(
-        re.sub('<([^>]+)>', '\\1', version).strip()
-        .replace('\n', '\n\n') % dict(prog=__title__))
+    # print('\n'.join([
+    #     title_bar, title, title_bar, '', usage_par,
+    #     '', usage_cmd, '', body, '']),
+    #     end='')
+    # print(
+    #     re.sub('<([^>]+)>', '\\1', version).strip()
+    #     .replace('\n', '\n\n') % dict(prog=__title__))
 
 
 if __name__ == '__main__':
@@ -407,4 +407,8 @@ if __name__ == '__main__':
     # from pprint import pprint
     # pprint(dicom_attrs)
 
+    start_time = datetime.datetime.now()
     glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
+    finish_time = datetime.datetime.now()
+    # time spent
+    print(f'[glx2dicom] [finished in] [{finish_time - start_time:0.4f }] ')

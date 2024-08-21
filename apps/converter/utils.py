@@ -36,10 +36,6 @@ def add_dcm_extension(directory):
         print(f"Изменено имя файла: {filename} -> {new_filename}")
 
 
-import os
-
-import os
-
 def rename_files_recursive(directory, new_extension):
     """
     Рекурсивно проходит по директории и добавляет новое расширение
@@ -51,6 +47,7 @@ def rename_files_recursive(directory, new_extension):
     """
 
     for root, dirs, files in os.walk(directory):
+        counter = 0
         for filename in files:
             base, ext = os.path.splitext(filename)
             if not ext:  # Проверяем, есть ли расширение
@@ -58,7 +55,8 @@ def rename_files_recursive(directory, new_extension):
                 old_filepath = os.path.join(root, filename)
                 new_filepath = os.path.join(root, new_filename)
                 os.rename(old_filepath, new_filepath)
-                print(f"Переименовано: {old_filepath} -> {new_filepath}")
+                counter += 1
+        print(f"Переименовано: {str(counter)} файлов")
 
 
 
