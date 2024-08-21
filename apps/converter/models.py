@@ -13,7 +13,7 @@ from django.utils.text import slugify
 from pathlib import Path
 
 from apps.converter.utils import find_dir_by_name_part, add_dcm_extension, rename_files_recursive, search_file_in_dir
-from dicom_converter.settings import BASE_DIR
+from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter import glx
 
 
@@ -44,11 +44,11 @@ class Research(models.Model):
             динамически создающуюся директорию, соответствующую имени архива без расширения
             
         """
-
-        archive_dir = f"{str(BASE_DIR)}/{self.raw_archive.name}"
+        print(MEDIA_ROOT)
+        archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
         print('archive_dir:', archive_dir)
 
-        output_dir = f"{str(BASE_DIR)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
+        output_dir = f"{str(MEDIA_ROOT)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
         print('output_dir:', output_dir)
 
         patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
@@ -81,10 +81,11 @@ class Research(models.Model):
             filenames=(glx_dstr_dir.__str__(),))
 
         file = search_file_in_dir(BASE_DIR, ready_archive)
-
+        print(file)
+        os.replace(file, MEDIA_ROOT/file)
         # 6. Сохраняем ссылку на архив в модель
 
-        Research.objects.filter(id=self.id).update(ready_archive=File(file))
+        Research.objects.filter(id=self.id).update(ready_archive=File(file, name=file.split('/')[-1]))
         # os.remove(file)
     class Meta:
         verbose_name = 'Исследование'
