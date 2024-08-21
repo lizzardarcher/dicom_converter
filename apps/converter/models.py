@@ -1,4 +1,6 @@
+import logging
 import os
+import sys
 from datetime import datetime
 from time import sleep
 
@@ -12,9 +14,16 @@ from django.utils.text import slugify
 
 from pathlib import Path
 
+
 from apps.converter.utils import find_dir_by_name_part, add_dcm_extension, rename_files_recursive, search_file_in_dir
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter import glx
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.addHandler(logging.StreamHandler(
+    stream=sys.stdout
+))
 
 
 class Research(models.Model):
@@ -35,8 +44,8 @@ class Research(models.Model):
         start_time = datetime.now()
         if not self.slug:
             self.slug = slugify(f'{self.user}{str(datetime.now())}')
+        self.raw_archive.name = self.raw_archive.name.replace(' ','')
         super(Research, self).save(*args, **kwargs)
-
         """
             1. Получаем архив с исследованием с сайта (OK)
             
@@ -45,12 +54,12 @@ class Research(models.Model):
             динамически создающуюся директорию, соответствующую имени архива без расширения
             
         """
-        print(MEDIA_ROOT)
+        logger.info(MEDIA_ROOT)
         archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
-        print('archive_dir:', archive_dir)
+        logger.info(f'archive_dir: {archive_dir}')
 
         output_dir = f"{str(MEDIA_ROOT)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
-        print('output_dir:', output_dir)
+        logger.info(f'output_dir: {output_dir}')
 
         patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
 
@@ -58,10 +67,10 @@ class Research(models.Model):
 
         target_dir_name = 'vol_0'
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
-        print('glx_src_dir:', glx_src_dir)
+        logger.info(f'glx_src_dir: {glx_src_dir}')
 
         glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
-        print('glx_dstr_dir: ', glx_dstr_dir)
+        logger.info(f'glx_dstr_dir: {glx_dstr_dir}')
 
         # 3. Прогоняем архив через glx.py
 
@@ -75,21 +84,23 @@ class Research(models.Model):
 
         # 5. Архивируем полученное исследование
         ready_archive = f"{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}{self.raw_archive.name.replace('converter/raw/', '')}"
-        print(ready_archive)
-        print((glx_dstr_dir.__str__(),))
+        logger.info(ready_archive)
+        logger.info(glx_dstr_dir.__str__())
+
         patoolib.create_archive(
             archive=ready_archive,
             filenames=(glx_dstr_dir.__str__(),))
 
         file = search_file_in_dir(BASE_DIR, ready_archive)
-        print(file)
+        logger.info(file)
         os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready")/file.split('/')[-1]))
         # 6. Сохраняем ссылку на архив в модель
 
         Research.objects.filter(id=self.id).update(ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
         # os.remove(file)
         end_time = datetime.now()
-        print(f'[SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
+        logger.info(f'[SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
+
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'
