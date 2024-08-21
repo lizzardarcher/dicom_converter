@@ -32,6 +32,7 @@ class Research(models.Model):
         return str(self.user) + ' ' + str(self.date_created)
 
     def save(self, *args, **kwargs):
+        start_time = datetime.now()
         if not self.slug:
             self.slug = slugify(f'{self.user}{str(datetime.now())}')
         super(Research, self).save(*args, **kwargs)
@@ -82,11 +83,13 @@ class Research(models.Model):
 
         file = search_file_in_dir(BASE_DIR, ready_archive)
         print(file)
-        os.replace(file, MEDIA_ROOT/file)
+        os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready")/file.split('/')[-1]))
         # 6. Сохраняем ссылку на архив в модель
 
-        Research.objects.filter(id=self.id).update(ready_archive=File(file, name=file.split('/')[-1]))
+        Research.objects.filter(id=self.id).update(ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
         # os.remove(file)
+        end_time = datetime.now()
+        print(f'[SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'
