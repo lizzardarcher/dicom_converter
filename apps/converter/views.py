@@ -25,6 +25,9 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
         })
         return context
 
+    def get_success_url(self):
+        return '/upload_research'
+
     def get_success_message(self, cleaned_data):
         return f"{self.success_message} {cleaned_data['raw_archive'].name}"
 
