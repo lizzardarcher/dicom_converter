@@ -16,7 +16,6 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
     form_class = ResearchUploadForm
     success_url = '/'
     template_name = 'create.html'
-    success_message = 'SUCCESS!'
 
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
@@ -29,7 +28,7 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
         return '/upload_research'
 
     def get_success_message(self, cleaned_data):
-        return f"{self.success_message} {cleaned_data['raw_archive'].name}"
+        return f"Архив успешно обработан {cleaned_data['raw_archive'].name}"
 
     def form_valid(self, form):
         form.instance.user = self.request.user

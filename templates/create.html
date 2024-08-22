@@ -32,31 +32,18 @@
 
 </style>
 {% if messages %}
-    <div class="col-md-6">
+    <div class="col-md-6 justify-content-center">
         {% for message in messages %}
-            <div class="alert alert-success">
-                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                </button>
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <span><b> <i class="fa fa-check"></i> {{ message|safe }}</b></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+
         {% endfor %}
     </div>
 {% endif %}
 
-
-{% if messages %}
-    <div class="col-md-6">
-        {% for message in messages %}
-            <div class="alert alert-success">
-                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                </button>
-                <span><b> <i class="fa fa-check"></i> {{ message|safe }}</b></span>
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
 
 <body class="bg-light bg-gradient">
 <div class="container">
@@ -72,18 +59,22 @@
                 <button type="submit" class="btn btn-primary">Подтвердить</button>
             </form>
 
-{#            <div>#}
-{#                <button class="btn btn-primary " type="button" disabled id="loadingBtn">#}
-{#                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>#}
-{#                    <span class="sr-only">Loading...</span>#}
-{#                </button>#}
-{#            </div>#}
+            {#            <div>#}
+            {#                <button class="btn btn-primary " type="button" disabled id="loadingBtn">#}
+            {#                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>#}
+            {#                    <span class="sr-only">Loading...</span>#}
+            {#                </button>#}
+            {#            </div>#}
 
             <div>
-                {% for r in research %}
-                    <a class="" href="/media/{{ r.ready_archive }}">
-                        <p class="bg-success text-light rounded text-center">Скачать архив *{{ r.ready_archive }}* от{{ r.date_created }}</p></a>
-                {% endfor %}
+                <ol>
+                    {% for r in research %}
+                        <li><a class="" href="/media/{{ r.ready_archive }}">
+                            <p class="bg-success text-light rounded text-center">Скачать архив {{ r }}
+                                от{{ r.date_created }}</p></a></li>
+                    {% endfor %}
+                </ol>
+
             </div>
 
         </div>

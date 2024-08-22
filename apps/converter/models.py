@@ -43,7 +43,7 @@ class Research(models.Model):
     slug = models.SlugField(unique=True, max_length=200, blank=True)
 
     def __str__(self):
-        return str(self.user) + ' ' + str(self.date_created)
+        return str(self.raw_archive).split('/')[-1]
 
     def save(self, *args, **kwargs):
         start_time = datetime.now()
