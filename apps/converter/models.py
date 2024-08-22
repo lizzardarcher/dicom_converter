@@ -3,27 +3,31 @@ import os
 import sys
 from datetime import datetime
 from time import sleep
-
-import patoolib
+from pathlib import Path
 
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.validators import FileExtensionValidator
 from django.db import models
+from django.utils.termcolors import color_names
 from django.utils.text import slugify
+from unidecode import unidecode
+import patoolib
 
-from pathlib import Path
 
 
-from apps.converter.utils import find_dir_by_name_part, add_dcm_extension, rename_files_recursive, search_file_in_dir
+from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, \
+    unidecode_recursive
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter import glx
 
+### LOGGING
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-logger.addHandler(logging.StreamHandler(
-    stream=sys.stdout
-))
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(CustomFormatter())
+logger.addHandler(ch)
 
 
 class Research(models.Model):
@@ -54,23 +58,33 @@ class Research(models.Model):
             динамически создающуюся директорию, соответствующую имени архива без расширения
             
         """
-        logger.info(MEDIA_ROOT)
+        logger.info(f"1. [MEDIA_ROOT] [{MEDIA_ROOT}]")
+        print('****', MEDIA_ROOT.joinpath('converter').joinpath('extract_dir'))
+
         archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
-        logger.info(f'archive_dir: {archive_dir}')
+        logger.info(f'2. [Директория с архивом] {archive_dir}')
 
         output_dir = f"{str(MEDIA_ROOT)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
-        logger.info(f'output_dir: {output_dir}')
+        # ur = unidecode_recursive(output_dir)
+        # print(ur)
+        logger.info(f'3. [Директория разархивирования] {output_dir}')
 
-        patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
+        if '.rar' in self.raw_archive.name:
+            patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/rar')
+        else:
+            patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
 
         # 2.1 Ищем название файла с исследованием
 
         target_dir_name = 'vol_0'
+        # glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
+        unidecode_recursive(MEDIA_ROOT.joinpath('converter').joinpath('extract_dir').__str__())
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
-        logger.info(f'glx_src_dir: {glx_src_dir}')
+        logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
 
         glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
-        logger.info(f'glx_dstr_dir: {glx_dstr_dir}')
+        # os.rename(glx_dstr_dir.__str__(), unidecode(glx_src_dir.__str__()))
+        logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
 
         # 3. Прогоняем архив через glx.py
 
@@ -80,27 +94,33 @@ class Research(models.Model):
 
         # 4. Прогоняем полученные файлы через renamer.py
 
-        rename_files_recursive(glx_dstr_dir.__str__(), '.dcm')
+        add_ext_recursive(glx_dstr_dir.__str__(), '.dcm')
 
         # 5. Архивируем полученное исследование
         ready_archive = f"{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}{self.raw_archive.name.replace('converter/raw/', '')}"
-        logger.info(ready_archive)
-        logger.info(glx_dstr_dir.__str__())
+        logger.info(f"6. {ready_archive}")
+        logger.info(f"7. {glx_dstr_dir.__str__()}")
 
-        patoolib.create_archive(
-            archive=ready_archive,
-            filenames=(glx_dstr_dir.__str__(),))
+        if '.rar' in self.raw_archive.name:
+            patoolib.create_archive(
+                archive=ready_archive,
+                filenames=(glx_dstr_dir.__str__(),), program='/usr/bin/rar')
+        else:
+            patoolib.create_archive(
+                archive=ready_archive,
+                filenames=(glx_dstr_dir.__str__(),))
 
         file = search_file_in_dir(BASE_DIR, ready_archive)
-        logger.info(file)
+        logger.info(f"8. {file}")
         os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready")/file.split('/')[-1]))
         # 6. Сохраняем ссылку на архив в модель
 
         Research.objects.filter(id=self.id).update(ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
         # os.remove(file)
         end_time = datetime.now()
-        logger.info(f'[SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
+        logger.info(f'9. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
 
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'
+

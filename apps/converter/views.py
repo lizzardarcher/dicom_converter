@@ -1,3 +1,5 @@
+from unidecode import unidecode
+
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.files.uploadedfile import UploadedFile
 from django.shortcuts import render
@@ -13,9 +15,18 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
     form_class = ResearchUploadForm
     success_url = '/'
     template_name = 'create.html'
-    success_message = 'Y YOYOYOYOYOY!'
+    success_message = 'SUCCESS!'
+
+    def get_success_message(self, cleaned_data):
+        return f"{self.success_message} {cleaned_data['raw_archive'].name}"
 
     def form_valid(self, form):
         # self.object = form.save(commit=False)
-        form.instance.user = self.request.user
+        # form.instance.user = self.request.user
+
+        name = form.cleaned_data['raw_archive'].name
+        dots = int(str(name).count('.'))
+        name = unidecode(str(name).strip().lower().replace(' ', '_', dots-1))
+        form.instance.raw_archive.name = name
+
         return super().form_valid(form)

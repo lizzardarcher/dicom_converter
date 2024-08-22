@@ -1,4 +1,32 @@
 import os
+import logging
+from datetime import datetime
+
+from unidecode import unidecode
+
+
+class CustomFormatter(logging.Formatter):
+
+    grey = "\x1b[38;20m"
+    yellow = "\x1b[33;20m"
+    green = "\x1b[32;20m"
+    red = "\x1b[31;20m"
+    bold_red = "\x1b[31;1m"
+    reset = "\x1b[0m"
+    format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"
+
+    FORMATS = {
+        logging.DEBUG: grey + format + reset,
+        logging.INFO: green + format + reset,
+        logging.WARNING: yellow + format + reset,
+        logging.ERROR: red + format + reset,
+        logging.CRITICAL: bold_red + format + reset
+    }
+
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
 
 
 def find_dir_by_name_part(start_path: str, target_dir_name: str):
@@ -50,7 +78,7 @@ def search_file_in_dir(directory, string) -> str|None:
                 return absolute_file_path
     return None
 
-def rename_files_recursive(directory, new_extension):
+def add_ext_recursive(directory, new_extension):
     """
     Рекурсивно проходит по директории и добавляет новое расширение
     к именам файлов, у которых его нет.
@@ -72,3 +100,27 @@ def rename_files_recursive(directory, new_extension):
                 counter += 1
     print(f"Переименовано: {str(counter)} файлов")
 
+
+def unidecode_recursive(directory):
+    """
+    Рекурсивно проходит по директории и добавляет новое расширение
+    к именам файлов, у которых его нет.
+
+    Args:
+        directory (str): Путь к начальной директории.
+        new_extension (str): Новое расширение файла (например, ".png").
+    """
+    counter = 0
+
+    for root, dirs, files in os.walk(directory):
+        for dir in dirs:
+            new_dir = unidecode(dir.replace(' ', ''))
+            old_dir = os.path.join(root, dir)
+            new_dir = os.path.join(root, new_dir)
+            os.rename(old_dir, new_dir)
+            counter += 1
+            print(f"Переименован: {old_dir} ->  {new_dir}")
+
+    print(f"Переименовано: {str(counter)} директорий")
+# path = '/home/ansel/PycharmProjects/dicom_converter/static/media/converter/extract_dir/baturina_i'
+# unidecode_recursive(path)
