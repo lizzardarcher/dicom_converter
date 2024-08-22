@@ -1,5 +1,6 @@
 import logging
 import os
+import shutil
 import sys
 from datetime import datetime
 from time import sleep
@@ -73,7 +74,6 @@ class Research(models.Model):
             patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/rar')
         else:
             patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
-
         # 2.1 Ищем название файла с исследованием
 
         target_dir_name = 'vol_0'
@@ -81,6 +81,11 @@ class Research(models.Model):
         unidecode_recursive(MEDIA_ROOT.joinpath('converter').joinpath('extract_dir').__str__())
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
         logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
+
+
+
+
+
 
         glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
         # os.rename(glx_dstr_dir.__str__(), unidecode(glx_src_dir.__str__()))
@@ -116,8 +121,14 @@ class Research(models.Model):
         # 6. Сохраняем ссылку на архив в модель
 
         Research.objects.filter(id=self.id).update(ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
-        # os.remove(file)
         end_time = datetime.now()
+
+        try:
+            os.remove(archive_dir)
+            shutil.rmtree(output_dir)
+        except OSError as e:
+            logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+
         logger.info(f'9. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
 
     class Meta:
