@@ -1,4 +1,7 @@
-"""
+"""from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
 WSGI config for dicom_converter project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.

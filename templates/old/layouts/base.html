@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" lang="ru">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="kCT200-J0rfczENRkJQdYCqsDKkUo3Hvr3KZic_otwU"/>
+    {% include 'includes/style.html' %}
+    {% block title %}{% endblock %}
+
+    {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+<body>
+    <div class="wrapper">
+        {% load static %}
+        {% include 'includes/navigation-bar.html' %}
+    
+        <div class="content">
+    
+            {% block content %}{% endblock content %}
+    
+        </div>
+    
+        {% include 'includes/footer.html' %}
+    
+    </div>
+    {% include 'includes/scripts.html' %}
+</body>
+    {% block javascripts %}{% endblock javascripts %}
+</html>

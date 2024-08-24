@@ -15,7 +15,7 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
     model = Research
     form_class = ResearchUploadForm
     success_url = '/'
-    template_name = 'create.html'
+    template_name = 'pages/upload_research.html'
 
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
