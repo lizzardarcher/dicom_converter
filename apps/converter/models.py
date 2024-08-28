@@ -46,8 +46,12 @@ class Research(models.Model):
         return str(self.raw_archive).split('/')[-1]
 
     def delete(self, *args, **kwargs):
-        self.ready_archive.delete(save=False)
-        super(Research, self).delete(*args, **kwargs)
+        # try:
+        #     os.remove(f"{str(MEDIA_ROOT)}/{self.raw_archive.name}")
+        #     print(f"{str(MEDIA_ROOT)}/{self.raw_archive.name}")
+        # except OSError as e:
+        #     logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+        super().delete(*args, **kwargs)
 
     def save(self, *args, **kwargs):
         start_time = datetime.now()

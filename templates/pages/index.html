@@ -16,19 +16,19 @@
             height: 50px;
             border-radius: 50%;
             border: none;
-            background-color: darkorange;
+            background-color: grey;
             transition: .4s;
         }
 
         .step-button[aria-expanded="true"] {
             width: 60px;
             height: 60px;
-            background-color: deeppink;
+            background-color: orangered;
             color: #fff;
         }
 
         .done {
-            background-color: deeppink;
+            background-color: orangered;
             color: #fff;
         }
 
@@ -49,22 +49,22 @@
 
         /* to customize progress bar */
         #progress::-webkit-progress-value {
-            background-color: deeppink;
-            transition: .5s ease;
+            background-color: orangered;
+            transition: 1s ease;
         }
 
         #progress::-webkit-progress-bar {
-            background-color: darkorange;
+            background-color: grey;
 
         }
     </style>
-
 {% endblock extrastyle %}
 {% block content %}
 
     <div class="container-fluid py-4">
 
-        <header class="py-5">
+        <!-- START -->
+        <header class="pt-5 py-5 mb-5">
             <div class="container px-5 pb-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-xxl-5">
@@ -109,7 +109,7 @@
         </header>
 
         <!--Что такое easyDICOM?  -->
-        <div class="row mt-4">
+        <div class="row pt-5 mt-5 mb-5 ">
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -146,10 +146,9 @@
             </div>
         </div>
 
-
         <!--STEPPER -->
-        <div class="container mt-5">
-        <h1 class="mt-5 mb-5">Три простых шага для работы</h1>
+        <div class="container pt-5 mt-5 mb-5 ">
+            <h1 class="mt-5 mb-5">Три простых шага для работы</h1>
 
             <div class="accordion" id="accordionExample">
                 <div class="steps">
@@ -200,7 +199,9 @@
                                 <div class="col-lg-4">
                                     Для Mac OS:
                                     <ul>
-                                        <li><a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a></li>
+                                        <li>
+                                            <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-4">
@@ -221,7 +222,8 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                          data-bs-parent="#accordionExample">
                         <div class="card-body">
-                            <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i> Загрузите архив в наш сервис</a>
+                            <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i> Загрузите
+                                архив в наш сервис</a>
                         </div>
                     </div>
                 </div>
@@ -232,13 +234,536 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                          data-bs-parent="#accordionExample">
                         <div class="card-body">
-                            <p>Дождитесь результата и получите <a href="{% url 'my research' %}">архив</a> с конвертированным исследованием</p>
+                            <p>Дождитесь результата и получите <a href="{% url 'my research' %}">архив</a> с
+                                конвертированным исследованием</p>
                             <p><i class="fa fa-clock"></i> Среднее время обработки 2 минуты</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--PRICING-->
+        <div class="page-header bg-gradient-primary  position-relative m-3 border-radius-xl">
+            <div class="container pb-lg-9 pb-10 pt-7 postion-relative z-index-2">
+                <div class="row">
+                    <div class="col-md-6 mx-auto text-center">
+                        <h3 class="text-white">Выберите подходящий тарифный план</h3>
+                        <p class="text-white">У вас есть возможность попробовать конвертер бесплатно</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-7 mx-auto text-center">
+                        <div class="nav-wrapper mt-5 position-relative z-index-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-n8">
+            <div class="container">
+                <div class="tab-content tab-space">
+                    <div class="tab-pane" id="monthly" role="tabpanel" aria-labelledby="#tabs-iconpricing-tab-1">
+                        <div class="row">
+                            <div class="col-lg-4 mb-lg-0 mb-4">
+                                <div class="card">
+                                    <div class="card-header text-center pt-4 pb-3">
+                                        <span class="badge rounded-pill bg-light text-dark">Стартовый</span>
+                                        <h1 class="font-weight-bold mt-2">
+                                            <small>$</small>59
+                                        </h1>
+                                    </div>
+                                    <div class="card-body text-lg-start text-center pt-0">
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">2 team members</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">20GB Cloud storage </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Integration help </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Sketch Files </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">API Access </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Complete documentation </span>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;"
+                                           class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                                            Join
+                                            <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-4">
+                                <div class="card">
+                                    <div class="card-header text-center pt-4 pb-3">
+                                        <span class="badge rounded-pill bg-light text-dark">Премиум</span>
+                                        <h1 class="font-weight-bold mt-2">
+                                            <small>$</small>89
+                                        </h1>
+                                    </div>
+                                    <div class="card-body text-lg-start text-center pt-0">
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">10 team members</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">40GB Cloud storage </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Integration help </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Sketch Files </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">API Access </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Complete documentation </span>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;"
+                                           class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                                            Try Premium
+                                            <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-4">
+                                <div class="card">
+                                    <div class="card-header text-center pt-4 pb-3">
+                                        <span class="badge rounded-pill bg-light text-dark">Корпоративный</span>
+                                        <h1 class="font-weight-bold mt-2">
+                                            <small>$</small>99
+                                        </h1>
+                                    </div>
+                                    <div class="card-body text-lg-start text-center pt-0">
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Unlimited team members</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">100GB Cloud storage </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Integration help </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Sketch Files </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">API Access </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Complete documentation </span>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;"
+                                           class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                                            Join
+                                            <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane active show" id="annual" role="tabpanel"
+                         aria-labelledby="#tabs-iconpricing-tab-2">
+                        <div class="row">
+                            <div class="col-lg-4 mb-lg-0 mb-4">
+                                <div class="card">
+                                    <div class="card-header text-center pt-4 pb-3">
+                                        <span class="badge rounded-pill bg-light text-dark">Starter</span>
+                                        <h1 class="font-weight-bold mt-2">
+                                            <small>$</small>119
+                                        </h1>
+                                    </div>
+                                    <div class="card-body text-lg-start text-center pt-0">
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">2 team members</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">20GB Cloud storage </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Integration help </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Sketch Files </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">API Access </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Complete documentation </span>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;"
+                                           class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                                            Join
+                                            <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-4">
+                                <div class="card">
+                                    <div class="card-header text-center pt-4 pb-3">
+                                        <span class="badge rounded-pill bg-light text-dark">Premium</span>
+                                        <h1 class="font-weight-bold mt-2">
+                                            <small>$</small>159
+                                        </h1>
+                                    </div>
+                                    <div class="card-body text-lg-start text-center pt-0">
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">10 team members</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">40GB Cloud storage </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Integration help </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Sketch Files </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">API Access </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-secondary shadow text-center">
+                                                <i class="fas fa-minus" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Complete documentation </span>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;"
+                                           class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                                            Try Premium
+                                            <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-4">
+                                <div class="card">
+                                    <div class="card-header text-center pt-4 pb-3">
+                                        <span class="badge rounded-pill bg-light text-dark">Enterprise</span>
+                                        <h1 class="font-weight-bold mt-2">
+                                            <small>$</small>399
+                                        </h1>
+                                    </div>
+                                    <div class="card-body text-lg-start text-center pt-0">
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Unlimited team members</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">100GB Cloud storage </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Integration help </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Sketch Files </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">API Access </span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-lg-start justify-content-center p-2">
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-check opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                            <div>
+                                                <span class="ps-3">Complete documentation </span>
+                                            </div>
+                                        </div>
+                                        <a href="javascript:;"
+                                           class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
+                                            Join
+                                            <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--YOUTUBE -->
+        <div class="col-12 mt-5 mb-5">
+
+
+            <div class="card mb-4">
+                <div class="card-header pb-0 p-3">
+                </div>
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                            <div class="card card-blog card-plain">
+                                <div class="position-relative">
+                                    <a class="d-block shadow-xl border-radius-xl" href="#">
+                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
+                                             class="img-fluid shadow border-radius-xl">
+                                    </a>
+                                </div>
+                                <div class="card-body px-1 pb-0">
+                                    <p class="text-gradient text-dark mb-2 text-sm">Intro #0</p>
+                                    <a href="javascript:;">
+                                        <h5>
+                                            Начало
+                                        </h5>
+                                    </a>
+                                    <p class="mb-4 text-sm">
+                                        Что такое <b>easyDICOM</b> ?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                            <div class="card card-blog card-plain">
+                                <div class="position-relative">
+                                    <a class="d-block shadow-xl border-radius-xl" href="#">
+                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
+                                             class="img-fluid shadow border-radius-xl">
+                                    </a>
+                                </div>
+                                <div class="card-body px-1 pb-0">
+                                    <p class="text-gradient text-dark mb-2 text-sm">Job #1</p>
+                                    <a href="javascript:;">
+                                        <h5>
+                                            Job
+                                        </h5>
+                                    </a>
+                                    <p class="mb-4 text-sm">
+                                        Как работает система
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                            <div class="card card-blog card-plain">
+                                <div class="position-relative">
+                                    <a class="d-block shadow-xl border-radius-xl" href="#">
+                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
+                                             class="img-fluid shadow border-radius-xl">
+                                    </a>
+                                </div>
+                                <div class="card-body px-1 pb-0">
+                                    <p class="text-gradient text-dark mb-2 text-sm">Archivers #0</p>
+                                    <a href="javascript:;">
+                                        <h5>
+                                            RAR - ZIP
+                                        </h5>
+                                    </a>
+                                    <p class="mb-4 text-sm">
+                                        Какие архиваторы использовать
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                            <div class="card card-blog card-plain">
+                                <div class="position-relative">
+                                    <a class="d-block shadow-xl border-radius-xl" href="#">
+                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
+                                             class="img-fluid shadow border-radius-xl">
+                                    </a>
+                                </div>
+                                <div class="card-body px-1 pb-0">
+                                    <p class="text-gradient text-dark mb-2 text-sm">Viewers #3</p>
+                                    <a href="javascript:;">
+                                        <h5>
+                                            Modern Viewers
+                                        </h5>
+                                    </a>
+                                    <p class="mb-4 text-sm">
+                                        Профессиональные программы для отображения DICOM
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
