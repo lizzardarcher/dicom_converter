@@ -39,18 +39,21 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
+{% if request.user.is_superuser %}
+    {% include "includes/sidebar.html" %}
+{% endif %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    
-        <!-- navigation -->
-        {% include "includes/navigation.html" %}
-        
-        {% block content %}{% endblock content %}
-    
-        <!-- footer -->
-        {% include "includes/footer-fullscreen.html" %}
-    
-    </main>
+    <!-- navigation -->
+    {% include "includes/navigation.html" %}
+
+
+    {% block content %}{% endblock content %}
+
+    <!-- footer -->
+    {% include "includes/footer-fullscreen.html" %}
+
+</main>
 
 <!-- APP Configurator -->
 {% include "includes/fixed-plugin.html" %}
@@ -72,6 +75,7 @@
 
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
 <script src="{% static 'js/scripts.js' %}"></script>

@@ -5,7 +5,7 @@
     <div class="container-fluid py-1 px-3">
         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="/">
             <img class="icon icon-md rounded" src="{{ STATIC_URL }}img/dentist.png">
-             easyDICOM
+            easyDICOM
         </a>
         {#        <nav aria-label="breadcrumb">#}
         {#            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">#}
@@ -69,16 +69,21 @@
                     </li>
                 {% endif %}
 
-{#                <li class="nav-item d-flex align-items-center">#}
-{##}
-{#                    {% if request.user.is_superuser %}#}
-{#                        <a href="{% url 'admin:password_change' %}" class="nav-link text-body font-weight-bold px-0">#}
-{#                    {% else %}#}
-{#                        <a href="{% url 'password_change' %}" class="nav-link text-body font-weight-bold px-0">#}
-{#                    {% endif %}#}
-{#                    <span class="d-sm-inline d-none me-3">Change Password</span>#}
-{#                    </a>#}
-{#                </li>#}
+
+
+                <li class="nav-item d-flex align-items-center">
+
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <a href="{% url 'admin:password_change' %}"
+                               class="nav-link text-body font-weight-bold px-0">
+                        {% else %}
+                            <a href="{% url 'password_change' %}" class="nav-link text-body font-weight-bold px-0">
+                        {% endif %}
+                    <span class="d-sm-inline d-none me-3">Change Password</span>
+                    </a>
+                    {% endif %}
+                </li>
 
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -94,6 +99,21 @@
                         <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                     </a>
                 </li>
+                <!-- Переключатель языков -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">
+                            🇺🇸 Английский
+                        </a></li>
+                        <li><a class="dropdown-item" href="#">
+                            🇷🇺 Русский
+                        </a></li>
+                    </ul>
+                </div>
+
                 <li class="nav-item dropdown pe-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                        data-bs-toggle="dropdown" aria-expanded="false">

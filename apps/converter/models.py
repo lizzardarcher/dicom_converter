@@ -45,6 +45,10 @@ class Research(models.Model):
     def __str__(self):
         return str(self.raw_archive).split('/')[-1]
 
+    def delete(self, *args, **kwargs):
+        self.ready_archive.delete(save=False)
+        super(Research, self).delete(*args, **kwargs)
+
     def save(self, *args, **kwargs):
         start_time = datetime.now()
         if not self.slug:
