@@ -90,11 +90,6 @@ class Research(models.Model):
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
         logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
 
-
-
-
-
-
         glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
         # os.rename(glx_dstr_dir.__str__(), unidecode(glx_src_dir.__str__()))
         logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
