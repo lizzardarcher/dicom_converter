@@ -25,7 +25,8 @@ urlpatterns = [
 
     path('', include('apps.admin_soft.urls')),
 
-    # path('', include('apps.authentication.urls')),
+
+    path('', include('apps.home.urls')),
     #
 
     # path('', include('apps.payments.urls')),

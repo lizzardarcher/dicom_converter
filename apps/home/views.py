@@ -7,8 +7,8 @@ from apps.home.forms import HomeForm
 from apps.home.models import Home
 
 
-class HomeView(TemplateView):
-    template_name = 'index.html'
+class PricesView(TemplateView):
+    template_name = 'pages/prices.html'
 
 class HomeCreateView(CreateView):
     model = Home

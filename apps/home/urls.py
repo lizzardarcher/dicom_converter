@@ -4,7 +4,7 @@ from django.urls import path, include
 from apps.home import views
 
 urlpatterns = [
-    path('', views.HomeView.as_view(), name='home'),
+    path('prices', views.PricesView.as_view(), name='prices'),
     path('create', views.HomeCreateView.as_view(), name='create'),
 
 ]

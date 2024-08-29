@@ -1,26 +1,19 @@
-import logging
 import os
 import shutil
-import sys
+import logging
 from datetime import datetime
 from time import sleep
 from pathlib import Path
 
-from django.contrib.auth.models import User
-from django.core.files import File
-from django.core.validators import FileExtensionValidator
 from django.db import models
-from django.utils.termcolors import color_names
+from django.core.files import File
 from django.utils.text import slugify
-from unidecode import unidecode
+from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
 import patoolib
 
-
-
-from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, \
-    unidecode_recursive
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
-from apps.converter import glx
+from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, unidecode_recursive
 
 ### LOGGING
 logger = logging.getLogger(__name__)
@@ -45,13 +38,15 @@ class Research(models.Model):
     def __str__(self):
         return str(self.raw_archive).split('/')[-1]
 
-    def delete(self, *args, **kwargs):
-        # try:
-        #     os.remove(f"{str(MEDIA_ROOT)}/{self.raw_archive.name}")
-        #     print(f"{str(MEDIA_ROOT)}/{self.raw_archive.name}")
-        # except OSError as e:
-        #     logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
-        super().delete(*args, **kwargs)
+    # def delete(self, *args, **kwargs):
+    #     archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
+    #     try:
+    #         print(f"{str(MEDIA_ROOT)}/{self.raw_archive.name}")
+    #         os.remove(archive_dir)
+    #     except OSError as e:
+    #         logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+    #     super().delete(*args, **kwargs)
+
 
     def save(self, *args, **kwargs):
         start_time = datetime.now()
@@ -67,38 +62,30 @@ class Research(models.Model):
             динамически создающуюся директорию, соответствующую имени архива без расширения
             
         """
-        logger.info(f"1. [MEDIA_ROOT] [{MEDIA_ROOT}]")
-        print('****', MEDIA_ROOT.joinpath('converter').joinpath('extract_dir'))
-
         archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
         logger.info(f'2. [Директория с архивом] {archive_dir}')
 
         output_dir = f"{str(MEDIA_ROOT)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
-        # ur = unidecode_recursive(output_dir)
-        # print(ur)
         logger.info(f'3. [Директория разархивирования] {output_dir}')
 
         if '.rar' in self.raw_archive.name:
             patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/rar')
         else:
             patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
-        # 2.1 Ищем название файла с исследованием
 
+        # 2.1 Ищем название файла с исследованием
         target_dir_name = 'vol_0'
-        # glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
         unidecode_recursive(MEDIA_ROOT.joinpath('converter').joinpath('extract_dir').__str__())
         glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
         logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
 
         glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
-        # os.rename(glx_dstr_dir.__str__(), unidecode(glx_src_dir.__str__()))
         logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
 
         # 3. Прогоняем архив через glx.py
 
         os.system(f"python {BASE_DIR.joinpath('apps/converter/glx.py')} {glx_src_dir} {glx_dstr_dir}")
         sleep(7)
-        # glx.glx2dicom(srcdir=glx_src_dir, dstdir=glx_dstr_dir, dicom_attrs={})
 
         # 4. Прогоняем полученные файлы через renamer.py
 

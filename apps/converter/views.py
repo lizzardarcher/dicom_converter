@@ -10,7 +10,6 @@ from apps.converter.forms import ResearchUploadForm
 from apps.converter.models import Research
 
 
-# Create your views here.
 class UploadResearchView(SuccessMessageMixin, CreateView):
     model = Research
     form_class = ResearchUploadForm
