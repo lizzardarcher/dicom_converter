@@ -8,7 +8,7 @@ from django.contrib.auth import logout
 from django.views.generic import TemplateView, UpdateView
 
 from apps.admin_soft.utils import SuccessMessageMixin
-from apps.converter.models import UserSettings
+from apps.converter.models import UserSettings, Research, Transaction
 
 
 # Create your views here.
@@ -38,7 +38,8 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         context.update({
             'user_settings': UserSettings.objects.filter(user=self.request.user).first(),
             'user_id': self.request.user.id,
-
+            'research': Research.objects.filter(user=self.request.user),
+            'transaction': Transaction.objects.filter(user=self.request.user),
         })
         return context
 
