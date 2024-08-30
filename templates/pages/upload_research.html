@@ -5,36 +5,49 @@
 
     <body class="bg-light bg-gradient">
     <div class="container">
-        <div class="card col-12 col-md-8 m-5">
+        <div class="card col-lg-12 col-md-12 m-5">
             <div class="container form">
                 <form class="form" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <h3 class="m-3">Upload Research</h3>
+                    <h3 class="p-5">Загрузить исследование</h3>
+
+                    <label class="">Загрузите ваше исследование из томографа Galileos в формате .zip или .rar</label>
                     {% if form.errors %}
                         <div class="col-12 justify-content-center">
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <span><b> <i class="fa fa-check"></i> {{ form.errors }}</b></span>
+                            <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
+                                 role="alert">
+                                <span><b>{{ form.errors }}</b></span>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                             </div>
                         </div>
                     {% endif %}
-                    {{ form.raw_archive }}
-                    <button type="submit" class="btn btn-primary">Подтвердить</button>
+                    <div class="form-control p-3">
+                        {{ form.raw_archive }}
+                    </div>
 
+                    <div class="form-check form-switch pt-5">
+                        {{ form.is_anonymous }}
+                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                               for="flexSwitchCheckDefault">Анонимизировать данные о пациенте</label>
+                    </div>
+
+                    <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Подтвердить</button>
                 </form>
 
-                <div>
-                    <ol>
-                        {% for r in research %}
-                            <li><a class="" href="/media/{{ r.ready_archive }}">
-                                <p class="bg-secondary rounded text-center">Скачать архив {{ r }}
-                                    от{{ r.date_created }}</p></a></li>
-                        {% endfor %}
-                    </ol>
+                {% if research %}
+                    <div class="container-fluid mt-5">
+                        <h4>Готовые исследования</h4>
+                        <ol>
+                            {% for r in research %}
+                                <li><a class="" href="/media/{{ r.ready_archive }}">
+                                    <p class="bg-secondary rounded text-center mt-3">Скачать архив {{ r }}
+                                        от {{ r.date_created }}</p></a></li>
+                            {% endfor %}
+                        </ol>
 
-                </div>
-
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

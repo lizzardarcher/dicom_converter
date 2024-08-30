@@ -1,17 +1,19 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from admin_soft import views
+from apps.admin_soft import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('billing/', views.billing, name='billing'),
     path('tables/', views.tables, name='tables'),
-    path('profile/', views.profile, name='profile'),
+    path('profile/', views.ProfileView.as_view(), name='profile'),
 
     # Authentication
-    path('accounts/profile/', views.profile, name='profile'),
+    path('accounts/profile/', views.ProfileView.as_view(), name='profile'),
+
+    path('accounts/profile/<int:pk>/', views.ProfileEditView.as_view(), name=f'profile_edit'),
     path('accounts/login/', views.UserLoginView.as_view(), name='login'),
     path('accounts/logout/', views.logout_view, name='logout'),
     path('accounts/register/', views.register, name='register'),

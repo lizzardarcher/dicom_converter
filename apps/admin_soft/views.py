@@ -1,62 +1,98 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, PasswordResetConfirmView
-from admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, UserPasswordChangeForm
+from admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
+    UserPasswordChangeForm
 from django.contrib.auth import logout
+from django.views.generic import TemplateView, UpdateView
+
+from apps.admin_soft.utils import SuccessMessageMixin
+from apps.converter.models import UserSettings
+
 
 # Create your views here.
 
 # Pages
 def index(request):
+    return render(request, 'pages/index.html', {'segment': 'index'})
 
-  return render(request, 'pages/index.html', { 'segment': 'index' })
 
 def billing(request):
-  return render(request, 'pages/billing.html', { 'segment': 'billing' })
+    return render(request, 'pages/billing.html', {'segment': 'billing'})
+
 
 def tables(request):
-  return render(request, 'pages/tables.html', { 'segment': 'tables' })
+    return render(request, 'pages/tables.html', {'segment': 'tables'})
 
-def profile(request):
-  return render(request, 'pages/profile.html', { 'segment': 'profile' })
+
+# def profile(request):
+#     return render(request, 'pages/profile.html', {'segment': 'profile'})
+
+
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'pages/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfileView, self).get_context_data(**kwargs)
+        context.update({
+            'user_settings': UserSettings.objects.filter(user=self.request.user).first(),
+            'user_id': self.request.user.id,
+
+        })
+        return context
+
+class ProfileEditView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    template_name = 'pages/edit_profile.html'
+    model = User
+    fields = ['username','first_name', 'last_name', 'email']
+    success_url = '/accounts/profile'
+    success_message = 'Successfully updated your profile.'
 
 
 
 # Authentication
 class UserLoginView(LoginView):
-  template_name = 'accounts/login.html'
-  form_class = LoginForm
-  success_url = '/'
+    template_name = 'accounts/login.html'
+    form_class = LoginForm
+    success_url = '/'
 
-  def get_success_url(self):
-    return self.success_url
+    def get_success_url(self):
+        return self.success_url
+
 
 def register(request):
-  if request.method == 'POST':
-    form = RegistrationForm(request.POST)
-    if form.is_valid():
-      form.save()
-      print('Account created successfully!')
-      return redirect('/accounts/login/')
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            UserSettings.objects.create(user=form.cleaned_data['user'])
+            print('Account created successfully!')
+            return redirect('/accounts/login/')
+        else:
+            print("Register failed!")
     else:
-      print("Register failed!")
-  else:
-    form = RegistrationForm()
+        form = RegistrationForm()
 
-  context = { 'form': form }
-  return render(request, 'accounts/register.html', context)
+    context = {'form': form}
+    return render(request, 'accounts/register.html', context)
+
 
 def logout_view(request):
-  logout(request)
-  return redirect('/accounts/login/')
+    logout(request)
+    return redirect('/accounts/login/')
+
 
 class UserPasswordResetView(PasswordResetView):
-  template_name = 'accounts/password_reset.html'
-  form_class = UserPasswordResetForm
+    template_name = 'accounts/password_reset.html'
+    form_class = UserPasswordResetForm
+
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
-  template_name = 'accounts/password_reset_confirm.html'
-  form_class = UserSetPasswordForm
+    template_name = 'accounts/password_reset_confirm.html'
+    form_class = UserSetPasswordForm
+
 
 class UserPasswordChangeView(PasswordChangeView):
-  template_name = 'accounts/password_change.html'
-  form_class = UserPasswordChangeForm
+    template_name = 'accounts/password_change.html'
+    form_class = UserPasswordChangeForm

@@ -19,7 +19,7 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
         context.update({
-            'research': Research.objects.all(),
+            'research': Research.objects.filter(user=self.request.user),
         })
         return context
 

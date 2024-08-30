@@ -125,3 +125,42 @@ class Research(models.Model):
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'
 
+
+from django.contrib.auth.models import User
+from django.db import models, Error
+
+
+class UserSettings(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    research_avail_count = models.IntegerField(default=0, blank=True, null=True, verbose_name='Количество доступных конвертаций')
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name = 'Информация о пользователе'
+        verbose_name_plural = 'Информация о пользователе'
+
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Количество')
+    currency = models.CharField(max_length=100, blank=True, null=True, verbose_name='Валюта')
+    timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Время')
+
+    def __str__(self):
+        return f"Транзакция пользователя - {self.user.username}: {self.amount} от {self.timestamp}"
+
+    class Meta:
+        verbose_name = 'Транзакция'
+        verbose_name_plural = 'Транзакции'
+
+
+class GlobalSettings(models.Model):
+    yookassa_api_key = models.CharField(max_length=1000, blank=True, null=True, verbose_name='Yookassa token')
+    yookassa_shop_id = models.CharField(max_length=1000, blank=True, null=True, verbose_name='Yookassa Shop ID')
+
+    class Meta:
+        verbose_name = 'Общие Настройки проекта'
+        verbose_name_plural = 'Общие Настройки проекта'
+
