@@ -7,8 +7,11 @@
         <div class="page-header min-height-300 border-radius-xl mt-4"
              style="background-image: url('{% static 'img/curved-images/curved0.jpg' %}'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
+
         </div>
+
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
@@ -28,6 +31,8 @@
                             Доступно исследований: <span
                                 class="badge badge-primary">{{ user_settings.research_avail_count }}</span>
                         </p>
+
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
@@ -121,137 +126,159 @@
     </div>
 
     <div class="container-fluid py-4">
-            <div class="col-12 col-lg-12">
-                <div id="research" class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <div class="row">
-                            <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">Информация об исследованиях</h6>
-                            </div>
-                            <div class="col-md-4 text-end">
-                                <a href="{% url 'profile_edit' user_id %}">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                       data-bs-placement="top" title="Редактировать профиль"></i>
-                                </a>
-                            </div>
+        <div class="col-12 col-lg-12">
+            <div id="research" class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <div class="row">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0">Информация об исследованиях</h6>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="{% url 'profile_edit' user_id %}">
+                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                   data-bs-placement="top" title="Редактировать профиль"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="card mb-4">
-                            <div class="card-header pb-0">
-                                <h6>Сводная талица</h6>
-                            </div>
-                            <div class="card-body px-0 pt-0 pb-2">
-                                <div class="table-responsive p-0">
-                                    <table class="table align-items-center mb-0">
-                                        <thead>
+                </div>
+                <div class="col-12">
+                    <div class="card mb-4">
+                    
+                        <div class="card-header pb-0">
+                                        <a class="btn btn-primary col-lg-2 col-12"
+               href="{% url 'upload research' %}"
+               style="background: linear-gradient(to top right, #e24210, #e21b1d);">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-download p-1 rounded bg-gradient"
+                           style="font-size: 2.4rem; background-color: #ff274c"></i>
+                    </div>
+                    <div class="col-9">
+                        Загрузить исследование
+                    </div>
+                </div>
+            </a>
+                            <h6>Сводная талица</h6>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Дата
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Ссылка на готовое исследование
+                                        </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Статус
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for res in research %}
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Дата
-                                            </th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Название исходного файла
-                                            </th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Status
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for res in research %}
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ res.date_created }}</h6>
-                                                        </div>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ res.date_created }}</h6>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
-                                                </td>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="{{ res.ready_archive }}"><p
+                                                        class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
+                                                </a>
+                                            </td>
+                                            {% if res.status %}
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-sm bg-gradient-success">Готово</span>
                                                 </td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            {% else %}
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-danger">Ошибка</span>
+                                                </td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="transaction" class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <div class="row">
-                            <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">Информация о проведенных транзакциях</h6>
-                            </div>
-                            <div class="col-md-4 text-end">
-                                <a href="{% url 'profile_edit' user_id %}">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                       data-bs-placement="top" title="Edit Profile"></i>
-                                </a>
-                            </div>
+            </div>
+            <div id="transaction" class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <div class="row">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0">Информация о проведенных транзакциях</h6>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="{% url 'profile_edit' user_id %}">
+                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                   data-bs-placement="top" title="Edit Profile"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="card mb-4">
-                            <div class="card-header pb-0">
-                                <h6>Сводная талица</h6>
-                            </div>
-                            <div class="card-body px-0 pt-0 pb-2">
-                                <div class="table-responsive p-0">
-                                    <table class="table align-items-center mb-0">
-                                        <thead>
+                </div>
+                <div class="col-12">
+                    <div class="card mb-4">
+                        <div class="card-header pb-0">
+                            <h6>Сводная талица</h6>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Дата
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Сумма
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Валюта
+                                        </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Статус
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for trans in transaction %}
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Дата
-                                            </th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Сумма
-                                            </th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Валюта
-                                            </th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Статус
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for trans in transaction %}
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ trans.timestamp }}</h6>
-                                                        </div>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ trans.timestamp }}</h6>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0">{{ trans.amount }}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0">{{ trans.currency }}</p>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">Успешно</span>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{ trans.amount }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{ trans.currency }}</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">Успешно</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        {% include "includes/footer.html" %}
+    {% include "includes/footer.html" %}
 
 
 {% endblock content %}
