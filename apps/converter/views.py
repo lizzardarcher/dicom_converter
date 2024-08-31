@@ -1,3 +1,5 @@
+from django.contrib.auth.models import AnonymousUser
+from django.shortcuts import redirect
 from unidecode import unidecode
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -5,7 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView
 
 from apps.converter.forms import ResearchUploadForm
-from apps.converter.models import Research
+from apps.converter.models import Research, UserSettings
 
 
 class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -13,10 +15,12 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = ResearchUploadForm
     template_name = 'pages/upload_research.html'
 
+
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
         context.update({
             'research': Research.objects.filter(user=self.request.user),
+            'research_avail_count': UserSettings.objects.filter(user=self.request.user).last().research_avail_count,
         })
         return context
 

@@ -31,11 +31,11 @@
             <h6>Сводная талица</h6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
+            <div class="table-responsive">
                 <table class="table align-items-center mb-0">
                     <thead>
                     <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                             Дата
                         </th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -57,8 +57,8 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="{{ res.ready_archive }}"><p
-                                        class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
+                                <a href="{{MEDIA_URL}}{{ res.ready_archive }}">
+                                    <p class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
                                 </a>
                             </td>
                             {% if res.status %}

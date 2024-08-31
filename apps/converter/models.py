@@ -39,16 +39,6 @@ class Research(models.Model):
     def __str__(self):
         return str(self.raw_archive).split('/')[-1]
 
-    # def delete(self, *args, **kwargs):
-    #     archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
-    #     try:
-    #         print(f"{str(MEDIA_ROOT)}/{self.raw_archive.name}")
-    #         os.remove(archive_dir)
-    #     except OSError as e:
-    #         logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
-    #     super().delete(*args, **kwargs)
-
-
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(f'{self.user}{str(datetime.now())}')

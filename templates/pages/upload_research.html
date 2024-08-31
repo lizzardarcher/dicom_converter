@@ -7,34 +7,41 @@
     <div class="container">
         <div class="card col-lg-12 col-md-12 m-5">
             <div class="container form">
-                <form class="form" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <h3 class="p-5">Загрузить исследование</h3>
+                {% if research_avail_count > 0 %}
+                    <form class="form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h3 class="p-5">Загрузить исследование</h3>
 
-                    <label class="">Загрузите ваше исследование из томографа Galileos в формате .zip или .rar</label>
-                    {% if form.errors %}
-                        <div class="col-12 justify-content-center">
-                            <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
-                                 role="alert">
-                                <span><b>{{ form.errors }}</b></span>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
+                        <label class="">Загрузите ваше исследование из томографа Galileos в формате .zip или
+                            .rar</label>
+                        {% if form.errors %}
+                            <div class="col-12 justify-content-center">
+                                <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
+                                     role="alert">
+                                    <span><b>{{ form.errors }}</b></span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                </div>
                             </div>
+                        {% endif %}
+                        <div class="form-control p-3">
+                            {{ form.raw_archive }}
                         </div>
-                    {% endif %}
-                    <div class="form-control p-3">
-                        {{ form.raw_archive }}
+
+                        <div class="form-check form-switch pt-5">
+                            {{ form.is_anonymous }}
+                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                   for="flexSwitchCheckDefault">Анонимизировать данные о пациенте</label>
+                        </div>
+
+                        <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Подтвердить</button>
+                    </form>
+                {% else %}
+                    <div class="card-header pb-0 px-3">
+                        <h6 class="mb-0">У вас нет доступных конвертаций</h6>
                     </div>
-
-                    <div class="form-check form-switch pt-5">
-                        {{ form.is_anonymous }}
-                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                               for="flexSwitchCheckDefault">Анонимизировать данные о пациенте</label>
-                    </div>
-
-                    <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Подтвердить</button>
-                </form>
-
+                    {% include 'includes/pricing.html' %}
+                {% endif %}
                 {% if research %}
                     <div class="container-fluid mt-5">
                         <h4>Готовые исследования</h4>

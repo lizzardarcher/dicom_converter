@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container-fluid opacity-9">
         <div class="page-header min-height-300 border-radius-xl mt-4"
              style="background-image: url('{% static 'img/curved-images/curved0.jpg' %}'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
@@ -28,8 +28,13 @@
                             {{ request.user.email }}
                         </p>
                         <p class="pt-2 font-weight-bold text-sm">
-                            Доступно исследований: <span
-                                class="badge badge-primary">{{ user_settings.research_avail_count }}</span>
+                            Доступно исследований:
+                            {% if user_settings.research_avail_count <= 0 %}
+                                <span class="badge badge-danger">{{ user_settings.research_avail_count }}</span>
+                            {% else %}
+                                <span class="badge badge-success">{{ user_settings.research_avail_count }}</span>
+                            {% endif %}
+                            <a href="{% url 'prices' %}"><span class="badge badge-success"><i class="fa fa-plus"></i></span></a>
                         </p>
 
 
