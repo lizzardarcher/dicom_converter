@@ -1,16 +1,14 @@
-from django.template import context
 from unidecode import unidecode
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.files.uploadedfile import UploadedFile
-from django.shortcuts import render
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView
 
 from apps.converter.forms import ResearchUploadForm
 from apps.converter.models import Research
 
 
-class UploadResearchView(SuccessMessageMixin, CreateView):
+class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Research
     form_class = ResearchUploadForm
     template_name = 'pages/upload_research.html'
@@ -26,7 +24,7 @@ class UploadResearchView(SuccessMessageMixin, CreateView):
         return '/accounts/profile/'
 
     def get_success_message(self, cleaned_data):
-        return f"Архив успешно обработан {cleaned_data['raw_archive'].name}. Данные томографа сконвертированы в формат DICOM"
+        return f"Архив успешно обработан {cleaned_data['raw_archive'].name}. Данные томографа GALILEOS сконвертированы в формат DICOM"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
