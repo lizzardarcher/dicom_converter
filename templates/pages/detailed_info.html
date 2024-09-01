@@ -1,0 +1,79 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Конвертация данных GALILEOS в DICOM{% endblock title %}
+{% block content %}
+    <div class="container">
+
+        <h1 class="text-center mb-4">Конвертация данных GALILEOS в DICOM</h1>
+
+        <section class="section mb-5">
+            <h2 class="h4 mb-3">Что такое GALILEOS?</h2>
+            <p class="lead">GALILEOS - это передовая система 3D-планирования для имплантологии, разработанная компанией
+                SIRONA. Она представляет собой мощный инструмент, который помогает стоматологам и имплантологам в
+                планировании и проведении сложных имплантационных процедур.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Система GALILEOS использует технологию компьютерной томографии (КТ) для создания детальных
+                        3D-изображений костных структур челюсти пациента. Эти изображения предоставляют ценную
+                        информацию о положении нервов, сосудов и костной ткани, что позволяет стоматологам точно
+                        планировать размещение имплантатов.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://placehold.co/600x400/cccccc/000000?text=GALILEOS+CT+scan"
+                         class="img-fluid rounded" alt="3D-сканирование GALILEOS">
+                </div>
+            </div>
+        </section>
+
+        <section class="section mb-5">
+            <h2 class="h4 mb-3">Зачем нужна конвертация в DICOM?</h2>
+            <p class="lead">DICOM (Digital Imaging and Communications in Medicine) - это стандартный формат для хранения
+                и обмена медицинскими изображениями. Он обеспечивает совместимость данных между различными системами,
+                программами и медицинскими учреждениями.</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Совместимость:</strong> Конвертация данных GALILEOS в DICOM
+                    позволяет интегрировать их с другими медицинскими изображениями, например, рентгеновскими снимками.
+                    Это дает более полное представление о состоянии пациента.
+                </li>
+                <li class="list-group-item"><strong>Широкая поддержка:</strong> Данные в формате DICOM могут быть
+                    использованы в программном обеспечении для планирования имплантации различных производителей. Это
+                    обеспечивает гибкость и выбор подходящего инструментария.
+                </li>
+                <li class="list-group-item"><strong>Долгосрочное хранение:</strong> DICOM - это устойчивый формат,
+                    который обеспечивает надежное хранение данных для дальнейшего использования и анализа.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section mb-5">
+            <h2 class="h4 mb-3">Как работает конвертация?</h2>
+            <p>Конвертация данных GALILEOS в DICOM осуществляется с помощью специализированного программного
+                обеспечения. Обычно процесс выглядит следующим образом:</p>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item"><strong>Импорт данных:</strong> Данные GALILEOS загружаются в программу
+                    конвертации.
+                </li>
+                <li class="list-group-item"><strong>Настройка параметров:</strong> Пользователь может задать параметры
+                    конвертации, такие как размер изображения, разрешение и формат.
+                </li>
+                <li class="list-group-item"><strong>Экспорт в DICOM:</strong> Программа конвертирует данные GALILEOS в
+                    формат DICOM и сохраняет их в виде отдельного файла.
+                </li>
+            </ol>
+        </section>
+
+        <section class="section mb-5">
+            <h2 class="h4 mb-3">Где получить информацию о конвертации?</h2>
+            <p>Дополнительную информацию о конвертации данных GALILEOS в DICOM можно получить из следующих
+                источников:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="https://www.sirona.com/" target="_blank">Веб-сайт SIRONA</a></li>
+                <li class="list-group-item">Руководство пользователя GALILEOS</li>
+                <li class="list-group-item">Программное обеспечение для конвертации данных (конкретные названия программ
+                    и производителей, если известны)
+                </li>
+            </ul>
+        </section>
+
+    </div>
+{% endblock content %}

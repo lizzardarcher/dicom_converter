@@ -7,6 +7,12 @@
     <div class="container">
         <div class="card col-lg-12 col-md-12 m-5 p-5">
             <div class="container form">
+                <div class="heading-text">
+                    <a class="btn btn-outline-secondary" href="{% url 'profile' %}"><span>Назад</span></a>
+                </div>
+                <div class="heading-text pb-4">
+                    <span>Редактировать профиль</span>
+                </div>
                 <form method="post">
                     {% csrf_token %}
                     {% if form.errors %}

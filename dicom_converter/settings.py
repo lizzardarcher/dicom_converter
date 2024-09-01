@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.payments',
     'apps.authentication',
     'fontawesomefree'
+    'cookie_consent'
 ]
 
 MIDDLEWARE = [

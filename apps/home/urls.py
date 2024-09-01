@@ -5,7 +5,7 @@ from apps.home import views
 
 urlpatterns = [
     path('prices', views.PricesView.as_view(), name='prices'),
-    path('create', views.HomeCreateView.as_view(), name='create'),
+    path('detailed_info', views.DetailedInfoView.as_view(), name='detailed_info'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
