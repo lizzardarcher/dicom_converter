@@ -13,3 +13,8 @@ class PricesView(TemplateView):
 class DetailedInfoView(TemplateView):
     template_name = 'pages/detailed_info.html'
 
+class AboutView(TemplateView):
+    template_name = 'pages/about.html'
+
+class FAQView(TemplateView):
+    template_name = 'pages/faq.html'

@@ -7,6 +7,9 @@ urlpatterns = [
     path('prices', views.PricesView.as_view(), name='prices'),
     path('detailed_info', views.DetailedInfoView.as_view(), name='detailed_info'),
 
+    path('about', views.AboutView.as_view(), name='about'),
+    path('faq', views.FAQView.as_view(), name='faq'),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
