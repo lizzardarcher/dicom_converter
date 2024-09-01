@@ -5,12 +5,12 @@
 
     <body class="bg-light bg-gradient">
     <div class="container">
-        <div class="card col-lg-12 col-md-12 m-5">
+        <div class="card col-lg-12 col-md-12">
             <div class="container form">
                 {% if research_avail_count > 0 %}
                     <form class="form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <h3 class="p-5">Загрузить исследование</h3>
+                        <h3 class="pt-5 pb-5">Загрузить исследование</h3>
 
                         <label class="">Загрузите ваше исследование из томографа Galileos в формате .zip или
                             .rar</label>
@@ -48,7 +48,8 @@
                         <ol>
                             {% for r in research %}
                                 <li><a class="" href="/media/{{ r.ready_archive }}">
-                                    <p class="bg-secondary rounded text-center mt-3">Скачать архив {{ r }}
+                                    <p class="bg-secondary rounded text-center text-light text-bold mt-3">
+                                        <i class="fa fa-download"></i> Скачать архив {{ r }}
                                         от {{ r.date_created }}</p></a></li>
                             {% endfor %}
                         </ol>

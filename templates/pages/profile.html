@@ -24,9 +24,6 @@
                         <h5 class="pb-2 mb-1">
                             {{ request.user.username }}
                         </h5>
-                        <p class="pt-2  font-weight-bold text-sm">
-                            {{ request.user.email }}
-                        </p>
                         <p class="pt-2 font-weight-bold text-sm">
                             Доступно исследований:
                             {% if user_settings.research_avail_count <= 0 %}
@@ -34,7 +31,8 @@
                             {% else %}
                                 <span class="badge badge-success">{{ user_settings.research_avail_count }}</span>
                             {% endif %}
-                            <a href="{% url 'prices' %}"><span class="badge badge-success"><i class="fa fa-plus"></i></span></a>
+                            <a href="{% url 'prices' %}"><span class="badge badge-success"><i
+                                    class="fa fa-plus"></i></span></a>
                         </p>
 
 
@@ -95,7 +93,7 @@
                                     <span class="ms-1">Транзакции</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" onclick="set_visible_settings()"  >
                                 <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab"
                                    aria-selected="false">
                                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1"
@@ -120,7 +118,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="ms-1">Settings</span>
+                                    <span class="ms-1">Настройки</span>
                                 </a>
                             </li>
                         </ul>
@@ -135,16 +133,19 @@
             <div id="research" class="card h-100">
                 {% if research %}
                     {% include 'accounts/info/research.html' %}
-                    {% else %}
+                {% else %}
                     {% include 'accounts/info/empty-research.html' %}
                 {% endif %}
             </div>
             <div id="transaction" class="card h-100">
                 {% if transaction %}
                     {% include 'accounts/info/transaction.html' %}
-                    {% else %}
+                {% else %}
                     {% include 'accounts/info/empty-transaction.html' %}
                 {% endif %}
+            </div>
+            <div id="settings" class="card h-100">
+                {% include 'accounts/info/settings.html' %}
             </div>
         </div>
     </div>
@@ -160,15 +161,25 @@
         research.style.display = 'block'
         let transaction = document.getElementById('transaction');
         transaction.style.display = 'none'
-
+        let settings = document.getElementById('settings');
+        settings.style.display = 'none'
+        
         function set_visible_research() {
             research.style.display = 'block'
             transaction.style.display = 'none'
+            settings.style.display = 'none'
         }
 
         function set_visible_transaction() {
             transaction.style.display = 'block'
             research.style.display = 'none'
+            settings.style.display = 'none'
+        }
+        
+        function set_visible_settings() {
+            settings.style.display = 'block'
+            research.style.display = 'none'
+            transaction.style.display = 'none'
         }
     </script>
 

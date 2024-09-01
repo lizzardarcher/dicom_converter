@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-3 col-sm-1">
+        <div class="card-body"></div>
+    </div>
+    <div class="card user-card user-card-1 col-lg-6">
+        <div class="card-body">
+            <div class="float-end">
+                <span class="badge badge-success">Pro</span>
+            </div>
+            <div class="media d-flex user-about-block align-items-center mt-0 mb-3">
+                <div class="media-body">
+                    <h6 class="mb-1">
+                        {{ request.user.username }}
+                    </h6>
+                    <p class="mb-0 text-muted">{{ request.user.first_name }}</p>
+                    <p class="mb-0 text-muted">{{ request.user.last_name }}</p>
+                </div>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <span class="f-w-500"><i class="feather icon-mail m-r-10"></i>Email</span>
+                <a href="mailto:demo@sample" class="float-end text-body">{{ request.user.email }}</a>
+            </li>
+        </ul>
+        <div class="nav flex-column nav-pills list-group list-group-flush list-pills mt-3" aria-orientation="vertical">
+
+            <a class="btn bg-gradient-secondary opacity-7" href="{% url 'profile_edit' user_id %}"
+               aria-selected="true">
+                <span class="f-w-500 opacity-10"><i class="fa fa-edit m-r-10 h5 "></i> Редактировать профиль</span>
+            </a>
+
+            <a class="btn bg-gradient-secondary opacity-7" href="{% url 'password_change' %}"
+               aria-selected="false" tabindex="-1">
+                <span class="f-w-500 opacity-10"><i class="fa fa-shield m-r-10 h5 "></i> Изменить пароль</span>
+            </a>
+
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-1">
+        <div class="card-body"></div>
+    </div>
+</div>
+    

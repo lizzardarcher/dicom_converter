@@ -30,7 +30,7 @@ def tables(request):
 #     return render(request, 'pages/profile.html', {'segment': 'profile'})
 
 
-class ProfileView(LoginRequiredMixin, TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):
     template_name = 'pages/profile.html'
 
     def get_context_data(self, **kwargs):
@@ -43,7 +43,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         })
         return context
 
-class ProfileEditView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+class ProfileEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'pages/edit_profile.html'
     model = User
     fields = ['username','first_name', 'last_name', 'email']
