@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('about', views.AboutView.as_view(), name='about'),
     path('faq', views.FAQView.as_view(), name='faq'),
+    path('how_it_works', views.HowItWorksView.as_view(), name='how_it_works'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

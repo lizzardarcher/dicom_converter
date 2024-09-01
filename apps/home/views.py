@@ -18,3 +18,6 @@ class AboutView(TemplateView):
 
 class FAQView(TemplateView):
     template_name = 'pages/faq.html'
+
+class HowItWorksView(TemplateView):
+    template_name = 'pages/how_it_works.html'

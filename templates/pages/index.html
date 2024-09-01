@@ -58,6 +58,10 @@
 
         }
     </style>
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    
 {% endblock extrastyle %}
 {% block content %}
 
@@ -89,7 +93,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Как
+                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder"
+                                   href="{% url 'how_it_works' %}">Как
                                     это работает</a>
                             </div>
                         </div>
@@ -124,20 +129,16 @@
                                         это стандарт для хранения и обмена медицинскими изображениями, используемый в
                                         больницах и клиниках по всему миру.</p>
                                     <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-                                       href="javascript:;">
+                                       href="{% url 'detailed_info' %}">
                                         Подробнее
                                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                                <div class="bg-gradient-primary border-radius-lg h-100">
-                                    <img src="{% static 'img/shapes/waves-white.svg' %}"
-                                         class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
-                                    <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                                        <img class="w-100 position-relative z-index-2 pt-4"
-                                             src="{% static 'img/illustrations/rocket-white.png' %}" alt="rocket">
-                                    </div>
+                                <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                                    <img class="rounded w-100 position-relative z-index-2 pt-4"
+                                         src="{% static 'img/sirona-scaner.jpg' %}" alt="rocket">
                                 </div>
                             </div>
                         </div>
@@ -242,105 +243,88 @@
                 </div>
             </div>
         </div>
-        
-        <!--YOUTUBE -->
-        <div class="col-12 mt-5 mb-5">
+
+       
+        <!--YOUTUBE START-->
 
 
-            <div class="card mb-4">
-                <div class="card-header pb-0 p-3">
-                </div>
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                            <div class="card card-blog card-plain">
-                                <div class="position-relative">
-                                    <a class="d-block shadow-xl border-radius-xl" href="#">
-                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
-                                             class="img-fluid shadow border-radius-xl">
-                                    </a>
-                                </div>
-                                <div class="card-body px-1 pb-0">
-                                    <p class="text-gradient text-dark mb-2 text-sm">Intro #0</p>
-                                    <a href="javascript:;">
-                                        <h5>
-                                            Начало
-                                        </h5>
-                                    </a>
-                                    <p class="mb-4 text-sm">
-                                        Что такое <b>easyDICOM</b> ?
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                            <div class="card card-blog card-plain">
-                                <div class="position-relative">
-                                    <a class="d-block shadow-xl border-radius-xl" href="#">
-                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
-                                             class="img-fluid shadow border-radius-xl">
-                                    </a>
-                                </div>
-                                <div class="card-body px-1 pb-0">
-                                    <p class="text-gradient text-dark mb-2 text-sm">Job #1</p>
-                                    <a href="javascript:;">
-                                        <h5>
-                                            Job
-                                        </h5>
-                                    </a>
-                                    <p class="mb-4 text-sm">
-                                        Как работает система
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                            <div class="card card-blog card-plain">
-                                <div class="position-relative">
-                                    <a class="d-block shadow-xl border-radius-xl" href="#">
-                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
-                                             class="img-fluid shadow border-radius-xl">
-                                    </a>
-                                </div>
-                                <div class="card-body px-1 pb-0">
-                                    <p class="text-gradient text-dark mb-2 text-sm">Archivers #0</p>
-                                    <a href="javascript:;">
-                                        <h5>
-                                            RAR - ZIP
-                                        </h5>
-                                    </a>
-                                    <p class="mb-4 text-sm">
-                                        Какие архиваторы использовать
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                            <div class="card card-blog card-plain">
-                                <div class="position-relative">
-                                    <a class="d-block shadow-xl border-radius-xl" href="#">
-                                        <img src="{% static 'img/youtube-placeholder.jpg' %}" alt="img-blur-shadow"
-                                             class="img-fluid shadow border-radius-xl">
-                                    </a>
-                                </div>
-                                <div class="card-body px-1 pb-0">
-                                    <p class="text-gradient text-dark mb-2 text-sm">Viewers #3</p>
-                                    <a href="javascript:;">
-                                        <h5>
-                                            Modern Viewers
-                                        </h5>
-                                    </a>
-                                    <p class="mb-4 text-sm">
-                                        Профессиональные программы для отображения DICOM
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Наши видео на YouTube</h2>
+
+            <div class="owl-carousel owl-theme " id="video-slider">
+
+                <div class="card">
+                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Название видео 1</h5>
+                        <p class="card-text">Краткое описание видео 1.</p>
+                        <a href="#" class="btn btn-primary">Узнать больше</a>
                     </div>
                 </div>
+
+                <div class="card">
+                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Название видео 2</h5>
+                        <p class="card-text">Краткое описание видео 2.</p>
+                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Название видео 3</h5>
+                        <p class="card-text">Краткое описание видео 3.</p>
+                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Название видео 4</h5>
+                        <p class="card-text">Краткое описание видео 4.</p>
+                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Название видео 5</h5>
+                        <p class="card-text">Краткое описание видео 5.</p>
+                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">Название видео 6</h5>
+                        <p class="card-text">Краткое описание видео 6.</p>
+                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                    </div>
+                </div>
+                
             </div>
+
         </div>
 
+
+        <!--YOUTUBE END-->
 
     </div>
 
@@ -367,5 +351,29 @@
                 })
             })
         })
+    </script>
+
+    <script src="{% static 'js/core/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/core/owl.carousel.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#video-slider').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
     </script>
 {% endblock scripts %}
