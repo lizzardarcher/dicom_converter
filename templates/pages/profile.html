@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block content %}
@@ -25,7 +26,7 @@
                             {{ request.user.username }}
                         </h5>
                         <p class="pt-2 font-weight-bold text-sm">
-                            Доступно исследований:
+                            {% blocktranslate %}Доступно исследований:{% endblocktranslate %}
                             {% if user_settings.research_avail_count <= 0 %}
                                 <span class="badge badge-danger">{{ user_settings.research_avail_count }}</span>
                             {% else %}
@@ -65,7 +66,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="ms-1">Исследования</span>
+                                    <span class="ms-1">{% blocktranslate %}Исследования{% endblocktranslate %}</span>
                                 </a>
                             </li>
                             <li class="nav-item" onclick="set_visible_transaction()">
@@ -90,7 +91,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="ms-1">Транзакции</span>
+                                    <span class="ms-1">{% blocktranslate %}Транзакции{% endblocktranslate %}</span>
                                 </a>
                             </li>
                             <li class="nav-item" onclick="set_visible_settings()"  >
@@ -118,7 +119,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="ms-1">Настройки</span>
+                                    <span class="ms-1">{% blocktranslate %}Настройки{% endblocktranslate %}</span>
                                 </a>
                             </li>
                         </ul>

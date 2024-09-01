@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}Конвертер{% endblock title %}
 {% block extrastyle %}
@@ -74,8 +75,8 @@
                     <div class="col-xxl-5">
                         <!-- Header text content-->
                         <div class="text-center text-xxl-start">
-                            <div class="fs-3 fw-light text-muted">Удобный способ конвертации медицинских данных из
-                                CBCT-сканеров Sirona GALAXIS/GALILEOS в стандартный формат DICOM.
+                            <div class="fs-3 fw-light text-muted">
+                                {% translate 'Удобный способ конвертации медицинских данных из CBCT-сканеров Sirona GALAXIS/GALILEOS в стандартный формат DICOM.' %}
                             </div>
                             <h1 class="display-3 text-dark fw-bolder mb-5"><span
                                     class="text-dark d-inline">EasyGalileos</span></h1>
@@ -89,13 +90,12 @@
                                                style="font-size: 2.4rem; background-color: #ff274c"></i>
                                         </div>
                                         <div class="col-9">
-                                            Загрузить исследование
+                                            {% translate 'Загрузить исследование' %}
                                         </div>
                                     </div>
                                 </a>
                                 <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder"
-                                   href="{% url 'how_it_works' %}">Как
-                                    это работает</a>
+                                   href="{% url 'how_it_works' %}">{% translate 'Как это работает' %}</a>
                             </div>
                         </div>
                     </div>
@@ -121,16 +121,16 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
-                                    <h1 class="font-weight-bolder">Что такое easyDICOM?</h1>
-                                    <p class="mb-2">EasyDICOM - это мощный, но простой в использовании веб сервис,
+                                    <h1 class="font-weight-bolder">{% trans 'Что такое easyGalileos?' %}</h1>
+                                    <p class="mb-2">{% blocktranslate %}EasyDICOM - это мощный, но простой в использовании веб сервис,
                                         который позволяет конвертировать
-                                        данные с вашего томографа SIRONA GALILEOS в DICOM-файлы. </p>
-                                    <p> DICOM (Digital Imaging and Communications in Medicine) -
+                                        данные с вашего томографа SIRONA GALILEOS в DICOM-файлы. {% endblocktranslate %}</p>
+                                    <p> {% blocktranslate %}DICOM (Digital Imaging and Communications in Medicine) -
                                         это стандарт для хранения и обмена медицинскими изображениями, используемый в
-                                        больницах и клиниках по всему миру.</p>
+                                        больницах и клиниках по всему миру.{% endblocktranslate %}</p>
                                     <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
                                        href="{% url 'detailed_info' %}">
-                                        Подробнее
+                                        {% blocktranslate %}Подробнее{% endblocktranslate %}
                                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -149,7 +149,7 @@
 
         <!--STEPPER -->
         <div class="container pt-5 mt-5 mb-5 ">
-            <h1 class="mt-5 mb-5">Три простых шага для работы</h1>
+            <h1 class="mt-5 mb-5">{% blocktranslate %}Три простых шага для работы{% endblocktranslate %}</h1>
 
             <div class="accordion" id="accordionExample">
                 <div class="steps">
@@ -159,7 +159,7 @@
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         </button>
                         <div class="step-title">
-                            Шаг 1
+                            {% blocktranslate %}Шаг 1{% endblocktranslate %}
                         </div>
                     </div>
                     <div class="step-item">
@@ -167,7 +167,7 @@
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         </button>
                         <div class="step-title">
-                            Шаг 2
+                            {% blocktranslate %}Шаг 2{% endblocktranslate %}
                         </div>
                     </div>
                     <div class="step-item">
@@ -175,7 +175,7 @@
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         </button>
                         <div class="step-title">
-                            Шаг 3
+                            {% blocktranslate %}Шаг 3{% endblocktranslate %}
                         </div>
                     </div>
                 </div>
@@ -187,18 +187,18 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                          data-bs-parent="#accordionExample">
                         <div class="card-body">
-                            <p><i class="fa fa-file-zipper h4"></i> Создайте архив (zip, rar) с вашим исследованием. Вот
-                                одни из самых популярных бесплатных программ для работы с архивами</p>
+                            <p><i class="fa fa-file-zipper h4"></i> {% blocktranslate %}Создайте архив (zip, rar) с вашим исследованием. Вот
+                                одни из самых популярных бесплатных программ для работы с архивами{% endblocktranslate %}</p>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    Для Windows:
+                                    {% blocktranslate %}Для Windows:{% endblocktranslate %}
                                     <ul>
                                         <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
                                         <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-4">
-                                    Для Mac OS:
+                                    {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
                                     <ul>
                                         <li>
                                             <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
@@ -206,7 +206,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-lg-4">
-                                    Для Linux:
+                                    {% blocktranslate %}Для Linux:{% endblocktranslate %}
                                     <ul>
                                         <li><a href="https://cdn.7zip-arhive.ru/7z2201-linux-x64.tar.xz">7-ZIP</a></li>
                                     </ul>
@@ -223,8 +223,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                          data-bs-parent="#accordionExample">
                         <div class="card-body">
-                            <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i> Загрузите
-                                архив в наш сервис</a>
+                            <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i> {% blocktranslate %}Загрузите архив в наш сервис{% endblocktranslate %}</a>
                         </div>
                     </div>
                 </div>
@@ -235,9 +234,8 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                          data-bs-parent="#accordionExample">
                         <div class="card-body">
-                            <p>Дождитесь результата и получите <a href="{% url 'my research' %}">архив</a> с
-                                конвертированным исследованием</p>
-                            <p><i class="fa fa-clock"></i> Среднее время обработки 2 минуты</p>
+                            <p>{% blocktranslate %}Дождитесь результата и получите архив с конвертированным исследованием{% endblocktranslate %}</p>
+                            <p><i class="fa fa-clock"></i> {% blocktranslate %}Среднее время обработки 2 минуты{% endblocktranslate %}</p>
                         </div>
                     </div>
                 </div>
@@ -249,7 +247,7 @@
 
 
         <div class="container mt-5">
-            <h2 class="text-center mb-4">Наши видео на YouTube</h2>
+            <h2 class="text-center mb-4">{% blocktranslate %}Наши видео на YouTube{% endblocktranslate %}</h2>
 
             <div class="owl-carousel owl-theme " id="video-slider">
 
@@ -258,9 +256,9 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Название видео 1</h5>
-                        <p class="card-text">Краткое описание видео 1.</p>
-                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                        <h5 class="card-title">{% blocktranslate %}Название видео 1{% endblocktranslate %}</h5>
+                        <p class="card-text">{% blocktranslate %}Краткое описание видео 1.{% endblocktranslate %}</p>
+                        <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
                     </div>
                 </div>
 
@@ -269,9 +267,9 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Название видео 2</h5>
-                        <p class="card-text">Краткое описание видео 2.</p>
-                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                        <h5 class="card-title">{% blocktranslate %}Название видео 2{% endblocktranslate %}</h5>
+                        <p class="card-text">{% blocktranslate %}Краткое описание видео 2.{% endblocktranslate %}</p>
+                        <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
                     </div>
                 </div>
                 
@@ -280,9 +278,9 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Название видео 3</h5>
-                        <p class="card-text">Краткое описание видео 3.</p>
-                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                        <h5 class="card-title">{% blocktranslate %}Название видео 3{% endblocktranslate %}</h5>
+                        <p class="card-text">{% blocktranslate %}Краткое описание видео 3.{% endblocktranslate %}</p>
+                        <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
                     </div>
                 </div>
                 
@@ -291,36 +289,12 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     <div class="card-body">
-                        <h5 class="card-title">Название видео 4</h5>
-                        <p class="card-text">Краткое описание видео 4.</p>
-                        <a href="#" class="btn btn-primary">Узнать больше</a>
+                        <h5 class="card-title">{% blocktranslate %}Название видео 4{% endblocktranslate %}</h5>
+                        <p class="card-text">{% blocktranslate %}Краткое описание видео 4.{% endblocktranslate %}</p>
+                        <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    <div class="card-body">
-                        <h5 class="card-title">Название видео 5</h5>
-                        <p class="card-text">Краткое описание видео 5.</p>
-                        <a href="#" class="btn btn-primary">Узнать больше</a>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    <div class="card-body">
-                        <h5 class="card-title">Название видео 6</h5>
-                        <p class="card-text">Краткое описание видео 6.</p>
-                        <a href="#" class="btn btn-primary">Узнать больше</a>
-                    </div>
-                </div>
-                
             </div>
-
         </div>
 
 

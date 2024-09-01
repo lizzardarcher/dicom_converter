@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block content %}
@@ -8,10 +9,10 @@
         <div class="card col-lg-12 col-md-12 m-5 p-5">
             <div class="container form">
                 <div class="heading-text">
-                    <a class="btn btn-outline-secondary" href="{% url 'profile' %}"><span>Назад</span></a>
+                    <a class="btn btn-outline-secondary" href="{% url 'profile' %}"><span>{% blocktranslate %}Назад{% endblocktranslate %}</span></a>
                 </div>
                 <div class="heading-text pb-4">
-                    <span>Редактировать профиль</span>
+                    <span>{% blocktranslate %}Редактировать профиль{% endblocktranslate %}</span>
                 </div>
                 <form method="post">
                     {% csrf_token %}
@@ -27,7 +28,7 @@
                     <div class="form-control p-3">
                         {{ form }}
                     </div>
-                    <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Подтвердить</button>
+                    <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">{% blocktranslate %}Подтвердить{% endblocktranslate %}</button>
                 </form>
 
             </div>

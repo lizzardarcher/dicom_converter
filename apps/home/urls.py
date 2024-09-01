@@ -4,6 +4,10 @@ from django.urls import path, include
 from apps.home import views
 
 urlpatterns = [
+
+    path('set_lang_en', views.set_lang_en, name='set_lang_en'),
+    path('set_lang_ru', views.set_lang_ru, name='set_lang_ru'),
+
     path('prices', views.PricesView.as_view(), name='prices'),
     path('detailed_info', views.DetailedInfoView.as_view(), name='detailed_info'),
 
