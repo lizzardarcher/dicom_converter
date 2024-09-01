@@ -1,9 +1,6 @@
 from django import forms
 
-from apps.home.models import Home
-
-
-class HomeForm(forms.ModelForm):
-    class Meta:
-        model = Home
-        fields = ['name']
+class ContactForm(forms.Form):
+    name = forms.CharField(label='Имя', max_length=100)
+    email = forms.EmailField(label='Email')
+    message = forms.CharField(label='Сообщение', widget=forms.Textarea)

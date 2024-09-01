@@ -5,22 +5,30 @@
     <div class="card user-card user-card-1 col-lg-6">
         <div class="card-body">
             <div class="float-end">
-                <span class="badge badge-success">Pro</span>
+                {% if user_settings.research_avail_count <= 0 %}
+                    <span class="badge badge-secondary">Standard</span>
+                {% else %}
+                    <span class="badge badge-success">Premium</span>
+                {% endif %}
             </div>
-            <div class="media d-flex user-about-block align-items-center mt-0 mb-3">
+            <div class="media d-flex">
                 <div class="media-body">
-                    <h6 class="mb-1">
-                        {{ request.user.username }}
-                    </h6>
-                    <p class="mb-0 text-muted">{{ request.user.first_name }}</p>
-                    <p class="mb-0 text-muted">{{ request.user.last_name }}</p>
+                    <h6>{{ request.user.username }}</h6>
                 </div>
             </div>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <span class="f-w-500"><i class="feather icon-mail m-r-10"></i>Email</span>
-                <a href="mailto:demo@sample" class="float-end text-body">{{ request.user.email }}</a>
+                <span class="f-w-500"><i class="fa fa-circle m-r-10"></i> First name</span>
+                <p class="float-end text-body">{{ request.user.first_name }}</p>
+            </li>
+            <li class="list-group-item">
+                <span class="f-w-500"><i class="fa fa-circle m-r-10"></i> Last name</span>
+                <p class="float-end text-body">{{ request.user.last_name }}</p>
+            </li>
+            <li class="list-group-item">
+                <span class="f-w-500"><i class="fa fa-mail-bulk m-r-10"></i> Email</span>
+                <p class="float-end text-body">{{ request.user.email }}</p>
             </li>
         </ul>
         <div class="nav flex-column nav-pills list-group list-group-flush list-pills mt-3" aria-orientation="vertical">
@@ -41,4 +49,3 @@
         <div class="card-body"></div>
     </div>
 </div>
-    

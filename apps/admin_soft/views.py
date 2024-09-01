@@ -18,12 +18,12 @@ def index(request):
     return render(request, 'pages/index.html', {'segment': 'index'})
 
 
-def billing(request):
-    return render(request, 'pages/billing.html', {'segment': 'billing'})
+# def billing(request):
+#     return render(request, 'pages/billing.html', {'segment': 'billing'})
 
 
-def tables(request):
-    return render(request, 'pages/tables.html', {'segment': 'tables'})
+# def tables(request):
+#     return render(request, 'pages/tables.html', {'segment': 'tables'})
 
 
 # def profile(request):
