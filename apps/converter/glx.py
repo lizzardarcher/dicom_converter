@@ -22,6 +22,7 @@ import re
 from typing import Any, Dict, List
 
 
+
 usage = """%(prog)s --tag PatientName='Surname^Name' \\
            --tag PatientBirthDate='19700101' \\
            [--tag TAG=VALUE]... SRC_DIR OUT_DIR
