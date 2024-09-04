@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
-
+{% block title %}Исследования{% endblock title %}
 {% block content %}
 
     <body class="bg-light bg-gradient">
@@ -8,7 +8,7 @@
         <div class="card col-lg-12 col-md-12">
             <div class="container form">
                 {% if research_avail_count > 0 %}
-                    <form class="form" method="post" enctype="multipart/form-data">
+                    <form id="upload_form" class="form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <h3 class="pt-5 pb-5">Загрузить исследование</h3>
 
@@ -63,3 +63,17 @@
     </body>
 
 {% endblock content %}
+{% block extrascript %}
+{#    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>#}
+{#    <script>#}
+{#        // Let's call it 2 times just for fun...#}
+{#        $("#upload_form").LoadingOverlay("show", {#}
+{#            background: "rgba(165, 190, 100, 0.5)"#}
+{#        });#}
+{#        $("#upload_form").LoadingOverlay("show");#}
+{##}
+{#        // Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:#}
+{#        $("#upload_form").LoadingOverlay("hide", true);#}
+{#    </script>#}
+
+{% endblock extrascript %}

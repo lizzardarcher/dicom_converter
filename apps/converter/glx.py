@@ -9,6 +9,8 @@ __copyright__ = "Copyright (C) 2022 Max Nikulin"
 
 import datetime
 import gzip
+from functools import wraps
+from time import time
 
 from lxml import etree
 from pathlib import Path
@@ -76,6 +78,15 @@ uid_prefix = None
     prefix registered for ``pydicom``.
 """
 
+def timing(f):
+    @wraps(f)
+    def wrap(*args, **kw):
+        ts = time()
+        result = f(*args, **kw)
+        te = time()
+        print(f'[{f}] [finished in] [{str(te - ts)}] [sec]')
+        return result
+    return wrap
 
 def read_fbp_params(ct_dir: Path) -> Dict[str, Any]:
     with gzip.open(ct_dir / ct_dir.name, "rb") as f:
@@ -190,8 +201,23 @@ def read_fbp_params(ct_dir: Path) -> Dict[str, Any]:
 
     return retval
 
+@timing
+def glx2dicom(srcdir: Path, dstdir: Path, dicom_attrs=None) -> None:
 
-def glx2dicom(srcdir: Path, dstdir: Path, dicom_attrs) -> None:
+    if dicom_attrs is None:
+        dicom_attrs = default_dicom_attrs.copy()
+    src_dir = Path(srcdir)
+    # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
+    # would not work because ``pop(key)`` removes element
+    # from first dict only and next time the ``key`` may be obtained
+    # from second dict.
+    dicom_attrs = default_dicom_attrs.copy()
+    glx_attrs = read_fbp_params(src_dir)
+    dicom_attrs.update(glx_attrs)
+
+    # cli_attrs, errors = cli_tags2dict(args.tag)
+    # dicom_attrs.update(cli_attrs)
+
     # It seems trailing "/" does not matter.
     attrs = dicom_attrs.copy()
 
@@ -385,30 +411,35 @@ def readme():
     #     .replace('\n', '\n\n') % dict(prog=__title__))
 
 
-if __name__ == '__main__':
-    parser = create_argument_parser()
-    args = parser.parse_args()
-    src_dir = Path(args.src_dir)
-    # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
-    # would not work because ``pop(key)`` removes element
-    # from first dict only and next time the ``key`` may be obtained
-    # from second dict.
-    dicom_attrs = default_dicom_attrs.copy()
-    glx_attrs = read_fbp_params(src_dir)
-    dicom_attrs.update(glx_attrs)
+# if __name__ == '__main__':
+#     parser = create_argument_parser()
+#     args = parser.parse_args()
+#     src_dir = Path(args.src_dir)
+#     # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
+#     # would not work because ``pop(key)`` removes element
+#     # from first dict only and next time the ``key`` may be obtained
+#     # from second dict.
+#     dicom_attrs = default_dicom_attrs.copy()
+#     glx_attrs = read_fbp_params(src_dir)
+#     dicom_attrs.update(glx_attrs)
+#
+#     cli_attrs, errors = cli_tags2dict(args.tag)
+#     if errors:
+#         # "%(prog)s" is not supported here
+#         parser.error("\n".join(errors))
+#     dicom_attrs.update(cli_attrs)
+#
+#     # TODO --verbose option
+#     # from pprint import pprint
+#     # pprint(dicom_attrs)
+#
+#     start_time = datetime.datetime.now()
+#     glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
+#     finish_time = datetime.datetime.now()
+#     # time spent
+#     print(f'[glx2dicom] [finished in] [{str(finish_time - start_time)}] ')
 
-    cli_attrs, errors = cli_tags2dict(args.tag)
-    if errors:
-        # "%(prog)s" is not supported here
-        parser.error("\n".join(errors))
-    dicom_attrs.update(cli_attrs)
 
-    # TODO --verbose option
-    # from pprint import pprint
-    # pprint(dicom_attrs)
-
-    start_time = datetime.datetime.now()
-    glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
-    finish_time = datetime.datetime.now()
-    # time spent
-    print(f'[glx2dicom] [finished in] [{str(finish_time - start_time)}] ')
+# glx2dicom(srcdir=Path('/home/ansel/Загрузки/БатуринаИ.С/00005bd235c6015e_vol_0'),
+#           dstdir=Path('/home/ansel/PycharmProjects/dicom_converter/dcm'),
+#           dicom_attrs=default_dicom_attrs.copy())

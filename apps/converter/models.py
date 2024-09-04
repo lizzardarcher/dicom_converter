@@ -14,6 +14,7 @@ import patoolib
 
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, unidecode_recursive
+from apps.converter import glx
 
 ### LOGGING
 logger = logging.getLogger(__name__)
@@ -80,9 +81,9 @@ class Research(models.Model):
             logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
 
             # 3. Прогоняем архив через glx.py
-
-            os.system(f"python {BASE_DIR.joinpath('apps/converter/glx.py')} {glx_src_dir} {glx_dstr_dir}")
-            sleep(7)
+            glx.glx2dicom(srcdir=Path(f'{glx_src_dir}'), dstdir=Path(f'{glx_dstr_dir}'))
+            # os.system(f"python {BASE_DIR.joinpath('apps/converter/glx.py')} {glx_src_dir} {glx_dstr_dir}")
+            # sleep(7)
 
             # 4. Прогоняем полученные файлы через renamer.py
 
@@ -123,8 +124,8 @@ class Research(models.Model):
         verbose_name_plural = 'Исследования'
 
 
-from django.contrib.auth.models import User
-from django.db import models, Error
+
+
 
 
 class UserSettings(models.Model):
