@@ -3,7 +3,7 @@
 
 {% block content %}
 
-      {% include 'includes/navigation-fullscreen.html' %}
+    {% include 'includes/navigation-fullscreen.html' %}
 
     <main class="main-content  mt-0">
         <section>
@@ -13,6 +13,20 @@
                         <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                             <div class="card card-plain mt-8">
                                 <div class="card-header pb-0 text-left bg-transparent">
+                                    {% if messages %}
+                                        <div class="mb-3 col-lg-12 animated animatedFadeInUp fadeInUp">
+                                            {% for message in messages %}
+                                                <div class="alert alert-primary alert-dismissible text-white" role="alert">
+                                                    {{ message|safe }}
+                                                    <button type="button" class="btn-close text-lg py-3 opacity-10"
+                                                            data-bs-dismiss="alert"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                     <h3 class="font-weight-bolder text-primary text-gradient">
                                         Войти
                                     </h3>

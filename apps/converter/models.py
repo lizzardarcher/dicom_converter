@@ -5,6 +5,8 @@ from datetime import datetime
 from time import sleep
 from pathlib import Path
 
+from django.conf import settings
+from django.core.mail import send_mail, EmailMessage
 from django.db import models
 from django.core.files import File
 from django.utils.text import slugify
@@ -13,7 +15,8 @@ from django.core.validators import FileExtensionValidator
 import patoolib
 
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
-from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, unidecode_recursive
+from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, \
+    unidecode_recursive, send_email_with_attachment
 from apps.converter import glx
 
 ### LOGGING
@@ -118,7 +121,28 @@ class Research(models.Model):
             except OSError as e:
                 logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
             UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail-1))
-            logger.info(f'9. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
+
+            # todo make path
+            # file_path = ('/opt/dicom_converter/static/media/' +
+            file_path = ('/home/ansel/PycharmProjects/dicom_converter/static/media/' +
+                         Research.objects.filter(id=self.id).last().ready_archive.name)
+            logger.info(f"9. [file_path attached to email] {file}")
+
+            # import smtplib
+            # smtp = smtplib.SMTP('localhost')
+            # smtp.ehlo()
+            # max_limit_in_bytes = int(smtp.esmtp_features['size'])
+            #
+            # logger.info(f"9.1 [max_limit_in_bytes SMPT_lib completed] [{str(max_limit_in_bytes/1024/1024)} MB]")
+
+            send_email_with_attachment(
+                to_email=self.user.email,
+                subject='Тестовое письмо с вложением',
+                body='Привет! Это тестовое письмо с вложением.',
+                file_path=file_path
+            )
+            logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
+
     class Meta:
         verbose_name = 'Исследование'
         verbose_name_plural = 'Исследования'

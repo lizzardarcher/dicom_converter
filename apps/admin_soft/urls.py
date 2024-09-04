@@ -16,7 +16,8 @@ urlpatterns = [
     path('accounts/profile/<int:pk>/', views.ProfileEditView.as_view(), name=f'profile_edit'),
     path('accounts/login/', views.UserLoginView.as_view(), name='login'),
     path('accounts/logout/', views.logout_view, name='logout'),
-    path('accounts/register/', views.register, name='register'),
+    path('accounts/register/', views.RegisterView.as_view(), name='register'),
+    # path('accounts/register/', views.register, name='register'),
     path('accounts/password-change/', views.UserPasswordChangeView.as_view(), name='password_change'),
     path('accounts/password-change-done/', auth_views.PasswordChangeDoneView.as_view(
         template_name='accounts/password_change_done.html'

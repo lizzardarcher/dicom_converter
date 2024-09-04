@@ -1,6 +1,8 @@
 import os
 import logging
-from datetime import datetime
+
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 from unidecode import unidecode
 
@@ -122,5 +124,22 @@ def unidecode_recursive(directory):
             print(f"Переименован: {old_dir} ->  {new_dir}")
 
     print(f"Переименовано: {str(counter)} директорий")
-# path = '/home/ansel/PycharmProjects/dicom_converter/static/media/converter/extract_dir/baturina_i'
-# unidecode_recursive(path)
+
+
+
+
+def send_email_with_attachment(to_email, subject, body, file_path):
+    # Создание экземпляра EmailMessage
+    email = EmailMessage(
+        subject=subject,
+        body=body,
+        from_email=settings.EMAIL_HOST_USER,
+        # to=[settings.EMAIL_HOST_USER],
+        to=[to_email],
+    )
+
+    # Добавление вложения
+    # email.attach_file(file_path)
+
+    # Отправка письма
+    email.send()

@@ -5,8 +5,8 @@ from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChan
 from admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
     UserPasswordChangeForm
 from django.contrib.auth import logout
-from django.views.generic import TemplateView, UpdateView
-
+from django.views.generic import TemplateView, UpdateView, View
+from django.contrib import messages
 from apps.admin_soft.utils import SuccessMessageMixin
 from apps.converter.models import UserSettings, Research, Transaction
 
@@ -43,13 +43,13 @@ class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):
         })
         return context
 
+
 class ProfileEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'pages/edit_profile.html'
     model = User
-    fields = ['username','first_name', 'last_name', 'email']
+    fields = ['username', 'first_name', 'last_name', 'email']
     success_url = '/accounts/profile'
     success_message = 'Successfully updated your profile.'
-
 
 
 # Authentication
@@ -60,6 +60,21 @@ class UserLoginView(LoginView):
 
     def get_success_url(self):
         return self.success_url
+
+
+class RegisterView(View):
+    def get(self, request):
+        form = RegistrationForm()
+        return render(request, 'accounts/register.html', {'form': form})
+
+    def post(self, request):
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts/login/', {
+                messages.success(request, 'Ваш аккаунт создан! Теперь вы можете войти.')
+            })  # Замените на ваш путь для входа
+        return render(request, 'accounts/register.html', {'form': form})
 
 
 def register(request):
