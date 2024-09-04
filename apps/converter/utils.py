@@ -126,15 +126,12 @@ def unidecode_recursive(directory):
     print(f"Переименовано: {str(counter)} директорий")
 
 
-
-
 def send_email_with_attachment(to_email, subject, body, file_path):
     # Создание экземпляра EmailMessage
     email = EmailMessage(
         subject=subject,
         body=body,
         from_email=settings.EMAIL_HOST_USER,
-        # to=[settings.EMAIL_HOST_USER],
         to=[to_email],
     )
 

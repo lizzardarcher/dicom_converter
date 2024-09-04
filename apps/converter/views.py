@@ -28,7 +28,10 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return '/accounts/profile/'
 
     def get_success_message(self, cleaned_data):
-        return f"Архив успешно обработан {cleaned_data['raw_archive'].name}. Данные томографа GALILEOS сконвертированы в формат DICOM"
+        return (f"Архив /{cleaned_data['raw_archive'].name}/ успешно обработан.\n"
+                f"Данные томографа GALILEOS сконвертированы в формат DICOM\n"
+                f"Ссылка на скачивание отправлена на вашу почту {self.request.user.email}\n"
+                f"Также вы можете скачать архив в личном кабинете")
 
     def form_valid(self, form):
         form.instance.user = self.request.user

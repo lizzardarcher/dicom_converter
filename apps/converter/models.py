@@ -44,17 +44,13 @@ class Research(models.Model):
         return str(self.raw_archive).split('/')[-1]
 
     def save(self, *args, **kwargs):
+        start_time = datetime.now()
         if not self.slug:
             self.slug = slugify(f'{self.user}{str(datetime.now())}')
         self.raw_archive.name = self.raw_archive.name.replace(' ', '')
         super(Research, self).save(*args, **kwargs)
         avail = UserSettings.objects.filter(user=self.user).last().research_avail_count
         if avail:
-            start_time = datetime.now()
-            if not self.slug:
-                self.slug = slugify(f'{self.user}{str(datetime.now())}')
-            self.raw_archive.name = self.raw_archive.name.replace(' ', '')
-            super(Research, self).save(*args, **kwargs)
             """
                 1. Получаем архив с исследованием с сайта (OK)
 
@@ -120,7 +116,7 @@ class Research(models.Model):
                 shutil.rmtree(output_dir)
             except OSError as e:
                 logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
-            UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail-1))
+            UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
 
             # todo make path
             # file_path = ('/opt/dicom_converter/static/media/' +
@@ -137,8 +133,10 @@ class Research(models.Model):
 
             send_email_with_attachment(
                 to_email=self.user.email,
-                subject='Тестовое письмо с вложением',
-                body='Привет! Это тестовое письмо с вложением.',
+                subject='Тестовое письмо без вложения',
+                body=f'Привет! Это тестовое письмо без вложения.\n'
+                     f'Ссылка на исследование\n'
+                     f'galileos.pro/media/{str(Research.objects.filter(id=self.id).last().ready_archive.name)}',
                 file_path=file_path
             )
             logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
@@ -148,13 +146,10 @@ class Research(models.Model):
         verbose_name_plural = 'Исследования'
 
 
-
-
-
-
 class UserSettings(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    research_avail_count = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name='Количество доступных конвертаций')
+    research_avail_count = models.PositiveIntegerField(default=0, blank=True, null=True,
+                                                       verbose_name='Количество доступных конвертаций')
 
     def __str__(self):
         return self.user.username
@@ -185,4 +180,3 @@ class GlobalSettings(models.Model):
     class Meta:
         verbose_name = 'Общие Настройки проекта'
         verbose_name_plural = 'Общие Настройки проекта'
-

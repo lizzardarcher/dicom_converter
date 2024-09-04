@@ -76,7 +76,6 @@ settings.py
 > 
 > max_limit_in_bytes = int( smtp.esmtp_features['size'] )
 
-
 ###### terminal
 > apt install postfix
 >
@@ -118,13 +117,23 @@ settings.py
             proxy_pass http://unix:/path/to/your/project/myproject.sock; # Убедитесь, что путь совпадает
         }
     }
-Сделайте символическую ссылку для активации конфигурации:sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+
+Сделайте символическую ссылку для активации конфигурации:
+
+> sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+
 ### 8. Проверка конфигурации Nginx
 
-Проверьте конфигурацию Nginx на наличие ошибок:sudo nginx -t
+Проверьте конфигурацию Nginx на наличие ошибок:
+
+> sudo nginx -t
+
 ### 9. Перезапуск Nginx
 
-Перезапустите Nginx, чтобы применить изменения:sudo systemctl restart nginx
+Перезапустите Nginx, чтобы применить изменения:
+
+> sudo systemctl restart nginx
+
 ### 10. (Опционально) Запуск Gunicorn как службы
 
 Создайте файл службы для Gunicorn:sudo nano /etc/systemd/system/gunicorn.service
