@@ -31,7 +31,13 @@
                         <div class="form-check form-switch pt-5">
                             {{ form.is_anonymous }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault">Анонимизировать данные о пациенте</label>
+                                   for="flexSwitchCheckDefault1">Анонимизировать данные о пациенте</label>
+                        </div>
+                    
+                        <div class="form-check form-switch pt-2">
+                            {{ form.is_one_file }}
+                            <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
+                                   for="flexSwitchCheckDefault2">Сформировать одним файлом</label>
                         </div>
 
                         <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Подтвердить</button>
