@@ -33,7 +33,7 @@
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                    for="flexSwitchCheckDefault1">Анонимизировать данные о пациенте</label>
                         </div>
-                    
+
                         <div class="form-check form-switch pt-2">
                             {{ form.is_one_file }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
@@ -54,9 +54,8 @@
                         <ol>
                             {% for r in research %}
                                 <li><a class="" href="/media/{{ r.ready_archive }}">
-                                    <p class="bg-secondary rounded text-center text-light text-bold mt-3">
-                                        <i class="fa fa-download"></i> Скачать архив {{ r }}
-                                        от {{ r.date_created }}</p></a></li>
+                                    <p class="bg-gradient-faded-light rounded text-center text-dark text-bold mt-3">
+                                         [ {{ r.date_created }} ]  [ {{ r }} ] Скачать архив <i class="fa fa-download"></i></p></a></li>
                             {% endfor %}
                         </ol>
 

@@ -38,7 +38,7 @@ class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):
         context.update({
             'user_settings': UserSettings.objects.filter(user=self.request.user).first(),
             'user_id': self.request.user.id,
-            'research': Research.objects.filter(user=self.request.user),
+            'research': Research.objects.filter(user=self.request.user).order_by('-date_created'),
             'transaction': Transaction.objects.filter(user=self.request.user),
         })
         return context

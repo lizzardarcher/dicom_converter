@@ -124,8 +124,8 @@ class Research(models.Model):
             UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
 
             # todo make path
-            # file_path = ('/opt/dicom_converter/static/media/' +
-            file_path = ('/home/ansel/PycharmProjects/dicom_converter/static/media/' +
+            # file_path = ('/home/ansel/PycharmProjects/dicom_converter/static/media/' +
+            file_path = ('/opt/dicom_converter/static/media/' +
                          Research.objects.filter(id=self.id).last().ready_archive.name)
             logger.info(f"9. [file_path attached to email] {file_path}")
 
