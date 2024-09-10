@@ -101,6 +101,9 @@ EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+YANDEX_TOKEN= os.getenv('YANDEX_TOKEN')
+YANDEX_ID = os.getenv('YANDEX_ID')
+YANDEX_SECRET = os.getenv('YANDEX_SECRET')
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 

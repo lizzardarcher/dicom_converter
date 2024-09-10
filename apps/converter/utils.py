@@ -1,7 +1,7 @@
 import os
 import logging
 
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, DEFAULT_ATTACHMENT_MIME_TYPE
 from django.conf import settings
 
 from unidecode import unidecode
@@ -126,7 +126,7 @@ def unidecode_recursive(directory):
     print(f"Переименовано: {str(counter)} директорий")
 
 
-def send_email_with_attachment(to_email, subject, body, file_path):
+def send_email_with_attachment(to_email, subject, body, file_path=None):
     # Создание экземпляра EmailMessage
     email = EmailMessage(
         subject=subject,
@@ -134,9 +134,9 @@ def send_email_with_attachment(to_email, subject, body, file_path):
         from_email=settings.EMAIL_HOST_USER,
         to=[to_email],
     )
-
-    # Добавление вложения
-    # email.attach_file(file_path)
+    if file_path:
+        # Добавление вложения
+        email.attach_file(file_path, mimetype=DEFAULT_ATTACHMENT_MIME_TYPE)
 
     # Отправка письма
     email.send()

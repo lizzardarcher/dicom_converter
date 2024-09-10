@@ -1,14 +1,17 @@
 import os
 import shutil
 import logging
+import traceback
 from datetime import datetime
 from time import sleep
 from pathlib import Path
+import yadisk
 
 from django.conf import settings
 from django.core.mail import send_mail, EmailMessage
 from django.db import models
 from django.core.files import File
+from django.shortcuts import redirect
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
@@ -35,8 +38,10 @@ class Research(models.Model):
                                    validators=[FileExtensionValidator(['rar', 'zip'])],
                                    verbose_name='Архив от пользователя')
     is_anonymous = models.BooleanField(null=True, default=True, verbose_name='Анонимизировать данные')
+    is_one_file = models.BooleanField(null=True, default=True, verbose_name='Анонимизировать данные')
     ready_archive = models.FileField(upload_to="converter/ready", null=True, blank=True,
                                      verbose_name="Архив с готовыми данными")
+    cloud_url = models.URLField(null=True, blank=True, verbose_name='Ссылка на архив')
     status = models.BooleanField(default=True, null=True, blank=True, verbose_name='Статус исследования')
     slug = models.SlugField(unique=True, max_length=200, blank=True)
 
@@ -122,22 +127,33 @@ class Research(models.Model):
             # file_path = ('/opt/dicom_converter/static/media/' +
             file_path = ('/home/ansel/PycharmProjects/dicom_converter/static/media/' +
                          Research.objects.filter(id=self.id).last().ready_archive.name)
-            logger.info(f"9. [file_path attached to email] {file}")
+            logger.info(f"9. [file_path attached to email] {file_path}")
 
-            # import smtplib
-            # smtp = smtplib.SMTP('localhost')
-            # smtp.ehlo()
-            # max_limit_in_bytes = int(smtp.esmtp_features['size'])
-            #
-            # logger.info(f"9.1 [max_limit_in_bytes SMPT_lib completed] [{str(max_limit_in_bytes/1024/1024)} MB]")
+            client = yadisk.Client(token=settings.YANDEX_TOKEN)
+            with client:
+                try:
+                    _dir = f'testo{start_time.now().date().__str__()}'
+                    # client.mkdir(_dir)
+
+                    logger.info(f"9.1. [upload_file_path] [{file_path}]")
+                    client.upload(file_path, f"disk:/{_dir}", overwrite=True)
+
+                    # logger.info(f"9.2. [publish] [app:/Test/{file}]")
+                    client.publish(f'disk:/{_dir}')
+                    #
+                    m = client.get_meta(f'disk:/{_dir}').file
+                    print(m)
+                except Exception as e:
+                    m = 'False'
+                    print(traceback.format_exc())
 
             send_email_with_attachment(
                 to_email=self.user.email,
                 subject='Тестовое письмо без вложения',
                 body=f'Привет! Это тестовое письмо без вложения.\n'
                      f'Ссылка на исследование\n'
-                     f'galileos.pro/media/{str(Research.objects.filter(id=self.id).last().ready_archive.name)}',
-                file_path=file_path
+                     f'{m}',
+                # file_path=file_path
             )
             logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
 

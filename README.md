@@ -65,7 +65,9 @@
 settings.py
 > EMAIL_HOST_PASSWORD = https://account.mail.ru/user/2-step-auth/passwords/
 
-#### SMTP для отправки файлов большого размера
+#### Yandex disk для отправки файлов большого размера
+
+> YANDEX_TOKEN = https://oauth.yandex.ru/client/new
 
 ###### python code
 > import smtplib    
