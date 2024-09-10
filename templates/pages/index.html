@@ -58,11 +58,12 @@
             background-color: grey;
 
         }
+
     </style>
 
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    
+
 {% endblock extrastyle %}
 {% block content %}
 
@@ -79,7 +80,7 @@
                                 {% translate 'Удобный способ конвертации медицинских данных из CBCT-сканеров Sirona GALAXIS/GALILEOS в стандартный формат DICOM.' %}
                             </div>
                             <h1 class="display-3 text-dark fw-bolder mb-5"><span
-                                    class="text-dark d-inline">GalileosPro</span></h1>
+                                    class="text-dark d-inline"> GalileosPro</span></h1>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
                                 <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
                                    href="{% url 'upload research' %}"
@@ -122,9 +123,11 @@
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
                                     <h1 class="font-weight-bolder">{% trans 'Что такое easyGalileos?' %}</h1>
-                                    <p class="mb-2">{% blocktranslate %}EasyDICOM - это мощный, но простой в использовании веб сервис,
+                                    <p class="mb-2">{% blocktranslate %}EasyDICOM - это мощный, но простой в
+                                        использовании веб сервис,
                                         который позволяет конвертировать
-                                        данные с вашего томографа SIRONA GALILEOS в DICOM-файлы. {% endblocktranslate %}</p>
+                                        данные с вашего томографа SIRONA GALILEOS в
+                                        DICOM-файлы. {% endblocktranslate %}</p>
                                     <p> {% blocktranslate %}DICOM (Digital Imaging and Communications in Medicine) -
                                         это стандарт для хранения и обмена медицинскими изображениями, используемый в
                                         больницах и клиниках по всему миру.{% endblocktranslate %}</p>
@@ -148,93 +151,86 @@
         </div>
 
         <!--STEPPER -->
+
+
         <div class="container pt-5 mt-5 mb-5 ">
             <h1 class="mt-5 mb-5">{% blocktranslate %}Три простых шага для работы{% endblocktranslate %}</h1>
 
             <div class="accordion" id="accordionExample">
-                <div class="steps">
-                    <progress id="progress" value=0 max=100></progress>
-                    <div class="step-item">
-                        <button class="step-button text-center " type="button" data-bs-toggle="collapse"
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-gradient-warning opacity-6" type="button"
+                                data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Шаг 1
                         </button>
-                        <div class="step-title">
-                            {% blocktranslate %}Шаг 1{% endblocktranslate %}
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <button class="step-button text-center collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        </button>
-                        <div class="step-title">
-                            {% blocktranslate %}Шаг 2{% endblocktranslate %}
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <button class="step-button text-center collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        </button>
-                        <div class="step-title">
-                            {% blocktranslate %}Шаг 3{% endblocktranslate %}
-                        </div>
-                    </div>
-                </div>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="card-body">
+                                <p><i class="fa fa-file-zipper h4"></i> {% blocktranslate %}Создайте архив (zip, rar) с
+                                    вашим исследованием.{% endblocktranslate %}</p>
+                                <p> {% blocktranslate %}Вот одни из самых популярных бесплатных программ для работы с
+                                    архивами{% endblocktranslate %}</p>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        {% blocktranslate %}Для Windows:{% endblocktranslate %}
+                                        <ul>
+                                            <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
+                                            <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
+                                        <ul>
+                                            <li>
+                                                <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        {% blocktranslate %}Для Linux:{% endblocktranslate %}
+                                        <ul>
+                                            <li><a href="https://cdn.7zip-arhive.ru/7z2201-linux-x64.tar.xz">7-ZIP</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
 
-                <div class="card">
-                    <div id="headingOne">
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                         data-bs-parent="#accordionExample">
-                        <div class="card-body">
-                            <p><i class="fa fa-file-zipper h4"></i> {% blocktranslate %}Создайте архив (zip, rar) с вашим исследованием. Вот
-                                одни из самых популярных бесплатных программ для работы с архивами{% endblocktranslate %}</p>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    {% blocktranslate %}Для Windows:{% endblocktranslate %}
-                                    <ul>
-                                        <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
-                                        <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4">
-                                    {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
-                                    <ul>
-                                        <li>
-                                            <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4">
-                                    {% blocktranslate %}Для Linux:{% endblocktranslate %}
-                                    <ul>
-                                        <li><a href="https://cdn.7zip-arhive.ru/7z2201-linux-x64.tar.xz">7-ZIP</a></li>
-                                    </ul>
-                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div id="headingTwo">
-
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                         data-bs-parent="#accordionExample">
-                        <div class="card-body">
-                            <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i> {% blocktranslate %}Загрузите архив в наш сервис{% endblocktranslate %}</a>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-gradient-warning opacity-6 collapsed" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Шаг 2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="card-body">
+                                <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i>
+                                    {% blocktranslate %}Загрузите архив в наш сервис{% endblocktranslate %}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div id="headingThree">
-
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                         data-bs-parent="#accordionExample">
-                        <div class="card-body">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button bg-gradient-warning opacity-6 collapsed" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Шаг 3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
                             <p>{% blocktranslate %}Дождитесь результата и получите архив с конвертированным исследованием{% endblocktranslate %}</p>
+                            <p>{% blocktranslate %}Архив с исследованием будет доступен в личном кабинете в течение суток{% endblocktranslate %}</p>
+                            <p>{% blocktranslate %}Также архив можно скачать из cloud.mail, ссылка на облако придёт на указанную вами при регистрации почту{% endblocktranslate %}</p>
                             <p><i class="fa fa-clock"></i> {% blocktranslate %}Среднее время обработки 2 минуты{% endblocktranslate %}</p>
                         </div>
                     </div>
@@ -242,7 +238,7 @@
             </div>
         </div>
 
-       
+
         <!--YOUTUBE START-->
 
 
@@ -272,7 +268,7 @@
                         <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -283,7 +279,7 @@
                         <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -334,8 +330,7 @@
         $(document).ready(function () {
             $('#video-slider').owlCarousel({
                 loop: true,
-                margin: 10,
-                nav: true,
+                margin: 20,
                 responsive: {
                     0: {
                         items: 1
