@@ -65,9 +65,14 @@
 settings.py
 > EMAIL_HOST_PASSWORD = https://account.mail.ru/user/2-step-auth/passwords/
 
-#### Yandex disk для отправки файлов большого размера
+#### Yandex disk для отправки файлов в облачное хранилище 
 
 > YANDEX_TOKEN = https://oauth.yandex.ru/client/new
+> hint https://dzen.ru/a/ZABbQe_rrzxrLM4C
+> cloud_api:disk.app_folder
+> cloud_api:disk.write
+> cloud_api:disk.read
+> cloud_api:disk.info
 
 ###### python code
 > import smtplib    
