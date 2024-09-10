@@ -58,9 +58,15 @@
                                 </div>
                             </td>
                             <td>
+                                {% if res.cloud_url %}
+                                <a href="{{MEDIA_URL}}{{ res.cloud_url }}">
+                                    <p class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
+                                </a>
+                                {% else %}
                                 <a href="{{MEDIA_URL}}{{ res.ready_archive }}">
                                     <p class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
                                 </a>
+                                {% endif %}
                             </td>
                             {% if res.ready_archive %}
                                 <td class="align-middle text-center text-sm">

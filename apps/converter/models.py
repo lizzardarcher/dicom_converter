@@ -155,6 +155,7 @@ class Research(models.Model):
                      f'{m}',
                 # file_path=file_path
             )
+            Research.objects.filter(id=self.id).update(cloud_url=m)
             logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
 
     class Meta:
