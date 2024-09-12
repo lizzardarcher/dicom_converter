@@ -42,7 +42,7 @@ class Research(models.Model):
     is_cloud_upload = models.BooleanField(null=True, default=False, verbose_name='Отправлен в облако')
     ready_archive = models.FileField(upload_to="converter/ready", null=True, blank=True,
                                      verbose_name="Архив с готовыми данными")
-    cloud_url = models.URLField(null=True, blank=True, verbose_name='Ссылка на архив')
+    cloud_url = models.URLField(max_length=1000, null=True, blank=True, verbose_name='Ссылка на архив')
     status = models.BooleanField(default=True, null=True, blank=True, verbose_name='Статус исследования')
     slug = models.SlugField(unique=True, max_length=200, blank=True)
 

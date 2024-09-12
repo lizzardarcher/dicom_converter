@@ -1,7 +1,7 @@
 import logging
 import sys
 import traceback
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from time import sleep
 
 import yadisk
@@ -24,11 +24,22 @@ ch.setFormatter(CustomFormatter())
 logger.addHandler(ch)
 
 
+def delete_old_research():
+    # Получаем дату, которая была 3 дня назад
+    threshold_date = datetime.now() - timedelta(days=3)
+
+    # Удаляем объекты, созданные до целевой даты
+    objects = Research.objects.filter(date_created__lt=threshold_date)
+
+    for obj in objects:
+        os.remove(f'/opt/dicom_converter/static/media/{obj.ready_archive.name}')
+
+
 def upload(file_path, email, research_id):
     client = yadisk.Client(token=settings.YANDEX_TOKEN)
     with client:
         try:
-            _dir = f'testo{datetime.now().date().__str__()}.zip'
+            _dir = f'research_{datetime.now().strftime("%Y-%m-%d %H:%M")}'
 
             logger.info(f"9.1. [upload_file_path] [{file_path}]")
             client.upload(file_path, f"disk:/{_dir}", overwrite=True, timeout=3600)
@@ -54,18 +65,27 @@ def upload(file_path, email, research_id):
 if __name__ == '__main__':
     try:
         while True:
+
+            # Отправка в облако и создание публичных ссылок на исследования
             res_list = Research.objects.filter(is_cloud_upload=False)
             if res_list:
                 for res in res_list:
                     logger.info(f'[NEW ARCHIVE TO UPLOAD] [{res.ready_archive}] [{res.date_created}]')
+                    start_time = datetime.now()
                     upload(file_path=f'/opt/dicom_converter/static/media/{res.ready_archive.name}',
                            email=res.user.email,
                            research_id=res.id)
-                    logger.info(f'[UPLOAD SUCCESS] [{res.ready_archive}] [{res.date_created}]')
+                    end_time = datetime.now()
+                    logger.info(f'[UPLOAD SUCCESS] [FINISHED TIME] [{end_time - start_time}]')
                 sleep(5)
             else:
                 logger.info(f'[--EMPTY RESEARCH LIST--]')
                 sleep(5)
+            try:
+                #  Очищение места на сервере / удаление старых архивов
+                delete_old_research()
+            except Exception as e:
+                logger.fatal(traceback.format_exc())
 
     except KeyboardInterrupt:
         sys.exit(0)

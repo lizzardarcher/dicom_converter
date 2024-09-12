@@ -1,0 +1,16 @@
+[Unit]
+Description=Yandex.disk Upload / Removing old archives
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/dicom_converter/apps/converter/cloud
+Environment="PYTHONPATH=/opt/dicom_converter"
+ExecStart=/opt/dicom_converter/env/bin/python3.12 /opt/dicom_converter/apps/converter/cloud/cloud_upload.py
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
