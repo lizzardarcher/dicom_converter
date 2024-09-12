@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import redirect
+from django.utils.html import html_safe
 from unidecode import unidecode
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,9 +29,9 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return '/accounts/profile/'
 
     def get_success_message(self, cleaned_data):
-        return (f"Архив /{cleaned_data['raw_archive'].name}/ успешно обработан.\n"
+        return (f"Архив [ {cleaned_data['raw_archive'].name} ] успешно обработан.\n"
                 f"Данные томографа GALILEOS сконвертированы в формат DICOM\n"
-                f"Ссылка на скачивание отправлена на вашу почту {self.request.user.email}\n"
+                f"Ссылка на скачивание вскоре будет отправлена на вашу почту: {self.request.user.email}\n"
                 f"Также вы можете скачать архив в личном кабинете")
 
     def form_valid(self, form):
