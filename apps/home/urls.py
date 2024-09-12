@@ -12,6 +12,7 @@ urlpatterns = [
     path('detailed_info', views.DetailedInfoView.as_view(), name='detailed_info'),
 
     path('about', views.AboutView.as_view(), name='about'),
+    path('oferta', views.OfertaView.as_view(), name='oferta'),
     path('faq', views.FAQView.as_view(), name='faq'),
     path('how_it_works', views.HowItWorksView.as_view(), name='how_it_works'),
 

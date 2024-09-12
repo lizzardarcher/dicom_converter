@@ -7,20 +7,27 @@
 
         <section class="section mb-5">
             <div class="row">
-                <div class="col-md-6">
-                    <h3 class="mb-3">Наши контакты</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Адрес:</strong> [Вставьте ваш адрес]</li>
-                        <li class="list-group-item"><strong>Телефон:</strong> [Вставьте ваш номер телефона]</li>
-                        <li class="list-group-item"><strong>Почта:</strong> [Вставьте ваш адрес электронной почты]</li>
+                <div class="col-12 col-lg-6">
+                    <h3 class="mb-4">Наши контакты</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Телефон:</strong> <a href="tel: +7909882232">+7 (909) 887-22-32</a></li>
+                        <li class="list-group-item"><strong>Почта:</strong> <a href="mailto: galileos@internet.ru">galileos@internet.ru</a>
+                        </li>
+                        <li class="list-group-item"> <a href="https://vk.com" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=VK"
+                                                      class="rounded-circle" alt="ВКонтакте"> ВКонтакте</a></li>
+                        <li class="list-group-item"><a href="https://t.me" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=TG"
+                                                      class="rounded-circle" alt="Telegram"> Telegram</a></li>
+                        <li class="list-group-item"><a href="https://wa.me/" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=WA"
+                                                      class="rounded-circle" alt="Whatsapp"> Whatsapp</a></li>
+
                     </ul>
                 </div>
-                <div class="col-md-6">
+                <div class="col-12 col-lg-6">
                     <h3 class="mb-3">Форма обратной связи</h3>
 
                     <form method="POST">
                         {% csrf_token %}
-                    
+
                         {% if form.errors %}
                             <div class="col-12 justify-content-center">
                                 <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
@@ -39,19 +46,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="section mb-5">
-            <h3 class="mb-3">Наши социальные сети</h3>
-            <div class="d-flex justify-content-center">
-                <a href="#" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=VK"
-                                              class="rounded-circle" alt="ВКонтакте"></a>
-                <a href="#" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=Telegram"
-                                              class="rounded-circle" alt="Telegram"></a>
-                <a href="#" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=Instagram"
-                                              class="rounded-circle" alt="Instagram"></a>
-            </div>
-        </section>
-
     </div>
 
 {% endblock content %}

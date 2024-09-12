@@ -13,6 +13,8 @@ from apps.home.forms import ContactForm
 class PricesView(TemplateView):
     template_name = 'pages/info/prices.html'
 
+class OfertaView(TemplateView):
+    template_name = 'pages/info/oferta.html'
 
 class DetailedInfoView(TemplateView):
     template_name = 'pages/info/detailed_info.html'

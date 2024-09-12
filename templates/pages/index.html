@@ -153,13 +153,13 @@
         <!--STEPPER -->
 
 
-        <div class="container pt-5 mt-5 mb-5 ">
+        <div class="container pt-5 mt-5 mb-5 col-lg-8 col-12">
             <h1 class="mt-5 mb-5">{% blocktranslate %}Три простых шага для работы{% endblocktranslate %}</h1>
 
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button bg-gradient-info opacity-6" type="button"
+                        <button class="accordion-button bg-gradient-danger opacity-9" type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Шаг 1
@@ -203,7 +203,7 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button bg-gradient-warning opacity-6 collapsed" type="button"
+                        <button class="accordion-button bg-gradient-danger opacity-9 collapsed" type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Шаг 2
@@ -220,7 +220,7 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button bg-gradient-warning opacity-6 collapsed" type="button"
+                        <button class="accordion-button bg-gradient-danger opacity-9 collapsed" type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Шаг 3
@@ -228,10 +228,14 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <p>{% blocktranslate %}Дождитесь результата и получите архив с конвертированным исследованием{% endblocktranslate %}</p>
-                            <p>{% blocktranslate %}Архив с исследованием будет доступен в личном кабинете в течение суток{% endblocktranslate %}</p>
-                            <p>{% blocktranslate %}Также архив можно скачать из cloud.mail, ссылка на облако придёт на указанную вами при регистрации почту{% endblocktranslate %}</p>
-                            <p><i class="fa fa-clock"></i> {% blocktranslate %}Среднее время обработки 2 минуты{% endblocktranslate %}</p>
+                            <p>{% blocktranslate %}Дождитесь результата и получите архив с конвертированным
+                                исследованием{% endblocktranslate %}</p>
+                            <p>{% blocktranslate %}Архив с исследованием будет доступен в личном кабинете в течение
+                                суток{% endblocktranslate %}</p>
+                            <p>{% blocktranslate %}Также архив можно скачать из cloud.mail, ссылка на облако придёт на
+                                указанную вами при регистрации почту{% endblocktranslate %}</p>
+                            <p><i class="fa fa-clock"></i> {% blocktranslate %}Среднее время обработки 2
+                                минуты{% endblocktranslate %}</p>
                         </div>
                     </div>
                 </div>
@@ -239,19 +243,21 @@
         </div>
 
 
-        <!--YOUTUBE START-->
+        <!--VIDEO START-->
 
 
         <div class="container mt-5">
-            <h2 class="text-center mb-4">{% blocktranslate %}Наши видео на YouTube{% endblocktranslate %}</h2>
+            <h2 class="text-center mb-4">{% blocktranslate %}Гайд по использованию сервиса
+                GalileosPro{% endblocktranslate %}</h2>
 
             <div class="owl-carousel owl-theme " id="video-slider">
 
                 <div class="card">
-                    <iframe width="240" height="180" src="" title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+
                     <div class="card-body">
+                        <video width="360" height="240" controls="controls" poster="" muted>
+                            <source src="{% static 'info/Копирование и архивирование папки Галилеос.wmv' %}" type='video/wmv'>
+                        </video>
                         <h5 class="card-title">{% blocktranslate %}Название видео 1{% endblocktranslate %}</h5>
                         <p class="card-text">{% blocktranslate %}Краткое описание видео 1.{% endblocktranslate %}</p>
                         <a href="#" class="btn btn-primary">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>
