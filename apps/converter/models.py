@@ -38,7 +38,8 @@ class Research(models.Model):
                                    validators=[FileExtensionValidator(['rar', 'zip'])],
                                    verbose_name='Архив от пользователя')
     is_anonymous = models.BooleanField(null=True, default=True, verbose_name='Анонимизировать данные')
-    is_one_file = models.BooleanField(null=True, default=True, verbose_name='Анонимизировать данные')
+    is_one_file = models.BooleanField(null=True, default=True, verbose_name='Одним файлом')
+    is_cloud_upload = models.BooleanField(null=True, default=False, verbose_name='Отправлен в облако')
     ready_archive = models.FileField(upload_to="converter/ready", null=True, blank=True,
                                      verbose_name="Архив с готовыми данными")
     cloud_url = models.URLField(null=True, blank=True, verbose_name='Ссылка на архив')
@@ -128,6 +129,11 @@ class Research(models.Model):
             file_path = ('/opt/dicom_converter/static/media/' +
                          Research.objects.filter(id=self.id).last().ready_archive.name)
             logger.info(f"9. [file_path attached to email] {file_path}")
+            # os.system('export PYTHONPATH=/opt/dicom_converter &&'
+            #           '/opt/dicom_converter/env/bin/python3.12 /opt/dicom_converter/apps/converter/cloud/cloud_upload.py'
+            #           ' {0} {1} {2}'.format(
+            #     file_path, self.user.email, str(self.id)
+            # ))
             # try:
             #     client = yadisk.Client(token=settings.YANDEX_TOKEN)
             #     with client:
