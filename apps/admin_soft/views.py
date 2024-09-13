@@ -1,13 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, PasswordResetConfirmView
-from admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
+from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
     UserPasswordChangeForm
 from django.contrib.auth import logout
 from django.views.generic import TemplateView, UpdateView, View
 from django.contrib import messages
-from apps.admin_soft.utils import SuccessMessageMixin
 from apps.converter.models import UserSettings, Research, Transaction
 
 

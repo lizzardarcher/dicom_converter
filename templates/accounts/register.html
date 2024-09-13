@@ -43,19 +43,30 @@
                                             <div class="mb-3">
                                                 {{ form.username }}
                                             </div>
+                                            <span class="text-danger">{{ form.username.errors }}</span>
+
                                             <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
                                             <div class="mb-3">
                                                 {{ form.email }}
                                             </div>
+                                            <span class="text-danger">{{ form.email.errors }}</span>
+
                                             <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
                                             <div class="mb-3">
                                                 {{ form.password1 }}
                                             </div>
+                                            <span class="text-danger">{{ form.password1.errors }}</span>
+
                                             <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
                                             <div class="mb-3">
                                                 {{ form.password2 }}
                                             </div>
-                                            <span class="text-danger">{{ form.errors }}</span>
+                                            <span class="text-danger">{{ form.password2.errors }}</span>
+
+                                            <div class="mb-3">
+                                                {{ form.captcha }}
+                                            </div>
+                                            <span class="text-danger">{{ form.captcha.errors }}</span>
                                             <div class="text-center">
                                                 <button id="confirmButton" type="submit"
                                                         class="btn bg-gradient-info w-100 mt-4 mb-0">
