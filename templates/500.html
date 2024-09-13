@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 Ошибка сервера</title>
+    <!-- Подключаем Bootstrap 5 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .error-page {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        .error-page h1 {
+            font-size: 120px;
+            color: #dc3545;
+            margin: 0;
+            animation: bounce 1s infinite; /* Анимация подъема */
+        }
+
+        .error-page h2 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .error-page p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .error-page a {
+            font-size: 18px;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="error-page">
+            <div class="error-icon">
+                <i class="fas fa-server"></i>
+            </div>
+            <h1>500</h1>
+            <h2>Упс! Внутренняя ошибка сервера.</h2>
+            <p>К сожалению, что-то пошло не так. Мы уже работаем над этим.</p>
+            <p>
+                <a class="btn btn-primary" href="/">Вернуться на главную</a>
+                <a class="btn btn-secondary" href="/contacts">Связаться с поддержкой</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Подключаем Bootstrap 5 JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
