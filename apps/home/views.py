@@ -20,6 +20,9 @@ class DetailedInfoView(TemplateView):
     template_name = 'pages/info/detailed_info.html'
 
 
+class PrivacyView(TemplateView):
+    template_name = 'pages/info/privacy.html'
+
 class AboutView(TemplateView):
     template_name = 'pages/info/about.html'
 
