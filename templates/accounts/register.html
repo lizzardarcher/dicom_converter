@@ -39,23 +39,25 @@
                                         <form role="form" method="post" action="#">
 
                                             {% csrf_token %}
-                                            {% for field in form %}
-                                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                                <div class="mb-3">
-                                                    {{ field }}
-                                                </div>
-                                                <span class="text-danger">{{ field.errors }}</span>
-                                            {% endfor %}
-
-
-                                            <div class="form-check form-switch pt-2">
-                                                <label for="confirmCheck">Согласие с <a href="{% url 'privacy' %}">политикой
-                                                    конфиденциальности</a></label>
-                                                <input id="confirmCheck" type="checkbox">
+                                            <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                                            <div class="mb-3">
+                                                {{ form.username }}
                                             </div>
-
+                                            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                                            <div class="mb-3">
+                                                {{ form.email }}
+                                            </div>
+                                            <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                                            <div class="mb-3">
+                                                {{ form.password1 }}
+                                            </div>
+                                            <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                                            <div class="mb-3">
+                                                {{ form.password2 }}
+                                            </div>
+                                            <span class="text-danger">{{ form.errors }}</span>
                                             <div class="text-center">
-                                                <button disabled id="confirmButton" type="submit"
+                                                <button id="confirmButton" type="submit"
                                                         class="btn bg-gradient-info w-100 mt-4 mb-0">
                                                     Зарегистрироваться
                                                 </button>
@@ -66,8 +68,6 @@
                                             </div>
 
                                         </form>
-
-
                                     {% endif %}
 
                                 </div>
@@ -96,13 +96,14 @@
             </div>
         </section>
     </main>
-    
+
     {% include 'includes/footer-fullscreen.html' %}
 
 {% endblock content %}
 
 {% block extrascript %}
     <script type="application/javascript">
+
         {% if form.username.errors %}
             notification.danger("{{ form.username.errors }}", 'top', 'right');
         {% endif %}
