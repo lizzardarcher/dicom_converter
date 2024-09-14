@@ -141,7 +141,7 @@ settings.py
 
 > sudo systemctl restart nginx
 
-### 10. (Опционально) Запуск Gunicorn как службы
+### 10. Запуск Gunicorn как службы
 
 Создайте файл службы для Gunicorn:sudo nano /etc/systemd/system/gunicorn.service
 Добавьте следующую конфигурацию:
