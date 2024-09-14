@@ -66,7 +66,17 @@
                                             <div class="mb-3">
                                                 {{ form.captcha }}
                                             </div>
-                                            <span class="text-danger">{{ form.captcha.errors }}</span>
+                                            {% if form.captcha.errors %}
+                                                <span class="text-danger">Подтвердите, что вы не робот</span>
+                                            {% endif %}
+
+                                            <div class="">
+                                                Нажимая на кнопку зарегистрироваться вы даёте соглашаетесь с
+                                                <a href="{% url 'oferta' %}">условиями пользования</a>
+                                                и
+                                                <a href="{% url 'privacy' %}">политикой конфиденциальности</a>
+                                            </div>
+
                                             <div class="text-center">
                                                 <button id="confirmButton" type="submit"
                                                         class="btn bg-gradient-info w-100 mt-4 mb-0">
@@ -140,4 +150,4 @@
         {% endif %}
     </script>
 
-{% endblock %}
+{% endblock extrascript %}

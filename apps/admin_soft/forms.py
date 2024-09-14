@@ -50,6 +50,7 @@ class UserPasswordResetForm(PasswordResetForm):
 
 
 class UserSetPasswordForm(SetPasswordForm):
+    confirm = ReCaptchaField()
     new_password1 = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={
         'class': 'form-control', 'placeholder': 'Новый пароль'
     }), label="Новый пароль")
@@ -59,6 +60,7 @@ class UserSetPasswordForm(SetPasswordForm):
 
 
 class UserPasswordChangeForm(PasswordChangeForm):
+    confirm = ReCaptchaField()
     old_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={
         'class': 'form-control', 'placeholder': 'Старый пароль'
     }), label='Старый пароль')
