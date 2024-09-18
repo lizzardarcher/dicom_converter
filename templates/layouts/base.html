@@ -16,7 +16,7 @@
     <!-- Favicon -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon.png' %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
 
@@ -26,7 +26,8 @@
 
     <!-- CSS Files -->
     <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet"/>
-    <link id="pagestyle_dark" href="{% static 'css/dark-theme-core.css' %}" rel="stylesheet"/>
+{#    <link id="pagestyle_dark" href="{% static 'css/dark-theme-core.css' %}" rel="stylesheet"/>#}
+
     <link href="{% static 'css/widgets.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/fadeInUp.css' %}" rel="stylesheet"/>
@@ -80,17 +81,8 @@
 {% block scripts %}{% endblock scripts %}
 
 <!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-{#<script>#}
-{#    window.legacyShowCookieBar({#}
-{#        content: 'your-cookie-bar-html',#}
-{#        cookie_groups: ['your-cookie-group'],#}
-{#        cookie_decline: 'your-decline-cookie-setting',#}
-{#        beforeDeclined: function () {#}
-{#            // your code to run before the user declines#}
-{#        },#}
-{#    });#}
-{#</script>#}
+{#<script async defer src="https://buttons.github.io/buttons.js"></script>#}
+
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
 <script src="{% static 'js/scripts.js' %}"></script>

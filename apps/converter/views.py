@@ -19,9 +19,13 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
+        try:
+            research_avail_count = UserSettings.objects.filter(user=self.request.user).last().research_avail_count
+        except AttributeError:
+            research_avail_count = 0
         context.update({
             'research': Research.objects.filter(user=self.request.user).order_by('-date_created'),
-            'research_avail_count': UserSettings.objects.filter(user=self.request.user).last().research_avail_count,
+            'research_avail_count': research_avail_count,
         })
         return context
 
