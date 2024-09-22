@@ -3,7 +3,7 @@
     <div class="col-lg-3 col-sm-1">
         <div class="card-body"></div>
     </div>
-    <div class="card user-card user-card-1 col-lg-6">
+    <div class="col-lg-6">
         <div class="card-body">
             <div class="float-end">
                 {% if user_settings.research_avail_count <= 0 %}
@@ -14,19 +14,26 @@
             </div>
             <div class="media d-flex">
                 <div class="media-body">
-                    <h6>{{ request.user.username }}</h6>
+                    <h6>Пользователь: {{ request.user.username }}</h6>
                 </div>
             </div>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <span class="f-w-500"><i class="fa fa-circle m-r-10"></i> First name</span>
-                <p class="float-end text-body">{{ request.user.first_name }}</p>
+                {% if request.user.first_name %}
+                    <p class="float-end text-body">{{ request.user.first_name }}</p>
+                {% else %}
+                    <p class="float-end text-body">...</p>
+                {% endif %}
             </li>
             <li class="list-group-item">
                 <span class="f-w-500"><i class="fa fa-circle m-r-10"></i> Last name</span>
-                <p class="float-end text-body">{{ request.user.last_name }}</p>
-            </li>
+                {% if request.user.last_name %}
+                    <p class="float-end text-body">{{ request.user.last_name }}</p>
+                {% else %}
+                    <p class="float-end text-body">...</p>
+                {% endif %}            </li>
             <li class="list-group-item">
                 <span class="f-w-500"><i class="fa fa-mail-bulk m-r-10"></i> Email</span>
                 <p class="float-end text-body">{{ request.user.email }}</p>
@@ -36,12 +43,14 @@
 
             <a class="btn bg-gradient-secondary opacity-7" href="{% url 'profile_edit' user_id %}"
                aria-selected="true">
-                <span class="f-w-500 opacity-10"><i class="fa fa-edit m-r-10 h5 "></i> {% blocktranslate %}Редактировать профиль{% endblocktranslate %}</span>
+                <span class="f-w-500 opacity-10"><i class="fa fa-edit m-r-10 h5 "></i> {% blocktranslate %}Редактировать
+                    профиль{% endblocktranslate %}</span>
             </a>
 
             <a class="btn bg-gradient-secondary opacity-7" href="{% url 'password_change' %}"
                aria-selected="false" tabindex="-1">
-                <span class="f-w-500 opacity-10"><i class="fa fa-shield m-r-10 h5 "></i> {% blocktranslate %}Изменить пароль<{% endblocktranslate %}/span>
+                <span class="f-w-500 opacity-10"><i class="fa fa-shield m-r-10 h5 "></i> {% blocktranslate %}Изменить
+                    пароль<{% endblocktranslate %}/span>
             </a>
 
         </div>

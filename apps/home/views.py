@@ -14,6 +14,14 @@ class PricesView(TemplateView):
     template_name = 'pages/info/prices.html'
 
 
+class HelpView(TemplateView):
+    template_name = 'pages/info/help.html'
+
+
+class SiteMapView(TemplateView):
+    template_name = 'pages/info/site_map.html'
+
+
 class OfertaView(TemplateView):
     template_name = 'pages/info/oferta.html'
 
