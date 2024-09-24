@@ -54,7 +54,7 @@
                                         <span class="ps-3">Поддержка</span>
                                     </div>
                                 </div>
-                                <a href="javascript:;"
+                                <a href="{% if user.is_authenticated %}{% url 'yookassa_process_payment' %}{% else %}#{% endif %}"
                                    class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
                                     Оплатить 1 конвертацию
                                     <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>

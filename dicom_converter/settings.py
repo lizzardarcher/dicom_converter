@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+
+from django.template.defaultfilters import pprint
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -107,15 +109,16 @@ YANDEX_TOKEN= os.getenv('YANDEX_TOKEN')
 YANDEX_ID = os.getenv('YANDEX_ID')
 YANDEX_SECRET = os.getenv('YANDEX_SECRET')
 
-
 RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
 RECAPTCHA_DOMAIN = 'www.recaptcha.net'
 
+YOOKASSA_SHOP_ID=os.getenv('YOOKASSA_SHOP_ID_TEST')
+YOOKASSA_SECRET=os.getenv('YOOKASSA_SECRET_TEST')
+
 COOKIE_CONSENT_ENABLED = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = 'Strict'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
