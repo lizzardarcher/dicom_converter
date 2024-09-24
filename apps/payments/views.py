@@ -17,7 +17,11 @@ from django.urls import reverse_lazy
 from yookassa import Payment as YooKassaPayment, Configuration
 
 from apps.payments.models import Payment
-from apps.payments.forms import PaymentForm  # Предполагается, что у вас есть форма PaymentForm
+from apps.payments.forms import PaymentForm
+
+
+class SelectPaymentView(TemplateView):
+    template_name = 'payments/select.html'
 
 
 class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
@@ -26,9 +30,14 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
     success_url = reverse_lazy('yookassa_success')  # URL успешной оплаты
 
     def form_valid(self, form):
-        amount = form.cleaned_data['amount']
         description = form.cleaned_data['description']
-
+        amount = 200
+        if description == '1_convert':
+            amount = 200
+        elif description == '5_convert':
+            amount = 900
+        elif description == '10_convert':
+            amount = 1700
         payment = Payment.objects.create(
             amount=amount,
             description=description,
@@ -64,7 +73,7 @@ class SuccessYookassaView(TemplateView, LoginRequiredMixin):
 
         Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
         Configuration.secret_key = settings.YOOKASSA_SECRET
-        payments = Payment.objects.all()
+        payments = Payment.objects.filter(status=False)
         for payment in payments:
             try:
                 yp = YooKassaPayment.find_one(payment.payment_id)
