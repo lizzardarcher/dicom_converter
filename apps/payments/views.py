@@ -25,6 +25,29 @@ from apps.payments.forms import PaymentForm
 class SelectPaymentView(TemplateView):
     template_name = 'payments/select.html'
 
+class PaymentInfoYookassaView(TemplateView, LoginRequiredMixin):
+    template_name = 'payments/yookassa/payment_info.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'payment_info': 'e'
+        })
+        try:
+            Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
+            Configuration.secret_key = settings.YOOKASSA_SECRET
+            user = User.objects.get(pk=self.request.GET['user'])
+            payment = Payment.objects.filter(user=user).last()
+            yookassa_payment = YooKassaPayment.find_one(payment.payment_id)
+            context.update({
+                'payment_info': yookassa_payment
+            })
+        except Exception as e:
+            context.update({
+                'payment_info': e
+            })
+
+        return context
+
 
 class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
     template_name = 'payments/yookassa/process_payment.html'
@@ -44,6 +67,7 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
             amount=amount,
             description=description,
             user=self.request.user,
+            currency='RUB'
         )
 
         Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
@@ -56,7 +80,7 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
             },
             'confirmation': {
                 'type': 'redirect',
-                'return_url': 'https://galileos.pro/payments/yookassa/success',
+                'return_url': f'https://galileos.pro/payments/yookassa/payment_info?user={self.request.user.pk}',
             },
             'capture': True,
             'description': description,
@@ -67,81 +91,3 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
         return redirect(payment_object.confirmation.confirmation_url)
 
 
-class SuccessYookassaView(TemplateView, LoginRequiredMixin):
-    template_name = 'payments/yookassa/success.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        try:
-            Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
-            Configuration.secret_key = settings.YOOKASSA_SECRET
-            payment = Payment.objects.filter(paid=False, user=self.request.user).last()
-
-            yookassa_payment = YooKassaPayment.find_one(payment.payment_id)
-
-            context.update({
-                'payment_info': yookassa_payment
-            })
-        except Exception as e:
-            logging.exception(e)
-        return context
-
-
-class CancelYookassaView(TemplateView, LoginRequiredMixin):
-    template_name = 'payments/yookassa/cancel.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['payment_id'] = self.request.GET.get('payment_id')
-        return context
-
-
-class WebhookYookassaView(View):
-    ### LOGGING
-
-    @csrf_exempt
-    def post(self, request):
-
-        log_path = '/opt/dicom_converter/apps/payments/log'
-        logger = logging.getLogger(__name__)
-        logging.basicConfig(
-            format='%(asctime)s %(levelname) -8s %(message)s',
-            level=logging.DEBUG,
-            datefmt='%Y.%m.%d %I:%M:%S',
-            handlers=[
-                # TimedRotatingFileHandler(filename=log_path, when='D', interval=1, backupCount=5),
-                logging.StreamHandler(stream=sys.stderr)
-            ],
-        )
-
-        event_data = json.loads(request.body.decode('utf-8'))
-        logger.info(event_data)
-        # Получение secret_key из настроек
-        # secret_key = settings.YOO_KASSA_SECRET_KEY
-
-        # Проверка подписи с использованием Client.verify_signature()
-        # Проверка подписи с использованием Signature.check()
-        # try:
-        #     Signature.check(event_data, secret_key)
-        # except SignatureVerificationError:
-        #     return HttpResponse(status=400)
-
-        # Обработка события
-        event_type = event_data['event']
-
-        if event_type == 'payment.succeeded':
-            # Обработка успешного платежа
-            payment_id = event_data['object']['id']
-            try:
-                payment = Payment.objects.get(payment_id=payment_id)
-                payment.paid = True
-                payment.status = 'succeeded'
-                payment.save()
-                # ...  дополнительные действия (например, отправка уведомления пользователю) ...
-
-            except Payment.DoesNotExist:
-                ...
-        elif event_type == 'payment.canceled':
-            ...
-
-        return HttpResponse(status=200)

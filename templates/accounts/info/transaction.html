@@ -42,18 +42,22 @@
                             <td>
                                 <div class="d-flex px-2 py-1">
                                     <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">{{ trans.timestamp }}</h6>
+                                        <h6 class="mb-0 text-sm">{{ trans.created_at }}</h6>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{ trans.amount }}</p>
+                                <p class="text-xs font-weight-bold mb-0">{{ trans.amount }} {{ trans.currency }}</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{ trans.currency }}</p>
+                                <p class="text-xs font-weight-bold mb-0">{{ trans.payment_id }}</p>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <span class="badge badge-sm bg-gradient-success">{% blocktranslate %}Успешно{% endblocktranslate %}</span>
+                                {% if trans.status == 'succeeded' %}
+                                    <span class="badge badge-sm bg-gradient-success">{{ trans.status }}</span>
+                                {% else %}
+                                    <span class="badge badge-sm bg-gradient-warning">{{ trans.status }}</span>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

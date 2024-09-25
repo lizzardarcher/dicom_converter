@@ -27,7 +27,7 @@ class Payment(models.Model):
                               ),
                               default='pending',
                               )
-
+    currency = models.CharField(max_length=100, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, )
 
     def __str__(self):

@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Информация по платежу</h1>
+                <div class="card-body">
+                    <h5>ID: {{ payment_info.id }}</h5>
+                    <h5>{{ payment_info.description }}</h5>
+                    <h5>{{ payment_info.created_at }}</h5>
+                    <h5>Сумма: {{ payment_info.amount.value }} {{ payment_info.amount.currency }}</h5>
+                    <h5>Статус: {% if payment_info.status == 'succeeded'  %}
+                        <span class="badge badge-success">Оплачено</span>
+                    {% else %}
+                        <span class="badge badge-warning">{{ payment_info.status }}</span>
+                    {% endif %}
+                    </h5>
+                </div>
+                <div class="card-footer">
+                    <h6>Вернитесь в <a class="badge badge-info" href="{% url 'profile' %}">Личный кабинет</a> для начала
+                        работы
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
