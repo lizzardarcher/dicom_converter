@@ -14,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
+import var_dump
 
 from yookassa import Payment as YooKassaPayment, Configuration
 
@@ -39,7 +40,7 @@ class PaymentInfoYookassaView(TemplateView, LoginRequiredMixin):
             payment = Payment.objects.filter(user=user).last()
             yookassa_payment = YooKassaPayment.find_one(payment.payment_id)
             context.update({
-                'payment_info': yookassa_payment
+                'payment_info': yookassa_payment,
             })
         except Exception as e:
             context.update({

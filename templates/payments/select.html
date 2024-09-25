@@ -1,21 +1,51 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
 {% load i18n %}
 {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="mb-4">Выберите способ оплаты:</h3>
-                <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
-                    <a href="{% url 'yookassa_process_payment' %}" type="button" class="btn btn-outline-info">
-                        <img src="https://yookassa.ru/files/Guide_files/logo-black.svg" alt="ЮКасса" width="75">
-                        <h6 class="text-black">{% trans 'РФ/СНГ' %}</h6>
-                    </a>
-                    <a href="#" type="button" class="btn btn-outline-info" disabled="">
-                        <img src="https://toplogos.ru/images/logo-robokassa.png" alt="Visa" width="75">
-                        <h6 class="text-black">{% trans 'Все страны' %}</h6>
-                    </a>
+        <div class="card m-5 p-5">
+            <h3 class="mb-4">Выберите способ оплаты:</h3>
+            <div class="card-pricing">
+                <div class="row border-secondary-subtle">
+                    <div class="col-6">
+                        <a href="{% url 'yookassa_process_payment' %}" type="button"
+                           class="btn btn-light">
+                            <img src="https://yookassa.ru/files/Guide_files/logo-black.svg"
+                                 alt="ЮКасса" width="300">
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-2xl">Подходит для карт выпущенных в РФ и СНГ</div>
+                        <div class="payment-methods">
+                            <img class="m-2" src="{% static 'logos_website/png/black and white/visa black.png' %}" alt="Visa"
+                                 width="50">
+                            <img class="m-2" src="{% static 'logos_website/png/black and white/мир black.png' %}"
+                                 alt="мир"
+                                 width="35">
+                            <img class="m-2" src="{% static 'logos_website/png/black and white/сбп black.png' %}" alt="СБП"
+                                 width="50">
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="card-pricing">
+                <div class="row border-secondary-subtle">
+                    <div class="col-6">
+                        <a href="{% url 'yookassa_process_payment' %}" type="button"
+                           class="btn btn-light">
+                            <img src="https://toplogos.ru/images/logo-robokassa.png"
+                                 alt="Robokassa" width="300">
+                        </a>
+                    </div>
+                    <div class="col-6">
+{#                        <div class="text-2xl">Подходит для любых стран</div>#}
+                        <div class="alert alert-secondary">Подходит для любых стран (в процессе разработки)</div>
+                        <div class="payment-methods">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

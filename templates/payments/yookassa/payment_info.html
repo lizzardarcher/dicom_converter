@@ -8,7 +8,7 @@
                 <h1>Информация по платежу</h1>
                 <div class="card-body">
                     <h5>ID: {{ payment_info.id }}</h5>
-                    <h5>{{ payment_info.description }}</h5>
+                    <h5>{{ payment_info.payment_method.type }} {{ payment_info.description }}</h5>
                     <h5>{{ payment_info.created_at }}</h5>
                     <h5>Сумма: {{ payment_info.amount.value }} {{ payment_info.amount.currency }}</h5>
                     <h5>Статус: {% if payment_info.status == 'succeeded'  %}

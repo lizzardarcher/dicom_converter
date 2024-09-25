@@ -54,9 +54,9 @@
                                         <span class="ps-3">Поддержка</span>
                                     </div>
                                 </div>
-                                <a href="{% if user.is_authenticated %}{% url 'yookassa_process_payment' %}{% else %}#{% endif %}"
+                                <a href="{% if user.is_authenticated %}{% url 'select_payment' %}{% else %}{% url 'login' %}{% endif %}"
                                    class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
-                                    Оплатить 1 конвертацию
+                                    Перейти к оплате
                                     <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -95,9 +95,9 @@
                                         <span class="ps-3">Поддержка</span>
                                     </div>
                                 </div>
-                                <a href="{% url 'select_payment' %}"
+                                <a href="{% if user.is_authenticated %}{% url 'select_payment' %}{% else %}{% url 'login' %}{% endif %}"
                                    class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
-                                    Оплатить 5 конвертаций
+                                    Перейти к оплате
                                     <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -136,9 +136,9 @@
                                         <span class="ps-3">Поддержка</span>
                                     </div>
                                 </div>
-                                <a href="javascript:;"
+                                <a href="{% if user.is_authenticated %}{% url 'select_payment' %}{% else %}{% url 'login' %}{% endif %}"
                                    class="btn btn-icon bg-gradient-dark d-lg-block mt-3 mb-0">
-                                    Оплатить 10 конвертаций
+                                    Перейти к оплате
                                     <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
                                 </a>
                             </div>
