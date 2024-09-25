@@ -1,0 +1,16 @@
+[Unit]
+Description=Updating payment info
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/dicom_converter/apps/payments
+Environment="PYTHONPATH=/opt/dicom_converter"
+ExecStart=/opt/dicom_converter/env/bin/python3.12 /opt/dicom_converter/apps/payments/tasks/tasks.py
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
