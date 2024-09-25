@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'cookie_consent',
     'django_recaptcha',
-
 ]
 
 MIDDLEWARE = [

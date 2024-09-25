@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mb-4">Выберите способ оплаты:</h3>
+                <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
+                    <a href="{% url 'yookassa_process_payment' %}" type="button" class="btn btn-outline-info">
+                        <img src="https://yookassa.ru/files/Guide_files/logo-black.svg" alt="ЮКасса" width="75">
+                        <h6 class="text-black">{% trans 'РФ/СНГ' %}</h6>
+                    </a>
+                    <a href="#" type="button" class="btn btn-outline-info" disabled="">
+                        <img src="https://toplogos.ru/images/logo-robokassa.png" alt="Visa" width="75">
+                        <h6 class="text-black">{% trans 'Все страны' %}</h6>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

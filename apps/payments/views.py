@@ -7,6 +7,7 @@ from pathlib import Path
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -16,6 +17,7 @@ from django.urls import reverse_lazy
 
 from yookassa import Payment as YooKassaPayment, Configuration
 
+from apps.converter.models import UserSettings
 from apps.payments.models import Payment
 from apps.payments.forms import PaymentForm
 
@@ -70,21 +72,19 @@ class SuccessYookassaView(TemplateView, LoginRequiredMixin):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        try:
+            Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
+            Configuration.secret_key = settings.YOOKASSA_SECRET
+            payment = Payment.objects.filter(paid=False, user=self.request.user).last()
 
-        Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
-        Configuration.secret_key = settings.YOOKASSA_SECRET
-        payments = Payment.objects.filter(status=False)
-        for payment in payments:
-            try:
-                yp = YooKassaPayment.find_one(payment.payment_id)
-                payment.paid = yp.paid
-                payment.status = yp.status
-                payment.save()
-            except:
-                pass
-        context['payment_id'] = self.request.GET.get('payment_id')
+            yookassa_payment = YooKassaPayment.find_one(payment.payment_id)
+
+            context.update({
+                'payment_info': yookassa_payment
+            })
+        except Exception as e:
+            logging.exception(e)
         return context
-
 
 
 class CancelYookassaView(TemplateView, LoginRequiredMixin):
