@@ -1,14 +1,18 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    
-       <div class="container">
-           <h1>Оплата</h1>
-           <form method="POST" action="{% url 'yookassa_process_payment' %}">
-               {% csrf_token %}
-               {{ form.as_p }}
-               <button type="submit" class="btn btn-primary">Оплатить</button>
-           </form>
-       </div>
+
+    <div class="container">
+        <h1>Выберите необходимое количество конвертаций</h1>
+        <form method="POST" action="{% url 'yookassa_process_payment' %}">
+            {% csrf_token %}
+            <div class="form-row col-sm-12 col-lg-4">
+                {{ form.description }}
+            </div>
+            <div class="m-2">
+                <button type="submit" class="btn btn-info">Оплатить</button>
+            </div>
+        </form>
+    </div>
 
 {% endblock content %}

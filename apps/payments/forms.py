@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class PaymentForm(forms.Form):
-    CHOICES = (('1_convert', _('Оплатить 1 конвертацию')),
-               ('5_convert', _('Оплатить 5 конвертаций')),
-               ('10_convert', _('Оплатить 10 конвертаций')),               )
+    CHOICES = (('1_convert', _('1 КОНВЕРТАЦИЯ')),
+               ('5_convert', _('5 КОНВЕРТАЦИЙ')),
+               ('10_convert', _('10 КОНВЕРТАЦИЙ')),               )
     description = forms.ChoiceField(choices=CHOICES)

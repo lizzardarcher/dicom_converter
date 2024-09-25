@@ -40,7 +40,7 @@ class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):
             'user_settings': UserSettings.objects.filter(user=self.request.user).first(),
             'user_id': self.request.user.id,
             'research': Research.objects.filter(user=self.request.user).order_by('-date_created'),
-            'transaction': Payment.objects.filter(user=self.request.user),
+            'transaction': Payment.objects.filter(user=self.request.user).order_by('-created_at'),
         })
         return context
 
