@@ -9,9 +9,10 @@ urlpatterns = [
     path('set_lang_ru', views.set_lang_ru, name='set_lang_ru'),
 
     path('prices', views.PricesView.as_view(), name='prices'),
+    path('price_info', views.PriceInfoView.as_view(), name='price_info'),
     path('privacy', views.PrivacyView.as_view(), name='privacy'),
     path('help', views.HelpView.as_view(), name='help'),
-    path('site_map', views.SiteMapView.as_view(), name='site_map'),
+    path('sitemap', views.SiteMapView.as_view(), name='sitemap'),
     path('detailed_info', views.DetailedInfoView.as_view(), name='detailed_info'),
     path('about', views.AboutView.as_view(), name='about'),
     path('oferta', views.OfertaView.as_view(), name='oferta'),

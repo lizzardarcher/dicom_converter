@@ -19,7 +19,7 @@ class HelpView(TemplateView):
 
 
 class SiteMapView(TemplateView):
-    template_name = 'pages/info/site_map.html'
+    template_name = 'pages/info/sitemap.html'
 
 
 class OfertaView(TemplateView):
@@ -45,6 +45,8 @@ class FAQView(TemplateView):
 class HowItWorksView(TemplateView):
     template_name = 'pages/info/how_it_works.html'
 
+class PriceInfoView(TemplateView):
+    template_name = 'pages/info/price_info.html'
 
 class ContactView(SuccessMessageMixin, FormView):
     template_name = 'pages/info/contacts.html'

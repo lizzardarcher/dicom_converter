@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% block title %} Site Map {% endblock title %}
+{% block extrastyle %}
+{% endblock extrastyle %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center mt-5 mb-5">Карта сайта</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Главная</h3>
+                <ul class="list-unstyled">
+                    <li><a href="/">Главная страница</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/price_info">Цены</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Помощь</h3>
+                <ul class="list-unstyled">
+                    <li><a href="/how_it_works">Как это работает</a></li>
+                    <li><a href="/detailed_info">Детальная информация</a></li>
+                    <li><a href="/faq">Часто задаваемые вопросы</a></li>
+                    <li><a href="/help">Помощь</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Договор</h3>
+                <ul class="list-unstyled">
+                    <li><a href="/oferta">Оферта</a></li>
+                    <li><a href="/privacy">Политика в отношении обработки персональных данных</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br class="m-5">
+    <br class="m-5">
+    <br class="m-5">
+    <br class="m-5">
+
+
+{% endblock content %}

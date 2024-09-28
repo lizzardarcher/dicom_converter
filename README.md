@@ -57,7 +57,15 @@
 ### 5. Настройка базы данных
 
 Настройте вашу базу данных (например, MySQL) и обновите настройки в файле settings.py вашего Django проекта. 
+Для авто-настройки MySQL БД используйте скрипт ->
+> python3 deploy/setup_mysql.py
 
+Для того чтобы MySQL не съедал всю память на диске, в файле конфигурации MySQL измените значение `binlog_expire_logs_seconds=14400`
+> sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+  binlog_expire_logs_seconds = 14400
+
+Миграция в новую БД
 > python3 manage.py migrate
 
 ### 5. Настройка MAIL
