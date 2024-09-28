@@ -2,17 +2,38 @@
 
 {% block content %}
 
-    <div class="container">
-        <h1>Выберите необходимое количество конвертаций</h1>
-        <form method="POST" action="{% url 'yookassa_process_payment' %}">
-            {% csrf_token %}
-            <div class="form-row col-sm-12 col-lg-4">
-                {{ form.description }}
-            </div>
-            <div class="m-2">
-                <button type="submit" class="btn btn-info col-sm-6 col-lg-4 ">Оплатить</button>
-            </div>
-        </form>
-    </div>
+    <div class="container content-center">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card h-100 p-3">
+                <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100 "
+                     style="background-image: url('/static/img/colorful-night-bokeh-picjumbo-com.jpg');">
+                    <span class="mask bg-gradient-secondary"></span>
+                    <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+                        <h5 class="text-white font-weight-bolder mb-4 pt-2">Выберите необходимое количество
+                            конвертаций</h5>
 
+                        <form method="POST" action="{% url 'yookassa_process_payment' %}">
+                            {% csrf_token %}
+                            <div class="opacity-9 col-sm-12 col-lg-4 mb-4">
+                                {{ form.description }}
+                            </div>
+                            <button type="submit" class="btn btn-info col-sm-6 col-lg-4 ">Оплатить</button>
+                        </form>
+                        <p class="text-white">После оплаты перейдите в личный кабинет для загрузки и конвертации вашего
+                            исследования в формат DICOM.</p>
+                        <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
+                           href="{% url 'how_it_works' %}">
+                            Подробнее
+                            <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br class="mt-5">
+    <br class="mt-5">
+    <br class="mt-5">
+    <br class="mt-5">
+    <br class="mt-5">
 {% endblock content %}

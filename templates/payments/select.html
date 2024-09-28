@@ -2,51 +2,29 @@
 {% load static %}
 {% load i18n %}
 {% block content %}
-    <div class="container">
+    <div class="container mb-5">
         <div class="card m-5 p-5">
             <h3 class="mb-4">Выберите способ оплаты:</h3>
             <div class="card-pricing">
                 <div class="row border-secondary-subtle">
-                    <div class="col-6">
-                        <a href="{% url 'yookassa_process_payment' %}" type="button"
-                           class="btn btn-light">
-                            <img src="https://yookassa.ru/files/Guide_files/logo-black.svg"
-                                 alt="ЮКасса" width="300">
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <div class="text-2xl">Подходит для карт выпущенных в РФ и СНГ</div>
-                        <div class="payment-methods">
-                            <img class="m-2" src="{% static 'logos_website/png/black and white/visa black.png' %}" alt="Visa"
-                                 width="50">
-                            <img class="m-2" src="{% static 'logos_website/png/black and white/мир black.png' %}"
-                                 alt="мир"
-                                 width="35">
-                            <img class="m-2" src="{% static 'logos_website/png/black and white/сбп black.png' %}" alt="СБП"
-                                 width="50">
+                    <div class="col-sm-12 col-md-6 card bg-light">
+                        <img class="p-3" src="https://yookassa.ru/files/Guide_files/logo-black.svg"
+                             alt="YooKassa" width="250">
+                        <div class="card-body">
+                            <h5 class="card-title">ЮКасса</h5>
+                            <p class="card-text">Подходит для карт выпущенных в РФ и СНГ.</p>
+                            <a href="{% url 'yookassa_process_payment' %}" class="text-2xl btn"><span
+                                    style="color:#0e456d">Продолжить</span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-pricing">
-                <div class="row border-secondary-subtle">
-                    <div class="col-6">
-                        <a href="#" type="button"
-                           class="btn btn-light">
-                            <img src="https://toplogos.ru/images/logo-robokassa.png"
-                                 alt="Robokassa" width="300">
-                        </a>
-                    </div>
-                    <div class="col-6">
-{#                        <div class="text-2xl">Подходит для любых стран</div>#}
-                        <div class="alert alert-secondary">Подходит для любых стран (в процессе разработки)</div>
-                        <div class="payment-methods">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
-
+    <br class="mt-5">
+    <br class="mt-5">
+    <br class="mt-5">
+    <br class="mt-5">
+    <br class="mt-5">
+    
 {% endblock content %}

@@ -68,8 +68,35 @@
             max-height: 400px; /* Максимальная высота */
         }
 
-    </style>
+        .fixed-bottom-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background-color: orangered;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: blink 2s infinite;
+        }
 
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 
@@ -82,7 +109,7 @@
         <header class="pt-5 py-5 mb-5 animated animatedFadeInUp fadeInUp">
             <div class="container px-5 pb-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-xxl-5">
+                    <div class="col-sm-12 col-xxl-5">
                         <!-- Header text content-->
                         <div class="text-center text-xxl-start">
                             <div class="fs-3 fw-light text-muted">
@@ -109,19 +136,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xxl-7">
-                        <!-- Header profile picture-->
+                    <div class="col-sm-6 col-xxl-7">
                         <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                             <div class="profile bg-gradient-primary-to-secondary">
-                                <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
-                                <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                <img class="profile-img" src="{{ STATIC_URL }}img/dentist.png" alt="...">
+                                <img class="d-none d-sm-block profile-img" src="{% static 'img/dentist.png' %}"
+                                     alt="logo">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
+
+
+        <!-- Уникальное решение -->
+        <div class="container mt-5 px-5 animated animatedFadeInUp fadeInUp">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-xxl-8">
+                    <div class="text-center my-5">
+                        <h2 class="display-3 text-dark fw-bolder mb-5">
+                            <span class="text-dark text-gradient d-inline">Уникальное решение</span></h2>
+                        <p class="lead fw-light mb-4">
+                            Мы единственный сервис осуществляющий конвертацию данных с томографов Galileos
+                        </p>
+                        <p class="text-muted">
+                            Вам не придется долго ждать результата. Мы оптимизировали процесс конвертации, чтобы вы
+                            получили доступ к вашим данным максимально быстро.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!--Что такое GalileosPro?  -->
         <div class="row pt-5 mt-5 mb-5 ">
@@ -165,86 +211,74 @@
         <div class="container pt-5 mt-5 mb-5 col-lg-8 col-12">
             <h1 class="mt-5 mb-5">{% blocktranslate %}Три простых шага для работы{% endblocktranslate %}</h1>
 
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button bg-gradient-danger opacity-9" type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Шаг 1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="card-body">
-                                <p><i class="fa fa-file-zipper h4"></i> {% blocktranslate %}Создайте архив (zip, rar) с
-                                    вашим исследованием.{% endblocktranslate %}</p>
-                                <p> {% blocktranslate %}Вот одни из самых популярных бесплатных программ для работы с
-                                    архивами{% endblocktranslate %}</p>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        {% blocktranslate %}Для Windows:{% endblocktranslate %}
-                                        <ul>
-                                            <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
-                                            <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
-                                        <ul>
-                                            <li>
-                                                <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        {% blocktranslate %}Для Linux:{% endblocktranslate %}
-                                        <ul>
-                                            <li><a href="https://cdn.7zip-arhive.ru/7z2201-linux-x64.tar.xz">7-ZIP</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 1"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 1">
+                            <h5 class="card-title">Архив с данными</h5>
+                            <p class="card-text">Создайте архив (zip, rar) с вашим исследованием.</p>
+                            <h6 class="card-text">Популярные архиваторы:</h6>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    {% blocktranslate %}Для Windows:{% endblocktranslate %}
+                                    <ul>
+                                        <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
+                                        <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
+                                    </ul>
                                 </div>
 
+                                <div class="col-sm-12 col-md-6">
+                                    {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
+                                    <ul>
+                                        <li>
+                                            <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button bg-gradient-danger opacity-9 collapsed" type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Шаг 2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="card-body">
-                                <a href="{% url 'upload research' %}"><i class="fa fa-cloud-download h4"></i>
-                                    {% blocktranslate %}Загрузите архив в наш сервис{% endblocktranslate %}</a>
-                            </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 2"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 2">
+                            <h5 class="card-title">Загрузка данных</h5>
+                            <p class="card-text">Загружаете данные с томографа GALILEOS в наше <a
+                                    href="{% url 'upload research' %}">программное обеспечение</a>
+                                Файлы могут быть загружены с вашего компьютера, флешки или любого другого носителя.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button bg-gradient-danger opacity-9 collapsed" type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Шаг 3
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <p>{% blocktranslate %}Дождитесь результата и получите архив с конвертированным
-                                исследованием{% endblocktranslate %}</p>
-                            <p>{% blocktranslate %}Архив с исследованием будет доступен в личном кабинете в течение
-                                суток{% endblocktranslate %}</p>
-                            <p>{% blocktranslate %}Также архив можно скачать из cloud.mail, ссылка на облако придёт на
-                                указанную вами при регистрации почту{% endblocktranslate %}</p>
-                            <p><i class="fa fa-clock"></i> {% blocktranslate %}Среднее время обработки 2
-                                минуты{% endblocktranslate %}</p>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 3"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 3">
+                            <h5 class="card-title">Конвертация данных</h5>
+                            <p class="card-text">Наше программное обеспечение быстро и безопасно конвертирует данные
+                                GALILEOS в формат DICOM.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4 offset-md-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 4"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 4">
+                            <h5 class="card-title">Загрузка результата</h5>
+                            <p class="card-text">Вы получаете готовые данные в формате DICOM. Файлы можно скачать на ваш
+                                компьютер из личного кабинета в разделе исследования. Также по завершении вам будет
+                                направлено письмо на
+                                указанную при регистрации почту со ссылкой на архив в облаке. Данные хранятся 6
+                                месяцев.</p>
                         </div>
                     </div>
                 </div>
@@ -292,55 +326,66 @@
                     <div class="card-body">
                         <img class="card-img-top" src="{% static 'info/other_soft/3Diagnosys.png' %}" alt="3Diagnosys">
                         <h5 class="card-title">{% blocktranslate %}Работа в 3Diagnosys{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/3Diagnosys.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
+                        <a href="{% static 'info/other_soft/3Diagnosys.png' %}" class="btn btn-info">
+                            {% blocktranslate %}Подробнее{% endblocktranslate %}</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body">
-                        <img class="card-img-top" src="{% static 'info/other_soft/3Shape Unite.png' %}" alt="3Shape Unite">
+                        <img class="card-img-top" src="{% static 'info/other_soft/3Shape Unite.png' %}"
+                             alt="3Shape Unite">
                         <h5 class="card-title">{% blocktranslate %}Работа в 3Shape Unite{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/3Shape Unite.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
-                    
+                        <a href="{% static 'info/other_soft/3Shape Unite.png' %}" class="btn btn-info">
+                            {% blocktranslate %}Подробнее{% endblocktranslate %}</a>
+
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <img class="card-img-top" src="{% static 'info/other_soft/Blue Sky Plan .png' %}" alt="Blue Sky Plan">
+                        <img class="card-img-top" src="{% static 'info/other_soft/Blue Sky Plan .png' %}"
+                             alt="Blue Sky Plan">
                         <h5 class="card-title">{% blocktranslate %}Работа в Blue Sky Plan {% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/Blue Sky Plan .png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
-                    
+                        <a href="{% static 'info/other_soft/Blue Sky Plan .png' %}" class="btn btn-info">
+                            {% blocktranslate %}Подробнее{% endblocktranslate %}</a>
+
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <img  class="card-img-top"src="{% static 'info/other_soft/ExoCad.png' %}" alt="ExoCad">
+                        <img class="card-img-top" src="{% static 'info/other_soft/ExoCad.png' %}" alt="ExoCad">
                         <h5 class="card-title">{% blocktranslate %}Работа в ExoCad{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/ExoCad.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
-                    
+                        <a href="{% static 'info/other_soft/ExoCad.png' %}" class="btn btn-info">{% blocktranslate %}
+                            Подробнее{% endblocktranslate %}</a>
+
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <img class="card-img-top" src="{% static 'info/other_soft/Ez-Vision.png' %}" alt="Ez-Vision">
                         <h5 class="card-title">{% blocktranslate %}Работа в Ez-Vision{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/Ez-Vision.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
-                    
+                        <a href="{% static 'info/other_soft/Ez-Vision.png' %}" class="btn btn-info">{% blocktranslate %}
+                            Подробнее{% endblocktranslate %}</a>
+
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <img class="card-img-top" src="{% static 'info/other_soft/RealGUIDE.png' %}" alt="RealGUIDE">
                         <h5 class="card-title">{% blocktranslate %}Работа в RealGUIDE{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/RealGUIDE.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
-                    
+                        <a href="{% static 'info/other_soft/RealGUIDE.png' %}" class="btn btn-info">{% blocktranslate %}
+                            Подробнее{% endblocktranslate %}</a>
+
                     </div>
                 </div>
             </div>
         </div>
-
-
         <!--YOUTUBE END-->
+
+        <!-- Sticky Button -->
+        <a href="{% url 'upload research' %}" class="fixed-bottom-button z-index-sticky">
+            <i class="fa fa-cloud-download-alt"></i>
+        </a>
 
     </div>
 
