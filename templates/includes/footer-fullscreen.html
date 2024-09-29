@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <br class="mt-5">
 <br class="mt-5">
@@ -8,27 +9,25 @@
             <div class="col-md-4">
                 <h5 class="footer-title">О нас</h5>
                 <ul class="footer-list">
-                    <li><a href="{% url 'about' %}">О компании</a></li>
-                    <li><a href="{% url 'prices' %}">Цены</a></li>
-                    {#          <li><a href="#">Новости и события</a></li>#}
-                    {#          <li><a href="#">Вакансии</a></li>#}
-                    <li><a href="{% url 'contacts' %}">Контакты</a></li>
+                    <li><a href="{% url 'about' %}">{% translate 'О компании' %}</a></li>
+                    <li><a href="{% url 'prices' %}">{% translate 'Цены' %}</a></li>
+                    <li><a href="{% url 'contacts' %}">{% translate 'Контакты' %}</a></li>
                 </ul>
             </div>
 
             <div class="col-md-4">
-                <h5 class="footer-title">Полезные ссылки</h5>
+                <h5 class="footer-title">{% translate 'Полезные ссылки' %}</h5>
                 <ul class="footer-list">
-                    <li><a href="{% url 'faq' %}">Часто задаваемые вопросы</a></li>
-                    <li><a href="{% url 'oferta' %}">Условия использования</a></li>
-                    <li><a href="{% url 'privacy' %}">Политика конфиденциальности</a></li>
-                    <li><a href="{% url 'help' %}">Помощь</a></li>
-                    <li><a href="{% url 'sitemap' %}">Карта сайта</a></li>
+                    <li><a href="{% url 'faq' %}">{% translate 'Часто задаваемые вопросы' %}</a></li>
+                    <li><a href="{% url 'oferta' %}">{% translate 'Условия использования' %}</a></li>
+                    <li><a href="{% url 'privacy' %}">{% translate 'Политика конфиденциальности' %}</a></li>
+                    <li><a href="{% url 'help' %}">{% translate 'Помощь' %}</a></li>
+                    <li><a href="{% url 'sitemap' %}">{% translate 'Карта сайта' %}</a></li>
                 </ul>
             </div>
 
             <div class="col-md-4">
-                <h5 class="footer-title">Мы принимаем платежи</h5>
+                <h5 class="footer-title">{% translate 'Мы принимаем платежи' %}</h5>
                 <div class="payment-methods">
                     <img class="m-2" src="{% static 'logos_website/png/visa.png' %}" alt="Visa" width="50">
                     <img class="m-2" src="{% static 'logos_website/png/mastercard.png' %}" alt="Mastercard" width="35">
@@ -41,7 +40,7 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-12">
-                <p class="copyright text-center">© {% now "Y" %} GalileosPro. Все права защищены.</p>
+                <p class="copyright text-center">© {% now "Y" %} {% translate 'GalileosPro. Все права защищены.' %}</p>
             </div>
         </div>
     </div>

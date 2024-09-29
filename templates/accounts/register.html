@@ -14,13 +14,13 @@
                             <div class="card card-plain mt-8">
                                 <div class="card-header pb-0 text-left bg-transparent">
                                     <h3 class="font-weight-bolder text-info text-gradient">
-                                        Регистрация
+                                        {% trans "Регистрация" %}
                                     </h3>
                                     <p class="mb-0">
                                         {% if msg %}
                                             <span class="text-danger">{{ msg | safe }}</span>
                                         {% else %}
-                                            Введите свои данные
+                                            {% blocktrans %}Введите свои данные{% endblocktrans %}
                                         {% endif %}
                                     </p>
                                 </div>
@@ -30,7 +30,8 @@
 
                                         <p class="text-sm mt-3 mb-0 text-center">
                                         <div class="text-center">
-                                            <a href="{% url 'login' %}" class="btn bg-gradient-dark w-100 my-4 mb-2">Войти</a>
+                                            <a href="{% url 'login' %}"
+                                               class="btn bg-gradient-dark w-100 my-4 mb-2">{% trans "Войти" %}</a>
                                         </div>
                                         </p>
 
@@ -67,24 +68,24 @@
                                                 {{ form.captcha }}
                                             </div>
                                             {% if form.captcha.errors %}
-                                                <span class="text-danger">Подтвердите, что вы не робот</span>
+                                                <span class="text-danger">{% blocktrans %}Подтвердите, что вы не робот{% endblocktrans %}</span>
                                             {% endif %}
 
                                             <div class="">
-                                                Нажимая на кнопку зарегистрироваться вы даёте соглашаетесь с
-                                                <a href="{% url 'oferta' %}">условиями пользования</a>
-                                                и
-                                                <a href="{% url 'privacy' %}">политикой конфиденциальности</a>
+                                                {% blocktrans %}Нажимая на кнопку зарегистрироваться вы даёте соглашаетесь с{% endblocktrans %}
+                                                <a href="{% url 'oferta' %}">{% blocktrans %}условиями пользования{% endblocktrans %}</a>
+                                                {% trans "и" %}
+                                                <a href="{% url 'privacy' %}">{% blocktrans %}политикой конфиденциальности{% endblocktrans %}</a>
                                             </div>
 
                                             <div class="text-center">
                                                 <button id="confirmButton" type="submit"
                                                         class="btn bg-gradient-info w-100 mt-4 mb-0">
-                                                    Зарегистрироваться
+                                                    {% trans "Зарегистрироваться" %}
                                                 </button>
                                                 <p class="mt-4">
-                                                    У вас уже есть аккаунт?
-                                                    <a href="{% url 'login' %}" class="text-primary">Войти</a>
+                                                    {% blocktrans %}У вас уже есть аккаунт?{% endblocktrans %}
+                                                    <a href="{% url 'login' %}" class="text-primary">{% trans "Войти" %}</a>
                                                 </p>
                                             </div>
 
@@ -99,7 +100,7 @@
                                         {% if password_reset_url %}
                                             <a href="{{ password_reset_url }}"
                                                class="text-info text-gradient font-weight-bold">
-                                                Забыли пароль или логин?
+                                                {% blocktrans %}Забыли пароль или логин?{% endblocktrans %}
                                             </a>
                                         {% endif %}
                                     </p>

@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -9,21 +10,30 @@
                      style="background-image: url('/static/img/colorful-night-bokeh-picjumbo-com.jpg');">
                     <span class="mask bg-gradient-secondary"></span>
                     <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                        <h5 class="text-white font-weight-bolder mb-4 pt-2">Выберите необходимое количество
-                            конвертаций</h5>
+                        <h5 class="text-white font-weight-bolder mb-4 pt-2">
+                            {% blocktranslate %}
+                                Выберите необходимое количество конвертаций
+                            {% endblocktranslate %}
+                        </h5>
 
                         <form method="POST" action="{% url 'yookassa_process_payment' %}">
                             {% csrf_token %}
                             <div class="opacity-9 col-sm-12 col-lg-4 mb-4">
                                 {{ form.description }}
                             </div>
-                            <button type="submit" class="btn btn-info col-sm-6 col-lg-4 ">Оплатить</button>
+                            <button type="submit" class="btn btn-info col-sm-6 col-lg-4 ">
+                                {% translate 'Оплатить' %}
+                            </button>
                         </form>
-                        <p class="text-white">После оплаты перейдите в личный кабинет для загрузки и конвертации вашего
-                            исследования в формат DICOM.</p>
+                        <p class="text-white">
+                            {% blocktranslate %}
+                                После оплаты перейдите в личный кабинет для загрузки и конвертации вашего
+                                исследования в формат DICOM.
+                            {% endblocktranslate %}
+                        </p>
                         <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto"
                            href="{% url 'how_it_works' %}">
-                            Подробнее
+                            {% translate 'Подробнее' %}
                             <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                         </a>
                     </div>

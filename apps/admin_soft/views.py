@@ -3,13 +3,14 @@ from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView, PasswordResetConfirmView
-from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
-    UserPasswordChangeForm
 from django.contrib.auth import logout
 from django.views.generic import TemplateView, UpdateView, View
 from django.contrib import messages
+
 from apps.converter.models import UserSettings, Research, Transaction
 from apps.payments.models import Payment
+from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
+    UserPasswordChangeForm
 
 
 # Create your views here.

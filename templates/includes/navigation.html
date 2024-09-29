@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <!-- Navbar -->
 
@@ -14,13 +15,13 @@
 
                 <li class="nav-item d-flex align-items-center">
                     <a href="{% url 'detailed_info' %}" class="nav-link text-body font-weight-bold px-0">
-                        <span class="d-sm-inline d-none me-3">Узнать больше</span>
+                        <span class="d-sm-inline d-none me-3">{% translate 'Узнать больше' %}</span>
                     </a>
                 </li>
 
                 <li class="nav-item d-flex align-items-center">
                     <a href="{% url 'prices' %}" class="nav-link text-body font-weight-bold px-0">
-                        <span class="d-sm-inline d-none me-3">Цены</span>
+                        <span class="d-sm-inline d-none me-3">{% translate 'Цены' %}</span>
                     </a>
                 </li>
 
@@ -29,7 +30,7 @@
 
                         <a href="{% url 'profile' %}" class="nav-link text-body font-weight-bold px-0"><span class="d-sm-inline d-none me-3">
                             <i class="fa fa-user fixed-plugin-button-nav cursor-pointer"></i>
-                            Личный Кабинет</span>
+                            {% translate 'Личный Кабинет' %}</span>
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
@@ -37,7 +38,7 @@
                             {% csrf_token %}
                             <button class="nav-link text-body font-weight-bold px-0 p-1"
                                     style="  padding: 0;  border: none;  font: inherit;  color: inherit;  background-color: transparent;"
-                                    type="submit"><span class="d-sm-inline d-none me-3">Выйти</span>
+                                    type="submit"><span class="d-sm-inline d-none me-3">{% translate 'Выйти' %}</span>
                             </button>
                         </form>
                     </li>
@@ -45,7 +46,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="{% url 'login' %}" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none me-3">Войти</span>
+                            <span class="d-sm-inline d-none me-3">{% translate 'Войти' %}</span>
                         </a>
                     </li>
                 {% endif %}
@@ -58,10 +59,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'set_lang_en' %}">
-                            🇺🇸 Английский
+                            🇺🇸 {% translate 'Английский' %}
                         </a></li>
                         <li><a class="dropdown-item" href="{% url 'set_lang_ru' %}">
-                            🇷🇺 Русский
+                            🇷🇺 {% trans "Русский" %}
                         </a></li>
                     </ul>
                 </li>
