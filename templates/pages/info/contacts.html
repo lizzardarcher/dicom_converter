@@ -1,17 +1,18 @@
 {% extends 'layouts/base.html' %}
-{% block title %}Контакты - Конвертация данных GALILEOS в DICOM{% endblock title %}
+{% load i18n %}
+{% block title %}{% blocktrans %}Контакты - Конвертация данных GALILEOS в DICOM{% endblocktrans %}{% endblock title %}
 
 {% block content %}
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Свяжитесь с нами</h2>
+        <h2 class="text-center mb-4">{% blocktrans %}Свяжитесь с нами{% endblocktrans %}</h2>
 
         <section class="section mb-5">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <h3 class="mb-4">Наши контакты</h3>
+                    <h3 class="mb-4">{% blocktrans %}Наши контакты{% endblocktrans %}</h3>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Телефон:</strong> <a href="tel: +79043834169">+7 904 383 4169</a></li>
-                        <li class="list-group-item"><strong>Почта:</strong> <a href="mailto: galileos@internet.ru">galileos@internet.ru</a>
+                        <li class="list-group-item"><strong>{% trans "Телефон:" %}</strong> <a href="tel: +79043834169">+7 904 383 4169</a></li>
+                        <li class="list-group-item"><strong>{% trans "Почта:" %}</strong> <a href="mailto: galileos@internet.ru">galileos@internet.ru</a>
                         </li>
 {#                        <li class="list-group-item"> <a href="https://vk.com" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=VK"#}
 {#                                                      class="rounded-circle" alt="ВКонтакте"> ВКонтакте</a></li>#}
@@ -19,13 +20,13 @@
                                                       class="rounded-circle" alt="Telegram"> Telegram</a></li>
 {#                        <li class="list-group-item"><a href="https://wa.me/" class="me-3"><img src="https://placehold.co/30x30/cccccc/000000?text=WA"#}
 {#                                                      class="rounded-circle" alt="Whatsapp"> Whatsapp</a></li>#}
-                        <li class="list-group-item">Владелец проекта: Мезенцев Никита Владимирович</li>
+                        <li class="list-group-item">{% blocktrans %}Владелец проекта: Мезенцев Никита Владимирович{% endblocktrans %}</li>
                         <li class="list-group-item">ИНН: 667004940806</li>
-                        <li class="list-group-item">Разработчик: Горковенков Иван Сергеевич</li>
+                        <li class="list-group-item">{% blocktrans %}Разработчик: Горковенков Иван Сергеевич{% endblocktrans %}</li>
                     </ul>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <h3 class="mb-3">Форма обратной связи</h3>
+                    <h3 class="mb-3">{% blocktrans %}Форма обратной связи{% endblocktrans %}</h3>
 
                     <form method="POST">
                         {% csrf_token %}
@@ -43,7 +44,7 @@
 
                         {{ form }}
 
-                        <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Отправить</button>
+                        <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">{% trans "Отправить" %}</button>
                     </form>
                 </div>
             </div>

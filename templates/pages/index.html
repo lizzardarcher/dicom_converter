@@ -155,13 +155,13 @@
                 <div class="col-xxl-8">
                     <div class="text-center my-5">
                         <h2 class="display-3 text-dark fw-bolder mb-5">
-                            <span class="text-dark text-gradient d-inline">Уникальное решение</span></h2>
+                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное решение{% endblocktrans %}</span></h2>
                         <p class="lead fw-light mb-4">
-                            Мы единственный сервис осуществляющий конвертацию данных с томографов Galileos
+                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов Galileos{% endblocktrans %}
                         </p>
                         <p class="text-muted">
-                            Вам не придется долго ждать результата. Мы оптимизировали процесс конвертации, чтобы вы
-                            получили доступ к вашим данным максимально быстро.
+                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс конвертации, чтобы вы
+                            получили доступ к вашим данным максимально быстро.{% endblocktrans %}
                         </p>
                     </div>
                 </div>
@@ -217,12 +217,12 @@
                         <div class="card-body d-flex flex-column align-items-center">
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 1"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 1">
-                            <h5 class="card-title">Архив с данными</h5>
-                            <p class="card-text">Создайте архив (zip, rar) с вашим исследованием.</p>
-                            <h6 class="card-text">Популярные архиваторы:</h6>
+                            <h5 class="card-title">{% blocktrans %}Архив с данными{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Создайте архив (zip, rar) с вашим исследованием.{% endblocktrans %}</p>
+                            <h6 class="card-text">{% blocktrans %}Популярные архиваторы:{% endblocktrans %}</h6>
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    {% blocktranslate %}Для Windows:{% endblocktranslate %}
+                                    {% blocktranslate %}{% trans "Для" %} Windows:{% endblocktranslate %}
                                     <ul>
                                         <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
                                         <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
@@ -230,7 +230,7 @@
                                 </div>
 
                                 <div class="col-sm-12 col-md-6">
-                                    {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
+                                    {% blocktranslate %}{% trans "Для" %} Mac OS:{% endblocktranslate %}
                                     <ul>
                                         <li>
                                             <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
@@ -246,10 +246,11 @@
                         <div class="card-body d-flex flex-column align-items-center">
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 2"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 2">
-                            <h5 class="card-title">Загрузка данных</h5>
+                            <h5 class="card-title">{% blocktrans %}Загрузка данных{% endblocktrans %}</h5>
+                            <p class="card-text"></p>
                             <p class="card-text">Загружаете данные с томографа GALILEOS в наше <a
-                                    href="{% url 'upload research' %}">программное обеспечение</a>
-                                Файлы могут быть загружены с вашего компьютера, флешки или любого другого носителя.
+                                    href="{% url 'upload research' %}">{% blocktrans %}программное обеспечение{% endblocktrans %}</a>
+                                {% blocktrans %}Файлы могут быть загружены с вашего компьютера, флешки или любого другого носителя.{% endblocktrans %}
                             </p>
                         </div>
                     </div>
@@ -259,9 +260,9 @@
                         <div class="card-body d-flex flex-column align-items-center">
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 3"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 3">
-                            <h5 class="card-title">Конвертация данных</h5>
-                            <p class="card-text">Наше программное обеспечение быстро и безопасно конвертирует данные
-                                GALILEOS в формат DICOM.</p>
+                            <h5 class="card-title">{% blocktrans %}Конвертация данных{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Наше программное обеспечение быстро и безопасно конвертирует данные
+                                GALILEOS в формат DICOM.{% endblocktrans %}</p>
                         </div>
                     </div>
                 </div>
@@ -273,12 +274,12 @@
                         <div class="card-body d-flex flex-column align-items-center">
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 4"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 4">
-                            <h5 class="card-title">Загрузка результата</h5>
-                            <p class="card-text">Вы получаете готовые данные в формате DICOM. Файлы можно скачать на ваш
+                            <h5 class="card-title">{% blocktrans %}Загрузка результата{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Вы получаете готовые данные в формате DICOM. Файлы можно скачать на ваш
                                 компьютер из личного кабинета в разделе исследования. Также по завершении вам будет
                                 направлено письмо на
                                 указанную при регистрации почту со ссылкой на архив в облаке. Данные хранятся 6
-                                месяцев.</p>
+                                месяцев.{% endblocktrans %}</p>
                         </div>
                     </div>
                 </div>

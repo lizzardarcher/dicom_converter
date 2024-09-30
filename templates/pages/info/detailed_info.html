@@ -1,23 +1,24 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %} Конвертация данных GALILEOS в DICOM{% endblock title %}
+{% block title %} {% blocktrans %}Конвертация данных GALILEOS в DICOM{% endblocktrans %}{% endblock title %}
 {% block content %}
     <div class="container">
 
-        <h1 class="text-center mb-4">Конвертация данных GALILEOS в DICOM</h1>
+        <h1 class="text-center mb-4">{% blocktrans %}Конвертация данных GALILEOS в DICOM{% endblocktrans %}</h1>
 
         <section class="section mb-5">
-            <h2 class="h4 mb-3">Что такое GALILEOS?</h2>
-            <p class="lead">GALILEOS - это передовая система 3D-планирования для имплантологии, разработанная компанией
+            <h2 class="h4 mb-3">{% blocktrans %}Что такое GALILEOS?{% endblocktrans %}</h2>
+            <p class="lead">{% blocktrans %}GALILEOS - это передовая система 3D-планирования для имплантологии, разработанная компанией
                 SIRONA. Она представляет собой мощный инструмент, который помогает стоматологам и имплантологам в
-                планировании и проведении сложных имплантационных процедур.
+                планировании и проведении сложных имплантационных процедур.{% endblocktrans %}
             </p>
             <div class="row">
                 <div class="col-md-6">
-                    <p>Система GALILEOS использует технологию компьютерной томографии (КТ) для создания детальных
+                    <p>{% blocktrans %}Система GALILEOS использует технологию компьютерной томографии (КТ) для создания детальных
                         3D-изображений костных структур челюсти пациента. Эти изображения предоставляют ценную
                         информацию о положении нервов, сосудов и костной ткани, что позволяет стоматологам точно
-                        планировать размещение имплантатов.</p>
+                        планировать размещение имплантатов.{% endblocktrans %}</p>
                 </div>
                 <div class="col-md-6">
                     <img src="{% static 'img/sirona-scaner.jpg' %} "
@@ -27,60 +28,60 @@
         </section>
 
         <section class="section mb-5">
-            <h2 class="h4 mb-3">Зачем нужна конвертация в DICOM?</h2>
-            <p class="lead">DICOM (Digital Imaging and Communications in Medicine) - это стандартный формат для хранения
+            <h2 class="h4 mb-3">{% blocktrans %}Зачем нужна конвертация в DICOM?{% endblocktrans %}</h2>
+            <p class="lead">{% blocktrans %}DICOM (Digital Imaging and Communications in Medicine) - это стандартный формат для хранения
                 и обмена медицинскими изображениями. Он обеспечивает совместимость данных между различными системами,
-                программами и медицинскими учреждениями.</p>
+                программами и медицинскими учреждениями.{% endblocktrans %}</p>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Совместимость:</strong> Конвертация данных GALILEOS в DICOM
+                <li class="list-group-item"><strong>{% trans "Совместимость:" %}</strong> {% blocktrans %}Конвертация данных GALILEOS в DICOM
                     позволяет интегрировать их с другими медицинскими изображениями, например, рентгеновскими снимками.
-                    Это дает более полное представление о состоянии пациента.
+                    Это дает более полное представление о состоянии пациента.{% endblocktrans %}
                 </li>
-                <li class="list-group-item"><strong>Широкая поддержка:</strong> Данные в формате DICOM могут быть
+                <li class="list-group-item"><strong>{% blocktrans %}Широкая поддержка:{% endblocktrans %}</strong> {% blocktrans %}Данные в формате DICOM могут быть
                     использованы в программном обеспечении для планирования имплантации различных производителей. Это
-                    обеспечивает гибкость и выбор подходящего инструментария.
+                    обеспечивает гибкость и выбор подходящего инструментария.{% endblocktrans %}
                 </li>
-                <li class="list-group-item"><strong>Долгосрочное хранение:</strong> DICOM - это устойчивый формат,
-                    который обеспечивает надежное хранение данных для дальнейшего использования и анализа.
+                <li class="list-group-item"><strong>{% blocktrans %}Долгосрочное хранение:{% endblocktrans %}</strong> {% blocktrans %}DICOM - это устойчивый формат,
+                    который обеспечивает надежное хранение данных для дальнейшего использования и анализа.{% endblocktrans %}
                 </li>
             </ul>
         </section>
 
         <section class="section mb-5">
-            <h2 class="h4 mb-3">Как работает конвертация?</h2>
-            <p>Конвертация данных GALILEOS в DICOM осуществляется с помощью специализированного программного
-                обеспечения. Обычно процесс выглядит следующим образом:</p>
+            <h2 class="h4 mb-3">{% blocktrans %}Как работает конвертация?{% endblocktrans %}</h2>
+            <p>{% blocktrans %}Конвертация данных GALILEOS в DICOM осуществляется с помощью специализированного программного
+                обеспечения. Обычно процесс выглядит следующим образом:{% endblocktrans %}</p>
             <ol class="list-group list-group-numbered">
-                <li class="list-group-item"><strong>Импорт данных:</strong> Данные GALILEOS загружаются в программу
-                    конвертации.
+                <li class="list-group-item"><strong>{% blocktrans %}Импорт данных:{% endblocktrans %}</strong> {% blocktrans %}Данные GALILEOS загружаются в программу
+                    конвертации.{% endblocktrans %}
                 </li>
-                <li class="list-group-item"><strong>Настройка параметров:</strong> Пользователь может задать параметры
-                    конвертации.
+                <li class="list-group-item"><strong>{% blocktrans %}Настройка параметров:{% endblocktrans %}</strong> {% blocktrans %}Пользователь может задать параметры
+                    конвертации.{% endblocktrans %}
                 </li>
-                <li class="list-group-item"><strong>Экспорт в DICOM:</strong> Программа конвертирует данные GALILEOS в
-                    формат DICOM и сохраняет их в облаке.
+                <li class="list-group-item"><strong>{% blocktrans %}Экспорт в DICOM:{% endblocktrans %}</strong> {% blocktrans %}Программа конвертирует данные GALILEOS в
+                    формат DICOM и сохраняет их в облаке.{% endblocktrans %}
                 </li>
             </ol>
         </section>
 
         <section class="section mb-5">
-            <h2 class="h4 mb-3">Где получить информацию о конвертации?</h2>
-            <p>Дополнительную информацию о конвертации данных GALILEOS в DICOM можно получить из следующих
-                источников:</p>
+            <h2 class="h4 mb-3">{% blocktrans %}Где получить информацию о конвертации?{% endblocktrans %}</h2>
+            <p>{% blocktrans %}Дополнительную информацию о конвертации данных GALILEOS в DICOM можно получить из следующих
+                источников:{% endblocktrans %}</p>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <a href="https://www.sirona.com/" target="_blank">
-                        Веб-сайт SIRONA
+                        {% blocktrans %}Веб-сайт SIRONA{% endblocktrans %}
                     </a>
                 </li>
                 <li class="list-group-item">
                     <a href="{% url 'how_it_works' %}" target="_blank">
-                        Пошаговая инструкция
+                        {% blocktrans %}Пошаговая инструкция{% endblocktrans %}
                     </a>
                 </li>
                 <li class="list-group-item">
                     <a href="{% url 'faq' %}" target="_blank">
-                        Часто задаваемые вопросы
+                        {% blocktrans %}Часто задаваемые вопросы{% endblocktrans %}
                     </a>
                 </li>
             </ul>

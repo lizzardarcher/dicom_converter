@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}Исследования{% endblock title %}
 {% block content %}
@@ -10,10 +11,10 @@
                 {% if research_avail_count > 0 %}
                     <form id="upload_form" class="form" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <h3 class="pt-5 pb-5">Загрузить исследование</h3>
+                        <h3 class="pt-5 pb-5">{% blocktrans %}Загрузить исследование{% endblocktrans %}</h3>
 
-                        <label class="">Загрузите ваше исследование из томографа Galileos в формате .zip или
-                            .rar</label>
+                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip или
+                            .rar{% endblocktrans %}</label>
                         {% if form.errors %}
                             <div class="col-12 justify-content-center">
                                 <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
@@ -31,31 +32,31 @@
                         <div class="form-check form-switch pt-5">
                             {{ form.is_anonymous }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault1">Анонимизировать данные о пациенте</label>
+                                   for="flexSwitchCheckDefault1">{% blocktrans %}Анонимизировать данные о пациенте{% endblocktrans %}</label>
                         </div>
 
                         <div class="form-check form-switch pt-2">
                             {{ form.is_one_file }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault2">Сформировать одним файлом</label>
+                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним файлом{% endblocktrans %}</label>
                         </div>
 
-                        <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">Подтвердить</button>
+                        <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">{% trans "Подтвердить" %}</button>
                     </form>
                 {% else %}
                     <div class="card-header pb-0 px-3">
-                        <h6 class="mb-0">У вас нет доступных конвертаций</h6>
+                        <h6 class="mb-0">{% blocktrans %}У вас нет доступных конвертаций{% endblocktrans %}</h6>
                     </div>
                     {% include 'includes/pricing.html' %}
                 {% endif %}
                 {% if research %}
                     <div class="container-fluid mt-5">
-                        <h4>Готовые исследования</h4>
+                        <h4>{% blocktrans %}Готовые исследования{% endblocktrans %}</h4>
                         <ol>
                             {% for r in research %}
                                 <li><a class="" href="/media/{{ r.ready_archive }}">
                                     <p class="bg-gradient-faded-light rounded text-center text-dark text-bold mt-3">
-                                         [ {{ r.date_created }} ]  [ {{ r }} ] Скачать архив <i class="fa fa-download"></i></p></a></li>
+                                         [ {{ r.date_created }} ]  [ {{ r }} ] {% blocktrans %}Скачать архив{% endblocktrans %} <i class="fa fa-download"></i></p></a></li>
                             {% endfor %}
                         </ol>
 
@@ -69,16 +70,4 @@
 
 {% endblock content %}
 {% block extrascript %}
-{#    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>#}
-{#    <script>#}
-{#        // Let's call it 2 times just for fun...#}
-{#        $("#upload_form").LoadingOverlay("show", {#}
-{#            background: "rgba(165, 190, 100, 0.5)"#}
-{#        });#}
-{#        $("#upload_form").LoadingOverlay("show");#}
-{##}
-{#        // Here we might call the "hide" action 2 times, or simply set the "force" parameter to true:#}
-{#        $("#upload_form").LoadingOverlay("hide", true);#}
-{#    </script>#}
-
 {% endblock extrascript %}
