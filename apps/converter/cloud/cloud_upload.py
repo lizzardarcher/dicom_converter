@@ -45,10 +45,8 @@ def upload(file_path, email, research_id):
             Research.objects.filter(id=int(research_id)).update(cloud_url=link, is_cloud_upload=True)
 
         except Exception as e:
-            if 'IsADirectoryError' in e:
-                pass
-            else:
-                logger.fatal(traceback.format_exc())
+            # logger.fatal(traceback.format_exc())
+            logger.fatal(e)
 
 
 
@@ -60,15 +58,17 @@ if __name__ == '__main__':
             res_list = Research.objects.filter(is_cloud_upload=False)
             if res_list:
                 for res in res_list:
-                    logger.info(f'[NEW ARCHIVE TO UPLOAD] [{res.ready_archive}] [{res.date_created}]')
-                    start_time = datetime.now()
-                    upload(file_path=f'/opt/dicom_converter/static/media/{res.ready_archive.name}',
-                           email=res.user.email,
-                           research_id=res.id)
-                    end_time = datetime.now()
-                    logger.info(f'[UPLOAD SUCCESS] [FINISHED TIME] [{end_time - start_time}]')
+                    if res.ready_archive:
+                        logger.info(f'[NEW ARCHIVE TO UPLOAD] [{res.ready_archive}] [{res.date_created}]')
+                        start_time = datetime.now()
+                        upload(file_path=f'/opt/dicom_converter/static/media/{res.ready_archive.name}',
+                               email=res.user.email,
+                               research_id=res.id)
+                        end_time = datetime.now()
+                        logger.info(f'[UPLOAD SUCCESS] [FINISHED TIME] [{end_time - start_time}]')
                 sleep(5)
             else:
+                logger.info(f'[--- EMPTY LIST ---]')
                 sleep(5)
 
     except KeyboardInterrupt:
