@@ -140,3 +140,40 @@ def send_email_with_attachment(to_email, subject, body, file_path=None):
 
     # Отправка письма
     email.send()
+
+
+import patoolib
+import os
+import shutil
+
+def cut_file_path_in_archive(archive_path, file_path_to_cut, new_file_path):
+    """
+    Cuts the path of a file inside an archive.
+
+    Args:
+        archive_path (str): Path to the archive file (e.g., "my_archive.zip").
+        file_path_to_cut (str): Path to the file inside the archive (e.g., "folder1/folder2/myfile.txt").
+        new_file_path (str): The desired new path for the file (e.g., "myfile.txt").
+    """
+    # Extract the archive
+    patoolib.extract_archive(archive_path, outdir="temp_extracted")
+
+    # Calculate the source and destination paths for moving the file
+    source_path = os.path.join("temp_extracted", file_path_to_cut)
+    destination_path = os.path.join("temp_extracted", new_file_path)
+
+    # Move the file to the new location
+    shutil.move(source_path, destination_path)
+
+    # Repackage the archive
+    # (You'll need to adjust the archive format based on your needs)
+    patoolib.create_archive("modified_" + archive_path, "temp_extracted", format="zip")
+
+    # Clean up the temporary directory
+    shutil.rmtree("temp_extracted")
+
+# # Example usage
+# archive_path = "my_archive.zip"
+# file_path_to_cut = "folder1/folder2/myfile.txt"
+# new_file_path = "myfile.txt"
+# cut_file_path_in_archive(archive_path, file_path_to_cut, new_file_path)

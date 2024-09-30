@@ -17,6 +17,7 @@ from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 import patoolib
 
+from apps.converter.one_file import merge_dicom
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, \
     unidecode_recursive, send_email_with_attachment
@@ -87,11 +88,8 @@ class Research(models.Model):
 
             # 3. Прогоняем архив через glx.py
             glx.glx2dicom(srcdir=Path(f'{glx_src_dir}'), dstdir=Path(f'{glx_dstr_dir}'))
-            # os.system(f"python {BASE_DIR.joinpath('apps/converter/glx.py')} {glx_src_dir} {glx_dstr_dir}")
-            # sleep(7)
 
             # 4. Прогоняем полученные файлы через renamer.py
-
             add_ext_recursive(glx_dstr_dir.__str__(), '.dcm')
 
             # 5. Архивируем полученное исследование
@@ -99,11 +97,26 @@ class Research(models.Model):
             logger.info(f"6. {ready_archive}")
             logger.info(f"7. {glx_dstr_dir.__str__()}")
 
-            if '.rar' in self.raw_archive.name:
+            # Если одним фалом, то ...
+            if self.is_one_file:
+                one_file = merge_dicom(
+                    input_dir=f'{glx_dstr_dir.__str__()}',
+                    output_filename=f'{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}_research.dcm')
+
+                # if '.rar' in self.raw_archive.name:
+                #     patoolib.create_archive(
+                #         archive=ready_archive,
+                #         filenames=(one_file,), program='/usr/bin/rar')
+                # else:
                 patoolib.create_archive(
                     archive=ready_archive,
-                    filenames=(glx_dstr_dir.__str__(),), program='/usr/bin/rar')
+                    filenames=(one_file,))
             else:
+                # if '.rar' in self.raw_archive.name:
+                #     patoolib.create_archive(
+                #         archive=ready_archive,
+                #         filenames=(glx_dstr_dir.__str__(),), program='/usr/bin/rar')
+                # else:
                 patoolib.create_archive(
                     archive=ready_archive,
                     filenames=(glx_dstr_dir.__str__(),))
@@ -111,60 +124,24 @@ class Research(models.Model):
             file = search_file_in_dir(BASE_DIR, ready_archive)
             logger.info(f"8. {file}")
             os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready") / file.split('/')[-1]))
-            # 6. Сохраняем ссылку на архив в модель
 
+            # 6. Сохраняем ссылку на архив в модель
             Research.objects.filter(id=self.id).update(
                 ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
-            end_time = datetime.now()
 
             try:
                 os.remove(archive_dir)
                 shutil.rmtree(output_dir)
             except OSError as e:
                 logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+
             UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
 
-            # todo make path
-            # file_path = ('/home/ansel/PycharmProjects/dicom_converter/static/media/' +
             file_path = ('/opt/dicom_converter/static/media/' +
                          Research.objects.filter(id=self.id).last().ready_archive.name)
+
             logger.info(f"9. [file_path attached to email] {file_path}")
-            # os.system('export PYTHONPATH=/opt/dicom_converter &&'
-            #           '/opt/dicom_converter/env/bin/python3.12 /opt/dicom_converter/apps/converter/cloud/cloud_upload.py'
-            #           ' {0} {1} {2}'.format(
-            #     file_path, self.user.email, str(self.id)
-            # ))
-            # try:
-            #     client = yadisk.Client(token=settings.YANDEX_TOKEN)
-            #     with client:
-            #         try:
-            #             _dir = f'testo{start_time.now().date().__str__()}.zip'
-            #             # client.mkdir(_dir)
-            #
-            #             logger.info(f"9.1. [upload_file_path] [{file_path}]")
-            #             client.upload(file_path, f"disk:/{_dir}", overwrite=True, timeout=3600)
-            #
-            #             # logger.info(f"9.2. [publish] [app:/Test/{file}]")
-            #             client.publish(f'disk:/{_dir}')
-            #             #
-            #             m = client.get_meta(f'disk:/{_dir}').file
-            #             print(m)
-            #         except Exception as e:
-            #             m = 'False'
-            #             print(traceback.format_exc())
-            #
-            #     send_email_with_attachment(
-            #         to_email=self.user.email,
-            #         subject='Тестовое письмо без вложения',
-            #         body=f'Привет! Это тестовое письмо без вложения.\n'
-            #              f'Ссылка на исследование\n'
-            #              f'{m}',
-            #         # file_path=file_path
-            #     )
-            #     Research.objects.filter(id=self.id).update(cloud_url=m)
-            # except Exception as e:
-            #     logger.fatal(traceback.format_exc())
-            logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{end_time - start_time}]')
+            logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
 
     class Meta:
         verbose_name = 'Исследование'

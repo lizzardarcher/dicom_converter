@@ -1,11 +1,11 @@
-__title__ = "glx2dicom"
-__version__ = "0.1"
-__author__ = "Max Nikulin"
-__email__ = "manikulin@gmail.com"
+__title__ = "glxToDICOMConverter"
+__version__ = "1.0"
+__author__ = "Ivan Gorkovenkov"
+__email__ = "dltahiyan@gmail.com"
 __description__ = \
     """Convert Sirona GALAXIS (GALILEOS Viewer) CBCT format to DICOM"""
 __license__ = "GPLv3+"
-__copyright__ = "Copyright (C) 2022 Max Nikulin"
+__copyright__ = "Copyright (C) 2024 Ivan Gorkovenkov"
 
 import datetime
 import gzip
@@ -44,8 +44,8 @@ default_dicom_attrs = {
     # PS3.3 C.7.1 patient
     # No UID
     # Likely encoded in ``.gwg` files
-    'PatientName': 'Test^Firstname',
-    'PatientID': '1234456789',
+    'PatientName': 'Anonymous Patient',
+    'PatientID': f'{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}',
     # TODO (0018, 5100) PatientPosition
     # PS3.3 C.7.2 study
     'StudyDescription': 'Dental CBCT Study',
@@ -352,95 +352,54 @@ def glx2dicom(srcdir: Path, dstdir: Path, dicom_attrs=None) -> None:
     fs.write(dstdir)
 
 
-def create_argument_parser():
-    from argparse import ArgumentParser, RawDescriptionHelpFormatter
-    parser = ArgumentParser(
-        usage=usage,
-        description=__description__,
-        # Do not wrap --version
-        formatter_class=RawDescriptionHelpFormatter)
-    parser.add_argument("-V", "--version", action="version", version=version)
-    parser.add_argument(
-        "--tag", metavar="DICOM_TAG=VALUE",
-        default=[], action="append",
-        help="set or override DICOM tag")
-    parser.add_argument(
-        "src_dir", metavar="SRC_DIR",
-        help='Directory with source CT images'
-        ', "ID_vol_0" adjucent to the "ID.gwg" file')
-    parser.add_argument(
-        "dst_dir", metavar="DST_DIR",
-        help='Directory to write the result DICOMDIR and images')
-    return parser
+# def create_argument_parser():
+#     from argparse import ArgumentParser, RawDescriptionHelpFormatter
+#     parser = ArgumentParser(
+#         usage=usage,
+#         description=__description__,
+#         # Do not wrap --version
+#         formatter_class=RawDescriptionHelpFormatter)
+#     parser.add_argument("-V", "--version", action="version", version=version)
+#     parser.add_argument(
+#         "--tag", metavar="DICOM_TAG=VALUE",
+#         default=[], action="append",
+#         help="set or override DICOM tag")
+#     parser.add_argument(
+#         "src_dir", metavar="SRC_DIR",
+#         help='Directory with source CT images'
+#         ', "ID_vol_0" adjucent to the "ID.gwg" file')
+#     parser.add_argument(
+#         "dst_dir", metavar="DST_DIR",
+#         help='Directory to write the result DICOMDIR and images')
+#     return parser
 
 
-def cli_tags2dict(tags: List[str]):
-    retval = {}
-    errors = []
-    for kv in tags:
-        k, v = kv.split("=", 2)
-        try:
-            datadict.dictionary_VR(k)
-            # TODO convert integer values
-            retval[k] = v
-        except (KeyError, ValueError):
-            errors.append(f'Unknown DICOM tag: {kv!r}')
-    return retval, errors
+# def cli_tags2dict(tags: List[str]):
+#     retval = {}
+#     errors = []
+#     for kv in tags:
+#         k, v = kv.split("=", 2)
+#         try:
+#             datadict.dictionary_VR(k)
+#             # TODO convert integer values
+#             retval[k] = v
+#         except (KeyError, ValueError):
+#             errors.append(f'Unknown DICOM tag: {kv!r}')
+#     return retval, errors
 
 
-def readme():
-    """Print description intended for ``README.rst`` file.
-    - Merge the module docstring with disclaimer and license statement.
-    - Check metadata consistency.
-    Usage::
-        python3 -c 'from glx2dicom import readme; print(readme())'
-    """
-    title, usage_par, usage_cmd, body = __doc__.split(sep='\n\n', maxsplit=3)
-    assert title == f'{__title__} - {__description__}'
-    use = re.sub(r'\n.*--version.*\n', '', usage)
-    assert re.sub(r'^ *', '', usage_cmd, flags=re.MULTILINE) == re.sub(
-        r'^ *', '',
-        use % dict(prog=f'python3 {__title__}.py'),
-        flags=re.MULTILINE)
-    title_bar = re.sub('.', '=', title)
-    # print('\n'.join([
-    #     title_bar, title, title_bar, '', usage_par,
-    #     '', usage_cmd, '', body, '']),
-    #     end='')
-    # print(
-    #     re.sub('<([^>]+)>', '\\1', version).strip()
-    #     .replace('\n', '\n\n') % dict(prog=__title__))
-
-
-# if __name__ == '__main__':
-#     parser = create_argument_parser()
-#     args = parser.parse_args()
-#     src_dir = Path(args.src_dir)
-#     # ``collections.ChainMap(dicom_attrs, default_dicom_attrs)``
-#     # would not work because ``pop(key)`` removes element
-#     # from first dict only and next time the ``key`` may be obtained
-#     # from second dict.
-#     dicom_attrs = default_dicom_attrs.copy()
-#     glx_attrs = read_fbp_params(src_dir)
-#     dicom_attrs.update(glx_attrs)
-#
-#     cli_attrs, errors = cli_tags2dict(args.tag)
-#     if errors:
-#         # "%(prog)s" is not supported here
-#         parser.error("\n".join(errors))
-#     dicom_attrs.update(cli_attrs)
-#
-#     # TODO --verbose option
-#     # from pprint import pprint
-#     # pprint(dicom_attrs)
-#
-#     start_time = datetime.datetime.now()
-#     glx2dicom(src_dir, Path(args.dst_dir), dicom_attrs)
-#     finish_time = datetime.datetime.now()
-#     # time spent
-#     print(f'[glx2dicom] [finished in] [{str(finish_time - start_time)}] ')
-
-
-# glx2dicom(srcdir=Path('/home/ansel/Загрузки/БатуринаИ.С/00005bd235c6015e_vol_0'),
-#           dstdir=Path('/home/ansel/PycharmProjects/dicom_converter/dcm'),
-#           dicom_attrs=default_dicom_attrs.copy())
+# def readme():
+#     """Print description intended for ``README.rst`` file.
+#     - Merge the module docstring with disclaimer and license statement.
+#     - Check metadata consistency.
+#     Usage::
+#         python3 -c 'from glx2dicom import readme; print(readme())'
+#     """
+#     title, usage_par, usage_cmd, body = __doc__.split(sep='\n\n', maxsplit=3)
+#     assert title == f'{__title__} - {__description__}'
+#     use = re.sub(r'\n.*--version.*\n', '', usage)
+#     assert re.sub(r'^ *', '', usage_cmd, flags=re.MULTILINE) == re.sub(
+#         r'^ *', '',
+#         use % dict(prog=f'python3 {__title__}.py'),
+#         flags=re.MULTILINE)
+#     title_bar = re.sub('.', '=', title)

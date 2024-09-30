@@ -29,8 +29,8 @@ def upload(file_path, email, research_id):
     with client:
         try:
             logger.info(f"9.1. [upload_file_path] [{file_path}]")
-
-            _dir = f'galileos_pro_research_{datetime.now().strftime("%Y-%m-%d %H:%M")}'
+            research = Research.objects.filter(id=int(research_id)).last()
+            _dir = f'galileos_pro_research_{research.user.username}_{datetime.now().strftime("%Y-%m-%d %H:%M")}'
             client.upload(file_path, f"disk:/{_dir}", overwrite=True, timeout=3600)
             client.publish(f'disk:/{_dir}')
             link = client.get_meta(f'disk:/{_dir}').file
@@ -45,7 +45,10 @@ def upload(file_path, email, research_id):
             Research.objects.filter(id=int(research_id)).update(cloud_url=link, is_cloud_upload=True)
 
         except Exception as e:
-            logger.fatal(traceback.format_exc())
+            if 'IsADirectoryError' in e:
+                pass
+            else:
+                logger.fatal(traceback.format_exc())
 
 
 
@@ -66,7 +69,6 @@ if __name__ == '__main__':
                     logger.info(f'[UPLOAD SUCCESS] [FINISHED TIME] [{end_time - start_time}]')
                 sleep(5)
             else:
-                logger.info(f'[--EMPTY RESEARCH LIST--]')
                 sleep(5)
 
     except KeyboardInterrupt:

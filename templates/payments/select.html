@@ -5,9 +5,7 @@
     <div class="container mb-5">
         <div class="card m-5 p-5">
             <h3 class="mb-4">
-                {% blocktranslate %}
-                    Выберите способ оплаты:
-                {% endblocktranslate %}
+                {% blocktranslate %}Выберите способ оплаты:{% endblocktranslate %}
             </h3>
             <div class="card-pricing">
                 <div class="row border-secondary-subtle">
@@ -16,20 +14,14 @@
                              alt="YooKassa" width="250">
                         <div class="card-body">
                             <h5 class="card-title">
-                                {% blocktranslate %}
-                                    ЮКасса
-                                {% endblocktranslate %}
+                                {% blocktranslate %}ЮКасса{% endblocktranslate %}
                             </h5>
                             <p class="card-text">
-                                {% blocktranslate %}
-                                    Подходит для карт выпущенных в РФ и СНГ.
-                                {% endblocktranslate %}
+                                {% blocktranslate %}Подходит для карт выпущенных в РФ и СНГ.{% endblocktranslate %}
                             </p>
                             <a href="{% url 'yookassa_process_payment' %}" class="text-2xl btn">
                                 <span style="color:#0e456d">
-                                    {% blocktranslate %}
-                                        Продолжить
-                                    {% endblocktranslate %}
+                                    {% blocktranslate %}Продолжить{% endblocktranslate %}
                             </span>
                             </a>
                         </div>

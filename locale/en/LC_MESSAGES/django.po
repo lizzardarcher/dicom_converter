@@ -1,0 +1,2470 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-30 10:42+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/admin_soft/forms.py:13
+msgid "Пароль"
+msgstr ""
+
+#: apps/admin_soft/forms.py:17
+msgid "Подтверждение пароля"
+msgstr ""
+
+#: apps/admin_soft/forms.py:40
+msgid "Password"
+msgstr ""
+
+#: apps/payments/forms.py:6
+msgid "1 КОНВЕРТАЦИЯ"
+msgstr ""
+
+#: apps/payments/forms.py:7
+msgid "5 КОНВЕРТАЦИЙ"
+msgstr ""
+
+#: apps/payments/forms.py:8
+msgid "10 КОНВЕРТАЦИЙ"
+msgstr ""
+
+#: apps/payments/models.py:9 templates/accounts/info/transaction.html:29
+msgid "Сумма"
+msgstr ""
+
+#: apps/payments/models.py:10 templates/pages/info/price_info.html:16
+msgid "Описание"
+msgstr ""
+
+#: apps/payments/models.py:12
+msgid "Оплатить 1 конвертацию"
+msgstr ""
+
+#: apps/payments/models.py:13
+msgid "Оплатить 5 конвертаций"
+msgstr ""
+
+#: apps/payments/models.py:14
+msgid "Оплатить 10 конвертаций"
+msgstr ""
+
+#: apps/payments/models.py:16
+msgid "ID платежа YooKassa"
+msgstr ""
+
+#: apps/payments/models.py:17
+msgid "Создано"
+msgstr ""
+
+#: apps/payments/models.py:18 templates/payments/yookassa/payment_info.html:19
+msgid "Оплачено"
+msgstr ""
+
+#: apps/payments/models.py:19 templates/accounts/info/research.html:46
+#: templates/accounts/info/transaction.html:35
+msgid "Статус"
+msgstr ""
+
+#: apps/payments/models.py:21
+msgid "В ожидании"
+msgstr ""
+
+#: apps/payments/models.py:22
+msgid "Успешно"
+msgstr ""
+
+#: apps/payments/models.py:23
+msgid "Отменено"
+msgstr ""
+
+#: apps/payments/models.py:24
+msgid "Ошибка"
+msgstr ""
+
+#: apps/payments/models.py:25
+msgid "Возврат"
+msgstr ""
+
+#: apps/payments/models.py:26
+msgid "Захвачено"
+msgstr ""
+
+#: templates/404.html:9
+msgid ""
+"\n"
+"            404 Не найдено\n"
+"        "
+msgstr ""
+
+#: templates/404.html:89
+msgid ""
+"\n"
+"                Упс! Страница не найдена.\n"
+"            "
+msgstr ""
+
+#: templates/404.html:94
+msgid ""
+"\n"
+"                К сожалению, страница, которую вы искали, не существует.\n"
+"            "
+msgstr ""
+
+#: templates/404.html:100
+msgid ""
+"\n"
+"                    Вернуться на главную\n"
+"                "
+msgstr ""
+
+#: templates/404.html:105
+msgid ""
+"\n"
+"                    Связаться с нами\n"
+"                "
+msgstr ""
+
+#: templates/accounts/info/empty-research.html:5
+#: templates/accounts/info/research.html:5
+msgid "Информация об исследованиях"
+msgstr ""
+
+#: templates/accounts/info/empty-research.html:28
+#: templates/accounts/info/research.html:28 templates/pages/index.html:130
+#: templates/pages/upload_research.html:14
+msgid "Загрузить исследование"
+msgstr ""
+
+#: templates/accounts/info/empty-research.html:32
+msgid "Отсутствует информация об исследованиях"
+msgstr ""
+
+#: templates/accounts/info/empty-transaction.html:5
+#: templates/accounts/info/transaction.html:5
+msgid "Информация о проведенных транзакциях"
+msgstr ""
+
+#: templates/accounts/info/empty-transaction.html:18
+msgid "Отсутствуют данные о проведённых транзакциях"
+msgstr ""
+
+#: templates/accounts/info/research.html:32
+#: templates/accounts/info/transaction.html:18
+msgid "Сводная талица"
+msgstr ""
+
+#: templates/accounts/info/research.html:40
+#: templates/accounts/info/transaction.html:26
+msgid "Дата"
+msgstr ""
+
+#: templates/accounts/info/research.html:43
+msgid "Ссылка на готовое исследование"
+msgstr ""
+
+#: templates/accounts/info/settings.html:46
+msgid ""
+"Редактировать\n"
+"                    профиль"
+msgstr ""
+
+#: templates/accounts/info/settings.html:52
+msgid ""
+"Изменить\n"
+"                    пароль<"
+msgstr ""
+
+#: templates/accounts/login.html:31 templates/accounts/login.html:61
+#: templates/accounts/register.html:34 templates/accounts/register.html:88
+#: templates/includes/navigation.html:49
+#: templates/registration/logged_out.html:14
+msgid "Войти"
+msgstr ""
+
+#: templates/accounts/login.html:37
+msgid "Добавьте свои учетные данные"
+msgstr ""
+
+#: templates/accounts/login.html:56
+msgid "Забыли пароль?"
+msgstr ""
+
+#: templates/accounts/login.html:64
+msgid "У вас нет учетной записи?"
+msgstr ""
+
+#: templates/accounts/login.html:66 templates/accounts/register.html:84
+msgid "Зарегистрироваться"
+msgstr ""
+
+#: templates/accounts/login.html:108 templates/accounts/register.html:142
+#: templates/admin/auth/user/change_password.html:106
+#: templates/admin/login.html:93
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/accounts/login.html:110 templates/accounts/register.html:144
+#: templates/admin/auth/user/change_password.html:108
+#: templates/admin/login.html:95
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/accounts/password_change.html:17
+#: templates/registration/password_change_done.html:11
+#: templates/registration/password_change_done.html:33
+#: templates/registration/password_change_form.html:23
+msgid "Изменить пароль"
+msgstr ""
+
+#: templates/accounts/password_change.html:23
+#: templates/accounts/password_reset.html:23
+#: templates/accounts/password_reset_confirm.html:23
+msgid "Введите ваши данные"
+msgstr ""
+
+#: templates/accounts/password_change.html:39
+msgid "Изменить"
+msgstr ""
+
+#: templates/accounts/password_change_done.html:17
+#: templates/accounts/password_reset_complete.html:17
+msgid "Пароль изменен"
+msgstr ""
+
+#: templates/accounts/password_change_done.html:21
+msgid "Ваш пароль был успешно изменен."
+msgstr ""
+
+#: templates/accounts/password_reset.html:17
+#: templates/accounts/password_reset_confirm.html:17
+msgid "Сбросить пароль"
+msgstr ""
+
+#: templates/accounts/password_reset.html:45
+#: templates/accounts/password_reset_confirm.html:39
+msgid "Сбросить"
+msgstr ""
+
+#: templates/accounts/password_reset_complete.html:21
+msgid "Ваш пароль был успешно изменен. Войдите снова."
+msgstr ""
+
+#: templates/accounts/password_reset_done.html:17
+msgid "Email Отправлен"
+msgstr ""
+
+#: templates/accounts/password_reset_done.html:21
+msgid ""
+"На ваш адрес электронной почты было отправлено письмо. Пожалуйста, нажмите "
+"на ссылку и сбросьте пароль."
+msgstr ""
+
+#: templates/accounts/register.html:17
+msgid "Регистрация"
+msgstr ""
+
+#: templates/accounts/register.html:23
+msgid "Введите свои данные"
+msgstr ""
+
+#: templates/accounts/register.html:71
+msgid "Подтвердите, что вы не робот"
+msgstr ""
+
+#: templates/accounts/register.html:75
+msgid "Нажимая на кнопку зарегистрироваться вы даёте соглашаетесь с"
+msgstr ""
+
+#: templates/accounts/register.html:76
+msgid "условиями пользования"
+msgstr ""
+
+#: templates/accounts/register.html:77
+msgid "и"
+msgstr ""
+
+#: templates/accounts/register.html:78
+msgid "политикой конфиденциальности"
+msgstr ""
+
+#: templates/accounts/register.html:87
+msgid "У вас уже есть аккаунт?"
+msgstr ""
+
+#: templates/accounts/register.html:103
+msgid "Забыли пароль или логин?"
+msgstr ""
+
+#: templates/admin/actions.html:17
+msgid "Run the selected action"
+msgstr ""
+
+#: templates/admin/actions.html:18
+msgid "Go"
+msgstr ""
+
+#: templates/admin/actions.html:28
+msgid "Click here to select the objects across all pages"
+msgstr ""
+
+#: templates/admin/actions.html:28
+#, python-format
+msgid ""
+"\n"
+"                            Select all %(total_count)s %(module_name)s"
+msgstr ""
+
+#: templates/admin/actions.html:31
+msgid "Clear selection"
+msgstr ""
+
+#: templates/admin/auth/user/add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+
+#: templates/admin/auth/user/add_form.html:8
+msgid "Enter a username and password."
+msgstr ""
+
+#: templates/admin/auth/user/change_password.html:41
+msgid "Change password"
+msgstr ""
+
+#: templates/admin/auth/user/change_password.html:55
+#, python-format
+msgid ""
+"\n"
+"                            Enter a new password for the user\n"
+"                            <strong>%(username)s</strong>.\n"
+"                        "
+msgstr ""
+
+#: templates/admin/auth/user/change_password.html:91
+msgid "Change my password"
+msgstr ""
+
+#: templates/admin/change_form.html:45
+#, python-format
+msgid ""
+"Add\n"
+"                                %(name)s"
+msgstr ""
+
+#: templates/admin/change_form.html:63
+#: templates/admin/change_list_object_tools.html:12
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/admin/change_form_object_tools.html:8
+#: templates/admin/object_history.html:36
+msgid "History"
+msgstr ""
+
+#: templates/admin/change_form_object_tools.html:13
+#: templates/admin/edit_inline/stacked.html:32
+#: templates/admin/edit_inline/tabular.html:64
+msgid "View on site"
+msgstr ""
+
+#: templates/admin/change_list.html:111
+msgid "Filter"
+msgstr ""
+
+#: templates/admin/change_list_results.html:22
+msgid "Remove from sorting"
+msgstr ""
+
+#: templates/admin/change_list_results.html:24
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr ""
+
+#: templates/admin/change_list_results.html:26
+msgid "Toggle sorting"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:42
+#: templates/admin/submit_line.html:32
+msgid "Delete"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:58
+#, python-format
+msgid ""
+"\n"
+"                                    Deleting the %(object_name)s "
+"'%(escaped_object)s' would result in deleting\n"
+"                                    related objects, but your account "
+"doesn't have permission to delete the\n"
+"                                    following types of objects:\n"
+"                                "
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:76
+#, python-format
+msgid ""
+"\n"
+"                                    Deleting the %(object_name)s ' "
+"%(escaped_object)s' would require deleting\n"
+"                                    the following protected related "
+"objects:\n"
+"                                "
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:93
+#, python-format
+msgid ""
+"\n"
+"                                    Are you sure you want to delete the "
+"%(object_name)s \"%(escaped_object)s\"?\n"
+"                                    All of the following related items will "
+"be deleted:\n"
+"                                "
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:107
+#: templates/admin/delete_selected_confirmation.html:107
+msgid "Objects"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:128
+#: templates/admin/delete_selected_confirmation.html:126
+msgid "Yes, I'm sure"
+msgstr ""
+
+#: templates/admin/delete_confirmation.html:130
+#: templates/admin/delete_selected_confirmation.html:128
+msgid "No, take me back"
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:42
+msgid "Delete multiple objects"
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:58
+#, python-format
+msgid ""
+"\n"
+"                                        Deleting the selected "
+"%(objects_name)s would result in deleting related\n"
+"                                        objects, but your account doesn't "
+"have permission to delete the following\n"
+"                                        types of objects:\n"
+"                                    "
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:76
+#, python-format
+msgid ""
+"\n"
+"                                        Deleting the selected "
+"%(objects_name)s would require deleting the\n"
+"                                        following protected related "
+"objects:\n"
+"                                    "
+msgstr ""
+
+#: templates/admin/delete_selected_confirmation.html:93
+#, python-format
+msgid ""
+"\n"
+"                                        Are you sure you want to delete the "
+"selected %(objects_name)s? All of the\n"
+"                                        following objects and their related "
+"items will be deleted:\n"
+"                                    "
+msgstr ""
+
+#: templates/admin/edit_inline/stacked.html:29
+#: templates/admin/edit_inline/tabular.html:60
+msgid "Change"
+msgstr ""
+
+#: templates/admin/edit_inline/stacked.html:29
+#: templates/admin/edit_inline/tabular.html:60
+msgid "View"
+msgstr ""
+
+#: templates/admin/edit_inline/tabular.html:37
+msgid "Delete?"
+msgstr ""
+
+#: templates/admin/filter.html:9
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: templates/admin/includes/object_delete_summary.html:5
+msgid "Summary"
+msgstr ""
+
+#: templates/admin/index.html:559
+msgid "Recent actions"
+msgstr ""
+
+#: templates/admin/index.html:562
+msgid "My actions"
+msgstr ""
+
+#: templates/admin/index.html:588
+msgid "Unknown content"
+msgstr ""
+
+#: templates/admin/index.html:596
+msgid "None available"
+msgstr ""
+
+#: templates/admin/invalid_setup.html:35 templates/admin/invalid_setup.html:56
+msgid ""
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
+msgstr ""
+
+#: templates/admin/object_history.html:53
+msgid "User"
+msgstr ""
+
+#: templates/admin/object_history.html:54
+msgid "Action"
+msgstr ""
+
+#: templates/admin/object_history.html:55
+msgid "Date/time"
+msgstr ""
+
+#: templates/admin/object_history.html:71
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
+msgstr ""
+
+#: templates/admin/pagination.html:35 templates/admin/search_form.html:37
+msgid "Show all"
+msgstr ""
+
+#: templates/admin/pagination.html:51 templates/admin/submit_line.html:11
+msgid "Save"
+msgstr ""
+
+#: templates/admin/search_form.html:21
+msgid "Search"
+msgstr ""
+
+#: templates/admin/search_form.html:27
+#, python-format
+msgid ""
+"\n"
+"                                    %(counter)s result\n"
+"                                "
+msgid_plural ""
+"\n"
+"                                    %(counter)s results\n"
+"                                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/search_form.html:33
+#, python-format
+msgid ""
+"\n"
+"                                    %(full_result_count)s total\n"
+"                                "
+msgstr ""
+
+#: templates/admin/submit_line.html:15
+msgid "Save as new"
+msgstr ""
+
+#: templates/admin/submit_line.html:19
+msgid "Save and add another"
+msgstr ""
+
+#: templates/admin/submit_line.html:23
+msgid "Save and continue editing"
+msgstr ""
+
+#: templates/admin/submit_line.html:23
+msgid "Save and view"
+msgstr ""
+
+#: templates/admin/submit_line.html:27
+msgid "Close"
+msgstr ""
+
+#: templates/create.html:61
+msgid ""
+"\n"
+"                        Подтвердить\n"
+"                    "
+msgstr ""
+
+#: templates/create.html:72
+msgid ""
+"\n"
+"                                    Скачать архив\n"
+"                                "
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:12
+msgid "О компании"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:13
+#: templates/includes/navigation.html:24 templates/pages/info/sitemap.html:17
+msgid "Цены"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:14
+#: templates/pages/info/oferta.html:73 templates/pages/info/sitemap.html:16
+msgid "Контакты"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:19
+msgid "Полезные ссылки"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:21
+#: templates/pages/info/detailed_info.html:84 templates/pages/info/faq.html:8
+#: templates/pages/info/sitemap.html:25
+msgid "Часто задаваемые вопросы"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:22
+msgid "Условия использования"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:23
+msgid "Политика конфиденциальности"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:24
+#: templates/pages/info/help.html:3 templates/pages/info/help.html:9
+#: templates/pages/info/sitemap.html:26
+msgid "Помощь"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:25
+#: templates/pages/info/sitemap.html:9
+msgid "Карта сайта"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:30
+msgid "Мы принимаем платежи"
+msgstr ""
+
+#: templates/includes/footer-fullscreen.html:43
+msgid "GalileosPro. Все права защищены."
+msgstr ""
+
+#: templates/includes/navigation.html:18
+msgid "Узнать больше"
+msgstr ""
+
+#: templates/includes/navigation.html:33
+msgid "Личный Кабинет"
+msgstr ""
+
+#: templates/includes/navigation.html:41
+#: templates/registration/logged_out.html:4
+#: templates/registration/password_change_done.html:12
+msgid "Выйти"
+msgstr ""
+
+#: templates/includes/navigation.html:62
+msgid "Английский"
+msgstr ""
+
+#: templates/includes/navigation.html:65
+msgid "Русский"
+msgstr ""
+
+#: templates/includes/pricing.html:7
+msgid "Выберите подходящий пакет конвертаций"
+msgstr ""
+
+#: templates/includes/pricing.html:28
+msgid "Стартовый"
+msgstr ""
+
+#: templates/includes/pricing.html:39
+msgid "конвертация"
+msgstr ""
+
+#: templates/includes/pricing.html:47 templates/includes/pricing.html:88
+#: templates/includes/pricing.html:129
+msgid "Хранение данных в облаке"
+msgstr ""
+
+#: templates/includes/pricing.html:55 templates/includes/pricing.html:96
+#: templates/includes/pricing.html:137
+msgid "Поддержка"
+msgstr ""
+
+#: templates/includes/pricing.html:60 templates/includes/pricing.html:101
+#: templates/includes/pricing.html:142
+msgid "Перейти к оплате"
+msgstr ""
+
+#: templates/includes/pricing.html:69
+msgid "Продвинутый"
+msgstr ""
+
+#: templates/includes/pricing.html:80 templates/includes/pricing.html:121
+msgid "конвертаций"
+msgstr ""
+
+#: templates/includes/pricing.html:110
+msgid "Премиум"
+msgstr ""
+
+#: templates/includes/sidebar.html:85
+msgid "Dashboard"
+msgstr ""
+
+#: templates/pages/edit_profile.html:12
+msgid "Назад"
+msgstr ""
+
+#: templates/pages/edit_profile.html:15
+msgid "Редактировать профиль"
+msgstr ""
+
+#: templates/pages/edit_profile.html:31 templates/pages/upload_research.html:44
+msgid "Подтвердить"
+msgstr ""
+
+#: templates/pages/index.html:116
+msgid ""
+"Удобный способ конвертации медицинских данных из CBCT-сканеров Sirona "
+"GALAXIS/GALILEOS в стандартный формат DICOM."
+msgstr ""
+
+#: templates/pages/index.html:135 templates/pages/info/how_it_works.html:3
+#: templates/pages/info/how_it_works.html:8
+#: templates/pages/info/sitemap.html:23
+msgid "Как это работает"
+msgstr ""
+
+#: templates/pages/index.html:158
+msgid "Уникальное решение"
+msgstr ""
+
+#: templates/pages/index.html:160
+msgid ""
+"Мы единственный сервис осуществляющий конвертацию данных с томографов "
+"Galileos"
+msgstr ""
+
+#: templates/pages/index.html:163
+msgid ""
+"Вам не придется долго ждать результата. Мы оптимизировали процесс "
+"конвертации, чтобы вы\n"
+"                            получили доступ к вашим данным максимально "
+"быстро."
+msgstr ""
+
+#: templates/pages/index.html:180
+msgid "Что такое GalileosPro?"
+msgstr ""
+
+#: templates/pages/index.html:181
+msgid ""
+"GalileosPro - это мощный, но простой в\n"
+"                                        использовании веб сервис,\n"
+"                                        который позволяет конвертировать\n"
+"                                        данные с вашего томографа SIRONA "
+"GALILEOS в\n"
+"                                        DICOM-файлы. "
+msgstr ""
+
+#: templates/pages/index.html:186
+msgid ""
+"DICOM (Digital Imaging and Communications in Medicine) -\n"
+"                                        это стандарт для хранения и обмена "
+"медицинскими изображениями, используемый в\n"
+"                                        больницах и клиниках по всему миру."
+msgstr ""
+
+#: templates/pages/index.html:191 templates/pages/index.html:329
+#: templates/pages/index.html:339 templates/pages/index.html:349
+#: templates/payments/yookassa/process_payment.html:32
+msgid "Подробнее"
+msgstr ""
+
+#: templates/pages/index.html:212
+msgid "Три простых шага для работы"
+msgstr ""
+
+#: templates/pages/index.html:220 templates/pages/info/how_it_works.html:20
+msgid "Архив с данными"
+msgstr ""
+
+#: templates/pages/index.html:221 templates/pages/info/how_it_works.html:21
+msgid "Создайте архив (zip, rar) с вашим исследованием."
+msgstr ""
+
+#: templates/pages/index.html:222 templates/pages/info/how_it_works.html:22
+msgid "Популярные архиваторы:"
+msgstr ""
+
+#: templates/pages/index.html:225 templates/pages/info/how_it_works.html:25
+msgid "Для Windows:"
+msgstr ""
+
+#: templates/pages/index.html:233 templates/pages/info/how_it_works.html:33
+msgid "Для Mac OS:"
+msgstr ""
+
+#: templates/pages/index.html:249 templates/pages/info/how_it_works.html:49
+msgid "Загрузка данных"
+msgstr ""
+
+#: templates/pages/index.html:252 templates/pages/info/how_it_works.html:51
+msgid "программное обеспечение"
+msgstr ""
+
+#: templates/pages/index.html:253 templates/pages/info/how_it_works.html:52
+msgid ""
+"Файлы могут быть загружены с вашего компьютера, флешки или любого другого "
+"носителя."
+msgstr ""
+
+#: templates/pages/index.html:263 templates/pages/info/how_it_works.html:62
+msgid "Конвертация данных"
+msgstr ""
+
+#: templates/pages/index.html:264 templates/pages/info/how_it_works.html:63
+msgid ""
+"Наше программное обеспечение быстро и безопасно конвертирует данные\n"
+"                                GALILEOS в формат DICOM."
+msgstr ""
+
+#: templates/pages/index.html:277 templates/pages/info/how_it_works.html:76
+msgid "Загрузка результата"
+msgstr ""
+
+#: templates/pages/index.html:278 templates/pages/info/how_it_works.html:77
+msgid ""
+"Вы получаете готовые данные в формате DICOM. Файлы можно скачать на ваш\n"
+"                                компьютер из личного кабинета в разделе "
+"исследования. Также по завершении вам будет\n"
+"                                направлено письмо на\n"
+"                                указанную при регистрации почту со ссылкой "
+"на архив в облаке. Данные хранятся 6\n"
+"                                месяцев."
+msgstr ""
+
+#: templates/pages/index.html:294
+msgid ""
+"Гайд по использованию сервиса\n"
+"                GalileosPro"
+msgstr ""
+
+#: templates/pages/index.html:306
+msgid ""
+"Копирование и архивирование папки\n"
+"                            Галилеос"
+msgstr ""
+
+#: templates/pages/index.html:318
+msgid ""
+"Сохранение конвертированного исследования на\n"
+"                            компьютер"
+msgstr ""
+
+#: templates/pages/index.html:327
+msgid "3Diagnosys"
+msgstr ""
+
+#: templates/pages/index.html:337
+msgid "3Shape Unite"
+msgstr ""
+
+#: templates/pages/index.html:347
+msgid "Blue Sky Plan "
+msgstr ""
+
+#: templates/pages/index.html:356
+msgid "ExoCad"
+msgstr ""
+
+#: templates/pages/index.html:357 templates/pages/index.html:366
+#: templates/pages/index.html:375
+msgid ""
+"\n"
+"                            Подробнее"
+msgstr ""
+
+#: templates/pages/index.html:365
+msgid "Ez-Vision"
+msgstr ""
+
+#: templates/pages/index.html:374
+msgid "RealGUIDE"
+msgstr ""
+
+#: templates/pages/info/about.html:3 templates/pages/info/about.html:8
+#: templates/pages/info/sitemap.html:15
+msgid "О нас"
+msgstr ""
+
+#: templates/pages/info/about.html:11
+msgid "Наша миссия"
+msgstr ""
+
+#: templates/pages/info/about.html:12
+msgid ""
+"Наша команда стремится обеспечить стоматологам и имплантологам удобный и "
+"надежный инструмент\n"
+"                для конвертации данных GALILEOS в формат DICOM. Мы понимаем "
+"важность совместимости и стандартизации в\n"
+"                медицинской сфере, поэтому наша цель - сделать процесс "
+"обмена данными максимально простым и\n"
+"                эффективным."
+msgstr ""
+
+#: templates/pages/info/about.html:19
+msgid "Наши преимущества"
+msgstr ""
+
+#: templates/pages/info/about.html:21
+msgid "Опыт и компетенция:"
+msgstr ""
+
+#: templates/pages/info/about.html:21
+msgid ""
+"Наша команда состоит из опытных\n"
+"                    специалистов в области IT и медицины. Мы обладаем "
+"глубокими знаниями о работе систем GALILEOS и\n"
+"                    стандарте DICOM."
+msgstr ""
+
+#: templates/pages/info/about.html:25
+msgid "Качество и надежность:"
+msgstr ""
+
+#: templates/pages/info/about.html:25
+msgid ""
+"Мы гарантируем высокое качество\n"
+"                    конвертации данных, сохраняя точность и достоверность "
+"информации."
+msgstr ""
+
+#: templates/pages/info/about.html:28
+msgid "Индивидуальный подход:"
+msgstr ""
+
+#: templates/pages/info/about.html:28
+msgid ""
+"Мы готовы оказать помощь и поддержку\n"
+"                    в решении любых задач, связанных с конвертацией данных."
+msgstr ""
+
+#: templates/pages/info/about.html:35
+msgid "Наши ценности"
+msgstr ""
+
+#: templates/pages/info/about.html:36
+msgid "В своей работе мы придерживаемся следующих ценностей:"
+msgstr ""
+
+#: templates/pages/info/about.html:38
+msgid "Клиентоориентированность:"
+msgstr ""
+
+#: templates/pages/info/about.html:38
+msgid ""
+"Мы всегда готовы выслушать ваши\n"
+"                    потребности и найти оптимальное решение для вас."
+msgstr ""
+
+#: templates/pages/info/about.html:41
+msgid "Профессионализм:"
+msgstr ""
+
+#: templates/pages/info/about.html:41
+msgid ""
+"Мы стремимся к высочайшим стандартам\n"
+"                    качества в своей работе."
+msgstr ""
+
+#: templates/pages/info/about.html:44
+msgid "Инновации:"
+msgstr ""
+
+#: templates/pages/info/about.html:44
+msgid ""
+"Мы постоянно развиваемся и ищем новые способы\n"
+"                    улучшения наших услуг."
+msgstr ""
+
+#: templates/pages/info/about.html:51 templates/pages/info/contacts.html:7
+msgid "Свяжитесь с нами"
+msgstr ""
+
+#: templates/pages/info/about.html:52
+msgid ""
+"Если у вас есть вопросы или вы хотите узнать больше о наших услугах, "
+"свяжитесь с нами:"
+msgstr ""
+
+#: templates/pages/info/about.html:54 templates/pages/info/contacts.html:14
+#: templates/pages/info/oferta.html:76
+msgid "Телефон:"
+msgstr ""
+
+#: templates/pages/info/about.html:55 templates/pages/info/contacts.html:15
+#: templates/pages/info/oferta.html:77
+msgid "Почта:"
+msgstr ""
+
+#: templates/pages/info/contacts.html:3
+msgid "Контакты - Конвертация данных GALILEOS в DICOM"
+msgstr ""
+
+#: templates/pages/info/contacts.html:12
+msgid "Наши контакты"
+msgstr ""
+
+#: templates/pages/info/contacts.html:23
+msgid "Владелец проекта: Мезенцев Никита Владимирович"
+msgstr ""
+
+#: templates/pages/info/contacts.html:25
+msgid "Разработчик: Горковенков Иван Сергеевич"
+msgstr ""
+
+#: templates/pages/info/contacts.html:29
+msgid "Форма обратной связи"
+msgstr ""
+
+#: templates/pages/info/contacts.html:47
+msgid "Отправить"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:4
+#: templates/pages/info/detailed_info.html:8
+msgid "Конвертация данных GALILEOS в DICOM"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:11 templates/pages/info/faq.html:17
+msgid "Что такое GALILEOS?"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:12
+msgid ""
+"GALILEOS - это передовая система 3D-планирования для имплантологии, "
+"разработанная компанией\n"
+"                SIRONA. Она представляет собой мощный инструмент, который "
+"помогает стоматологам и имплантологам в\n"
+"                планировании и проведении сложных имплантационных процедур."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:18
+msgid ""
+"Система GALILEOS использует технологию компьютерной томографии (КТ) для "
+"создания детальных\n"
+"                        3D-изображений костных структур челюсти пациента. "
+"Эти изображения предоставляют ценную\n"
+"                        информацию о положении нервов, сосудов и костной "
+"ткани, что позволяет стоматологам точно\n"
+"                        планировать размещение имплантатов."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:31 templates/pages/info/faq.html:50
+msgid "Зачем нужна конвертация в DICOM?"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:32
+msgid ""
+"DICOM (Digital Imaging and Communications in Medicine) - это стандартный "
+"формат для хранения\n"
+"                и обмена медицинскими изображениями. Он обеспечивает "
+"совместимость данных между различными системами,\n"
+"                программами и медицинскими учреждениями."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:36
+msgid "Совместимость:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:36
+msgid ""
+"Конвертация данных GALILEOS в DICOM\n"
+"                    позволяет интегрировать их с другими медицинскими "
+"изображениями, например, рентгеновскими снимками.\n"
+"                    Это дает более полное представление о состоянии пациента."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:40
+msgid "Широкая поддержка:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:40
+msgid ""
+"Данные в формате DICOM могут быть\n"
+"                    использованы в программном обеспечении для планирования "
+"имплантации различных производителей. Это\n"
+"                    обеспечивает гибкость и выбор подходящего инструментария."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:44
+msgid "Долгосрочное хранение:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:44
+msgid ""
+"DICOM - это устойчивый формат,\n"
+"                    который обеспечивает надежное хранение данных для "
+"дальнейшего использования и анализа."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:51 templates/pages/info/faq.html:75
+msgid "Как работает конвертация?"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:52
+msgid ""
+"Конвертация данных GALILEOS в DICOM осуществляется с помощью "
+"специализированного программного\n"
+"                обеспечения. Обычно процесс выглядит следующим образом:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:55
+msgid "Импорт данных:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:55
+msgid ""
+"Данные GALILEOS загружаются в программу\n"
+"                    конвертации."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:58
+msgid "Настройка параметров:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:58
+msgid ""
+"Пользователь может задать параметры\n"
+"                    конвертации."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:61
+msgid "Экспорт в DICOM:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:61
+msgid ""
+"Программа конвертирует данные GALILEOS в\n"
+"                    формат DICOM и сохраняет их в облаке."
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:68
+msgid "Где получить информацию о конвертации?"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:69
+msgid ""
+"Дополнительную информацию о конвертации данных GALILEOS в DICOM можно "
+"получить из следующих\n"
+"                источников:"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:74
+msgid "Веб-сайт SIRONA"
+msgstr ""
+
+#: templates/pages/info/detailed_info.html:79
+msgid "Пошаговая инструкция"
+msgstr ""
+
+#: templates/pages/info/faq.html:23
+msgid ""
+"GALILEOS - это система 3D-планирования для имплантологии, разработанная "
+"компанией SIRONA.\n"
+"                            Она позволяет получить точные 3D-изображения "
+"челюсти пациента, которые используются для\n"
+"                            планирования имплантации."
+msgstr ""
+
+#: templates/pages/info/faq.html:34
+msgid "Как сконвертировать данные?"
+msgstr ""
+
+#: templates/pages/info/faq.html:40
+msgid ""
+"Загрузите архив с данными в личном кабинете или на главной странице, "
+"дождитесь результата.\n"
+"                            Архив Galileos должен включать в себя директорию "
+"***vol_0, в которой находятся исходные изображения"
+msgstr ""
+
+#: templates/pages/info/faq.html:56
+msgid ""
+"DICOM (Digital Imaging and Communications in Medicine) - это стандартный "
+"формат для хранения\n"
+"                            и обмена медицинскими изображениями. Конвертация "
+"данных GALILEOS в DICOM позволяет:"
+msgstr ""
+
+#: templates/pages/info/faq.html:59
+msgid ""
+"Совместить данные с другими медицинскими изображениями (например, "
+"рентгеновскими\n"
+"                                    снимками)"
+msgstr ""
+
+#: templates/pages/info/faq.html:62
+msgid ""
+"Использовать данные GALILEOS в программном обеспечении для\n"
+"                                    планирования имплантации других "
+"производителей"
+msgstr ""
+
+#: templates/pages/info/faq.html:65
+msgid "Хранить данные в стандартизированном формате для долгосрочного хранения"
+msgstr ""
+
+#: templates/pages/info/faq.html:81
+msgid ""
+"Конвертация данных GALILEOS в DICOM осуществляется с помощью специального "
+"программного\n"
+"                            обеспечения. Процесс обычно включает в себя "
+"следующие шаги:"
+msgstr ""
+
+#: templates/pages/info/faq.html:84
+msgid "Импорт данных GALILEOS"
+msgstr ""
+
+#: templates/pages/info/faq.html:85
+msgid "Настройка параметров конвертации"
+msgstr ""
+
+#: templates/pages/info/faq.html:86
+msgid "Экспорт данных в формате DICOM"
+msgstr ""
+
+#: templates/pages/info/faq.html:96
+msgid "Сколько стоит конвертация?"
+msgstr ""
+
+#: templates/pages/info/faq.html:102
+msgid ""
+"Стоимость конвертации зависит от выбранного пакета конвертаций, чем больше, "
+"тем дешевле\n"
+"                            обходится одна конвертация."
+msgstr ""
+
+#: templates/pages/info/help.html:10
+msgid "Программное обеспечение - Конвертер данных Galileos в DICOM"
+msgstr ""
+
+#: templates/pages/info/help.html:13
+msgid "Что это за сервис?"
+msgstr ""
+
+#: templates/pages/info/help.html:14
+msgid ""
+"Наш сервис позволяет вам легко и быстро конвертировать данные с томографа "
+"Galileos в стандартный формат\n"
+"                DICOM.\n"
+"                Это делает их доступными для широкого круга программного "
+"обеспечения, используемого для визуализации,\n"
+"                анализа и обработки медицинских изображений."
+msgstr ""
+
+#: templates/pages/info/help.html:21
+msgid "Как использовать сервис?"
+msgstr ""
+
+#: templates/pages/info/help.html:22
+msgid "Процесс конвертации прост:"
+msgstr ""
+
+#: templates/pages/info/help.html:24
+msgid ""
+"Загрузите архив с файлами данных Galileos на страницу сервиса. (время "
+"загрузки зависит от размера архива)"
+msgstr ""
+
+#: templates/pages/info/help.html:25
+msgid "Дождитесь окончания конвертации"
+msgstr ""
+
+#: templates/pages/info/help.html:26
+msgid ""
+"Загрузите полученный DICOM файл из личного кабинета или по ссылке из письма "
+"направленного на указанную при регистрации почту"
+msgstr ""
+
+#: templates/pages/info/help.html:31
+msgid "Какие типы файлов Galileos поддерживаются?"
+msgstr ""
+
+#: templates/pages/info/help.html:32
+msgid "Файлы Galileos, как правило, не имеют формата"
+msgstr ""
+
+#: templates/pages/info/help.html:33
+msgid "Есть ли ограничения по размеру файлов?"
+msgstr ""
+
+#: templates/pages/info/help.html:34
+msgid "Максимальный размер загружаемого файла 700 MB."
+msgstr ""
+
+#: templates/pages/info/help.html:35
+msgid "Есть ли вопросы по использованию сервиса?"
+msgstr ""
+
+#: templates/pages/info/help.html:36
+msgid "Свяжитесь с нами по электронной почте"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:11
+msgid "Процесс конвертации"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:12
+msgid ""
+"Конвертация данных GALILEOS в формат DICOM - это простой и эффективный "
+"процесс, который\n"
+"                проходит в несколько этапов."
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:50
+msgid "Загрузите данные с томографа GALILEOS в наше"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:90
+msgid "Преимущества нашей системы"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:92
+msgid "Простота:"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:92
+msgid ""
+"Наш интерфейс интуитивно понятен и прост в\n"
+"                    использовании."
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:95
+msgid "Скорость:"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:95
+msgid ""
+"Конвертация данных происходит быстро, что\n"
+"                    позволяет вам сэкономить время."
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:98
+msgid "Безопасность:"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:98
+msgid "Мы гарантируем безопасность ваших данных."
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:100
+msgid "Доступность:"
+msgstr ""
+
+#: templates/pages/info/how_it_works.html:100
+msgid ""
+"Наша система доступна онлайн 24/7, что\n"
+"                    позволяет вам конвертировать данные в любое время и в "
+"любом месте."
+msgstr ""
+
+#: templates/pages/info/oferta.html:3
+msgid "Публичная оферта"
+msgstr ""
+
+#: templates/pages/info/oferta.html:16
+msgid "Публичная оферта на оказание услуг по конвертации данных"
+msgstr ""
+
+#: templates/pages/info/oferta.html:19
+msgid ""
+"Настоящая публичная оферта (далее — Оферта) является предложением "
+"индивидуального предпринимателя, которую он\n"
+"            адресует любому физическому или юридическому лицу (далее — "
+"Заказчик). Оферта регулирует условия оказания\n"
+"            услуг по конвертации данных с томографа Galileos/Sirona в формат "
+"DICOM."
+msgstr ""
+
+#: templates/pages/info/oferta.html:23
+msgid "Услуги"
+msgstr ""
+
+#: templates/pages/info/oferta.html:24
+msgid ""
+"Galileos.pro предоставляет услуги по конвертации данных с томографов "
+"Galileos/Sirona в формат DICOM."
+msgstr ""
+
+#: templates/pages/info/oferta.html:26
+msgid "Стоимость услуг"
+msgstr ""
+
+#: templates/pages/info/oferta.html:27
+msgid "Стоимость услуг указана в таблице:"
+msgstr ""
+
+#: templates/pages/info/oferta.html:31
+msgid "Пакет конвертаций"
+msgstr ""
+
+#: templates/pages/info/oferta.html:32
+msgid "Количество конвертаций"
+msgstr ""
+
+#: templates/pages/info/oferta.html:33 templates/pages/info/price_info.html:15
+msgid "Цена"
+msgstr ""
+
+#: templates/pages/info/oferta.html:38
+msgid "Одиночная конвертация"
+msgstr ""
+
+#: templates/pages/info/oferta.html:43
+msgid "Пакет из 5 конвертаций"
+msgstr ""
+
+#: templates/pages/info/oferta.html:48
+msgid "Пакет из 10 конвертаций"
+msgstr ""
+
+#: templates/pages/info/oferta.html:55
+msgid "Порядок оплаты"
+msgstr ""
+
+#: templates/pages/info/oferta.html:56
+msgid ""
+"Оплата услуг производится Заказчиком в соответствии с выбранным пакетом "
+"конвертаций через доступные на сайте\n"
+"            методы."
+msgstr ""
+
+#: templates/pages/info/oferta.html:59
+msgid "Заключение договора"
+msgstr ""
+
+#: templates/pages/info/oferta.html:60
+msgid ""
+"Данная Оферта считается акцептированной, а договор между Исполнителем и "
+"Заказчиком — заключенным, с момента\n"
+"            осуществления Заказчиком оплаты за пакет конвертаций."
+msgstr ""
+
+#: templates/pages/info/oferta.html:63
+msgid "Порядок возврата"
+msgstr ""
+
+#: templates/pages/info/oferta.html:64
+msgid ""
+"В случае, если заказчик не получит свои данные по вине сервиса, то средства "
+"будут возвращены заказчику на\n"
+"            указанный им счёт"
+msgstr ""
+
+#: templates/pages/info/oferta.html:68
+msgid "Прочие условия"
+msgstr ""
+
+#: templates/pages/info/oferta.html:69
+msgid ""
+"Все услуги оказываются в соответствии с установленными сроками и условиями, "
+"о чем Заказчик будет уведомлен\n"
+"            дополнительно."
+msgstr ""
+
+#: templates/pages/info/oferta.html:74
+msgid ""
+"Для получения дополнительной информации и консультаций, пожалуйста, "
+"свяжитесь с нами:"
+msgstr ""
+
+#: templates/pages/info/oferta.html:80
+msgid "Благодарим вас за выбор Galileos.pro!"
+msgstr ""
+
+#: templates/pages/info/price_info.html:9
+msgid "Цены на услуги"
+msgstr ""
+
+#: templates/pages/info/price_info.html:14
+msgid "Услуга"
+msgstr ""
+
+#: templates/pages/info/price_info.html:21
+msgid "конвертиция"
+msgstr ""
+
+#: templates/pages/info/price_info.html:23
+msgid ""
+"конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 "
+"месяцев"
+msgstr ""
+
+#: templates/pages/info/price_info.html:26
+#: templates/pages/info/price_info.html:31
+msgid "конвертиций"
+msgstr ""
+
+#: templates/pages/info/price_info.html:28
+#: templates/pages/info/price_info.html:33
+msgid ""
+"конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 "
+"месяцев"
+msgstr ""
+
+#: templates/pages/info/privacy.html:3
+msgid "Политика в отношении обработки персональных данных\n"
+msgstr ""
+
+#: templates/pages/info/privacy.html:7
+msgid ""
+" Политика в отношении обработки персональных\n"
+"            данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:9
+msgid "Общие положения"
+msgstr ""
+
+#: templates/pages/info/privacy.html:11
+msgid ""
+"Настоящая политика обработки персональных данных составлена в соответствии с "
+"требованиями\n"
+"                Федерального\n"
+"                закона от\n"
+"                27.07.2006. № 152-ФЗ «О персональных данных» (далее — Закон "
+"о персональных данных) и определяет порядок\n"
+"                обработки персональных данных и меры по обеспечению "
+"безопасности персональных данных, предпринимаемые\n"
+"                Мезенцевым Никитой Владимировичем (далее — Оператор)."
+msgstr ""
+
+#: templates/pages/info/privacy.html:19
+msgid ""
+"Оператор ставит своей важнейшей целью и условием осуществления\n"
+"            своей деятельности соблюдение прав и\n"
+"            свобод\n"
+"            человека и гражданина при обработке его персональных данных, в "
+"том числе защиты прав на неприкосновенность\n"
+"            частной жизни, личную и семейную тайну."
+msgstr ""
+
+#: templates/pages/info/privacy.html:26
+msgid ""
+"Настоящая политика Оператора в отношении обработки персональных\n"
+"            данных (далее — Политика) применяется\n"
+"            ко\n"
+"            всей информации, которую Оператор может получить о посетителях "
+"веб-сайта\n"
+"            https://galileos.pro."
+msgstr ""
+
+#: templates/pages/info/privacy.html:32
+msgid "Основные понятия, используемые в Политике"
+msgstr ""
+
+#: templates/pages/info/privacy.html:34
+msgid ""
+"Автоматизированная обработка персональных данных — обработка\n"
+"            персональных данных с помощью средств\n"
+"            вычислительной техники."
+msgstr ""
+
+#: templates/pages/info/privacy.html:39
+msgid ""
+"Блокирование персональных данных — временное прекращение\n"
+"            обработки персональных данных (за исключением\n"
+"            случаев, если обработка необходима для уточнения персональных "
+"данных)."
+msgstr ""
+
+#: templates/pages/info/privacy.html:43
+msgid ""
+"Веб-сайт — совокупность графических и информационных материалов,\n"
+"            а также программ для ЭВМ и баз данных,\n"
+"            обеспечивающих их доступность в сети интернет по сетевому адресу "
+"https://galileos.pro."
+msgstr ""
+
+#: templates/pages/info/privacy.html:47
+msgid ""
+"Информационная система персональных данных — совокупность\n"
+"            содержащихся в базах данных персональных\n"
+"            данных и\n"
+"            обеспечивающих их обработку информационных технологий и "
+"технических средств."
+msgstr ""
+
+#: templates/pages/info/privacy.html:51
+msgid ""
+"Обезличивание персональных данных — действия, в результате\n"
+"            которых невозможно определить без\n"
+"            использования\n"
+"            дополнительной информации принадлежность персональных данных "
+"конкретному Пользователю или иному субъекту\n"
+"            персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:56
+msgid ""
+"Обработка персональных данных — любое действие (операция) или\n"
+"            совокупность действий (операций),\n"
+"            совершаемых\n"
+"            с использованием средств автоматизации или без использования "
+"таких средств с персональными данными, включая\n"
+"            сбор, запись, систематизацию, накопление, хранение, уточнение "
+"(обновление, изменение), извлечение,\n"
+"            использование, передачу (распространение, предоставление, "
+"доступ), обезличивание, блокирование, удаление,\n"
+"            уничтожение персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:63
+msgid ""
+"Оператор — государственный орган, муниципальный орган,\n"
+"            юридическое или физическое лицо, самостоятельно\n"
+"            или\n"
+"            совместно с другими лицами организующие и/или осуществляющие "
+"обработку персональных данных, а также\n"
+"            определяющие\n"
+"            цели обработки персональных данных, состав персональных данных, "
+"подлежащих обработке, действия (операции),\n"
+"            совершаемые с персональными данными."
+msgstr ""
+
+#: templates/pages/info/privacy.html:70
+msgid ""
+"Персональные данные — любая информация, относящаяся прямо или\n"
+"            косвенно к определенному или определяемому\n"
+"            Пользователю веб-сайта https://galileos.pro."
+msgstr ""
+
+#: templates/pages/info/privacy.html:73
+msgid ""
+"Персональные данные, разрешенные субъектом персональных данных\n"
+"            для распространения, — персональные\n"
+"            данные,\n"
+"            доступ неограниченного круга лиц к которым предоставлен "
+"субъектом персональных данных путем дачи согласия на\n"
+"            обработку персональных данных, разрешенных субъектом "
+"персональных данных для распространения в порядке,\n"
+"            предусмотренном Законом о персональных данных (далее — "
+"персональные данные, разрешенные для\n"
+"            распространения)."
+msgstr ""
+
+#: templates/pages/info/privacy.html:80
+msgid ""
+"Пользователь — любой посетитель веб-сайта\n"
+"            https://galileos.pro."
+msgstr ""
+
+#: templates/pages/info/privacy.html:82
+msgid ""
+"Предоставление персональных данных — действия, направленные на\n"
+"            раскрытие персональных данных\n"
+"            определенному лицу или определенному кругу лиц."
+msgstr ""
+
+#: templates/pages/info/privacy.html:85
+msgid ""
+"Распространение персональных данных — любые действия,\n"
+"            направленные на раскрытие персональных данных\n"
+"            неопределенному кругу лиц (передача персональных данных) или на "
+"ознакомление с персональными данными\n"
+"            неограниченного круга лиц, в том числе обнародование "
+"персональных данных в средствах массовой информации,\n"
+"            размещение в информационно-телекоммуникационных сетях или "
+"предоставление доступа к персональным данным\n"
+"            каким-либо иным способом."
+msgstr ""
+
+#: templates/pages/info/privacy.html:91
+msgid ""
+"Трансграничная передача персональных данных — передача\n"
+"            персональных данных на территорию иностранного\n"
+"            государства органу власти иностранного государства, иностранному "
+"физическому или иностранному юридическому\n"
+"            лицу."
+msgstr ""
+
+#: templates/pages/info/privacy.html:95
+msgid ""
+"Уничтожение персональных данных — любые действия, в результате\n"
+"            которых персональные данные уничтожаются\n"
+"            безвозвратно с невозможностью дальнейшего восстановления "
+"содержания персональных данных в информационной\n"
+"            системе\n"
+"            персональных данных и/или уничтожаются материальные носители "
+"персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:100
+msgid "Основные права и обязанности Оператора"
+msgstr ""
+
+#: templates/pages/info/privacy.html:101
+msgid "Оператор имеет право:"
+msgstr ""
+
+#: templates/pages/info/privacy.html:102
+msgid ""
+"получать от субъекта персональных данных достоверные информацию и/или "
+"документы, содержащие\n"
+"            персональные\n"
+"            данные;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:105
+msgid ""
+"в случае отзыва субъектом персональных данных согласия на обработку "
+"персональных данных, а\n"
+"            также,\n"
+"            направления\n"
+"            обращения с требованием о прекращении обработки персональных "
+"данных, Оператор вправе продолжить обработку\n"
+"            персональных данных без согласия субъекта персональных данных "
+"при наличии оснований, указанных в Законе о\n"
+"            персональных данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:111
+msgid ""
+"самостоятельно определять состав и перечень мер, необходимых и достаточных "
+"для обеспечения\n"
+"            выполнения\n"
+"            обязанностей, предусмотренных Законом о персональных данных и "
+"принятыми в соответствии с ним нормативными\n"
+"            правовыми актами, если иное не предусмотрено Законом о "
+"персональных данных или другими федеральными\n"
+"            законами."
+msgstr ""
+
+#: templates/pages/info/privacy.html:116
+msgid "Оператор обязан:"
+msgstr ""
+
+#: templates/pages/info/privacy.html:117
+msgid ""
+"предоставлять субъекту персональных данных по его просьбе информацию, "
+"касающуюся обработки\n"
+"            его персональных\n"
+"            данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:120
+msgid ""
+"организовывать обработку персональных данных в порядке, установленном "
+"действующим\n"
+"            законодательством РФ;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:122
+msgid ""
+"отвечать на обращения и запросы субъектов персональных данных и их законных "
+"представителей\n"
+"            в соответствии с\n"
+"            требованиями Закона о персональных данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:125
+msgid ""
+"сообщать в уполномоченный орган по защите прав субъектов персональных данных "
+"по запросу\n"
+"            этого органа\n"
+"            необходимую информацию в течение 10 дней с даты получения такого "
+"запроса;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:128
+msgid ""
+"публиковать или иным образом обеспечивать неограниченный доступ к настоящей "
+"Политике в\n"
+"            отношении обработки\n"
+"            персональных данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:131
+msgid ""
+"принимать правовые, организационные и технические меры для защиты "
+"персональных данных от\n"
+"            неправомерного или\n"
+"            случайного доступа к ним, уничтожения, изменения, блокирования, "
+"копирования, предоставления, распространения\n"
+"            персональных данных, а также от иных неправомерных действий в "
+"отношении персональных\n"
+"            данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:136
+msgid ""
+"прекратить передачу (распространение, предоставление, доступ) персональных "
+"данных,\n"
+"            прекратить обработку и\n"
+"            уничтожить персональные данные в порядке и случаях, "
+"предусмотренных Законом о персональных\n"
+"            данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:140
+msgid ""
+"исполнять иные обязанности, предусмотренные Законом о персональных\n"
+"            данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:142
+msgid ""
+" Основные права и обязанности субъектов персональных\n"
+"            данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:144
+msgid " Субъекты персональных данных имеют право:"
+msgstr ""
+
+#: templates/pages/info/privacy.html:145
+msgid ""
+"получать информацию, касающуюся обработки его персональных данных, за "
+"исключением случаев,\n"
+"            предусмотренных\n"
+"            федеральными законами. Сведения предоставляются субъекту "
+"персональных данных Оператором в доступной форме, и\n"
+"            в них не должны содержаться персональные данные, относящиеся к "
+"другим субъектам персональных данных, за\n"
+"            исключением случаев, когда имеются законные основания для "
+"раскрытия таких персональных данных. Перечень\n"
+"            информации и порядок ее получения установлен Законом о "
+"персональных данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:151
+msgid ""
+"требовать от оператора уточнения его персональных данных, их блокирования "
+"или уничтожения в\n"
+"            случае, если\n"
+"            персональные данные являются неполными, устаревшими, неточными, "
+"незаконно полученными или не являются\n"
+"            необходимыми для заявленной цели обработки, а также принимать "
+"предусмотренные законом меры по защите своих\n"
+"            прав;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:156
+msgid ""
+"выдвигать условие предварительного согласия при обработке персональных "
+"данных в целях\n"
+"            продвижения на рынке\n"
+"            товаров, работ и услуг;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:159
+msgid ""
+"на отзыв согласия на обработку персональных данных, а также, на направление "
+"требования о\n"
+"            прекращении\n"
+"            обработки персональных данных;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:162
+msgid ""
+"обжаловать в уполномоченный орган по защите прав субъектов персональных "
+"данных или в\n"
+"            судебном порядке\n"
+"            неправомерные действия или бездействие Оператора при обработке "
+"его персональных\n"
+"            данных;"
+msgstr ""
+"appeal to the authorized body for the protection of the rights of personal subjects"
+"data or in\n"
+"judicial procedure\n"
+"illegal actions or inaction of the Operator during processing"
+"his personal\n"
+"data;"
+#: templates/pages/info/privacy.html:166
+msgid "на осуществление иных прав, предусмотренных законодательством РФ."
+msgstr ""
+
+#: templates/pages/info/privacy.html:167
+msgid "Субъекты персональных данных обязаны:"
+msgstr ""
+
+#: templates/pages/info/privacy.html:168
+msgid "предоставлять Оператору достоверные данные о себе;"
+msgstr ""
+
+#: templates/pages/info/privacy.html:169
+msgid ""
+"сообщать Оператору об уточнении (обновлении, изменении) своих персональных\n"
+"            данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:171
+msgid ""
+"Лица, передавшие Оператору недостоверные сведения о себе, либо\n"
+"            сведения о другом субъекте персональных\n"
+"            данных без согласия последнего, несут ответственность в "
+"соответствии с законодательством\n"
+"            РФ."
+msgstr ""
+
+#: templates/pages/info/privacy.html:175
+msgid "Принципы обработки персональных данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:176
+msgid ""
+"Обработка персональных данных осуществляется на законной и\n"
+"            справедливой основе."
+msgstr ""
+
+#: templates/pages/info/privacy.html:178
+msgid ""
+"Обработка персональных данных ограничивается достижением\n"
+"            конкретных, заранее определенных и законных\n"
+"            целей.\n"
+"            Не допускается обработка персональных данных, несовместимая с "
+"целями сбора персональных\n"
+"            данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:183
+msgid ""
+"Не допускается объединение баз данных, содержащих персональные\n"
+"            данные, обработка которых осуществляется\n"
+"            в целях, несовместимых между собой."
+msgstr ""
+
+#: templates/pages/info/privacy.html:186
+msgid ""
+"Обработке подлежат только персональные данные, которые отвечают\n"
+"            целям их обработки."
+msgstr ""
+
+#: templates/pages/info/privacy.html:188
+msgid ""
+"Содержание и объем обрабатываемых персональных данных\n"
+"            соответствуют заявленным целям обработки. Не\n"
+"            допускается избыточность обрабатываемых персональных данных по "
+"отношению к заявленным целям их\n"
+"            обработки."
+msgstr ""
+
+#: templates/pages/info/privacy.html:192
+msgid ""
+"При обработке персональных данных обеспечивается точность\n"
+"            персональных данных, их достаточность, а в\n"
+"            необходимых случаях и актуальность по отношению к целям "
+"обработки персональных данных. Оператор принимает\n"
+"            необходимые меры и/или обеспечивает их принятие по удалению или "
+"уточнению неполных или неточных\n"
+"            данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:197
+msgid ""
+"Хранение персональных данных осуществляется в форме, позволяющей\n"
+"            определить\n"
+"            субъекта персональных данных, не дольше, чем этого требуют цели "
+"обработки персональных данных, если срок\n"
+"            хранения персональных данных не установлен федеральным законом, "
+"договором, стороной которого,\n"
+"            выгодоприобретателем или поручителем покоторому является субъект "
+"персональных данных. Обрабатываемые\n"
+"            персональные данные уничтожаются либо обезличиваются по "
+"достижении целей обработки или в случае утраты\n"
+"            необходимости в достижении этих целей, если иное не "
+"предусмотрено федеральным законом."
+msgstr ""
+
+#: templates/pages/info/privacy.html:205
+msgid "Цели обработки персональных данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:209
+msgid "Цель обработки"
+msgstr ""
+
+#: templates/pages/info/privacy.html:210
+msgid ""
+"Информирование Пользователя посредством отправки электронных\n"
+"                    писем"
+msgstr ""
+
+#: templates/pages/info/privacy.html:214
+msgid "Персональные данные"
+msgstr ""
+
+#: templates/pages/info/privacy.html:215
+msgid "Электронный адрес"
+msgstr ""
+
+#: templates/pages/info/privacy.html:218
+msgid "Правовые основания"
+msgstr ""
+
+#: templates/pages/info/privacy.html:220
+msgid ""
+"Федеральный закон «Об информации, информационных технологиях и о защите "
+"информации»\n"
+"                        от 27.07.2006 N\n"
+"                        149-ФЗ"
+msgstr ""
+
+#: templates/pages/info/privacy.html:226
+msgid "Виды обработки персональных данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:227
+msgid "Отправка информационных писем на адрес электронной почты"
+msgstr ""
+
+#: templates/pages/info/privacy.html:231
+msgid "Условия обработки персональных данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:232
+msgid ""
+"Обработка персональных данных осуществляется с согласия субъекта\n"
+"            персональных\n"
+"            данных на обработку его персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:235
+msgid ""
+"Обработка персональных данных необходима для достижения целей,\n"
+"            предусмотренных\n"
+"            международным договором\n"
+"            Российской Федерации или законом, для осуществления возложенных "
+"законодательством Российской Федерации на\n"
+"            оператора функций, полномочий и обязанностей."
+msgstr ""
+
+#: templates/pages/info/privacy.html:240
+msgid ""
+"Обработка персональных данных необходима для осуществления\n"
+"            правосудия,\n"
+"            исполнения судебного акта, акта\n"
+"            другого органа или должностного лица, подлежащих исполнению в "
+"соответствии с законодательством Российской\n"
+"            Федерации об исполнительном производстве."
+msgstr ""
+
+#: templates/pages/info/privacy.html:245
+msgid ""
+"Обработка персональных данных необходима для исполнения\n"
+"            договора, стороной\n"
+"            которого либо\n"
+"            выгодоприобретателем или поручителем по которому является "
+"субъект персональных данных, а также для\n"
+"            заключения\n"
+"            договора по инициативе субъекта персональных данных или "
+"договора, по которому субъект персональных данных\n"
+"            будет\n"
+"            являться выгодоприобретателем или поручителем."
+msgstr ""
+
+#: templates/pages/info/privacy.html:253
+msgid ""
+"Обработка персональных данных необходима для осуществления прав\n"
+"            и законных\n"
+"            интересов оператора или\n"
+"            третьих\n"
+"            лиц либо для достижения общественно значимых целей при условии, "
+"что при этом не нарушаются права и свободы\n"
+"            субъекта персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:259
+msgid ""
+"Осуществляется обработка персональных данных, доступ\n"
+"            неограниченного круга лиц к\n"
+"            которым предоставлен\n"
+"            субъектом персональных данных либо по его просьбе (далее — "
+"общедоступные персональные\n"
+"            данные)."
+msgstr ""
+
+#: templates/pages/info/privacy.html:264
+msgid ""
+"Осуществляется обработка персональных данных, подлежащих\n"
+"            опубликованию или\n"
+"            обязательному раскрытию в\n"
+"            соответствии с федеральным законом."
+msgstr ""
+
+#: templates/pages/info/privacy.html:268
+msgid ""
+"Порядок сбора, хранения, передачи и других видов обработки персональных\n"
+"            данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:270
+msgid ""
+"Безопасность персональных данных, которые обрабатываются Оператором, "
+"обеспечивается путем\n"
+"            реализации правовых, организационных и технических мер, "
+"необходимых для выполнения в\n"
+"            полном объеме требований действующего законодательства в области "
+"защиты персональных\n"
+"            данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:274
+msgid ""
+"Оператор обеспечивает сохранность персональных данных и\n"
+"            принимает все возможные\n"
+"            меры, исключающие доступ к персональным данным неуполномоченных "
+"лиц."
+msgstr ""
+
+#: templates/pages/info/privacy.html:277
+msgid ""
+"Персональные данные Пользователя никогда, ни при каких условиях\n"
+"            не будут\n"
+"            переданы третьим лицам, за\n"
+"            исключением случаев, связанных с исполнением действующего "
+"законодательства либо в случае, если субъектом\n"
+"            персональных данных дано согласие Оператору на передачу данных "
+"третьему лицу для исполнения обязательств по\n"
+"            гражданско-правовому договору."
+msgstr ""
+
+#: templates/pages/info/privacy.html:283
+msgid ""
+" В случае выявления неточностей в персональных данных,\n"
+"            Пользователь может\n"
+"            актуализировать их самостоятельно, путем направления Оператору "
+"уведомление на адрес электронной почты\n"
+"            Оператора galileos@internet.ru с пометкой «Актуализация "
+"персональных данных»."
+msgstr ""
+
+#: templates/pages/info/privacy.html:287
+msgid ""
+"Срок обработки персональных данных определяется достижением\n"
+"            целей, для которых\n"
+"            были собраны персональные\n"
+"            данные, если иной срок не предусмотрен договором или действующим "
+"законодательством.\n"
+"            Пользователь может в любой момент отозвать свое согласие на "
+"обработку персональных данных, направив\n"
+"            Оператору\n"
+"            уведомление посредством электронной почты на электронный адрес "
+"Оператора galileos@internet.ru с\n"
+"            пометкой\n"
+"            «Отзыв согласия на обработку персональных данных»."
+msgstr ""
+
+#: templates/pages/info/privacy.html:296
+msgid ""
+" Вся информация, которая собирается сторонними сервисами, в том\n"
+"            числе платежными\n"
+"            системами, средствами связи и другими поставщиками услуг, "
+"хранится и обрабатывается указанными лицами\n"
+"            (Операторами) в соответствии с их\n"
+"            Пользовательским соглашением и Политикой конфиденциальности. "
+"Субъект персональных данных и/или с указанными\n"
+"            документами. Оператор не несет ответственность за действия "
+"третьих лиц, в том числе указанных в настоящем\n"
+"            пункте поставщиков услуг."
+msgstr ""
+
+#: templates/pages/info/privacy.html:303
+msgid ""
+"Установленные субъектом персональных данных запреты на передачу\n"
+"            (кроме\n"
+"            предоставления доступа), а также\n"
+"            на\n"
+"            обработку или условия обработки (кроме получения доступа) "
+"персональных данных, разрешенных для\n"
+"            распространения,\n"
+"            не действуют в случаях обработки персональных данных в "
+"государственных, общественных и иных публичных\n"
+"            интересах,\n"
+"            определенных законодательством РФ."
+msgstr ""
+
+#: templates/pages/info/privacy.html:312
+msgid ""
+"Оператор при обработке персональных данных обеспечивает\n"
+"            конфиденциальность\n"
+"            персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:315
+msgid ""
+"Оператор осуществляет хранение персональных данных в форме,\n"
+"            позволяющей\n"
+"            определить субъекта персональных\n"
+"            данных, не дольше, чем этого требуют цели обработки персональных "
+"данных, если срок хранения персональных\n"
+"            данных\n"
+"            не установлен федеральным законом, договором, стороной которого, "
+"выгодоприобретателем или поручителем по\n"
+"            которому является субъект персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:322
+msgid ""
+"Условием прекращения обработки персональных данных может\n"
+"            являться достижение\n"
+"            целей обработки персональных данных, истечение срока действия "
+"согласия субъекта персональных данных, отзыв\n"
+"            согласия субъектом персональных данных или требование о "
+"прекращении обработки персональных данных, а также\n"
+"            выявление неправомерной обработки персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:327
+msgid ""
+" Перечень действий, производимых Оператором с полученными персональными\n"
+"            данными"
+msgstr ""
+
+#: templates/pages/info/privacy.html:329
+msgid ""
+"Оператор осуществляет сбор, запись, систематизацию, накопление,\n"
+"            хранение,\n"
+"            уточнение (обновление,\n"
+"            изменение), извлечение, использование, передачу "
+"(распространение, предоставление, доступ), обезличивание,\n"
+"            блокирование, удаление и уничтожение персональных данных."
+msgstr ""
+
+#: templates/pages/info/privacy.html:334
+msgid ""
+"Оператор осуществляет автоматизированную обработку персональных\n"
+"            данных с\n"
+"            получением и/или передачей\n"
+"            полученной информации по информационно-телекоммуникационным "
+"сетям или без таковой."
+msgstr ""
+
+#: templates/pages/info/privacy.html:338
+msgid "Трансграничная передача персональных данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:339
+msgid ""
+"Оператор до начала осуществления деятельности по трансграничной\n"
+"            передаче\n"
+"            персональных данных обязан\n"
+"            уведомить уполномоченный орган по защите прав субъектов "
+"персональных данных о своем намерении осуществлять\n"
+"            трансграничную передачу персональных данных (такое уведомление "
+"направляется отдельно от уведомления о\n"
+"            намерении\n"
+"            осуществлять обработку персональных данных)."
+msgstr ""
+
+#: templates/pages/info/privacy.html:346
+msgid ""
+"Оператор до подачи вышеуказанного уведомления, обязан получить от органов\n"
+"            власти иностранного государства, иностранных физических лиц, "
+"иностранных юридических лиц, которым\n"
+"            планируется трансграничная передача персональных данных, "
+"соответствующие сведения.</p>\n"
+"        <h4 class=\"mt-5\">11. Конфиденциальность персональных данных"
+msgstr ""
+
+#: templates/pages/info/privacy.html:350
+msgid ""
+"Оператор и иные лица, получившие доступ к персональным данным, обязаны не "
+"раскрывать третьим лицам и не\n"
+"            распространять персональные данные без согласия субъекта "
+"персональных данных, если иное не предусмотрено\n"
+"            федеральным законом."
+msgstr ""
+
+#: templates/pages/info/privacy.html:353
+msgid "Заключительные положения"
+msgstr ""
+
+#: templates/pages/info/privacy.html:354
+msgid ""
+"Пользователь может получить любые разъяснения по интересующим вопросам,\n"
+"            касающимся обработки его\n"
+"            персональных данных, обратившись к Оператору с помощью "
+"электронной почты galileos@internet.ru."
+msgstr ""
+
+#: templates/pages/info/privacy.html:357
+msgid ""
+"В данном документе будут отражены любые изменения политики обработки\n"
+"            персональных данных Оператором.\n"
+"            Политика действует бессрочно до замены ее новой версией."
+msgstr ""
+
+#: templates/pages/info/privacy.html:360
+msgid ""
+"Актуальная версия Политики в свободном доступе расположена в сети Интернет "
+"по\n"
+"            адресу https://galileos.pro/privacy/."
+msgstr ""
+
+#: templates/pages/info/sitemap.html:14
+msgid "Главная страница"
+msgstr ""
+
+#: templates/pages/info/sitemap.html:24
+msgid "Детальная информация"
+msgstr ""
+
+#: templates/pages/info/sitemap.html:32
+msgid "Оферта"
+msgstr ""
+
+#: templates/pages/info/sitemap.html:33
+msgid "Политика в отношении обработки персональных данных"
+msgstr ""
+
+#: templates/pages/profile.html:30
+msgid "Доступно исследований:"
+msgstr ""
+
+#: templates/pages/profile.html:70
+msgid "Исследования"
+msgstr ""
+
+#: templates/pages/profile.html:95
+msgid "Транзакции"
+msgstr ""
+
+#: templates/pages/profile.html:123
+msgid "Настройки"
+msgstr ""
+
+#: templates/pages/upload_research.html:16
+msgid ""
+"Загрузите ваше исследование из томографа Galileos в формате .zip или\n"
+"                            .rar"
+msgstr ""
+
+#: templates/pages/upload_research.html:35
+msgid "Анонимизировать данные о пациенте"
+msgstr ""
+
+#: templates/pages/upload_research.html:41
+msgid "Сформировать одним файлом"
+msgstr ""
+
+#: templates/pages/upload_research.html:48
+msgid "У вас нет доступных конвертаций"
+msgstr ""
+
+#: templates/pages/upload_research.html:54
+msgid "Готовые исследования"
+msgstr ""
+
+#: templates/pages/upload_research.html:59
+msgid "Скачать архив"
+msgstr ""
+
+#: templates/payments/select.html:8
+msgid "Выберите способ оплаты:"
+msgstr ""
+
+#: templates/payments/select.html:17
+msgid "ЮКасса"
+msgstr ""
+
+#: templates/payments/select.html:20
+msgid "Подходит для карт выпущенных в РФ и СНГ."
+msgstr ""
+
+#: templates/payments/select.html:24
+msgid "Продолжить"
+msgstr ""
+
+#: templates/payments/yookassa/payment_info.html:10
+msgid "Информация по платежу"
+msgstr ""
+
+#: templates/payments/yookassa/payment_info.html:28
+msgid "Вернитесь в"
+msgstr ""
+
+#: templates/payments/yookassa/payment_info.html:30
+msgid "Личный кабинет"
+msgstr ""
+
+#: templates/payments/yookassa/payment_info.html:31
+msgid "для начала работы"
+msgstr ""
+
+#: templates/payments/yookassa/process_payment.html:14
+msgid "Выберите необходимое количество конвертаций"
+msgstr ""
+
+#: templates/payments/yookassa/process_payment.html:23
+msgid "Оплатить"
+msgstr ""
+
+#: templates/payments/yookassa/process_payment.html:27
+msgid ""
+"После оплаты перейдите в личный кабинет для загрузки и конвертации вашего\n"
+"                                исследования в формат DICOM."
+msgstr ""
+
+#: templates/registration/logged_out.html:15
+#: templates/registration/logged_out.html:33
+msgid "Спасибо, что провели сегодня время с пользой на веб-сайте."
+msgstr ""
+
+#: templates/registration/logged_out.html:20
+msgid "Войти снова"
+msgstr ""
+
+#: templates/registration/password_change_done.html:8
+msgid "Документация"
+msgstr ""
+
+#: templates/registration/password_change_done.html:47
+#: templates/registration/password_change_done.html:61
+msgid "Ваш пароль был изменен."
+msgstr ""
+
+#: templates/registration/password_change_form.html:38
+msgid ""
+"В целях безопасности введите свой старый пароль, а затем дважды введите "
+"новый пароль, чтобы мы могли убедиться, что вы его ввели правильно."
+msgstr ""
+
+#: templates/registration/password_change_form.html:69
+msgid "Изменить мой пароль"
+msgstr ""
+
+#: templates/registration/password_change_form.html:83
+msgid "Пожалуйста исправьте ошибки."
+msgstr ""
