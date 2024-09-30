@@ -103,23 +103,23 @@ class Research(models.Model):
                     input_dir=f'{glx_dstr_dir.__str__()}',
                     output_filename=f'{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}_research.dcm')
 
-                # if '.rar' in self.raw_archive.name:
-                #     patoolib.create_archive(
-                #         archive=ready_archive,
-                #         filenames=(one_file,), program='/usr/bin/rar')
-                # else:
-                patoolib.create_archive(
-                    archive=ready_archive,
-                    filenames=(one_file,))
+                if '.rar' in self.raw_archive.name:
+                    patoolib.create_archive(
+                        archive=ready_archive,
+                        filenames=(one_file,), program='/usr/bin/rar')
+                else:
+                    patoolib.create_archive(
+                        archive=ready_archive,
+                        filenames=(one_file,))
             else:
-                # if '.rar' in self.raw_archive.name:
-                #     patoolib.create_archive(
-                #         archive=ready_archive,
-                #         filenames=(glx_dstr_dir.__str__(),), program='/usr/bin/rar')
-                # else:
-                patoolib.create_archive(
-                    archive=ready_archive,
-                    filenames=(glx_dstr_dir.__str__(),))
+                if '.rar' in self.raw_archive.name:
+                    patoolib.create_archive(
+                        archive=ready_archive,
+                        filenames=(glx_dstr_dir.__str__(),), program='/usr/bin/rar')
+                else:
+                    patoolib.create_archive(
+                        archive=ready_archive,
+                        filenames=(glx_dstr_dir.__str__(),))
 
             file = search_file_in_dir(BASE_DIR, ready_archive)
             logger.info(f"8. {file}")
