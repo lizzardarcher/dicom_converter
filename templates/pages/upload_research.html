@@ -1,7 +1,11 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% load static %}
+
 {% block title %}Исследования{% endblock title %}
+{% block extrahead %}
+{% endblock extrahead %}
+{% block extrastyle %}{% endblock extrastyle %}
 {% block content %}
 
     <body class="bg-light bg-gradient">
@@ -13,7 +17,8 @@
                         {% csrf_token %}
                         <h3 class="pt-5 pb-5">{% blocktrans %}Загрузить исследование{% endblocktrans %}</h3>
 
-                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip или
+                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip
+                            или
                             .rar{% endblocktrans %}</label>
                         {% if form.errors %}
                             <div class="col-12 justify-content-center">
@@ -25,23 +30,31 @@
                                 </div>
                             </div>
                         {% endif %}
-                        <div class="form-control p-3">
+                        <div id="file_input" class="form-control p-3">
                             {{ form.raw_archive }}
                         </div>
 
                         <div class="form-check form-switch pt-5">
                             {{ form.is_anonymous }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault1">{% blocktrans %}Анонимизировать данные о пациенте{% endblocktrans %}</label>
+                                   for="flexSwitchCheckDefault1">{% blocktrans %}Анонимизировать данные о
+                                пациенте{% endblocktrans %}</label>
                         </div>
 
                         <div class="form-check form-switch pt-2">
                             {{ form.is_one_file }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним файлом{% endblocktrans %}</label>
+                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним
+                                файлом{% endblocktrans %}</label>
                         </div>
 
-                        <button type="submit" class="col-lg-4 btn bg-gradient-info mt-3">{% trans "Подтвердить" %}</button>
+                        <button id="submit_btn" type="submit"
+                                class="col-lg-4 btn bg-gradient-info mt-3">{% trans "Подтвердить" %}</button>
+
+                    <!-- Progress Bar start -->
+                    
+                    <!-- Progress Bar end -->
+
                     </form>
                 {% else %}
                     <div class="card-header pb-0 px-3">
@@ -56,7 +69,8 @@
                             {% for r in research %}
                                 <li><a class="" href="/media/{{ r.ready_archive }}">
                                     <p class="bg-gradient-faded-light rounded text-center text-dark text-bold mt-3">
-                                         [ {{ r.date_created }} ]  [ {{ r }} ] {% blocktrans %}Скачать архив{% endblocktrans %} <i class="fa fa-download"></i></p></a></li>
+                                        [ {{ r.date_created }} ] [ {{ r }} ] {% blocktrans %}Скачать
+                                        архив{% endblocktrans %} <i class="fa fa-download"></i></p></a></li>
                             {% endfor %}
                         </ol>
 
@@ -70,4 +84,6 @@
 
 {% endblock content %}
 {% block extrascript %}
+
+
 {% endblock extrascript %}

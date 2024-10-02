@@ -2468,3 +2468,7 @@ msgstr ""
 #: templates/registration/password_change_form.html:83
 msgid "Пожалуйста исправьте ошибки."
 msgstr ""
+
+#: templates/pages/upload_research.html:58
+msgid "Не покидайте страницу до окончания загрузки"
+msgstr ""
