@@ -1,21 +1,31 @@
 from django.contrib.auth.models import AnonymousUser
-from django.shortcuts import redirect
+from django.http import JsonResponse
+from django.shortcuts import redirect, render
 from django.utils.html import html_safe
 from unidecode import unidecode
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView
+from django.views.generic import CreateView, View
 
 from apps.converter.forms import ResearchUploadForm
 from apps.converter.models import Research, UserSettings
 
 
-class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView, View):
     model = Research
     form_class = ResearchUploadForm
     template_name = 'pages/upload_research.html'
 
+    # def post(self, request):
+    #     if request.method == 'POST':
+    #         form = ResearchUploadForm(request.POST, request.FILES)
+    #         if form.is_valid():
+    #             form.save()
+    #             return JsonResponse({'data': 'Data uploaded'})
+    #
+    #         else:
+    #             return JsonResponse({'data': 'Something went wrong!!'})
 
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
