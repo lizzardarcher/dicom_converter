@@ -9,9 +9,11 @@ __copyright__ = "Copyright (C) 2024 Ivan Gorkovenkov"
 
 import datetime
 import gzip
+import os
 from functools import wraps
 from time import time
 
+import pydicom
 from lxml import etree
 from pathlib import Path
 from pydicom import uid, datadict
@@ -351,55 +353,46 @@ def glx2dicom(srcdir: Path, dstdir: Path, dicom_attrs=None) -> None:
         i += 1
     fs.write(dstdir)
 
+def merge_dicom(input_dir, output_filename):
+    """Merges multiple DICOM images into a single file.
 
-# def create_argument_parser():
-#     from argparse import ArgumentParser, RawDescriptionHelpFormatter
-#     parser = ArgumentParser(
-#         usage=usage,
-#         description=__description__,
-#         # Do not wrap --version
-#         formatter_class=RawDescriptionHelpFormatter)
-#     parser.add_argument("-V", "--version", action="version", version=version)
-#     parser.add_argument(
-#         "--tag", metavar="DICOM_TAG=VALUE",
-#         default=[], action="append",
-#         help="set or override DICOM tag")
-#     parser.add_argument(
-#         "src_dir", metavar="SRC_DIR",
-#         help='Directory with source CT images'
-#         ', "ID_vol_0" adjucent to the "ID.gwg" file')
-#     parser.add_argument(
-#         "dst_dir", metavar="DST_DIR",
-#         help='Directory to write the result DICOMDIR and images')
-#     return parser
+    Args:
+      input_dir: The directory containing the DICOM images.
+      output_filename: The name of the output file.
+    """
+
+    dicom_files = []
+    for root, _, files in os.walk(input_dir):
+        for file in files:
+            if file.endswith('.dcm'):
+                if 'DICOMDIR.dcm' in file:
+                    ...
+                else:
+                    dicom_files.append(os.path.join(root, file))
 
 
-# def cli_tags2dict(tags: List[str]):
-#     retval = {}
-#     errors = []
-#     for kv in tags:
-#         k, v = kv.split("=", 2)
-#         try:
-#             datadict.dictionary_VR(k)
-#             # TODO convert integer values
-#             retval[k] = v
-#         except (KeyError, ValueError):
-#             errors.append(f'Unknown DICOM tag: {kv!r}')
-#     return retval, errors
+    # Sort the files by instance number (assuming they are already sorted)
+    dicom_files.sort()
 
+    # Create an empty list to store the datasets
+    datasets = []
 
-# def readme():
-#     """Print description intended for ``README.rst`` file.
-#     - Merge the module docstring with disclaimer and license statement.
-#     - Check metadata consistency.
-#     Usage::
-#         python3 -c 'from glx2dicom import readme; print(readme())'
-#     """
-#     title, usage_par, usage_cmd, body = __doc__.split(sep='\n\n', maxsplit=3)
-#     assert title == f'{__title__} - {__description__}'
-#     use = re.sub(r'\n.*--version.*\n', '', usage)
-#     assert re.sub(r'^ *', '', usage_cmd, flags=re.MULTILINE) == re.sub(
-#         r'^ *', '',
-#         use % dict(prog=f'python3 {__title__}.py'),
-#         flags=re.MULTILINE)
-#     title_bar = re.sub('.', '=', title)
+    # Loop through the DICOM files and read each one
+    for filename in dicom_files:
+        filepath = os.path.join(input_dir, filename)
+        dataset = pydicom.dcmread(filepath)
+        datasets.append(dataset)
+
+    # Create a new dataset based on the first dataset
+    merged_dataset = datasets[0]
+
+    # Update the number of frames and pixel data
+    merged_dataset.NumberOfFrames = len(datasets)
+    merged_dataset.PixelData = b''.join([ds.PixelData for ds in datasets])
+
+    # Save the merged dataset to a file
+    pydicom.dcmwrite(output_filename, merged_dataset)
+
+    print(output_filename)
+    return output_filename
+

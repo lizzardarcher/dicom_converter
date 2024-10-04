@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.utils.text import slugify
 
-from .models import Research, GlobalSettings, UserSettings, User
+from .models import Research, GlobalSettings, UserSettings, User, TestResearch
 
 admin.site.unregister(Group)
 admin.site.unregister(User)
@@ -29,4 +29,6 @@ class UserAdmin(admin.ModelAdmin):
 
     inlines = (UserSettingsInline, )
 
-
+@admin.register(TestResearch)
+class TestResearchAdmin(admin.ModelAdmin):
+    list_display = ('user', 'date_created', 'raw_archive',)

@@ -17,7 +17,6 @@ from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
 import patoolib
 
-from apps.converter.one_file import merge_dicom
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, \
     unidecode_recursive, send_email_with_attachment
@@ -99,7 +98,7 @@ class Research(models.Model):
 
             # Если одним фалом, то ...
             if self.is_one_file:
-                one_file = merge_dicom(
+                one_file = glx.merge_dicom(
                     input_dir=f'{glx_dstr_dir.__str__()}',
                     output_filename=f'{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}_research.dcm')
 
@@ -182,3 +181,13 @@ class GlobalSettings(models.Model):
     class Meta:
         verbose_name = 'Общие Настройки проекта'
         verbose_name_plural = 'Общие Настройки проекта'
+
+
+class TestResearch(models.Model):
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    raw_archive = models.FileField(null=False, blank=False, verbose_name='Архив от пользователя')
+
+    def __str__(self):
+        return str(self.raw_archive).split('/')[-1]
+

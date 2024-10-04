@@ -2,30 +2,21 @@ from django.contrib.auth.models import AnonymousUser
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.utils.html import html_safe
+from django.views.decorators.csrf import csrf_exempt
 from unidecode import unidecode
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView, View
+from django.views.generic import CreateView, View, TemplateView
 
 from apps.converter.forms import ResearchUploadForm
-from apps.converter.models import Research, UserSettings
+from apps.converter.models import Research, UserSettings, TestResearch
 
 
 class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView, View):
     model = Research
     form_class = ResearchUploadForm
     template_name = 'pages/upload_research.html'
-
-    # def post(self, request):
-    #     if request.method == 'POST':
-    #         form = ResearchUploadForm(request.POST, request.FILES)
-    #         if form.is_valid():
-    #             form.save()
-    #             return JsonResponse({'data': 'Data uploaded'})
-    #
-    #         else:
-    #             return JsonResponse({'data': 'Something went wrong!!'})
 
     def get_context_data(self, **kwargs):
         context = super(UploadResearchView, self).get_context_data(**kwargs)
@@ -56,3 +47,55 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView, Vi
         name = unidecode(str(name).strip().lower().replace(' ', '_', dots - 1))
         form.instance.raw_archive.name = name
         return super().form_valid(form)
+
+
+class UploadView(TemplateView):
+    """
+    Класс для загрузки файлов с помощью CBV и AJAX.
+    """
+    template_name = 'pages/test_upload_research.html'
+
+    @csrf_exempt
+    def post(self, request):
+        """
+        Обработка POST-запроса для загрузки файла.
+        """
+
+        file = request.FILES.get('file')
+
+        if file:
+            # Сохранение файла в модели UploadFile
+            upload_file = TestResearch(raw_archive=file)
+            upload_file.save()
+
+            # Создание сессии для хранения прогресса
+            request.session['upload_progress'] = 0
+
+            # Возвращение JSON-ответа с информацией о файле
+            return JsonResponse({
+                'success': True,
+                'filename': upload_file.raw_archive.name,
+                'file_size': upload_file.raw_archive.size,
+                'file_url': upload_file.raw_archive.url,  # URL загруженного файла
+            })
+        else:
+            # Обработка ошибки, если файл не был загружен
+            return JsonResponse({
+                'success': False,
+                'error': 'Файл не был загружен.'
+            })
+
+@csrf_exempt
+def progress_view(request):
+    """
+    Обработка запроса AJAX для обновления прогресса загрузки.
+    """
+    if request.method == 'POST':
+        progress = request.POST.get('progress')
+        # Обновление прогресса в сессии
+        request.session['upload_progress'] = progress
+        return JsonResponse({'progress': progress})
+    else:
+        return JsonResponse({'error': 'Invalid request method.'})
+
+

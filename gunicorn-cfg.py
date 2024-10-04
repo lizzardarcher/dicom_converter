@@ -3,7 +3,7 @@
 command = '/opt/dicom_converter/env/bin/gunicorn'
 pythonpath = '/opt/dicom_converter'
 bind = '0.0.0.0'
-workers = 4
+workers = 1
 timeout = 600
 accesslog = '-'
 loglevel = 'debug'

@@ -104,6 +104,7 @@
 {% block content %}
 
     <div class="container-fluid py-4">
+        <div id="successMessage"></div>
 
         <!-- START -->
         <header class="pt-5 py-5 mb-5 animated animatedFadeInUp fadeInUp">
@@ -155,13 +156,16 @@
                 <div class="col-xxl-8">
                     <div class="text-center my-5">
                         <h2 class="display-3 text-dark fw-bolder mb-5">
-                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное решение{% endblocktrans %}</span></h2>
+                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное
+                                решение{% endblocktrans %}</span></h2>
                         <p class="lead fw-light mb-4">
-                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов Galileos{% endblocktrans %}
+                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов
+                                Galileos{% endblocktrans %}
                         </p>
                         <p class="text-muted">
-                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс конвертации, чтобы вы
-                            получили доступ к вашим данным максимально быстро.{% endblocktrans %}
+                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс
+                                конвертации, чтобы вы
+                                получили доступ к вашим данным максимально быстро.{% endblocktrans %}
                         </p>
                     </div>
                 </div>
@@ -218,7 +222,8 @@
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 1"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 1">
                             <h5 class="card-title">{% blocktrans %}Архив с данными{% endblocktrans %}</h5>
-                            <p class="card-text">{% blocktrans %}Создайте архив (zip, rar) с вашим исследованием.{% endblocktrans %}</p>
+                            <p class="card-text">{% blocktrans %}Создайте архив (zip, rar) с вашим
+                                исследованием.{% endblocktrans %}</p>
                             <h6 class="card-text">{% blocktrans %}Популярные архиваторы:{% endblocktrans %}</h6>
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
@@ -249,8 +254,10 @@
                             <h5 class="card-title">{% blocktrans %}Загрузка данных{% endblocktrans %}</h5>
                             <p class="card-text"></p>
                             <p class="card-text">Загружаете данные с томографа GALILEOS в наше <a
-                                    href="{% url 'upload research' %}">{% blocktrans %}программное обеспечение{% endblocktrans %}</a>
-                                {% blocktrans %}Файлы могут быть загружены с вашего компьютера, флешки или любого другого носителя.{% endblocktrans %}
+                                    href="{% url 'upload research' %}">{% blocktrans %}программное
+                                обеспечение{% endblocktrans %}</a>
+                                {% blocktrans %}Файлы могут быть загружены с вашего компьютера, флешки или любого
+                                    другого носителя.{% endblocktrans %}
                             </p>
                         </div>
                     </div>
@@ -261,7 +268,8 @@
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 3"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 3">
                             <h5 class="card-title">{% blocktrans %}Конвертация данных{% endblocktrans %}</h5>
-                            <p class="card-text">{% blocktrans %}Наше программное обеспечение быстро и безопасно конвертирует данные
+                            <p class="card-text">{% blocktrans %}Наше программное обеспечение быстро и безопасно
+                                конвертирует данные
                                 GALILEOS в формат DICOM.{% endblocktrans %}</p>
                         </div>
                     </div>
@@ -275,7 +283,8 @@
                             <img src="https://placehold.co/100x100/C71515/white?text=Шаг 4"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 4">
                             <h5 class="card-title">{% blocktrans %}Загрузка результата{% endblocktrans %}</h5>
-                            <p class="card-text">{% blocktrans %}Вы получаете готовые данные в формате DICOM. Файлы можно скачать на ваш
+                            <p class="card-text">{% blocktrans %}Вы получаете готовые данные в формате DICOM. Файлы
+                                можно скачать на ваш
                                 компьютер из личного кабинета в разделе исследования. Также по завершении вам будет
                                 направлено письмо на
                                 указанную при регистрации почту со ссылкой на архив в облаке. Данные хранятся 6
@@ -305,7 +314,7 @@
                         </video>
                         <h5 class="card-title">{% blocktranslate %}Копирование и архивирование папки
                             Галилеос{% endblocktranslate %}</h5>
-{#                        <a href="#" class="btn btn-info">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>#}
+                        {#                        <a href="#" class="btn btn-info">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>#}
                     </div>
                 </div>
 
@@ -317,7 +326,7 @@
                         </video>
                         <h5 class="card-title">{% blocktranslate %}Сохранение конвертированного исследования на
                             компьютер{% endblocktranslate %}</h5>
-{#                        <a href="#" class="btn btn-info">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>#}
+                        {#                        <a href="#" class="btn btn-info">{% blocktranslate %}Узнать больше{% endblocktranslate %}</a>#}
                     </div>
                 </div>
 
@@ -393,6 +402,19 @@
 <!-- Specific JS goes HERE -->
 {% block scripts %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script>
+        // Получение параметров из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        const message = urlParams.get('message');
+
+        if (success === 'true') {
+            // Отображение сообщения об успешной загрузке
+            $('#successMessage').append('<div class="alert alert-success" role="alert">' + decodeURIComponent(message) + '</div>');
+        }
+    </script>
+
     <script>
         $(document).ready(function () {
             $('.card-img-top').hover(function () {
@@ -403,27 +425,6 @@
         });
     </script>
 
-
-    <!-- Stepper JavaScript -->
-    <script>
-        const stepButtons = document.querySelectorAll('.step-button');
-        const progress = document.querySelector('#progress');
-
-        Array.from(stepButtons).forEach((button, index) => {
-            button.addEventListener('click', () => {
-                progress.setAttribute('value', index * 100 / (stepButtons.length - 1));//there are 3 buttons. 2 spaces.
-
-                stepButtons.forEach((item, secindex) => {
-                    if (index > secindex) {
-                        item.classList.add('done');
-                    }
-                    if (index < secindex) {
-                        item.classList.remove('done');
-                    }
-                })
-            })
-        })
-    </script>
 
     <script src="{% static 'js/core/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/core/owl.carousel.min.js' %}"></script>
