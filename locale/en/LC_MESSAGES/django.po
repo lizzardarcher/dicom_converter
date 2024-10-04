@@ -2472,3 +2472,6 @@ msgstr ""
 #: templates/pages/upload_research.html:58
 msgid "Не покидайте страницу до окончания загрузки"
 msgstr ""
+#: templates/components/progress_bar.html:4
+msgid "Пожалуйста, не покидайте страницу до окончания загрузки"
+msgstr ""

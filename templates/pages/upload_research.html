@@ -49,20 +49,14 @@
                                 файлом{% endblocktrans %}</label>
                         </div>
 
-                        <button id="submit_btn" type="submit"
-                                class="col-lg-4 btn bg-gradient-info mt-3">{% trans "Подтвердить" %}</button>
+                        <button id="submit_btn" type="submit" class="col-lg-4 btn bg-gradient-info mt-3">
+                            {% trans "Подтвердить" %}
+                        </button>
+
+                        <div id="errorMessages"></div>
 
                         <!-- Progress Bar start -->
-                        <div id="progress_bar" class="progress" role="progressbar" 
-                             aria-label="Progress Bar" 
-                             aria-valuenow="0"
-                             aria-valuemin="0"
-                             aria-valuemax="100"
-                             style="height: 20px;">
-                            <div id="progressBarValue" class="progress-bar progress-bar-striped bg-info"
-                                 style="width: 0%; height: 20px;"></div>
-                        </div>
-                        <div id="errorMessages"></div>
+                        {% include 'components/progress_bar.html' %}
                         <!-- Progress Bar end -->
 
                     </form>
