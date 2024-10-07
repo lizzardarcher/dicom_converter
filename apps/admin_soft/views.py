@@ -8,6 +8,7 @@ from django.views.generic import TemplateView, UpdateView, View
 from django.contrib import messages
 
 from apps.converter.models import UserSettings, Research
+from apps.home.models import Log
 from apps.payments.models import Payment
 from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
     UserPasswordChangeForm
