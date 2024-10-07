@@ -13,6 +13,8 @@ def delete_old_archives(directory, days_threshold=2):
     Удаляет архивы (zip, rar, dcm) в указанной директории,
     если они были созданы более `days_threshold` дней назад.
 
+    Также идёт очистка systemd-journald 1 week
+
     Args:
         directory (str): Путь к директории.
         days_threshold (int): Количество дней, после которого архивы считаются старыми.
@@ -41,6 +43,7 @@ if __name__ == '__main__':
         while True:
             for _dir in dirs_to_check:
                 delete_old_archives(directory=_dir, days_threshold=2)
+                os.system('journalctl --vacuum-time=1week')
                 time.sleep(3)
     except KeyboardInterrupt:
         sys.exit(0)

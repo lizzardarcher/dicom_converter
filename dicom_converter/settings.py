@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.converter',
     'apps.payments',
-    'apps.authentication',
     'fontawesomefree',
     'cookie_consent',
     'django_recaptcha',

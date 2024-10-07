@@ -18,7 +18,8 @@ import var_dump
 
 from yookassa import Payment as YooKassaPayment, Configuration
 
-from apps.converter.models import UserSettings
+from apps.converter.models import UserSettings, GlobalSettings
+from apps.home.models import Log
 from apps.payments.models import Payment
 from apps.payments.forms import PaymentForm
 
@@ -26,8 +27,10 @@ from apps.payments.forms import PaymentForm
 class SelectPaymentView(TemplateView):
     template_name = 'payments/select.html'
 
+
 class PaymentInfoYookassaView(TemplateView, LoginRequiredMixin):
     template_name = 'payments/yookassa/payment_info.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
@@ -57,15 +60,16 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
 
     def form_valid(self, form):
         description = form.cleaned_data['description']
-        amount = 200
+        prices = GlobalSettings.objects.get(pk=1)
+        price = 200
         if description == '1_convert':
-            amount = 200
+            price = prices.price_1_ru
         elif description == '5_convert':
-            amount = 900
+            price = prices.price_2_ru
         elif description == '10_convert':
-            amount = 1700
+            price = prices.price_3_ru
         payment = Payment.objects.create(
-            amount=amount,
+            amount=price,
             description=description,
             user=self.request.user,
             currency='RUB'
@@ -76,7 +80,7 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
 
         payment_object = YooKassaPayment.create({
             'amount': {
-                'value': amount,
+                'value': price,
                 'currency': 'RUB',
             },
             'confirmation': {
@@ -89,6 +93,5 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
 
         payment.payment_id = payment_object.id
         payment.save()
+        Log.objects.create(user=self.request.user, level='info', message=f'[{str(payment_object.id)}] [Payment] [{description}]')
         return redirect(payment_object.confirmation.confirmation_url)
-
-

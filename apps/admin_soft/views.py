@@ -7,7 +7,7 @@ from django.contrib.auth import logout
 from django.views.generic import TemplateView, UpdateView, View
 from django.contrib import messages
 
-from apps.converter.models import UserSettings, Research, Transaction
+from apps.converter.models import UserSettings, Research
 from apps.payments.models import Payment
 from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
     UserPasswordChangeForm
