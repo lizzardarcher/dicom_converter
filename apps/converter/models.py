@@ -159,20 +159,21 @@ class Transaction(models.Model):
 
 
 class GlobalSettings(models.Model):
-    yookassa_api_key = models.CharField(max_length=1000, blank=True, null=True, verbose_name='Yookassa token')
-    yookassa_shop_id = models.CharField(max_length=1000, blank=True, null=True, verbose_name='Yookassa Shop ID')
 
-    # price_1_ru = models.IntegerField(default=200, blank=True, null=True, verbose_name='Цена за 1 конв. РУБ')
-    # price_2_ru = models.IntegerField(default=900, blank=True, null=True, verbose_name='Цена за 5 конв. РУБ')
-    # price_3_ru = models.IntegerField(default=1700, blank=True, null=True, verbose_name='Цена за 10 конв. РУБ')
-    #
-    # price_1_en = models.IntegerField(default=2, blank=True, null=True, verbose_name='Цена за 1 конв. USD')
-    # price_2_en = models.IntegerField(default=9, blank=True, null=True, verbose_name='Цена за 5 конв. USD')
-    # price_3_en = models.IntegerField(default=17, blank=True, null=True, verbose_name='Цена за 10 конв. USD')
+    price_1_ru = models.IntegerField(default=200, blank=True, null=True, verbose_name='Цена за 1 конв. РУБ')
+    price_2_ru = models.IntegerField(default=900, blank=True, null=True, verbose_name='Цена за 5 конв. РУБ')
+    price_3_ru = models.IntegerField(default=1700, blank=True, null=True, verbose_name='Цена за 10 конв. РУБ')
+
+    price_1_en = models.IntegerField(default=2, blank=True, null=True, verbose_name='Цена за 1 конв. USD')
+    price_2_en = models.IntegerField(default=9, blank=True, null=True, verbose_name='Цена за 5 конв. USD')
+    price_3_en = models.IntegerField(default=17, blank=True, null=True, verbose_name='Цена за 10 конв. USD')
+
+    def __str__(self):
+        return "Настройка цен"
 
     class Meta:
-        verbose_name = 'Общие Настройки проекта'
-        verbose_name_plural = 'Общие Настройки проекта'
+        verbose_name = 'Цены'
+        verbose_name_plural = 'Цены'
 
 
 class TestResearch(models.Model):

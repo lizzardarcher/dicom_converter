@@ -1,4 +1,5 @@
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!--PRICING-->
 <div class="page-header bg-gradient-primary position-relative m-3 border-radius-xl">
     <div class="container pb-lg-9 pb-10 pt-7 postion-relative z-index-2">
@@ -27,7 +28,11 @@
                             <div class="card-header text-center pt-4 pb-3">
                                 <span class="badge rounded-pill bg-light text-dark">{% trans "Стартовый" %}</span>
                                 <h1 class="font-weight-bold mt-2">
-                                    <small>₽</small> 200
+                                    {% if LANGUAGE_CODE == 'ru' %}
+                                    <small>₽</small> {{ prices.price_1_ru }} 
+                                    {% elif LANGUAGE_CODE == 'en' %}
+                                    <small>$</small> {{ prices.price_1_en }} 
+                                    {% endif %}
                                 </h1>
                             </div>
                             <div class="card-body text-lg-start text-center pt-0 animated animatedFadeInUp fadeInUp">
@@ -68,7 +73,11 @@
                             <div class="card-header text-center pt-4 pb-3">
                                 <span class="badge rounded-pill bg-light text-dark">{% trans "Продвинутый" %}</span>
                                 <h1 class="font-weight-bold mt-2">
-                                    <small>₽</small> 900
+                                    {% if LANGUAGE_CODE == 'ru' %}
+                                    <small>₽</small> {{ prices.price_2_ru }} 
+                                    {% elif LANGUAGE_CODE == 'en' %}
+                                    <small>$</small> {{ prices.price_2_en }} 
+                                    {% endif %}
                                 </h1>
                             </div>
                             <div class="card-body text-lg-start text-center pt-0 animated animatedFadeInUp fadeInUp">
@@ -109,7 +118,11 @@
                             <div class="card-header text-center pt-4 pb-3">
                                 <span class="badge rounded-pill bg-light text-dark">{% trans "Премиум" %}</span>
                                 <h1 class="font-weight-bold mt-2">
-                                    <small>₽</small> 1700
+                                    {% if LANGUAGE_CODE == 'ru' %}
+                                    <small>₽</small> {{ prices.price_3_ru }} 
+                                    {% elif LANGUAGE_CODE == 'en' %}
+                                    <small>$</small> {{ prices.price_3_en }} 
+                                    {% endif %}
                                 </h1>
                             </div>
                             <div class="card-body text-lg-start text-center pt-0 animated animatedFadeInUp fadeInUp">

@@ -32,3 +32,11 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(TestResearch)
 class TestResearchAdmin(admin.ModelAdmin):
     list_display = ('user', 'date_created', 'raw_archive',)
+
+
+@admin.register(GlobalSettings)
+class GlobalSettingsAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request, obj=None):
+        return False
+    def has_delete_permission(self, request, obj=None):
+        return False

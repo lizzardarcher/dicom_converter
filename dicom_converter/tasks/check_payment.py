@@ -6,7 +6,7 @@ from time import sleep
 from django.conf import settings
 from yookassa import Payment as YooKassaPayment, Configuration
 
-from apps.converter.models import UserSettings
+from apps.converter.models import UserSettings, GlobalSettings
 from apps.payments.models import Payment
 
 
@@ -19,6 +19,8 @@ def update_yookassa_info():
     Configuration.secret_key = settings.YOOKASSA_SECRET
     payments = Payment.objects.filter(paid=False)
 
+    prices = GlobalSettings.objects.get(pk=1)
+
     for payment in payments:
         try:
             yp = YooKassaPayment.find_one(payment.payment_id)  # Получаем данные о платеже
@@ -28,11 +30,11 @@ def update_yookassa_info():
             if 'succeeded' in payment.status:
                 user_info = UserSettings.objects.filter(user=payment.user).last()
                 count = user_info.research_avail_count
-                if int(payment.amount) == 200:
+                if int(payment.amount) == prices.price_1_ru:
                     user_info.research_avail_count = count + 1
-                elif int(payment.amount) == 900:
+                elif int(payment.amount) == prices.price_2_ru:
                     user_info.research_avail_count = count + 5
-                elif int(payment.amount) == 1700:
+                elif int(payment.amount) == prices.price_3_ru:
                     user_info.research_avail_count = count + 10
                 user_info.save()
         except:

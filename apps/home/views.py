@@ -1,17 +1,27 @@
-from time import sleep
-
 from django.conf import settings
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import  redirect
 from django.utils.translation import activate
-from django.views.generic import TemplateView, CreateView, FormView
+from django.views.generic import TemplateView,  FormView
 
 from apps.admin_soft.utils import SuccessMessageMixin
+from apps.converter.models import GlobalSettings
 from apps.home.forms import ContactForm
 
 
 class PricesView(TemplateView):
     template_name = 'pages/info/prices.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PricesView, self).get_context_data(**kwargs)
+        try:
+            prices = GlobalSettings.objects.all().last()
+        except AttributeError:
+            prices = ''
+        context.update({
+            'prices': prices,
+        })
+        return context
 
 
 class HelpView(TemplateView):
