@@ -1,3 +1,5 @@
+from dicom_converter.orm import django_orm
+
 import sys
 from datetime import datetime
 from time import sleep
