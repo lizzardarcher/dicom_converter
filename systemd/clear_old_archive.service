@@ -1,5 +1,5 @@
 [Unit]
-Description=Yandex.disk Upload
+Description=Removing old archives
 After=syslog.target
 After=network.target
 
@@ -8,7 +8,7 @@ Type=simple
 User=root
 WorkingDirectory=/opt/dicom_converter/dicom_converter/tasks
 Environment="PYTHONPATH=/opt/dicom_converter"
-ExecStart=/opt/dicom_converter/env/bin/python3.12 /opt/dicom_converter/dicom_converter/tasks/upload_cloud.py
+ExecStart=/opt/dicom_converter/env/bin/python3.12 /opt/dicom_converter/dicom_converter/tasks/clear_old_archive.py
 RestartSec=10
 Restart=always
 
