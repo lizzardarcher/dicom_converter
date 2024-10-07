@@ -1,34 +1,19 @@
 import os
 import shutil
-import logging
-import traceback
+import patoolib
 from datetime import datetime
-from time import sleep
 from pathlib import Path
-import yadisk
 
-from django.conf import settings
-from django.core.mail import send_mail, EmailMessage
 from django.db import models
 from django.core.files import File
-from django.shortcuts import redirect
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.core.validators import FileExtensionValidator
-import patoolib
 
+from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
-from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, CustomFormatter, add_ext_recursive, \
-    unidecode_recursive, send_email_with_attachment
+from apps.converter.utils import find_dir_by_name_part, search_file_in_dir,  add_ext_recursive, unidecode_recursive
 from apps.converter import glx
-
-### LOGGING
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-ch.setFormatter(CustomFormatter())
-logger.addHandler(ch)
 
 
 class Research(models.Model):
@@ -63,7 +48,6 @@ class Research(models.Model):
                 2. Разархивируем полученный архив (OK)
                 Используем стороннюю библиотеку patoolib. Архив берется по пути, указанному в модели далее извлекается в
                 динамически создающуюся директорию, соответствующую имени архива без расширения
-
             """
             archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
             logger.info(f'2. [Директория с архивом] {archive_dir}')
@@ -177,6 +161,14 @@ class Transaction(models.Model):
 class GlobalSettings(models.Model):
     yookassa_api_key = models.CharField(max_length=1000, blank=True, null=True, verbose_name='Yookassa token')
     yookassa_shop_id = models.CharField(max_length=1000, blank=True, null=True, verbose_name='Yookassa Shop ID')
+
+    # price_1_ru = models.IntegerField(default=200, blank=True, null=True, verbose_name='Цена за 1 конв. РУБ')
+    # price_2_ru = models.IntegerField(default=900, blank=True, null=True, verbose_name='Цена за 5 конв. РУБ')
+    # price_3_ru = models.IntegerField(default=1700, blank=True, null=True, verbose_name='Цена за 10 конв. РУБ')
+    #
+    # price_1_en = models.IntegerField(default=2, blank=True, null=True, verbose_name='Цена за 1 конв. USD')
+    # price_2_en = models.IntegerField(default=9, blank=True, null=True, verbose_name='Цена за 5 конв. USD')
+    # price_3_en = models.IntegerField(default=17, blank=True, null=True, verbose_name='Цена за 10 конв. USD')
 
     class Meta:
         verbose_name = 'Общие Настройки проекта'

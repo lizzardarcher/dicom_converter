@@ -1,11 +1,8 @@
-import os
-import django
-os.environ['DJANGO_SETTINGS_MODULE'] = 'dicom_converter.settings'
-os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
-django.setup()
+from dicom_converter.orm import django_orm
 
 import sys
 from time import sleep
+
 from django.conf import settings
 from yookassa import Payment as YooKassaPayment, Configuration
 
@@ -28,7 +25,6 @@ def update_yookassa_info():
             payment.paid = yp.paid  # Оплачено
             payment.status = yp.status  # Статус платежа
             payment.save()
-            print('*******', payment.payment_id, payment.paid, payment.status, '*******')
             if 'succeeded' in payment.status:
                 user_info = UserSettings.objects.filter(user=payment.user).last()
                 count = user_info.research_avail_count

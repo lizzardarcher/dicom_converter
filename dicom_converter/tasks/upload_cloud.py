@@ -1,27 +1,13 @@
-import logging
 import sys
-import traceback
-from datetime import datetime, timezone, timedelta
+from datetime import datetime
 from time import sleep
 
 import yadisk
-import os
-import django
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'dicom_converter.settings'
-os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
-django.setup()
 from django.conf import settings
-from apps.converter.models import Research
-from apps.converter.utils import CustomFormatter, send_email_with_attachment
 
-### LOGGING
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-ch.setFormatter(CustomFormatter())
-logger.addHandler(ch)
+from apps.converter.models import Research
+from apps.converter.utils import send_email_with_attachment
+from dicom_converter.logger.project_logger import logger
 
 
 def upload(file_path, email, research_id):
