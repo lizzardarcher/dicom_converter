@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
+# Translation from Russian to English.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the Galileos.pro project.
+# AUTHOR IVAN GORKOVENKOV  dltahiyan@gmail.com, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 15:25+0500\n"
+"POT-Creation-Date: 2024-10-08 15:49+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: IVAN GORKOVENKOV <dltahiyan@gmail.com>\n"
+"Language-Team: LANGUAGE <dltahiyan@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2907,38 +2907,26 @@ msgid ""
 "                                        архив"
 msgstr ""
 
-#: templates/pages/upload_research.html:150
+#: templates/pages/upload_research.html:153
+#: templates/pages/upload_research.html:156
 #, fuzzy
 #| msgid "Загрузка данных"
-msgid "Загружено:"
+msgid "Загружено"
 msgstr "Loading data"
-
-#: templates/pages/upload_research.html:150
-#, fuzzy, python-format
-#| msgid "Дождитесь окончания конвертации"
-msgid "%% Подождите ещё немного. Идёт процесс конвертации"
-msgstr "Wait for the conversion to complete"
 
 #: templates/pages/upload_research.html:153
 #, fuzzy
-#| msgid "Загрузка данных"
-msgid "Загружено: "
-msgstr "Loading data"
+#| msgid "Процесс конвертации прост:"
+msgid "Идёт процесс конвертации, подождите немного..."
+msgstr "The conversion process is simple:"
 
-#: templates/pages/upload_research.html:179
-#: templates/pages/upload_research.html:191
-msgid "Данные томографа GALILEOS сконвертированы в формат DICOM "
-msgstr "GALILEOS tomograph data converted to DICOM format"
-
-#: templates/pages/upload_research.html:180
-#: templates/pages/upload_research.html:192
-msgid "Ссылка на скачивание вскоре будет отправлена на вашу почту."
-msgstr "The download link will be sent to your email shortly."
-
-#: templates/pages/upload_research.html:181
+#: templates/pages/upload_research.html:183
 #: templates/pages/upload_research.html:193
-msgid " Также вы можете скачать архив в личном кабинете"
-msgstr "You can also download the archive in your personal account"
+msgid ""
+"Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на "
+"скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать "
+"архив в личном кабинете"
+msgstr ""
 
 #: templates/pages/upload_research.html:198
 msgid "Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже."
@@ -3025,16 +3013,3 @@ msgstr "Change my password"
 #: templates/registration/password_change_form.html:83
 msgid "Пожалуйста исправьте ошибки."
 msgstr "Please correct the errors."
-
-#~ msgid "Анонимизировать данные о пациенте"
-#~ msgstr "Anonymize patient data"
-
-#~ msgid "конвертиция"
-#~ msgstr "conversion"
-
-#: templates/pages/upload_research.html:176
-msgid "\"Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в личном кабинете\""
-msgstr ""
-#: templates/pages/upload_research.html:151
-msgid "'Загружено: '"
-msgstr ""
