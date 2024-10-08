@@ -144,14 +144,18 @@
                         console.log(xhr)
                         xhr.upload.addEventListener('progress', function (event) {
                             if (event.lengthComputable) {
+
                                 var percentComplete = (event.loaded / event.total) * 100;
-                                if (Math.floor(percentComplete) === 100) {
+                                if (Math.floor(percentComplete) === 100){
                                     $('#progressBarValue').css('width', percentComplete + '%');
-                                    $('#progress_text').html({% trans 'Загружено:' %} +Math.floor(percentComplete) + {% trans '% Подождите ещё немного. Идёт процесс конвертации' %});
-                                } else {
+                                    $('#progressBarValue').removeClass('bg-gradient-info');
+                                    $('#progressBarValue').addClass('bg-gradient-success');
+                                    $('#progress_text').html( '{% blocktranslate %}Загружено{% endblocktranslate %}: ' +Math.floor(percentComplete) + '% {% blocktranslate %}Идёт процесс конвертации, подождите немного...{% endblocktranslate %}');
+                                }else{
                                     $('#progressBarValue').css('width', percentComplete + '%');
-                                    $('#progress_text').html({% trans 'Загружено: ' %} +Math.floor(percentComplete) + '%');
+                                    $('#progress_text').html( '{% blocktranslate %}Загружено{% endblocktranslate %}: ' +Math.floor(percentComplete) + '%');
                                 }
+
 
                                 // Вызов функции обновления прогресса
                                 $.ajax({
@@ -176,9 +180,7 @@
                         // Переход на index.html с успешным сообщением
                         console.log(data)
                         window.location.href = '/?success=true&message=' + encodeURIComponent((
-                            {% trans "Данные томографа GALILEOS сконвертированы в формат DICOM " %} +
-                                {% trans "Ссылка на скачивание вскоре будет отправлена на вашу почту." %} +
-                            {% trans " Также вы можете скачать архив в личном кабинете" %}
+                             "{% blocktranslate %}Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в личном кабинете{% endblocktranslate %}"
                         ));
                         return false;
                     },
@@ -188,9 +190,7 @@
                         if (error.status === 504) {
                             // Ошибка 504: Gateway Timeout
                             window.location.href = '/?success=true&message=' + encodeURIComponent((
-                                {% trans "Данные томографа GALILEOS сконвертированы в формат DICOM " %} +
-                                    {% trans "Ссылка на скачивание вскоре будет отправлена на вашу почту." %} +
-                                {% trans " Также вы можете скачать архив в личном кабинете" %}
+                             "{% blocktranslate %}Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в личном кабинете{% endblocktranslate %}"
                             ));
                         } else {
                             // Другие ошибки

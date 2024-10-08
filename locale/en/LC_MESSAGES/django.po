@@ -3031,3 +3031,10 @@ msgstr "Please correct the errors."
 
 #~ msgid "конвертиция"
 #~ msgstr "conversion"
+
+#: templates/pages/upload_research.html:176
+msgid "\"Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в личном кабинете\""
+msgstr ""
+#: templates/pages/upload_research.html:151
+msgid "'Загружено: '"
+msgstr ""
