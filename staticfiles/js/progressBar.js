@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     var raw_archive = document.getElementById('id_raw_archive');
-    var is_anonymous = document.getElementById('flexSwitchCheckDefault1');
     var is_one_file = document.getElementById('flexSwitchCheckDefault2');
     var submit_btn = document.getElementById('submit_btn')
     var pgb = $('#progress_bar');
@@ -57,6 +56,7 @@ $(document).ready(function () {
             },
             xhr: function () {
                 var xhr = new window.XMLHttpRequest();
+                console.log(xhr);
                 xhr.upload.addEventListener('progress', function (event) {
                     if (event.lengthComputable) {
                         var percentComplete = (event.loaded / event.total) * 100;
@@ -76,7 +76,6 @@ $(document).ready(function () {
                     }
                 });
                 raw_archive.disabled = true;
-                is_anonymous.disabled = true;
                 is_one_file.disabled = true;
                 submit_btn.disabled = true;
                 pgb.show();
@@ -94,7 +93,6 @@ $(document).ready(function () {
                 return false;
             },
             error: function (error) {
-                // Обработка ошибки
                 // Обработка ошибки
                 if (error.status === 504) {
                     // Ошибка 504: Gateway Timeout

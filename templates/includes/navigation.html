@@ -5,7 +5,7 @@
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 border-radius-xl shadow-none position-sticky mt-4 top-1 z-index-sticky"
      id="navbarBlur" navbar-scroll="true" data-scroll="true">
     <div class="container-fluid py-1 px-3">
-        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="/">
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="/{{ LANGUAGE_CODE }}/">
             <img class="icon icon-md rounded" src="{% static 'img/favicon.png' %}" alt="logo">
             GalileosPro
         </a>
@@ -24,7 +24,7 @@
                         <span class="d-sm-inline d-none me-3">{% translate 'Цены' %}</span>
                     </a>
                 </li>
-
+                
                 {% if request.user.is_authenticated %}
                     <li class="nav-item pe-2 d-flex align-items-center">
 
@@ -33,6 +33,7 @@
                             {% translate 'Личный Кабинет' %}</span>
                         </a>
                     </li>
+                    {% include 'components/lang_switcher.html' %}
                     <li class="nav-item d-flex align-items-center">
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
@@ -43,6 +44,7 @@
                         </form>
                     </li>
                 {% else %}
+                    {% include 'components/lang_switcher.html' %}
                     <li class="nav-item d-flex align-items-center">
                         <a href="{% url 'login' %}" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
@@ -52,45 +54,7 @@
                 {% endif %}
 
 
-                <!-- Переключатель языков -->
-                <li class=" nav-item dropdown  d-flex align-items-center">
-                    <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-globe cursor-pointer"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'set_lang_en' %}">
-                            🇺🇸 {% translate 'Английский' %}
-                        </a></li>
-                        <li><a class="dropdown-item" href="{% url 'set_lang_ru' %}">
-                            🇷🇺 {% trans "Русский" %}
-                        </a></li>
-                    </ul>
-                </li>
 
-                <li class="nav-item dropdown pe-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bell cursor-pointer"></i>
-                    </a>
-                    <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
-                        aria-labelledby="dropdownMenuButton">
-                        <li>
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
-                                <div class="d-flex py-1">
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="text-sm font-weight-normal mb-1">
-                                            Payment successfully completed
-                                        </h6>
-                                        <p class="text-xs text-secondary mb-0 ">
-                                            <i class="fa fa-clock me-1"></i>
-                                            2 days
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </div>

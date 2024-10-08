@@ -62,16 +62,12 @@
                 <div class="col-xxl-8">
                     <div class="text-center my-5">
                         <h2 class="display-3 text-dark fw-bolder mb-5">
-                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное
-                                решение{% endblocktrans %}</span></h2>
+                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное решение{% endblocktrans %}</span></h2>
                         <p class="lead fw-light mb-4">
-                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов
-                                Galileos{% endblocktrans %}
+                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов Galileos{% endblocktrans %}
                         </p>
                         <p class="text-muted">
-                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс
-                                конвертации, чтобы вы
-                                получили доступ к вашим данным максимально быстро.{% endblocktrans %}
+                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс конвертации, чтобы вы получили доступ к вашим данным максимально быстро.{% endblocktrans %}
                         </p>
                     </div>
                 </div>
@@ -88,11 +84,7 @@
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
                                     <h1 class="font-weight-bolder">{% trans 'Что такое GalileosPro?' %}</h1>
-                                    <p class="mb-2">{% blocktranslate %}GalileosPro - это мощный, но простой в
-                                        использовании веб сервис,
-                                        который позволяет конвертировать
-                                        данные с вашего томографа SIRONA GALILEOS в
-                                        DICOM-файлы. {% endblocktranslate %}</p>
+                                    <p class="mb-2">{% blocktranslate %}GalileosPro - это мощный, но простой в использовании веб сервис, который позволяет конвертировать данные с вашего томографа SIRONA GALILEOS в DICOM-файлы. {% endblocktranslate %}</p>
                                     <p> {% blocktranslate %}DICOM (Digital Imaging and Communications in Medicine) -
                                         это стандарт для хранения и обмена медицинскими изображениями, используемый в
                                         больницах и клиниках по всему миру.{% endblocktranslate %}</p>
@@ -119,13 +111,13 @@
 
 
         <div class="container pt-5 mt-5 mb-5 col-lg-8 col-12">
-            <h1 class="mt-5 mb-5">{% blocktranslate %}Три простых шага для работы{% endblocktranslate %}</h1>
+            <h1 class="mt-5 mb-5">{% blocktranslate %}Простые шаги для работы{% endblocktranslate %}</h1>
 
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column align-items-center">
-                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 1"
+                            <img src="https://placehold.co/100x100/C71515/white?text={% trans 'Шаг' %} 1"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 1">
                             <h5 class="card-title">{% blocktrans %}Архив с данными{% endblocktrans %}</h5>
                             <p class="card-text">{% blocktrans %}Создайте архив (zip, rar) с вашим
@@ -155,13 +147,12 @@
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column align-items-center">
-                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 2"
+                            <img src="https://placehold.co/100x100/C71515/white?text={% trans 'Шаг' %} 2"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 2">
                             <h5 class="card-title">{% blocktrans %}Загрузка данных{% endblocktrans %}</h5>
                             <p class="card-text"></p>
                             <p class="card-text">Загружаете данные с томографа GALILEOS в наше <a
-                                    href="{% url 'upload research' %}">{% blocktrans %}программное
-                                обеспечение{% endblocktrans %}</a>
+                                    href="{% url 'upload research' %}">{% blocktrans %}программное обеспечение{% endblocktrans %}</a>
                                 {% blocktrans %}Файлы могут быть загружены с вашего компьютера, флешки или любого
                                     другого носителя.{% endblocktrans %}
                             </p>
@@ -171,7 +162,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column align-items-center">
-                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 3"
+                            <img src="https://placehold.co/100x100/C71515/white?text={% trans 'Шаг' %} 3"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 3">
                             <h5 class="card-title">{% blocktrans %}Конвертация данных{% endblocktrans %}</h5>
                             <p class="card-text">{% blocktrans %}Наше программное обеспечение быстро и безопасно
@@ -186,7 +177,7 @@
                 <div class="col-md-4 offset-md-4">
                     <div class="card h-100">
                         <div class="card-body d-flex flex-column align-items-center">
-                            <img src="https://placehold.co/100x100/C71515/white?text=Шаг 4"
+                            <img src="https://placehold.co/100x100/C71515/white?text={% trans 'Шаг' %} 4"
                                  class="img-fluid rounded-circle mb-3" alt="Шаг 4">
                             <h5 class="card-title">{% blocktrans %}Загрузка результата{% endblocktrans %}</h5>
                             <p class="card-text">{% blocktrans %}Вы получаете готовые данные в формате DICOM. Файлы
@@ -269,17 +260,14 @@
                     <div class="card-body">
                         <img class="card-img-top" src="{% static 'info/other_soft/ExoCad.png' %}" alt="ExoCad">
                         <h5 class="card-title">{% blocktranslate %}ExoCad{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/ExoCad.png' %}" class="btn btn-info">{% blocktranslate %}
-                            Подробнее{% endblocktranslate %}</a>
-
+                        <a href="{% static 'info/other_soft/ExoCad.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <img class="card-img-top" src="{% static 'info/other_soft/Ez-Vision.png' %}" alt="Ez-Vision">
                         <h5 class="card-title">{% blocktranslate %}Ez-Vision{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/Ez-Vision.png' %}" class="btn btn-info">{% blocktranslate %}
-                            Подробнее{% endblocktranslate %}</a>
+                        <a href="{% static 'info/other_soft/Ez-Vision.png' %}" class="btn btn-info">{% blocktranslate %}Подробнее{% endblocktranslate %}</a>
 
                     </div>
                 </div>
@@ -287,21 +275,14 @@
                     <div class="card-body">
                         <img class="card-img-top" src="{% static 'info/other_soft/RealGUIDE.png' %}" alt="RealGUIDE">
                         <h5 class="card-title">{% blocktranslate %}RealGUIDE{% endblocktranslate %}</h5>
-                        <a href="{% static 'info/other_soft/RealGUIDE.png' %}" class="btn btn-info">{% blocktranslate %}
-                            Подробнее{% endblocktranslate %}</a>
+                        <a href="{% static 'info/other_soft/RealGUIDE.png' %}" class="btn btn-info">{% trans 'Подробнее' %}</a>
 
                     </div>
                 </div>
             </div>
         </div>
         <!--YOUTUBE END-->
-
-        <!-- Sticky Button -->
-        <a href="{% url 'upload research' %}" class="fixed-bottom-button z-index-sticky">
-            <i class="fa fa-cloud-download-alt"></i>
-        </a>
-
-    </div>
+   </div>
 
 {% endblock content %}
 
