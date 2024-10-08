@@ -9,6 +9,10 @@ from apps.converter.models import GlobalSettings
 from apps.home.forms import ContactForm
 
 
+class IndexView(SuccessMessageMixin, TemplateView):
+    template_name = 'pages/index.html'
+
+
 class PricesView(TemplateView):
     template_name = 'pages/info/prices.html'
 

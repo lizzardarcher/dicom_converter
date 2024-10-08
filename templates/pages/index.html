@@ -3,100 +3,6 @@
 {% load static %}
 {% block title %}{% endblock title %}
 {% block extrastyle %}
-    <style>
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .step-button {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            background-color: grey;
-            transition: .4s;
-        }
-
-        .step-button[aria-expanded="true"] {
-            width: 60px;
-            height: 60px;
-            background-color: orangered;
-            color: #fff;
-        }
-
-        .done {
-            background-color: orangered;
-            color: #fff;
-        }
-
-        .step-item {
-            z-index: 10;
-            text-align: center;
-        }
-
-        #progress {
-            -webkit-appearance: none;
-            position: absolute;
-            width: 95%;
-            z-index: 5;
-            height: 10px;
-            margin-left: 18px;
-            margin-bottom: 18px;
-        }
-
-        /* to customize progress bar */
-        #progress::-webkit-progress-value {
-            background-color: orangered;
-            transition: 1s ease;
-        }
-
-        #progress::-webkit-progress-bar {
-            background-color: grey;
-
-        }
-
-        .card-img-top {
-            transition: transform 0.3s ease; /* 0.3 секунды плавности */
-        }
-
-        .card-img-top {
-            max-width: 500px; /* Максимальная ширина */
-            max-height: 400px; /* Максимальная высота */
-        }
-
-        .fixed-bottom-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            background-color: orangered;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-    </style>
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 
@@ -137,10 +43,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-xxl-7">
+                    <div class="col-xxl-7">
                         <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                             <div class="profile bg-gradient-primary-to-secondary">
-                                <img class="d-none d-sm-block profile-img" src="{% static 'img/dentist.png' %}"
+                                <img class="d-none d-sm-block d-md-block profile-img" src="{% static 'img/dentist.png' %}"
                                      alt="logo">
                             </div>
                         </div>

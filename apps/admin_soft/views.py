@@ -8,29 +8,14 @@ from django.views.generic import TemplateView, UpdateView, View
 from django.contrib import messages
 
 from apps.converter.models import UserSettings, Research
-from apps.home.models import Log
 from apps.payments.models import Payment
 from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordResetForm, UserSetPasswordForm, \
     UserPasswordChangeForm
 
 
-# Create your views here.
 
-# Pages
-def index(request):
-    return render(request, 'pages/index.html', {'segment': 'index'})
-
-
-# def billing(request):
-#     return render(request, 'pages/billing.html', {'segment': 'billing'})
-
-
-# def tables(request):
-#     return render(request, 'pages/tables.html', {'segment': 'tables'})
-
-
-# def profile(request):
-#     return render(request, 'pages/profile.html', {'segment': 'profile'})
+# def index(request):
+#     return render(request, 'pages/index.html', {'segment': 'index'})
 
 
 class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):

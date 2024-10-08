@@ -14,6 +14,15 @@ class ResearchAdmin(admin.ModelAdmin):
     search_fields = ('user__username', 'slug')
     readonly_fields = ('slug', 'date_created', 'ready_archive',)
 
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     def save_model(self, request, obj, form, change):
         if not obj.slug:
             obj.slug = slugify(f'{obj.user} {str(obj.date_created)}')
@@ -28,10 +37,6 @@ class UserAdmin(admin.ModelAdmin):
         verbose_name_plural = 'User Settings'
 
     inlines = (UserSettingsInline, )
-
-@admin.register(TestResearch)
-class TestResearchAdmin(admin.ModelAdmin):
-    list_display = ('user', 'date_created', 'raw_archive',)
 
 
 @admin.register(GlobalSettings)

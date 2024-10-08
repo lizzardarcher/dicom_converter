@@ -5,7 +5,7 @@ from apps.admin_soft import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
     # path('billing/', views.billing, name='billing'),
     # path('tables/', views.tables, name='tables'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
