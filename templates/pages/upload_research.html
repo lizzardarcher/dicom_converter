@@ -18,7 +18,8 @@
                         {% csrf_token %}
                         <h3 class="pt-5 pb-5">{% blocktrans %}Загрузить исследование{% endblocktrans %}</h3>
 
-                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip или .rar{% endblocktrans %}</label>
+                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip
+                            или .rar{% endblocktrans %}</label>
                         {% if form.errors %}
                             <div class="col-12 justify-content-center">
                                 <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
@@ -36,7 +37,8 @@
                         <div class="form-check form-switch pt-2">
                             {{ form.is_one_file }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним файлом{% endblocktrans %}</label>
+                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним
+                                файлом{% endblocktrans %}</label>
                         </div>
 
                         <button id="submit_btn" type="submit" class="col-lg-4 btn bg-gradient-info mt-3">
@@ -143,9 +145,14 @@
                         xhr.upload.addEventListener('progress', function (event) {
                             if (event.lengthComputable) {
                                 var percentComplete = (event.loaded / event.total) * 100;
-                                $('#progressBarValue').css('width', percentComplete + '%');
-                                //$('#progress_bar').html('Загружено: '+ Math.floor(percentComplete) + '%');
-                                $('#progress_text').html('Загружено: ' + Math.floor(percentComplete) + '%');
+                                if (Math.floor(percentComplete) === 100) {
+                                    $('#progressBarValue').css('width', percentComplete + '%');
+                                    $('#progress_text').html({% trans 'Загружено:' %} +Math.floor(percentComplete) + {% trans '% Подождите ещё немного. Идёт процесс конвертации' %});
+                                } else {
+                                    $('#progressBarValue').css('width', percentComplete + '%');
+                                    $('#progress_text').html({% trans 'Загружено: ' %} +Math.floor(percentComplete) + '%');
+                                }
+
                                 // Вызов функции обновления прогресса
                                 $.ajax({
                                     url: '/' + lang + '/progress/',
@@ -169,9 +176,9 @@
                         // Переход на index.html с успешным сообщением
                         console.log(data)
                         window.location.href = '/?success=true&message=' + encodeURIComponent((
-                            "Данные томографа GALILEOS сконвертированы в формат DICOM " +
-                            "Ссылка на скачивание вскоре будет отправлена на вашу почту." +
-                            " Также вы можете скачать архив в личном кабинете"
+                            {% trans "Данные томографа GALILEOS сконвертированы в формат DICOM " %} +
+                                {% trans "Ссылка на скачивание вскоре будет отправлена на вашу почту." %} +
+                            {% trans " Также вы можете скачать архив в личном кабинете" %}
                         ));
                         return false;
                     },
@@ -181,14 +188,14 @@
                         if (error.status === 504) {
                             // Ошибка 504: Gateway Timeout
                             window.location.href = '/?success=true&message=' + encodeURIComponent((
-                                "Данные томографа GALILEOS сконвертированы в формат DICOM " +
-                                "Ссылка на скачивание вскоре будет отправлена на вашу почту." +
-                                " Также вы можете скачать архив в личном кабинете"
+                                {% trans "Данные томографа GALILEOS сконвертированы в формат DICOM " %} +
+                                    {% trans "Ссылка на скачивание вскоре будет отправлена на вашу почту." %} +
+                                {% trans " Также вы можете скачать архив в личном кабинете" %}
                             ));
                         } else {
                             // Другие ошибки
                             console.error(error);
-                            $('#errorMessages').append('<div class="alert alert-danger" role="alert">Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже.</div>');
+                            $('#errorMessages').append('{% load i18n %}<div class="alert alert-danger" role="alert">{% blocktrans %}Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже.{% endblocktrans %}</div>');
                         }
                         console.error(error);
                         return false;

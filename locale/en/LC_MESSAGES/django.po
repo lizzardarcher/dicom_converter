@@ -2986,3 +2986,25 @@ msgstr "Please correct the errors."
 
 #~ msgid "конвертиция"
 #~ msgstr "conversion"
+
+#: templates/pages/upload_research.html:150
+msgid "'% Подождите ещё немного. Идёт процесс конвертации'"
+msgstr ""
+#: templates/pages/upload_research.html:150
+msgid "'Загружено:'"
+msgstr ""
+#: templates/pages/upload_research.html:153
+msgid "'Загружено: '"
+msgstr ""
+#: templates/pages/upload_research.html:179
+msgid "\"Данные томографа GALILEOS сконвертированы в формат DICOM \""
+msgstr ""
+#: templates/pages/upload_research.html:180
+msgid "\"Ссылка на скачивание вскоре будет отправлена на вашу почту.\""
+msgstr ""
+#: templates/pages/upload_research.html:181
+msgid "\" Также вы можете скачать архив в личном кабинете\""
+msgstr ""
+#: null:1
+msgid "Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже."
+msgstr ""
