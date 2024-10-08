@@ -1,0 +1,14 @@
+{% load i18n %}
+<li class="m-2 nav-item dropdown  d-flex align-items-center">
+    <a class="" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-globe cursor-pointer"> {{ LANGUAGE_CODE }} {% if LANGUAGE_CODE == 'ru' %}🇷🇺{% elif LANGUAGE_CODE == 'en' %}🇺🇸{% endif %}</i>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'set_lang_en' %}">
+            🇺🇸 {% translate 'Английский' %}
+        </a></li>
+        <li><a class="dropdown-item" href="{% url 'set_lang_ru' %}">
+            🇷🇺 {% trans "Русский" %}
+        </a></li>
+    </ul>
+</li>

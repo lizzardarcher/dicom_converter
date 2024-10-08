@@ -70,11 +70,11 @@
                             </td>
                             {% if res.ready_archive %}
                                 <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-gradient-success">Готово</span>
+                                    <span class="badge badge-sm bg-gradient-success">{% trans "Готово" %}</span>
                                 </td>
                             {% else %}
                                 <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-gradient-danger">Ошибка</span>
+                                    <span class="badge badge-sm bg-gradient-warning">{% trans "В процессе" %}</span>
                                 </td>
                             {% endif %}
                         </tr>

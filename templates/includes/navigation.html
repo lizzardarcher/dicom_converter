@@ -24,16 +24,17 @@
                         <span class="d-sm-inline d-none me-3">{% translate 'Цены' %}</span>
                     </a>
                 </li>
-                
+
                 {% if request.user.is_authenticated %}
                     <li class="nav-item pe-2 d-flex align-items-center">
-
-                        <a href="{% url 'profile' %}" class="nav-link text-body font-weight-bold px-0"><span class="d-sm-inline d-none me-3">
+                        <a href="{% url 'profile' %}" class="nav-link text-body font-weight-bold px-0"><span
+                                class="d-sm-inline d-none me-3">
                             <i class="fa fa-user fixed-plugin-button-nav cursor-pointer"></i>
                             {% translate 'Личный Кабинет' %}</span>
                         </a>
                     </li>
                     {% include 'components/lang_switcher.html' %}
+                    
                     <li class="nav-item d-flex align-items-center">
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
@@ -52,7 +53,6 @@
                         </a>
                     </li>
                 {% endif %}
-
 
 
             </ul>

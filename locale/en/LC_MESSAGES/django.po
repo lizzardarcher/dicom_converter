@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 12:19+0500\n"
+"POT-Creation-Date: 2024-10-08 13:25+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,6 +161,14 @@ msgstr "Date"
 msgid "Ссылка на готовое исследование"
 msgstr "Link to the completed study"
 
+#: templates/accounts/info/research.html:73
+msgid "Готово"
+msgstr "READY"
+
+#: templates/accounts/info/research.html:77
+msgid "В процессе"
+msgstr "IN PROCESS"
+
 #: templates/accounts/info/settings.html:46
 #: templates/pages/edit_profile.html:15
 msgid "Редактировать профиль"
@@ -174,7 +182,7 @@ msgstr "Confirm password"
 
 #: templates/accounts/login.html:31 templates/accounts/login.html:61
 #: templates/accounts/register.html:34 templates/accounts/register.html:88
-#: templates/includes/navigation.html:49
+#: templates/includes/navigation.html:51
 #: templates/registration/logged_out.html:14
 msgid "Войти"
 msgstr "Login"
@@ -595,44 +603,52 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: templates/components/pricing.html:8
+#: templates/components/lang_switcher.html:8
+msgid "Английский"
+msgstr "English"
+
+#: templates/components/lang_switcher.html:11
+msgid "Русский"
+msgstr "Russian"
+
+#: templates/components/pricing.html:7
 msgid "Выберите подходящий пакет конвертаций"
 msgstr "Choose the appropriate conversion package"
 
-#: templates/components/pricing.html:29
+#: templates/components/pricing.html:28
 msgid "Стартовый"
 msgstr "Starting"
 
-#: templates/components/pricing.html:44 templates/pages/info/price_info.html:21
+#: templates/components/pricing.html:43 templates/pages/info/price_info.html:21
 msgid "конвертация"
 msgstr "conversion"
 
-#: templates/components/pricing.html:52 templates/components/pricing.html:97
-#: templates/components/pricing.html:142
+#: templates/components/pricing.html:51 templates/components/pricing.html:96
+#: templates/components/pricing.html:141
 msgid "Хранение данных в облаке"
 msgstr "Storing data in the cloud"
 
-#: templates/components/pricing.html:60 templates/components/pricing.html:105
-#: templates/components/pricing.html:150
+#: templates/components/pricing.html:59 templates/components/pricing.html:104
+#: templates/components/pricing.html:149
 msgid "Поддержка"
 msgstr "Support"
 
-#: templates/components/pricing.html:65 templates/components/pricing.html:110
-#: templates/components/pricing.html:155
+#: templates/components/pricing.html:64 templates/components/pricing.html:109
+#: templates/components/pricing.html:154
 msgid "Перейти к оплате"
 msgstr "Proceed to payment"
 
-#: templates/components/pricing.html:74
+#: templates/components/pricing.html:73
 msgid "Продвинутый"
 msgstr "Advanced"
 
-#: templates/components/pricing.html:89 templates/components/pricing.html:134
+#: templates/components/pricing.html:88 templates/components/pricing.html:133
 #: templates/pages/info/price_info.html:26
 #: templates/pages/info/price_info.html:31
 msgid "конвертаций"
 msgstr "conversions"
 
-#: templates/components/pricing.html:119
+#: templates/components/pricing.html:118
 msgid "Премиум"
 msgstr "Premium"
 
@@ -641,11 +657,11 @@ msgid "Пожалуйста, не покидайте страницу до ок�
 msgstr "Please do not leave the page until the loading is complete."
 
 #: templates/create.html:61 templates/pages/edit_profile.html:31
-#: templates/pages/upload_research.html:49
+#: templates/pages/upload_research.html:43
 msgid "Подтвердить"
 msgstr "Confirm"
 
-#: templates/create.html:70 templates/pages/upload_research.html:72
+#: templates/create.html:70
 msgid "Скачать архив"
 msgstr "Download archive"
 
@@ -708,19 +724,11 @@ msgstr "Find out more"
 msgid "Личный Кабинет"
 msgstr "Account"
 
-#: templates/includes/navigation.html:41
+#: templates/includes/navigation.html:42
 #: templates/registration/logged_out.html:4
 #: templates/registration/password_change_done.html:12
 msgid "Выйти"
 msgstr "Log out"
-
-#: templates/includes/navigation.html:62
-msgid "Английский"
-msgstr "English"
-
-#: templates/includes/navigation.html:65
-msgid "Русский"
-msgstr "Russian"
 
 #: templates/includes/sidebar.html:85
 msgid "Dashboard"
@@ -2871,23 +2879,25 @@ msgstr "Settings"
 #: templates/pages/upload_research.html:21
 msgid ""
 "Загрузите ваше исследование из томографа Galileos в формате .zip или .rar"
-msgstr "Download your Galileos CT scan in .zip or .rar format"
+msgstr "Upload your study from the Galileos scanner in .zip or .rar format"
 
 #: templates/pages/upload_research.html:39
-msgid "Анонимизировать данные о пациенте"
-msgstr "Anonymize patient data"
-
-#: templates/pages/upload_research.html:45
 msgid "Сформировать одним файлом"
 msgstr "Generate in one file"
 
-#: templates/pages/upload_research.html:61
+#: templates/pages/upload_research.html:55
 msgid "У вас нет доступных конвертаций"
 msgstr "You have no conversions available."
 
-#: templates/pages/upload_research.html:67
+#: templates/pages/upload_research.html:61
 msgid "Готовые исследования"
 msgstr "Ready research"
+
+#: templates/pages/upload_research.html:66
+msgid ""
+"Скачать\n"
+"                                        архив"
+msgstr ""
 
 #: templates/payments/select.html:8
 msgid "Выберите способ оплаты:"
@@ -2970,6 +2980,9 @@ msgstr "Change my password"
 #: templates/registration/password_change_form.html:83
 msgid "Пожалуйста исправьте ошибки."
 msgstr "Please correct the errors."
+
+#~ msgid "Анонимизировать данные о пациенте"
+#~ msgstr "Anonymize patient data"
 
 #~ msgid "конвертиция"
 #~ msgstr "conversion"

@@ -18,8 +18,7 @@
                         {% csrf_token %}
                         <h3 class="pt-5 pb-5">{% blocktrans %}Загрузить исследование{% endblocktrans %}</h3>
 
-                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip
-                            или .rar{% endblocktrans %}</label>
+                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip или .rar{% endblocktrans %}</label>
                         {% if form.errors %}
                             <div class="col-12 justify-content-center">
                                 <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
@@ -37,8 +36,7 @@
                         <div class="form-check form-switch pt-2">
                             {{ form.is_one_file }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним
-                                файлом{% endblocktrans %}</label>
+                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним файлом{% endblocktrans %}</label>
                         </div>
 
                         <button id="submit_btn" type="submit" class="col-lg-4 btn bg-gradient-info mt-3">
