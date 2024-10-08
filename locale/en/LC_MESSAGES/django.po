@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 13:25+0500\n"
+"POT-Creation-Date: 2024-10-08 15:25+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,7 +182,7 @@ msgstr "Confirm password"
 
 #: templates/accounts/login.html:31 templates/accounts/login.html:61
 #: templates/accounts/register.html:34 templates/accounts/register.html:88
-#: templates/includes/navigation.html:51
+#: templates/includes/navigation.html:52
 #: templates/registration/logged_out.html:14
 msgid "Войти"
 msgstr "Login"
@@ -657,7 +657,7 @@ msgid "Пожалуйста, не покидайте страницу до ок�
 msgstr "Please do not leave the page until the loading is complete."
 
 #: templates/create.html:61 templates/pages/edit_profile.html:31
-#: templates/pages/upload_research.html:43
+#: templates/pages/upload_research.html:45
 msgid "Подтвердить"
 msgstr "Confirm"
 
@@ -724,7 +724,7 @@ msgstr "Find out more"
 msgid "Личный Кабинет"
 msgstr "Account"
 
-#: templates/includes/navigation.html:42
+#: templates/includes/navigation.html:43
 #: templates/registration/logged_out.html:4
 #: templates/registration/password_change_done.html:12
 msgid "Выйти"
@@ -2877,27 +2877,72 @@ msgid "Настройки"
 msgstr "Settings"
 
 #: templates/pages/upload_research.html:21
+#, fuzzy
+#| msgid ""
+#| "Загрузите ваше исследование из томографа Galileos в формате .zip или .rar"
 msgid ""
-"Загрузите ваше исследование из томографа Galileos в формате .zip или .rar"
+"Загрузите ваше исследование из томографа Galileos в формате .zip\n"
+"                            или .rar"
 msgstr "Upload your study from the Galileos scanner in .zip or .rar format"
 
-#: templates/pages/upload_research.html:39
-msgid "Сформировать одним файлом"
+#: templates/pages/upload_research.html:40
+#, fuzzy
+#| msgid "Сформировать одним файлом"
+msgid ""
+"Сформировать одним\n"
+"                                файлом"
 msgstr "Generate in one file"
 
-#: templates/pages/upload_research.html:55
+#: templates/pages/upload_research.html:57
 msgid "У вас нет доступных конвертаций"
 msgstr "You have no conversions available."
 
-#: templates/pages/upload_research.html:61
+#: templates/pages/upload_research.html:63
 msgid "Готовые исследования"
 msgstr "Ready research"
 
-#: templates/pages/upload_research.html:66
+#: templates/pages/upload_research.html:68
 msgid ""
 "Скачать\n"
 "                                        архив"
 msgstr ""
+
+#: templates/pages/upload_research.html:150
+#, fuzzy
+#| msgid "Загрузка данных"
+msgid "Загружено:"
+msgstr "Loading data"
+
+#: templates/pages/upload_research.html:150
+#, fuzzy, python-format
+#| msgid "Дождитесь окончания конвертации"
+msgid "%% Подождите ещё немного. Идёт процесс конвертации"
+msgstr "Wait for the conversion to complete"
+
+#: templates/pages/upload_research.html:153
+#, fuzzy
+#| msgid "Загрузка данных"
+msgid "Загружено: "
+msgstr "Loading data"
+
+#: templates/pages/upload_research.html:179
+#: templates/pages/upload_research.html:191
+msgid "Данные томографа GALILEOS сконвертированы в формат DICOM "
+msgstr "GALILEOS tomograph data converted to DICOM format"
+
+#: templates/pages/upload_research.html:180
+#: templates/pages/upload_research.html:192
+msgid "Ссылка на скачивание вскоре будет отправлена на вашу почту."
+msgstr "The download link will be sent to your email shortly."
+
+#: templates/pages/upload_research.html:181
+#: templates/pages/upload_research.html:193
+msgid " Также вы можете скачать архив в личном кабинете"
+msgstr "You can also download the archive in your personal account"
+
+#: templates/pages/upload_research.html:198
+msgid "Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже."
+msgstr "There was an error loading the file. Please try again later."
 
 #: templates/payments/select.html:8
 msgid "Выберите способ оплаты:"
@@ -2986,25 +3031,3 @@ msgstr "Please correct the errors."
 
 #~ msgid "конвертиция"
 #~ msgstr "conversion"
-
-#: templates/pages/upload_research.html:150
-msgid "'% Подождите ещё немного. Идёт процесс конвертации'"
-msgstr ""
-#: templates/pages/upload_research.html:150
-msgid "'Загружено:'"
-msgstr ""
-#: templates/pages/upload_research.html:153
-msgid "'Загружено: '"
-msgstr ""
-#: templates/pages/upload_research.html:179
-msgid "\"Данные томографа GALILEOS сконвертированы в формат DICOM \""
-msgstr ""
-#: templates/pages/upload_research.html:180
-msgid "\"Ссылка на скачивание вскоре будет отправлена на вашу почту.\""
-msgstr ""
-#: templates/pages/upload_research.html:181
-msgid "\" Также вы можете скачать архив в личном кабинете\""
-msgstr ""
-#: null:1
-msgid "Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже."
-msgstr ""
