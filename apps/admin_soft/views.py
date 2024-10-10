@@ -46,6 +46,11 @@ class UserLoginView(LoginView):
     form_class = LoginForm
     success_url = '/'
 
+    def post(self, request, *args, **kwargs):
+        super(UserLoginView, self).post(request, *args, **kwargs)
+        UserSettings.objects.get_or_create(user=self.request.user)
+        return redirect(self.get_success_url())
+
     def get_success_url(self):
         return self.success_url
 

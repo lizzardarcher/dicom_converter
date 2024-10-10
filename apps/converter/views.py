@@ -10,7 +10,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import CreateView, View, TemplateView
 
 from apps.converter.forms import ResearchUploadForm
-from apps.converter.models import Research, UserSettings, TestResearch
+from apps.converter.models import Research, UserSettings, TestResearch, GlobalSettings
 
 
 class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView, View):
@@ -24,9 +24,17 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView, Vi
             research_avail_count = UserSettings.objects.filter(user=self.request.user).last().research_avail_count
         except AttributeError:
             research_avail_count = 0
+
+        try:
+            prices = GlobalSettings.objects.all()[0]
+        except AttributeError:
+            prices = ''
+
         context.update({
             'research': Research.objects.filter(user=self.request.user).order_by('-date_created'),
             'research_avail_count': research_avail_count,
+            'prices': prices,
+
         })
         return context
 

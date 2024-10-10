@@ -19,9 +19,9 @@ class PricesView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(PricesView, self).get_context_data(**kwargs)
         try:
-            prices = GlobalSettings.objects.all().last()
+            prices = GlobalSettings.objects.all()[0]
         except AttributeError:
-            prices = ''
+            prices = '1'
         context.update({
             'prices': prices,
         })

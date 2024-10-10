@@ -1,20 +1,12 @@
-import json
-import logging
-import sys
 import uuid
-from logging.handlers import TimedRotatingFileHandler
-from pathlib import Path
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView, View
+from django.shortcuts import redirect
+from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
-import var_dump
 
 from yookassa import Payment as YooKassaPayment, Configuration
 

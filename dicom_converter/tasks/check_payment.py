@@ -1,3 +1,5 @@
+import traceback
+
 from dicom_converter.orm import django_orm
 
 import sys
@@ -37,8 +39,15 @@ def update_yookassa_info():
                 elif int(payment.amount) == prices.price_3_ru:
                     user_info.research_avail_count = count + 10
                 user_info.save()
+                print(user_info)
+                print(count)
+                print(payment.amount)
+                print(type(payment.amount))
+                print(prices.price_1_ru)
+                print(prices.price_2_ru)
+                print(prices.price_3_ru)
         except:
-            pass
+            print(traceback.format_exc())
 
 
 if __name__ == '__main__':
