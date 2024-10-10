@@ -87,10 +87,11 @@
 
             var raw_archive = document.getElementById('id_raw_archive');
             var is_one_file = document.getElementById('flexSwitchCheckDefault2');
-            var submit_btn = document.getElementById('submit_btn')
+            var submit_btn = document.getElementById('submit_btn');
+            var spinner = document.getElementById('spinner');
             var pgb = $('#progress_bar');
             pgb.hide();
-
+            spinner.setAttribute('style', 'display: none;');
             let lang = 'ru'
             let currentLocation = String(window.location);
             if (currentLocation.includes('/en/')) {
@@ -151,6 +152,8 @@
                                     $('#progressBarValue').removeClass('bg-gradient-info');
                                     $('#progressBarValue').addClass('bg-gradient-success');
                                     $('#progress_text').html( '{% blocktranslate %}Загружено{% endblocktranslate %}: ' +Math.floor(percentComplete) + '% {% blocktranslate %}Идёт процесс конвертации, подождите немного...{% endblocktranslate %}');
+                                    spinner.setAttribute('style', 'display: block;');
+
                                 }else{
                                     $('#progressBarValue').css('width', percentComplete + '%');
                                     $('#progress_text').html( '{% blocktranslate %}Загружено{% endblocktranslate %}: ' +Math.floor(percentComplete) + '%');
