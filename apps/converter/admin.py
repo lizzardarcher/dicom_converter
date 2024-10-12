@@ -9,7 +9,7 @@ admin.site.unregister(User)
 
 @admin.register(Research)
 class ResearchAdmin(admin.ModelAdmin):
-    list_display = ('user', 'date_created', 'raw_archive', 'is_anonymous', 'ready_archive', 'slug')
+    list_display = ('user', 'date_created', 'raw_archive', 'ready_archive', 'slug')
     list_filter = ('date_created', 'is_anonymous')
     search_fields = ('user__username', 'slug')
     readonly_fields = ('slug', 'date_created', 'ready_archive',)
@@ -21,7 +21,7 @@ class ResearchAdmin(admin.ModelAdmin):
         return False
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        return True
 
     def save_model(self, request, obj, form, change):
         if not obj.slug:

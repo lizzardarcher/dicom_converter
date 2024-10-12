@@ -18,10 +18,12 @@ def upload(file_path, email, research_id):
         try:
             logger.info(f"9.1. [upload_file_path] [{file_path}]")
             research = Research.objects.filter(id=int(research_id)).last()
-            _dir = f'galileos_pro_research_{research.user.username}_{datetime.now().strftime("%Y-%m-%d %H:%M")}'
+            _dir = f'galileos_pro_research_{research.user.username}_{datetime.now().strftime("%Y%m%d%H%M%S")}'
             client.upload(file_path, f"disk:/{_dir}", overwrite=True, timeout=3600)
             client.publish(f'disk:/{_dir}')
-            link = client.get_meta(f'disk:/{_dir}').file
+            link = client.get_meta(f'disk:/{_dir}').public_url
+
+            logger.info(f'[LINK] [{link}]')
 
             send_email_with_attachment(
                 to_email=email,
@@ -45,6 +47,7 @@ if __name__ == '__main__':
             # Отправка в облако и создание публичных ссылок на исследования
             res_list = Research.objects.filter(is_cloud_upload=False)
             if res_list:
+                logger.info(f'[--- RESULT LIST ---] [{res_list}]')
                 for res in res_list:
                     if res.ready_archive:
                         logger.info(f'[NEW ARCHIVE TO UPLOAD] [{res.ready_archive}] [{res.date_created}]')
