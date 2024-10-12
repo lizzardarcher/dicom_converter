@@ -15,7 +15,8 @@ from django.core.validators import FileExtensionValidator
 from apps.home.models import Log
 from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
-from apps.converter.utils import find_dir_by_name_part, search_file_in_dir,  add_ext_recursive, unidecode_recursive
+from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, add_ext_recursive, unidecode_recursive, \
+    copy_files, find_folder
 from apps.converter import glx
 
 
@@ -90,20 +91,10 @@ class Research(models.Model):
                         input_dir=f'{glx_dstr_dir.__str__()}',
                         output_filename=f'{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}_research.dcm')
 
-                    # if '.3rar' in self.raw_archive.name:
-                    #     patoolib.create_archive(
-                    #         archive=ready_archive,
-                    #         filenames=(one_file,), program='/usr/bin/rar')
-                    # else:
                     patoolib.create_archive(
                         archive=ready_archive,
                         filenames=(one_file,))
                 else:
-                    # if '.3rar' in self.raw_archive.name:
-                    #     patoolib.create_archive(
-                    #         archive=ready_archive,
-                    #         filenames=(glx_dstr_dir.__str__(),), program='/usr/bin/rar')
-                    # else:
                     patoolib.create_archive(
                         archive=ready_archive,
                         filenames=(glx_dstr_dir.__str__(),))

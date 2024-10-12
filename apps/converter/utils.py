@@ -1,5 +1,6 @@
 import os
 import logging
+import shutil
 
 from django.core.mail import EmailMessage, DEFAULT_ATTACHMENT_MIME_TYPE
 from django.conf import settings
@@ -141,3 +142,72 @@ def send_email_with_attachment(to_email, subject, body, file_path=None):
 
     # Отправка письма
     email.send()
+
+
+def copy_files(source_dir, destination_dir):
+    """
+    Copies files from a source directory to a destination directory.
+
+    Args:
+      source_dir (str): Path to the source directory.
+      destination_dir (str): Path to the destination directory.
+
+    Returns:
+      str: Path to the destination directory.
+    """
+
+    # Ensure destination directory exists
+    os.makedirs(destination_dir, exist_ok=True)
+
+    # Iterate through files in the source directory
+    for filename in os.listdir(source_dir):
+        source_path = os.path.join(source_dir, filename)
+        destination_path = os.path.join(destination_dir, filename)
+
+        # Copy file if it's a regular file
+        if os.path.isfile(source_path):
+            shutil.copy2(source_path, destination_path)
+
+    return destination_dir  # Return the destination directory
+
+
+def find_folder(root_dir, folder_name):
+    """
+    Ищет папку с заданным именем в указанном каталоге и его подкаталогах.
+
+    Args:
+     root_dir (str): Путь к корневому каталогу для поиска.
+     folder_name (str): Имя папки, которую нужно найти.
+
+    Returns:
+     str: Полный путь к найденной папке, или None, если папка не найдена.
+    """
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        if folder_name in dirnames:
+            return os.path.join(dirpath, folder_name)
+    return None
+
+
+import patoolib
+
+
+def archive_images(source_dir, archive_path, root_prefix='/opt/dicom_converter/static/media/converter/'):
+    """
+    Архивирует изображения из указанного каталога с сокращением пути внутри архива.
+
+    Args:
+      source_dir (str): Путь к каталогу с изображениями.
+      archive_path (str): Путь к создаваемому архиву.
+      root_prefix (str): Префикс пути, который нужно убрать из пути к файлам внутри архива.
+    """
+
+    # Создаем список файлов для архивации
+    files_to_archive = []
+    for root, _, files in os.walk(source_dir):
+        for file in files:
+            # Сокращаем путь к файлу
+            relative_path = os.path.relpath(os.path.join(root, file), root_prefix)
+            files_to_archive.append(os.path.join(root, file))
+
+    # Архивируем файлы с помощью patool
+    patoolib.create_archive(archive_path, files_to_archive)
