@@ -39,7 +39,6 @@ def upload(file_path, email, research_id):
             logger.fatal(e)
 
 
-
 if __name__ == '__main__':
     try:
         while True:
