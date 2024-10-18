@@ -17,7 +17,7 @@ from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, add_ext_recursive, unidecode_recursive, \
     copy_files, find_folder, find_directory
-from apps.converter import glx
+from apps.converter import glx, galileos_converter
 
 
 class Research(models.Model):
@@ -74,8 +74,8 @@ class Research(models.Model):
                 glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
                 logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
 
-                # 3. Прогоняем архив через glx.py
-                glx.glx2dicom(srcdir=Path(f'{glx_src_dir}'), dstdir=Path(f'{glx_dstr_dir}'))
+                # 3. Прогоняем архив через galileos_converter.py
+                galileos_converter.glx2dicom(srcdir=Path(f'{glx_src_dir}'), dstdir=Path(f'{glx_dstr_dir}'))
 
                 # 4. Прогоняем полученные файлы через renamer.py
                 add_ext_recursive(glx_dstr_dir.__str__(), '.dcm')
@@ -87,7 +87,7 @@ class Research(models.Model):
 
                 # Если одним фалом, то ...
                 if self.is_one_file:
-                    one_file = glx.merge_dicom(
+                    one_file = galileos_converter.merge_dicom(
                         input_dir=f'{glx_dstr_dir.__str__()}',
                         output_filename=f'{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}_research.dcm')
 
