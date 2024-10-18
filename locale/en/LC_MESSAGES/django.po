@@ -3013,3 +3013,7 @@ msgstr "Change my password"
 #: templates/registration/password_change_form.html:83
 msgid "Пожалуйста исправьте ошибки."
 msgstr "Please correct the errors."
+
+#: templates/components/stepper.html:47
+msgid "Загрузите архив с данными с томографа GALILEOS в наше"
+msgstr ""

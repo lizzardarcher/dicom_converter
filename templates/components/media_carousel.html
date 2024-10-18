@@ -1,0 +1,107 @@
+{% load static i18n %}
+{% block extrastyle %}
+{% endblock extrastyle %}
+
+{% block content %}
+    <div class="container mt-5 animated animatedFadeInUp fadeInUp">
+        <h2 class="text-center mb-4">{% blocktranslate %}Гайд по использованию сервиса
+            GalileosPro{% endblocktranslate %}</h2>
+
+        <div class="owl-carousel owl-theme " id="video-slider">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <video width="360" height="240" controls="controls" poster="" muted>
+                        <source src="{% static 'info/Копирование-и-архивирование-папки-Галилеос.mp4' %}"
+                                type='video/mp4'>
+                    </video>
+                    <h5 class="card-title">{% blocktranslate %}Копирование и архивирование папки
+                        Галилеос ZIP{% endblocktranslate %}</h5>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <video width="360" height="240" controls="controls" poster="" muted>
+                        <source src="{% static 'info/Процесс конвертации.mp4' %}"
+                                type='video/mp4'>
+                    </video>
+                    <h5 class="card-title">{% blocktranslate %}Сохранение конвертированного исследования на
+                        компьютер{% endblocktranslate %}</h5>
+                </div>
+            </div>
+        
+            <div class="card">
+                <div class="card-body">
+                    <video width="360" height="240" controls="controls" poster="" muted>
+                        <source src="{% static 'info/Создание ZIP архива.mp4' %}"
+                                type='video/mp4'>
+                    </video>
+                    <h5 class="card-title">{% blocktranslate %}Создание ZIP архива{% endblocktranslate %}</h5>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{% static 'info/other_soft/3Diagnosys.png' %}" alt="3Diagnosys">
+                    <h5 class="card-title">{% blocktranslate %}3Diagnosys{% endblocktranslate %}</h5>
+                    <a href="{% static 'info/other_soft/3Diagnosys.png' %}" class="btn btn-info">
+                        {% blocktranslate %}Подробнее{% endblocktranslate %}</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{% static 'info/other_soft/3Shape Unite.png' %}"
+                         alt="3Shape Unite">
+                    <h5 class="card-title">{% blocktranslate %}3Shape Unite{% endblocktranslate %}</h5>
+                    <a href="{% static 'info/other_soft/3Shape Unite.png' %}" class="btn btn-info">
+                        {% blocktranslate %}Подробнее{% endblocktranslate %}</a>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{% static 'info/other_soft/Blue Sky Plan .png' %}"
+                         alt="Blue Sky Plan">
+                    <h5 class="card-title">{% blocktranslate %}Blue Sky Plan {% endblocktranslate %}</h5>
+                    <a href="{% static 'info/other_soft/Blue Sky Plan .png' %}" class="btn btn-info">
+                        {% blocktranslate %}Подробнее{% endblocktranslate %}</a>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{% static 'info/other_soft/ExoCad.png' %}" alt="ExoCad">
+                    <h5 class="card-title">{% blocktranslate %}ExoCad{% endblocktranslate %}</h5>
+                    <a href="{% static 'info/other_soft/ExoCad.png' %}" class="btn btn-info">{% blocktranslate %}
+                        Подробнее{% endblocktranslate %}</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{% static 'info/other_soft/Ez-Vision.png' %}" alt="Ez-Vision">
+                    <h5 class="card-title">{% blocktranslate %}Ez-Vision{% endblocktranslate %}</h5>
+                    <a href="{% static 'info/other_soft/Ez-Vision.png' %}" class="btn btn-info">{% blocktranslate %}
+                        Подробнее{% endblocktranslate %}</a>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="{% static 'info/other_soft/RealGUIDE.png' %}" alt="RealGUIDE">
+                    <h5 class="card-title">{% blocktranslate %}RealGUIDE{% endblocktranslate %}</h5>
+                    <a href="{% static 'info/other_soft/RealGUIDE.png' %}"
+                       class="btn btn-info">{% trans 'Подробнее' %}</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extrascript %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+{% endblock extrascript %}

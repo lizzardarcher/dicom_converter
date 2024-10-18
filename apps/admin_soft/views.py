@@ -13,11 +13,6 @@ from apps.admin_soft.forms import RegistrationForm, LoginForm, UserPasswordReset
     UserPasswordChangeForm
 
 
-
-# def index(request):
-#     return render(request, 'pages/index.html', {'segment': 'index'})
-
-
 class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):
     template_name = 'pages/profile.html'
 
@@ -46,12 +41,11 @@ class UserLoginView(LoginView):
     form_class = LoginForm
     success_url = '/'
 
-    def post(self, request, *args, **kwargs):
-        super(UserLoginView, self).post(request, *args, **kwargs)
-        UserSettings.objects.get_or_create(user=self.request.user)
-        return redirect(self.get_success_url())
-
     def get_success_url(self):
+        try:
+            UserSettings.objects.get_or_create(user=self.request.user)
+        except:
+            pass
         return self.success_url
 
 
@@ -64,11 +58,13 @@ class RegisterView(View):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            try:
+                UserSettings.objects.get_or_create(user=self.request.user)
+            except:
+                pass
             return redirect('/accounts/login/', {
-                messages.success(request, 'Ваш аккаунт создан! Теперь вы можете войти.')
-            })  # Замените на ваш путь для входа
+                messages.success(request, 'Ваш аккаунт создан! Теперь вы можете войти.')})
         return render(request, 'accounts/register.html', {'form': form})
-
 
 
 def logout_view(request):

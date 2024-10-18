@@ -64,7 +64,7 @@ def add_dcm_extension(directory):
                 new_filename = filename + ".dcm"
                 new_filepath = os.path.join(directory, new_filename)
                 os.rename(filepath, new_filepath)
-                print(f"Изменено имя файла: {filename} -> {new_filename}")
+                # print(f"Изменено имя файла: {filename} -> {new_filename}")
 
 
 def search_file_in_dir(directory, string) -> str | None:
@@ -77,7 +77,7 @@ def search_file_in_dir(directory, string) -> str | None:
         for filename in files:
             if string in filename:
                 absolute_file_path = f"{root}/{filename}"
-                print(absolute_file_path)
+                # print(absolute_file_path)
                 return absolute_file_path
     return None
 
@@ -102,7 +102,7 @@ def add_ext_recursive(directory, new_extension):
                 new_filepath = os.path.join(root, new_filename)
                 os.rename(old_filepath, new_filepath)
                 counter += 1
-    print(f"Переименовано: {str(counter)} файлов")
+    # print(f"Переименовано: {str(counter)} файлов")
 
 
 def unidecode_recursive(directory):
@@ -123,9 +123,9 @@ def unidecode_recursive(directory):
             new_dir = os.path.join(root, new_dir)
             os.rename(old_dir, new_dir)
             counter += 1
-            print(f"Переименован: {old_dir} ->  {new_dir}")
+            # print(f"Переименован: {old_dir} ->  {new_dir}")
 
-    print(f"Переименовано: {str(counter)} директорий")
+    # print(f"Переименовано: {str(counter)} директорий")
 
 
 def send_email_with_attachment(to_email, subject, body, file_path=None):
@@ -211,3 +211,20 @@ def archive_images(source_dir, archive_path, root_prefix='/opt/dicom_converter/s
 
     # Архивируем файлы с помощью patool
     patoolib.create_archive(archive_path, files_to_archive)
+
+
+def find_directory(directory_name, start_path="."):
+    """
+    Находит директорию с заданным именем и возвращает абсолютный путь к ней.
+
+    Args:
+      directory_name (str): Имя директории, которую нужно найти.
+      start_path (str, optional): Начальный путь для поиска. По умолчанию - текущая директория.
+
+    Returns:
+      str: Абсолютный путь к найденной директории, или None, если директория не найдена.
+    """
+    for root, dirs, files in os.walk(start_path):
+        if directory_name in dirs:
+            return os.path.join(root, directory_name)
+    return None  # Директория не найдена

@@ -16,7 +16,7 @@ from apps.home.models import Log
 from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, add_ext_recursive, unidecode_recursive, \
-    copy_files, find_folder
+    copy_files, find_folder, find_directory
 from apps.converter import glx
 
 
@@ -95,10 +95,28 @@ class Research(models.Model):
                         archive=ready_archive,
                         filenames=(one_file,))
                 else:
-                    patoolib.create_archive(
-                        archive=ready_archive,
-                        filenames=(glx_dstr_dir.__str__(),))
 
+                    try:
+                        cur_path = f'/tmp/{datetime.now().strftime("%Y%m%d%H%M%S")}'
+                        logger.info(f'[CURRENT PATH] [{cur_path}]')
+
+                        move = shutil.move(glx_dstr_dir.__str__(), cur_path)
+                        logger.info(f'[MOVED SUCCESS] [{move}]')
+                        patoolib.create_archive(
+                            archive=ready_archive,
+                            filenames=(cur_path,),
+                        )
+                        try:
+                            shutil.rmtree(cur_path)
+                        except OSError as e:
+                            logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+
+                    except:
+                        logger.error(traceback.format_exc())
+                        patoolib.create_archive(
+                            archive=ready_archive,
+                            filenames=(glx_dstr_dir.__str__(),),
+                        )
 
                 file = search_file_in_dir(BASE_DIR, ready_archive)
                 logger.info(f"8. {file}")
@@ -144,7 +162,6 @@ class UserSettings(models.Model):
 
 
 class GlobalSettings(models.Model):
-
     price_1_ru = models.IntegerField(default=200, blank=True, null=True, verbose_name='Цена за 1 конв. РУБ')
     price_2_ru = models.IntegerField(default=900, blank=True, null=True, verbose_name='Цена за 5 конв. РУБ')
     price_3_ru = models.IntegerField(default=1700, blank=True, null=True, verbose_name='Цена за 10 конв. РУБ')
@@ -168,5 +185,3 @@ class TestResearch(models.Model):
 
     def __str__(self):
         return str(self.raw_archive).split('/')[-1]
-
-
