@@ -42,7 +42,7 @@ if __name__ == '__main__':
     try:
         while True:
             for _dir in dirs_to_check:
-                delete_old_archives(directory=_dir, days_threshold=2)
+                delete_old_archives(directory=_dir, days_threshold=1)
                 os.system('journalctl --vacuum-time=1week')
                 time.sleep(3)
     except KeyboardInterrupt:

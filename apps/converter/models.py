@@ -17,7 +17,8 @@ from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, add_ext_recursive, unidecode_recursive, \
     copy_files, find_folder, find_directory
-from apps.converter import glx, galileos_converter
+from apps.converter import galileos_converter
+
 
 
 class Research(models.Model):

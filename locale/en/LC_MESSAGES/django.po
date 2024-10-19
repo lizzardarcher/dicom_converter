@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-08 15:49+0500\n"
+"POT-Creation-Date: 2024-10-19 09:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: IVAN GORKOVENKOV <dltahiyan@gmail.com>\n"
 "Language-Team: LANGUAGE <dltahiyan@gmail.com>\n"
@@ -129,7 +129,7 @@ msgid "Информация об исследованиях"
 msgstr "Research Information"
 
 #: templates/accounts/info/empty-research.html:28
-#: templates/accounts/info/research.html:28 templates/pages/index.html:37
+#: templates/accounts/info/research.html:28 templates/pages/index.html:36
 #: templates/pages/upload_research.html:19
 msgid "Загрузить исследование"
 msgstr "Upload research"
@@ -611,6 +611,63 @@ msgstr "English"
 msgid "Русский"
 msgstr "Russian"
 
+#: templates/components/media_carousel.html:7
+msgid "Гайд по использованию сервиса GalileosPro"
+msgstr "Guide for GalileosPro"
+
+#: templates/components/media_carousel.html:18
+msgid "Копирование и архивирование папки Галилеос ZIP"
+msgstr "Copying and archiving a folder Galileos"
+
+#: templates/components/media_carousel.html:28
+msgid "Сохранение конвертированного исследования на компьютер"
+msgstr ""
+"Saving the converted study to\n"
+" computer"
+
+#: templates/components/media_carousel.html:38
+msgid "Создание ZIP архива"
+msgstr "Creating ZIP acrhive"
+
+#: templates/components/media_carousel.html:46
+msgid "3Diagnosys"
+msgstr ""
+
+#: templates/components/media_carousel.html:48
+#: templates/components/media_carousel.html:58
+#: templates/components/media_carousel.html:68
+#: templates/components/media_carousel.html:93 templates/pages/index.html:90
+#: templates/payments/yookassa/process_payment.html:31
+msgid "Подробнее"
+msgstr "Read more"
+
+#: templates/components/media_carousel.html:56
+msgid "3Shape Unite"
+msgstr ""
+
+#: templates/components/media_carousel.html:66
+msgid "Blue Sky Plan "
+msgstr ""
+
+#: templates/components/media_carousel.html:75
+msgid "ExoCad"
+msgstr ""
+
+#: templates/components/media_carousel.html:76
+#: templates/components/media_carousel.html:84
+msgid ""
+"\n"
+"                        Подробнее"
+msgstr ""
+
+#: templates/components/media_carousel.html:83
+msgid "Ez-Vision"
+msgstr ""
+
+#: templates/components/media_carousel.html:91
+msgid "RealGUIDE"
+msgstr ""
+
 #: templates/components/pricing.html:7
 msgid "Выберите подходящий пакет конвертаций"
 msgstr "Choose the appropriate conversion package"
@@ -653,8 +710,108 @@ msgid "Премиум"
 msgstr "Premium"
 
 #: templates/components/progress_bar.html:5
-msgid "Пожалуйста, не покидайте страницу до окончания загрузки"
+#, fuzzy
+#| msgid "Пожалуйста, не покидайте страницу до окончания загрузки"
+msgid ""
+"Пожалуйста, не покидайте страницу до окончания\n"
+"                загрузки"
 msgstr "Please do not leave the page until the loading is complete."
+
+#: templates/components/stepper.html:7
+msgid "Простые шаги для работы"
+msgstr "Simple steps to get started"
+
+#: templates/components/stepper.html:13 templates/components/stepper.html:43
+#: templates/components/stepper.html:56 templates/components/stepper.html:71
+#: templates/pages/info/how_it_works.html:18
+#: templates/pages/info/how_it_works.html:47
+#: templates/pages/info/how_it_works.html:60
+#: templates/pages/info/how_it_works.html:74
+msgid "Шаг"
+msgstr "Step"
+
+#: templates/components/stepper.html:16
+#: templates/pages/info/how_it_works.html:20
+msgid "Архив с данными"
+msgstr "Data archive"
+
+#: templates/components/stepper.html:17
+msgid ""
+"Создайте архив (zip, rar) с вашим\n"
+"                                исследованием."
+msgstr ""
+"Create an archive (zip, rar) with your\n"
+" research."
+
+#: templates/components/stepper.html:21
+#, fuzzy
+#| msgid "Для Windows:"
+msgid "Windows:"
+msgstr "For Windows:"
+
+#: templates/components/stepper.html:29
+#, fuzzy
+#| msgid "Для Mac OS:"
+msgid "Mac OS:"
+msgstr "For Mac OS:"
+
+#: templates/components/stepper.html:46
+#: templates/pages/info/how_it_works.html:49
+msgid "Загрузка данных"
+msgstr "Loading data"
+
+#: templates/components/stepper.html:47
+msgid "Загрузите архив с данными с томографа GALILEOS в наше"
+msgstr "Upload the archive with data from the GALILEOS tomograph to our"
+
+#: templates/components/stepper.html:48
+#: templates/pages/info/how_it_works.html:51
+msgid "программное обеспечение"
+msgstr "software"
+
+#: templates/components/stepper.html:59
+#: templates/pages/info/how_it_works.html:62
+msgid "Конвертация данных"
+msgstr "Data Conversion"
+
+#: templates/components/stepper.html:60
+#, fuzzy
+#| msgid ""
+#| "Наше программное обеспечение быстро и безопасно\n"
+#| "                                конвертирует данные\n"
+#| "                                GALILEOS в формат DICOM."
+msgid ""
+"Наше программное обеспечение быстро и безопасно\n"
+"                                конвертирует данные GALILEOS в формат DICOM."
+msgstr ""
+"Our software is fast and secure\n"
+" converts GALILEOS data\n"
+" to DICOM format."
+
+#: templates/components/stepper.html:74
+#: templates/pages/info/how_it_works.html:76
+msgid "Загрузка результата"
+msgstr "Loading result"
+
+#: templates/components/stepper.html:75
+msgid ""
+"Вы получаете готовые данные в формате DICOM. Файлы\n"
+"                                можно скачать на ваш\n"
+"                                компьютер из личного кабинета в разделе "
+"исследования. Также по завершении вам будет\n"
+"                                направлено письмо на\n"
+"                                указанную при регистрации почту со ссылкой "
+"на архив в облаке. Данные хранятся 6\n"
+"                                месяцев."
+msgstr ""
+"You receive ready data in DICOM format. Files\n"
+" can be downloaded to your\n"
+" computer from your personal account in the research section. Also, upon "
+"completion, you will\n"
+" receive a letter to the\n"
+" email specified during registration with a link to the archive in the "
+"cloud. Data is stored for 6\n"
+" months."
 
 #: templates/create.html:61 templates/pages/edit_profile.html:31
 #: templates/pages/upload_research.html:45
@@ -699,7 +856,7 @@ msgstr "Privacy Policy"
 
 #: templates/includes/footer-fullscreen.html:24
 #: templates/pages/info/help.html:3 templates/pages/info/help.html:9
-#: templates/pages/info/sitemap.html:26
+#: templates/pages/info/sitemap.html:21 templates/pages/info/sitemap.html:26
 msgid "Помощь"
 msgstr "Help"
 
@@ -714,7 +871,7 @@ msgstr "We accept payments"
 
 #: templates/includes/footer-fullscreen.html:43
 msgid "GalileosPro. Все права защищены."
-msgstr "GalileosPro. All rights reserved.."
+msgstr "GalileosPro. All rights reserved."
 
 #: templates/includes/navigation.html:18
 msgid "Узнать больше"
@@ -738,7 +895,7 @@ msgstr ""
 msgid "Назад"
 msgstr "Back"
 
-#: templates/pages/index.html:23
+#: templates/pages/index.html:22
 msgid ""
 "Удобный способ конвертации медицинских данных из CBCT-сканеров Sirona "
 "GALAXIS/GALILEOS в стандартный формат DICOM."
@@ -746,23 +903,23 @@ msgstr ""
 "A convenient way to convert medical data from Sirona GALAXIS/GALILEOS CBCT "
 "scanners to standard DICOM format."
 
-#: templates/pages/index.html:42 templates/pages/info/how_it_works.html:3
+#: templates/pages/index.html:41 templates/pages/info/how_it_works.html:3
 #: templates/pages/info/how_it_works.html:8
 #: templates/pages/info/sitemap.html:23
 msgid "Как это работает"
 msgstr "How does this work"
 
-#: templates/pages/index.html:65
+#: templates/pages/index.html:63
 msgid "Уникальное решение"
 msgstr "Unique solution"
 
-#: templates/pages/index.html:67
+#: templates/pages/index.html:65
 msgid ""
 "Мы единственный сервис осуществляющий конвертацию данных с томографов "
 "Galileos"
 msgstr "We are the only service that converts data from Galileos tomographs"
 
-#: templates/pages/index.html:70
+#: templates/pages/index.html:68
 msgid ""
 "Вам не придется долго ждать результата. Мы оптимизировали процесс "
 "конвертации, чтобы вы получили доступ к вашим данным максимально быстро."
@@ -770,11 +927,11 @@ msgstr ""
 "You won't have to wait long for the result. We have optimized the conversion "
 "process so that you can access your data as quickly as possible."
 
-#: templates/pages/index.html:86
+#: templates/pages/index.html:83
 msgid "Что такое GalileosPro?"
 msgstr "What is GalileosPro?"
 
-#: templates/pages/index.html:87
+#: templates/pages/index.html:84
 msgid ""
 "GalileosPro - это мощный, но простой в использовании веб сервис, который "
 "позволяет конвертировать данные с вашего томографа SIRONA GALILEOS в DICOM-"
@@ -783,7 +940,7 @@ msgstr ""
 "GalileosPro is a powerful yet easy-to-use web service that allows you to "
 "convert data from your SIRONA GALILEOS tomograph into DICOM files."
 
-#: templates/pages/index.html:88
+#: templates/pages/index.html:85
 msgid ""
 "DICOM (Digital Imaging and Communications in Medicine) -\n"
 "                                        это стандарт для хранения и обмена "
@@ -793,151 +950,6 @@ msgstr ""
 "DICOM (Digital Imaging and Communications in Medicine) is a standard for "
 "storing and exchanging medical images used in hospitals and clinics around "
 "the world."
-
-#: templates/pages/index.html:93 templates/pages/index.html:235
-#: templates/pages/index.html:245 templates/pages/index.html:255
-#: templates/pages/index.html:263 templates/pages/index.html:270
-#: templates/pages/index.html:278
-#: templates/payments/yookassa/process_payment.html:31
-msgid "Подробнее"
-msgstr "Read more"
-
-#: templates/pages/index.html:114
-msgid "Простые шаги для работы"
-msgstr "Simple steps to get started"
-
-#: templates/pages/index.html:120 templates/pages/index.html:150
-#: templates/pages/index.html:165 templates/pages/index.html:180
-#: templates/pages/info/how_it_works.html:18
-#: templates/pages/info/how_it_works.html:47
-#: templates/pages/info/how_it_works.html:60
-#: templates/pages/info/how_it_works.html:74
-msgid "Шаг"
-msgstr "Step"
-
-#: templates/pages/index.html:122 templates/pages/info/how_it_works.html:20
-msgid "Архив с данными"
-msgstr "Data archive"
-
-#: templates/pages/index.html:123
-msgid ""
-"Создайте архив (zip, rar) с вашим\n"
-"                                исследованием."
-msgstr ""
-"Create an archive (zip, rar) with your\n"
-" research."
-
-#: templates/pages/index.html:125 templates/pages/info/how_it_works.html:22
-msgid "Популярные архиваторы:"
-msgstr "Popular archivers:"
-
-#: templates/pages/index.html:128 templates/pages/info/how_it_works.html:25
-msgid "Для Windows:"
-msgstr "For Windows:"
-
-#: templates/pages/index.html:136 templates/pages/info/how_it_works.html:33
-msgid "Для Mac OS:"
-msgstr "For Mac OS:"
-
-#: templates/pages/index.html:152 templates/pages/info/how_it_works.html:49
-msgid "Загрузка данных"
-msgstr "Loading data"
-
-#: templates/pages/index.html:155 templates/pages/info/how_it_works.html:51
-msgid "программное обеспечение"
-msgstr "software"
-
-#: templates/pages/index.html:156
-msgid ""
-"Файлы могут быть загружены с вашего компьютера, флешки или любого\n"
-"                                    другого носителя."
-msgstr ""
-"Files can be uploaded from your computer, flash drive or any\n"
-" other media."
-
-#: templates/pages/index.html:167 templates/pages/info/how_it_works.html:62
-msgid "Конвертация данных"
-msgstr "Data Conversion"
-
-#: templates/pages/index.html:168
-msgid ""
-"Наше программное обеспечение быстро и безопасно\n"
-"                                конвертирует данные\n"
-"                                GALILEOS в формат DICOM."
-msgstr ""
-"Our software is fast and secure\n"
-" converts GALILEOS data\n"
-" to DICOM format."
-
-#: templates/pages/index.html:182 templates/pages/info/how_it_works.html:76
-msgid "Загрузка результата"
-msgstr "Loading result"
-
-#: templates/pages/index.html:183
-msgid ""
-"Вы получаете готовые данные в формате DICOM. Файлы\n"
-"                                можно скачать на ваш\n"
-"                                компьютер из личного кабинета в разделе "
-"исследования. Также по завершении вам будет\n"
-"                                направлено письмо на\n"
-"                                указанную при регистрации почту со ссылкой "
-"на архив в облаке. Данные хранятся 6\n"
-"                                месяцев."
-msgstr ""
-"You receive ready data in DICOM format. Files\n"
-" can be downloaded to your\n"
-" computer from your personal account in the research section. Also, upon "
-"completion, you will\n"
-" receive a letter to the\n"
-" email specified during registration with a link to the archive in the "
-"cloud. Data is stored for 6\n"
-" months."
-
-#: templates/pages/index.html:200
-msgid ""
-"Гайд по использованию сервиса\n"
-"                GalileosPro"
-msgstr "Guide for GalileosPro"
-
-#: templates/pages/index.html:212
-msgid ""
-"Копирование и архивирование папки\n"
-"                            Галилеос"
-msgstr ""
-"Copying and archiving a folder\n"
-" Galileos"
-
-#: templates/pages/index.html:224
-msgid ""
-"Сохранение конвертированного исследования на\n"
-"                            компьютер"
-msgstr ""
-"Saving the converted study to\n"
-" computer"
-
-#: templates/pages/index.html:233
-msgid "3Diagnosys"
-msgstr ""
-
-#: templates/pages/index.html:243
-msgid "3Shape Unite"
-msgstr ""
-
-#: templates/pages/index.html:253
-msgid "Blue Sky Plan "
-msgstr ""
-
-#: templates/pages/index.html:262
-msgid "ExoCad"
-msgstr ""
-
-#: templates/pages/index.html:269
-msgid "Ez-Vision"
-msgstr ""
-
-#: templates/pages/index.html:277
-msgid "RealGUIDE"
-msgstr ""
 
 #: templates/pages/info/about.html:3 templates/pages/info/about.html:8
 #: templates/pages/info/sitemap.html:15
@@ -1449,6 +1461,18 @@ msgstr ""
 #: templates/pages/info/how_it_works.html:21
 msgid "Создайте архив (zip, rar) с вашим исследованием."
 msgstr "Create an archive (zip, rar) with your research."
+
+#: templates/pages/info/how_it_works.html:22
+msgid "Популярные архиваторы:"
+msgstr "Popular archivers:"
+
+#: templates/pages/info/how_it_works.html:25
+msgid "Для Windows:"
+msgstr "For Windows:"
+
+#: templates/pages/info/how_it_works.html:33
+msgid "Для Mac OS:"
+msgstr "For Mac OS:"
 
 #: templates/pages/info/how_it_works.html:50
 msgid "Загрузите данные с томографа GALILEOS в наше"
@@ -2791,10 +2815,8 @@ msgstr ""
 "planned, the relevant information."
 
 #: templates/pages/info/privacy.html:348
-#, fuzzy
-#| msgid "Субъекты персональных данных обязаны:"
-msgid "Конфиденциальность персональных данных пользователя"
-msgstr "Subjects of personal data are obliged to:"
+msgid "11. Конфиденциальность персональных данных пользователя"
+msgstr "11. User Data Privacy"
 
 #: templates/pages/info/privacy.html:349
 msgid ""
@@ -2844,6 +2866,10 @@ msgstr ""
 "The current version of the Policy is freely available on the Internet at\n"
 " https://galileos.pro/privacy/."
 
+#: templates/pages/info/sitemap.html:12
+msgid "Главная"
+msgstr "Home"
+
 #: templates/pages/info/sitemap.html:14
 msgid "Главная страница"
 msgstr "Home page"
@@ -2851,6 +2877,10 @@ msgstr "Home page"
 #: templates/pages/info/sitemap.html:24
 msgid "Детальная информация"
 msgstr "Detailed information"
+
+#: templates/pages/info/sitemap.html:30
+msgid "Договор"
+msgstr "Agreement"
 
 #: templates/pages/info/sitemap.html:32
 msgid "Оферта"
@@ -2905,30 +2935,30 @@ msgstr "Ready research"
 msgid ""
 "Скачать\n"
 "                                        архив"
-msgstr ""
+msgstr "Download archive"
 
-#: templates/pages/upload_research.html:153
-#: templates/pages/upload_research.html:156
+#: templates/pages/upload_research.html:154
+#: templates/pages/upload_research.html:159
 #, fuzzy
 #| msgid "Загрузка данных"
 msgid "Загружено"
 msgstr "Loading data"
 
-#: templates/pages/upload_research.html:153
+#: templates/pages/upload_research.html:154
 #, fuzzy
 #| msgid "Процесс конвертации прост:"
 msgid "Идёт процесс конвертации, подождите немного..."
 msgstr "The conversion process is simple:"
 
-#: templates/pages/upload_research.html:183
-#: templates/pages/upload_research.html:193
+#: templates/pages/upload_research.html:186
+#: templates/pages/upload_research.html:196
 msgid ""
 "Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на "
 "скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать "
 "архив в личном кабинете"
 msgstr ""
 
-#: templates/pages/upload_research.html:198
+#: templates/pages/upload_research.html:201
 msgid "Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже."
 msgstr "There was an error loading the file. Please try again later."
 
@@ -3014,6 +3044,9 @@ msgstr "Change my password"
 msgid "Пожалуйста исправьте ошибки."
 msgstr "Please correct the errors."
 
-#: templates/components/stepper.html:47
-msgid "Загрузите архив с данными с томографа GALILEOS в наше"
-msgstr ""
+#~ msgid ""
+#~ "Файлы могут быть загружены с вашего компьютера, флешки или любого\n"
+#~ "                                    другого носителя."
+#~ msgstr ""
+#~ "Files can be uploaded from your computer, flash drive or any\n"
+#~ " other media."
