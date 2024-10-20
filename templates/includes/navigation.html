@@ -9,7 +9,8 @@
             <img class="icon icon-md rounded" src="{% static 'img/favicon.png' %}" alt="logo">
             GalileosPro
         </a>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 " id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
             <ul class="navbar-nav  justify-content-end">
 
@@ -28,13 +29,11 @@
                 {% if request.user.is_authenticated %}
                     <li class="nav-item pe-2 d-flex align-items-center">
                         <a href="{% url 'profile' %}" class="nav-link text-body font-weight-bold px-0"><span
-                                class="d-sm-inline d-none me-3">
-                            <i class="fa fa-user fixed-plugin-button-nav cursor-pointer"></i>
-                            {% translate 'Личный Кабинет' %}</span>
+                                class="d-sm-inline d-none me-3">{% translate 'Личный Кабинет' %}</span>
                         </a>
                     </li>
                     {% include 'components/lang_switcher.html' %}
-                    
+
                     <li class="nav-item d-flex align-items-center">
                         <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
@@ -46,14 +45,15 @@
                     </li>
                 {% else %}
                     {% include 'components/lang_switcher.html' %}
-                    <li class="nav-item d-flex align-items-center">
+                    <li class=" nav-item d-flex align-items-center">
                         <a href="{% url 'login' %}" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1"></i>
+                            <i class="fa fa-user me-sm-1 d-none"></i>
                             <span class="d-sm-inline d-none me-3">{% translate 'Войти' %}</span>
                         </a>
                     </li>
                 {% endif %}
 
+                {% include 'components/mobile_nav.html' %}
 
             </ul>
         </div>
