@@ -1,5 +1,6 @@
 {% extends 'layouts/base-fullscreen.html' %}
 {% load i18n static admin_soft %}
+{% block title %}{% trans "Регистрация" %}{% endblock title %}
 
 {% block content %}
 
@@ -13,9 +14,9 @@
                         <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                             <div class="card card-plain mt-8">
                                 <div class="card-header pb-0 text-left bg-transparent">
-                                    <h3 class="font-weight-bolder text-info text-gradient">
+                                    <h1 class="font-weight-bolder text-info text-gradient">
                                         {% trans "Регистрация" %}
-                                    </h3>
+                                    </h1>
                                     <p class="mb-0">
                                         {% if msg %}
                                             <span class="text-danger">{{ msg | safe }}</span>

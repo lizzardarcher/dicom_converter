@@ -63,10 +63,24 @@
                         <h4>{% blocktrans %}Готовые исследования{% endblocktrans %}</h4>
                         <ol>
                             {% for r in research %}
-                                <li><a class="" href="/media/{{ r.ready_archive }}">
-                                    <p class="bg-gradient-faded-light rounded text-center text-dark text-bold mt-3">
-                                        [ {{ r.date_created }} ] [ {{ r }} ] {% blocktrans %}Скачать
-                                        архив{% endblocktrans %} <i class="fa fa-download"></i></p></a></li>
+
+                                <li>
+                                    {% if r.cloud_url %}
+                                    <a href="{{ r.cloud_url }}" target="_blank">
+                                        <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                          {% blocktrans %}Скачать архив{% endblocktrans %} <i class="fa fa-download"></i>  [ {{ r.date_created }} ] [ {{ r }} ]
+                                        </p>
+                                    </a>
+                                    {% else %}
+                                        <a href="{{MEDIA_URL}}{{ r.ready_archive }}" target="_blank">
+                                            <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                               {% blocktrans %}Скачать архив{% endblocktrans %} <i class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
+
+                                            </p>
+                                        </a>
+                                    {% endif %}
+                                </li>
+
                             {% endfor %}
                         </ol>
 
@@ -90,6 +104,8 @@
             var submit_btn = document.getElementById('submit_btn');
             var spinner = document.getElementById('spinner');
             var pgb = $('#progress_bar');
+            is_one_file.checked = false;
+
             pgb.hide();
             spinner.setAttribute('style', 'display: none;');
             let lang = 'ru'
@@ -120,7 +136,7 @@
                 }
 
                 // Проверка расширения файла
-                var allowedExtensions = ['zip', 'rar'];
+                var allowedExtensions = ['zip', 'rar', '7z'];
                 var fileExtension = file.name.split('.').pop().toLowerCase();
                 if (!allowedExtensions.includes(fileExtension)) {
                     errorDiv.append('<div class="alert alert-danger" role="alert">Допустимые расширения: ZIP, RAR.</div>');
@@ -183,7 +199,7 @@
                         // Переход на index.html с успешным сообщением
                         console.log(data)
                         window.location.href = '/?success=true&message=' + encodeURIComponent((
-                             "{% blocktranslate %}Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в личном кабинете{% endblocktranslate %}"
+                             "{% blocktranslate %}Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в {% endblocktranslate %} <a class='link-danger' href='https://galileos.pro/accounts/profile/'>{% blocktranslate %}личном кабинете{% endblocktranslate %}</a>"
                         ));
                         return false;
                     },
@@ -193,7 +209,7 @@
                         if (error.status === 504) {
                             // Ошибка 504: Gateway Timeout
                             window.location.href = '/?success=true&message=' + encodeURIComponent((
-                             "{% blocktranslate %}Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в личном кабинете{% endblocktranslate %}"
+                             "{% blocktranslate %}Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать архив в {% endblocktranslate %} <a class='link-danger' href='https://galileos.pro/accounts/profile/'>{% blocktranslate %}личном кабинете{% endblocktranslate %}</a>"
                             ));
                         } else {
                             // Другие ошибки

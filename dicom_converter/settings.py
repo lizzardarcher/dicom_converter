@@ -60,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.converter.middleware.SecurityMiddleware',
+    'apps.converter.middleware.ReferrerPolicyMiddleware',
+    'apps.converter.middleware.CSPMiddleware',
 ]
 
 ROOT_URLCONF = 'dicom_converter.urls'
@@ -131,6 +134,12 @@ YOOKASSA_SECRET=os.getenv('YOOKASSA_SECRET_LIVE')
 COOKIE_CONSENT_ENABLED = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = 'Strict'
+
+SECURE_HSTS_SECONDS = 31536000 # 1 год
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+X_FRAME_OPTIONS = 'DENY'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

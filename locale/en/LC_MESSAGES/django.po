@@ -3050,3 +3050,10 @@ msgstr "Please correct the errors."
 #~ msgstr ""
 #~ "Files can be uploaded from your computer, flash drive or any\n"
 #~ " other media."
+
+#: templates/accounts/login.html:3
+msgid "Вход"
+msgstr ""
+#: templates/pages/info/faq.html:3
+msgid "Вопросы"
+msgstr ""

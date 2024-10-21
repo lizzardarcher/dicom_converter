@@ -16,7 +16,7 @@ from apps.home.models import Log
 from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
 from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, add_ext_recursive, unidecode_recursive, \
-    copy_files, find_folder, find_directory
+    copy_files, find_folder, find_directory, delete_file_recursively
 from apps.converter import galileos_converter
 
 
@@ -25,7 +25,7 @@ class Research(models.Model):
     user = models.ForeignKey(User, related_name='converters', blank=True, null=True, on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     raw_archive = models.FileField(upload_to="converter/raw/", null=False, blank=False,
-                                   validators=[FileExtensionValidator(['rar', 'zip'])],
+                                   validators=[FileExtensionValidator(['rar', 'zip', '7z'])],
                                    verbose_name='Архив от пользователя')
     is_anonymous = models.BooleanField(null=True, default=True, verbose_name='Анонимизировать данные')
     is_one_file = models.BooleanField(null=True, default=True, verbose_name='Одним файлом')
@@ -34,6 +34,7 @@ class Research(models.Model):
                                      verbose_name="Архив с готовыми данными")
     cloud_url = models.URLField(max_length=1000, null=True, blank=True, verbose_name='Ссылка на архив')
     status = models.BooleanField(default=True, null=True, blank=True, verbose_name='Статус исследования')
+    error_message = models.TextField(max_length=5000, null=True, blank=True, verbose_name='Сообщение об ошибке')
     slug = models.SlugField(unique=True, max_length=200, blank=True)
 
     def __str__(self):
@@ -63,6 +64,8 @@ class Research(models.Model):
 
                 if '.rar' in self.raw_archive.name:
                     patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/rar')
+                elif'.7z' in self.raw_archive.name:
+                    patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/7z')
                 else:
                     patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
 
@@ -96,12 +99,12 @@ class Research(models.Model):
                         archive=ready_archive,
                         filenames=(one_file,))
                 else:
-
                     try:
-                        cur_path = f'/tmp/{datetime.now().strftime("%Y%m%d%H%M%S")}'
+                        cur_path = f'/{datetime.now().strftime("%Y%m%d%H%M%S")}'
                         logger.info(f'[CURRENT PATH] [{cur_path}]')
 
                         move = shutil.move(glx_dstr_dir.__str__(), cur_path)
+                        delete_file_recursively(cur_path, 'DICOMDIR.dcm')
                         logger.info(f'[MOVED SUCCESS] [{move}]')
                         patoolib.create_archive(
                             archive=ready_archive,
@@ -109,6 +112,7 @@ class Research(models.Model):
                         )
                         try:
                             shutil.rmtree(cur_path)
+                            logger.info(f'[DELETED SUCCESS] [{cur_path}]')
                         except OSError as e:
                             logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
 
@@ -142,6 +146,7 @@ class Research(models.Model):
                 logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
                 Log.objects.create(user=self.user, level='info', message='[CONVERTATION] [SUCCESS]')
         except:
+            Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}')
             Log.objects.create(user=self.user, level='error', message=f'[CONVERTATION] [FAIL] {traceback.format_exc()}')
 
     class Meta:

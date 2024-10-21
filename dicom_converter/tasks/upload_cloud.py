@@ -18,10 +18,23 @@ def upload(file_path, email, research_id):
         try:
             logger.info(f"9.1. [upload_file_path] [{file_path}]")
             research = Research.objects.filter(id=int(research_id)).last()
-            _dir = f'galileos_pro_research_{research.user.username}_{datetime.now().strftime("%Y%m%d%H%M%S")}'
+            ext = research.raw_archive.name.split('.')[-1]
+            file_type = research.is_one_file
+            if file_type:
+                file_type = 'onefile'
+            else:
+                file_type = 'multifile'
+            _dir = f'{file_type}_galileos_pro_research_{research.user.username}_{datetime.now().strftime("%Y%m%d%H%M%S")}'
             client.upload(file_path, f"disk:/{_dir}", overwrite=True, timeout=3600)
             client.publish(f'disk:/{_dir}')
-            link = client.get_meta(f'disk:/{_dir}').public_url
+            files = client.get_files()
+            logger.info(f"[FILES] [{files}]")
+            for file in files:
+                if file.name == _dir:
+                    rename = file.rename(f'{_dir}.{ext}')
+                    logger.info(f"[RENAME] [{rename}]")
+                    link = file.public_url
+            # link = client.get_meta(f'disk:/{_dir}').public_url
 
             logger.info(f'[LINK] [{link}]')
 

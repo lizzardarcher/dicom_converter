@@ -1,6 +1,6 @@
 {% extends 'layouts/base-fullscreen.html' %}
 {% load i18n static admin_soft %}
-
+{% block title %}{% trans "Вход" %}{% endblock title %}
 {% block content %}
 
     {% include 'includes/navigation-fullscreen.html' %}
@@ -27,9 +27,9 @@
                                             {% endfor %}
                                         </div>
                                     {% endif %}
-                                    <h3 class="font-weight-bolder text-info text-gradient">
+                                    <h1 class="font-weight-bolder text-info text-gradient">
                                         {% trans "Войти" %}
-                                    </h3>
+                                    </h1>
                                     <p class="mb-0">
                                         {% if msg %}
                                             <span class="text-danger">{{ msg | safe }}</span>

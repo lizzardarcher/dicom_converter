@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
-{% block title %} FAQ {% endblock title %}
+{% block title %} {% trans "Вопросы" %} {% endblock title %}
 {% block content %}
 
     <div class="container">
@@ -107,8 +107,89 @@
 
             </div>
         </section>
+        
+        <section class="section mb-5">
+            <h2 class="h4 mb-3">{% blocktrans %}Процесс конвертации{% endblocktrans %}</h2>
+            <p class="lead">{% blocktrans %}Конвертация данных GALILEOS в формат DICOM - это простой и эффективный процесс, который
+                проходит в несколько этапов.{% endblocktrans %} </p>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/orange/white?text={% trans 'Шаг' %} 1"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 1">
+                            <h5 class="card-title">{% blocktrans %}Архив с данными{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Создайте архив (zip, rar) с вашим исследованием.{% endblocktrans %}</p>
+                            <h6 class="card-text">{% blocktrans %}Популярные архиваторы:{% endblocktrans %}</h6>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    {% blocktranslate %}Для Windows:{% endblocktranslate %}
+                                    <ul>
+                                        <li><a href="https://www.7-zip.org/a/7z2408-x64.exe">7-ZIP</a></li>
+                                        <li><a href="https://www.win-rar.com/predownload.html?&L=4">WinRAR</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-sm-12 col-md-6">
+                                    {% blocktranslate %}Для Mac OS:{% endblocktranslate %}
+                                    <ul>
+                                        <li>
+                                            <a href="https://apps.apple.com/ru/app/unzip-one-rar-zip-extractor/id1127253508?mt=12">ZIP/RAR</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/orange/white?text={% trans 'Шаг' %} 2"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 2">
+                            <h5 class="card-title">{% blocktrans %}Загрузка данных{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Загрузите данные с томографа GALILEOS в наше{% endblocktrans %} <a
+                                    href="{% url 'upload research' %}">{% blocktrans %}программное обеспечение{% endblocktrans %}</a>
+                                {% blocktrans %}Файлы могут быть загружены с вашего компьютера, флешки или любого другого носителя.{% endblocktrans %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/orange/white?text={% trans 'Шаг' %} 3"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 3">
+                            <h5 class="card-title">{% blocktrans %}Конвертация данных{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Наше программное обеспечение быстро и безопасно конвертирует данные
+                                GALILEOS в формат DICOM.{% endblocktrans %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4 offset-md-4">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="https://placehold.co/100x100/orange/white?text={% trans 'Шаг' %} 4"
+                                 class="img-fluid rounded-circle mb-3" alt="Шаг 4">
+                            <h5 class="card-title">{% blocktrans %}Загрузка результата{% endblocktrans %}</h5>
+                            <p class="card-text">{% blocktrans %}Вы получаете готовые данные в формате DICOM. Файлы можно скачать на ваш
+                                компьютер из личного кабинета в разделе исследования. Также по завершении вам будет
+                                направлено письмо на
+                                указанную при регистрации почту со ссылкой на архив в облаке. Данные хранятся 6
+                                месяцев.{% endblocktrans %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+            
+        <section class="selected mb-5">
+            {% include 'components/media_carousel.html' %}
+        </section>
 
     </div>
-
-
 {% endblock content %}

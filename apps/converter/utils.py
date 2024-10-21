@@ -228,3 +228,20 @@ def find_directory(directory_name, start_path="."):
         if directory_name in dirs:
             return os.path.join(root, directory_name)
     return None  # Директория не найдена
+
+
+def delete_file_recursively(directory, filename):
+    """
+    Удаляет файл с указанным именем рекурсивно во всей директории.
+
+    Args:
+      directory (str): Путь к директории, где нужно искать файл.
+      filename (str): Имя файла, который нужно удалить.
+    """
+    for root, dirs, files in os.walk(directory):
+        if filename in files:
+            file_path = os.path.join(root, filename)
+            try:
+                os.remove(file_path)
+            except OSError as e:
+                print(f"Ошибка при удалении файла: {e}")

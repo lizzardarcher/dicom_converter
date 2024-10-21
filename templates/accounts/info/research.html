@@ -58,25 +58,40 @@
                                 </div>
                             </td>
                             <td>
-                                {% if res.cloud_url %}
-                                <a href="{{ res.cloud_url }}">
-                                    <p class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
-                                </a>
-                                {% else %}
-                                <a href="{{MEDIA_URL}}{{ res.ready_archive }}">
-                                    <p class="text-xs font-weight-bold mb-0">{{ res.ready_archive }}</p>
-                                </a>
-                                {% endif %}
+                                <div class="d-flex px-2 py-1">
+                                    <div class="d-flex flex-column justify-content-center">
+                                        {% if res.cloud_url %}
+                                            <a href="{{ res.cloud_url }}" target="_blank">
+                                                <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                                    <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ MEDIA_URL }}{{ res.ready_archive }}" target="_blank">
+                                                <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                                    <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
+                                            </a>
+                                        {% endif %}
+                                        {% if res.error_message %}
+                                            <p class="p-2 text-left text-danger">{{ res.error_message }}</p>                                            
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </td>
                             {% if res.ready_archive %}
                                 <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-gradient-success">{% trans "Готово" %}</span>
-                                </td>
-                            {% else %}
-                                <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-gradient-warning">{% trans "В процессе" %}</span>
+                                    <span class="badge badge-sm bg-success">{% trans "Готово" %}</span>
                                 </td>
                             {% endif %}
+                            {% if not res.status and not res.ready_archive %}
+                                <td class="align-middle text-center text-sm">
+                                    <span class="badge badge-sm bg-danger">{% trans "Ошибка" %}</span>
+                                </td>
+                            {% elif not res.ready_archive %}
+                                <td class="align-middle text-center text-sm">
+                                    <span class="badge badge-sm bg-warning">{% trans "В процессе" %}</span>
+                                </td>
+                            {% endif %}
+
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -1,10 +1,13 @@
 {% load static i18n %}
 {% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 {% endblock extrastyle %}
 
 {% block content %}
     <div class="container mt-5 animated animatedFadeInUp fadeInUp">
-        <h2 class="text-center mb-4">{% blocktranslate %}Гайд по использованию сервиса GalileosPro{% endblocktranslate %}</h2>
+        <h2 class="text-center mb-4">{% blocktranslate %}Гайд по использованию сервиса
+            GalileosPro{% endblocktranslate %}</h2>
 
         <div class="owl-carousel owl-theme " id="video-slider">
 
@@ -15,7 +18,8 @@
                         <source src="{% static 'info/Копирование-и-архивирование-папки-Галилеос.mp4' %}"
                                 type='video/mp4'>
                     </video>
-                    <h5 class="card-title">{% blocktranslate %}Копирование и архивирование папки Галилеос ZIP{% endblocktranslate %}</h5>
+                    <h5 class="card-title">{% blocktranslate %}Копирование и архивирование папки Галилеос
+                        ZIP{% endblocktranslate %}</h5>
                 </div>
             </div>
 
@@ -25,10 +29,11 @@
                         <source src="{% static 'info/Процесс конвертации.mp4' %}"
                                 type='video/mp4'>
                     </video>
-                    <h5 class="card-title">{% blocktranslate %}Сохранение конвертированного исследования на компьютер{% endblocktranslate %}</h5>
+                    <h5 class="card-title">{% blocktranslate %}Сохранение конвертированного исследования на
+                        компьютер{% endblocktranslate %}</h5>
                 </div>
             </div>
-        
+
             <div class="card">
                 <div class="card-body">
                     <video width="360" height="240" controls="controls" poster="" muted>
@@ -100,4 +105,37 @@
 
 {% block extrascript %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.card-img-top').hover(function () {
+                $(this).css('transform', 'scale(1.2)'); // Увеличиваем на 20%
+            }, function () {
+                $(this).css('transform', 'scale(1)'); // Возвращаем исходный размер
+            });
+        });
+    </script>
+
+
+    <script src="{% static 'js/core/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/core/owl.carousel.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#video-slider').owlCarousel({
+                loop: true,
+                margin: 20,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock extrascript %}

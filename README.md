@@ -31,7 +31,7 @@
 
 Выполните следующие команды для установки необходимых пакетов:
 
-> apt -y install python3-dev
+> apt install -y  python3-dev
 >
 > apt install -y default-libmysqlclient-dev
 >
@@ -40,6 +40,13 @@
 > apt install -y pkg-config
 >
 > apt install -y python3-pip
+> 
+> apt install -y p7zip-full p7zip-rar
+>
+> apt install -y rar
+>
+> apt install -y unrar
+
 
 ### 3. Клонирование репозитория
 
