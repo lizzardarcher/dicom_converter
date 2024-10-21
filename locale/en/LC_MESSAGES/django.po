@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-21 15:26+0500\n"
+"POT-Creation-Date: 2024-10-21 15:32+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: IVAN GORKOVENKOV <dltahiyan@gmail.com>\n"
 "Language-Team: LANGUAGE <dltahiyan@gmail.com>\n"
@@ -696,9 +696,8 @@ msgid "Узнать больше"
 msgstr "Find out more"
 
 #: templates/components/mobile_nav.html:15
-#: templates/includes/footer-fullscreen.html:13
-#: templates/includes/navigation.html:25 templates/pages/info/price_info.html:3
-#: templates/pages/info/prices.html:4 templates/pages/info/sitemap.html:17
+#: templates/includes/navigation.html:25 templates/pages/info/prices.html:4
+#: templates/pages/info/sitemap.html:17
 msgid "Цены"
 msgstr "Prices"
 
@@ -874,6 +873,12 @@ msgstr "Download archive"
 #: templates/includes/footer-fullscreen.html:12
 msgid "О компании"
 msgstr "About the company"
+
+#: templates/includes/footer-fullscreen.html:13
+#: templates/pages/info/price_info.html:3
+#: templates/pages/info/price_info.html:9
+msgid "Цены на услуги"
+msgstr "Prices for services"
 
 #: templates/includes/footer-fullscreen.html:14
 #: templates/pages/info/oferta.html:73 templates/pages/info/sitemap.html:16
@@ -1723,10 +1728,6 @@ msgstr "For further information and consultation, please contact us:"
 #: templates/pages/info/oferta.html:80
 msgid "Благодарим вас за выбор Galileos.pro!"
 msgstr "Thank you for choosing Galileos.pro!"
-
-#: templates/pages/info/price_info.html:9
-msgid "Цены на услуги"
-msgstr "Prices for services"
 
 #: templates/pages/info/price_info.html:14
 msgid "Услуга"
