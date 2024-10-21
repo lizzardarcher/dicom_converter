@@ -1,7 +1,7 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% load static %}
-{% block title %}{% endblock title %}
+{% block title %} {{ LANGUAGE_CODE|upper }} {% endblock title %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
