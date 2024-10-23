@@ -6,33 +6,41 @@
 
 {% block content %}
     <div class="container mt-5">
-    <h1 class="text-center mb-4">{% blocktrans %}Цены на услуги{% endblocktrans %}</h1>
+        <h1 class="text-center mb-4">{% blocktrans %}Цены на услуги{% endblocktrans %}</h1>
+        <h2 class="text-center mb-4">{% blocktrans %}Цены указаны в рублях и USD{% endblocktrans %}<a href="#note1"><sup>[1]</sup></a></h2>
 
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">{% trans "Услуга" %}</th>
-          <th scope="col">{% trans "Цена" %}</th>
-          <th scope="col">{% trans "Описание" %}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1 {% trans "конвертация" %}</td>
-          <td>2$ (200р)</td>
-          <td>1 {% blocktrans %}конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 месяцев{% endblocktrans %}</td>
-        </tr>
-      <tr>
-          <td>5 {% trans "конвертаций" %}</td>
-          <td>9$ (900р)</td>
-          <td>5 {% blocktrans %}конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 месяцев{% endblocktrans %}</td>
-        </tr>
-      <tr>
-          <td>10 {% trans "конвертаций" %}</td>
-          <td>17$ (1700р)</td>
-          <td>10 {% blocktrans %}конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 месяцев{% endblocktrans %}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">{% trans "Услуга" %}</th>
+                <th scope="col">{% trans "Цена" %}</th>
+                <th scope="col">{% trans "Описание" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1 {% trans "конвертация" %}</td>
+                <td>2$ (200р)</td>
+                <td>1 {% blocktrans %}конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию 6
+                    месяцев{% endblocktrans %}</td>
+            </tr>
+            <tr>
+                <td>5 {% trans "конвертаций" %}</td>
+                <td>9$ (900р)</td>
+                <td>5 {% blocktrans %}конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6
+                    месяцев{% endblocktrans %}</td>
+            </tr>
+            <tr>
+                <td>10 {% trans "конвертаций" %}</td>
+                <td>17$ (1700р)</td>
+                <td>10 {% blocktrans %}конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6
+                    месяцев{% endblocktrans %}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ol>
+            <li id="note1">{% blocktrans %}Валюта зависит от выбора платёжной системы{% endblocktrans %}</li>
+        </ol>
+    </div>
 {% endblock content %}

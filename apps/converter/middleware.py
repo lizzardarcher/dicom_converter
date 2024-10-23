@@ -15,5 +15,6 @@ class ReferrerPolicyMiddleware(MiddlewareMixin):
 
 class CSPMiddleware(MiddlewareMixin):
   def process_response(self, request, response):
-    response['Content-Security-Policy'] = "script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+    # response['Content-Security-Policy-Report-Only'] = "policy"
+    response['Content-Security-Policy'] = "frame-ancestors 'self'"
     return response

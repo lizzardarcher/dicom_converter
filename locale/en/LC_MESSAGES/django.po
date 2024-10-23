@@ -3091,3 +3091,7 @@ msgstr "Please correct the errors."
 #~ msgstr ""
 #~ "Files can be uploaded from your computer, flash drive or any\n"
 #~ " other media."
+
+#: templates/pages/info/price_info.html:44
+msgid "Зависит от выбора платёжной системы"
+msgstr ""

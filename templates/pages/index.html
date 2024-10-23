@@ -21,8 +21,7 @@
                             <div class="fs-3 fw-light text-muted">
                                 {% translate 'Удобный способ конвертации медицинских данных из CBCT-сканеров Sirona GALAXIS/GALILEOS в стандартный формат DICOM.' %}
                             </div>
-                            <h1 class="display-3 text-dark fw-bolder mb-5"><span
-                                    class="text-dark d-inline"> GalileosPro</span></h1>
+                            <h1 class="display-3 text-dark fw-bolder mb-5"><span class="text-dark d-inline">GalileosPro</span></h1>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
                                 <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
                                    href="{% url 'upload research' %}"
@@ -129,7 +128,6 @@
             $('#successMessage').append('<div class="alert alert-success" role="alert">' + decodeURIComponent(message) + '</div>');
         }
     </script>
-
     <script>
         $(document).ready(function () {
             $('.card-img-top').hover(function () {
@@ -139,11 +137,8 @@
             });
         });
     </script>
-
-
     <script src="{% static 'js/core/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'js/core/owl.carousel.min.js' %}"></script>
-
     <script>
         $(document).ready(function () {
             $('#video-slider').owlCarousel({
@@ -163,4 +158,5 @@
             });
         });
     </script>
+    
 {% endblock scripts %}
