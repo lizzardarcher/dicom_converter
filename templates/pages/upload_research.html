@@ -63,27 +63,33 @@
                         <h4>{% blocktrans %}Готовые исследования{% endblocktrans %}</h4>
                         <ol>
                             {% for r in research %}
-
                                 <li>
-                                    {% if r.cloud_url %}
-                                    <a href="{{ r.cloud_url }}" target="_blank">
+                                    {% if r.ready_archive %}
+                                        {% if r.cloud_url %}
+                                            <a href="{{ r.cloud_url }}" target="_blank">
+                                                <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                                    {% blocktrans %}Скачать архив из облака{% endblocktrans %} <i
+                                                        class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
+                                                    <span class="badge badge-sm bg-success t">{% trans "Готово" %}</span>
+                                                </p>
+                                            </a>
+                                        {% endif %}
+                                    {% elif not r.status and not r.ready_archive %}
                                         <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                          {% blocktrans %}Скачать архив{% endblocktrans %} <i class="fa fa-download"></i>  [ {{ r.date_created }} ] [ {{ r }} ]
+                                            {% blocktrans %}Скачать архив из облака{% endblocktrans %} <i
+                                                class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
+                                            <span class="badge badge-sm bg-danger">{% trans "Ошибка" %}</span>
                                         </p>
-                                    </a>
-                                    {% else %}
-                                        <a href="{{MEDIA_URL}}{{ r.ready_archive }}" target="_blank">
-                                            <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                               {% blocktrans %}Скачать архив{% endblocktrans %} <i class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
-
-                                            </p>
-                                        </a>
+                                    {% elif not r.ready_archive %}
+                                        <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                            {% blocktrans %}Скачать архив из облака{% endblocktrans %} <i
+                                                class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
+                                            <span class="badge badge-sm bg-warning">{% trans "В процессе" %}</span>
+                                        </p>
                                     {% endif %}
                                 </li>
-
                             {% endfor %}
                         </ol>
-
                     </div>
                 {% endif %}
             </div>
@@ -95,7 +101,6 @@
 {% endblock content %}
 {% block extrascript %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {#    <script src="{% static 'js/progressBar.js' %}"></script>#}
     <script>
         $(document).ready(function () {
 
@@ -106,12 +111,24 @@
             var pgb = $('#progress_bar');
             is_one_file.checked = false;
 
+            // Store the start time to calculate elapsed time
+            const startTime = Date.now();
             pgb.hide();
             spinner.setAttribute('style', 'display: none;');
             let lang = 'ru'
             let currentLocation = String(window.location);
             if (currentLocation.includes('/en/')) {
                 lang = 'en'
+            }
+
+
+            // Helper function to format bytes into human-readable format
+            function formatBytes(bytes) {
+                if (bytes === 0) return "0 Bytes";
+                const k = 1024;
+                const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
             }
 
             $('#upload_form').submit(function (event) {
@@ -143,7 +160,6 @@
                     return false;
                 }
 
-
                 var formData = new FormData(this);
                 var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
 
@@ -163,6 +179,23 @@
                             if (event.lengthComputable) {
 
                                 var percentComplete = (event.loaded / event.total) * 100;
+
+                                // Calculate remaining time
+                                const elapsedTime = Date.now() - startTime; // Time elapsed since start
+                                const remainingTime = (elapsedTime * (100 - percentComplete)) / percentComplete; // Estimated remaining time
+                                // Format remaining time in minutes and seconds
+                                const minutes = Math.floor(remainingTime / 60000); // Minutes
+                                let seconds = Math.floor((remainingTime % 60000) / 1000); // Seconds
+                                if (seconds.toString().length === 1){
+                                    seconds = '0'+seconds
+                                }
+                                let remainingTimeText = '';
+                                let loadedSizeText = '';
+
+                                // Display loaded size
+                                loadedSizeText = formatBytes(event.loaded) + " / " + formatBytes(file.size);
+                                remainingTimeText = `{% trans " (осталось: " %}0${minutes}:${seconds}{% trans " мин)" %}`;
+
                                 if (Math.floor(percentComplete) === 100){
                                     $('#progressBarValue').css('width', percentComplete + '%');
                                     $('#progressBarValue').removeClass('bg-gradient-info');
@@ -172,9 +205,8 @@
 
                                 }else{
                                     $('#progressBarValue').css('width', percentComplete + '%');
-                                    $('#progress_text').html( '{% blocktranslate %}Загружено{% endblocktranslate %}: ' +Math.floor(percentComplete) + '%');
+                                    $('#progress_text').html(loadedSizeText.toString() + ' ' +remainingTimeText.toString() +'<br>{% blocktranslate %}Загружено{% endblocktranslate %}: ' +Math.floor(percentComplete) + '%');
                                 }
-
 
                                 // Вызов функции обновления прогресса
                                 $.ajax({
@@ -222,7 +254,5 @@
                 });
             });
         });
-
-
     </script>
 {% endblock extrascript %}

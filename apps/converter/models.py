@@ -128,8 +128,8 @@ class Research(models.Model):
                 os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready") / file.split('/')[-1]))
 
                 # 6. Сохраняем ссылку на архив в модель
-                Research.objects.filter(id=self.id).update(
-                    ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
+                Research.objects.filter(id=self.id).update( ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
+                UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
 
                 try:
                     os.remove(archive_dir)
@@ -137,17 +137,18 @@ class Research(models.Model):
                 except OSError as e:
                     logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
 
-                UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
-
-                file_path = ('/opt/dicom_converter/static/media/' +
-                             Research.objects.filter(id=self.id).last().ready_archive.name)
+                file_path = ('/opt/dicom_converter/static/media/' + Research.objects.filter(id=self.id).last().ready_archive.name)
 
                 logger.info(f"9. [file_path attached to email] {file_path}")
                 logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
                 Log.objects.create(user=self.user, level='info', message='[CONVERTATION] [SUCCESS]')
-        except:
+        except OSError:
             Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}')
             Log.objects.create(user=self.user, level='error', message=f'[CONVERTATION] [FAIL] {traceback.format_exc()}')
+        except Exception as e:
+            Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}')
+            Log.objects.create(user=self.user, level='error', message=f'{traceback.format_exc()}')
+
 
     class Meta:
         verbose_name = 'Исследование'

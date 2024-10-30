@@ -93,17 +93,30 @@ class UploadView(TemplateView):
                 'error': 'Файл не был загружен.'
             })
 
+
 @csrf_exempt
 def progress_view(request):
     """
     Обработка запроса AJAX для обновления прогресса загрузки.
     """
     if request.method == 'POST':
+        _file = request.POST
+        # file_size = file.size  # Размер файла в байтах
+        # file_name = file.name
+
         progress = request.POST.get('progress')
+
         # Обновление прогресса в сессии
+
         request.session['upload_progress'] = progress
-        return JsonResponse({'progress': progress})
+        request.session['file'] = _file
+        # request.session['file_size'] = file_size
+        # request.session['file_name'] = file_name
+        return JsonResponse({
+            'progress': progress,
+            '_file': _file
+            # 'file_name': file_name,
+            # 'file_size': file_size
+        })
     else:
         return JsonResponse({'error': 'Invalid request method.'})
-
-

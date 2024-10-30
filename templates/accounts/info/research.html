@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
+                            <td class="text-wrap">
                                 <div class="d-flex px-2 py-1">
                                     <div class="d-flex flex-column justify-content-center">
                                         {% if res.cloud_url %}
@@ -66,13 +66,11 @@
                                                     <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
                                             </a>
                                         {% else %}
-                                            <a href="{{ MEDIA_URL }}{{ res.ready_archive }}" target="_blank">
-                                                <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                                    <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
-                                            </a>
+                                            <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
+                                                <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
                                         {% endif %}
                                         {% if res.error_message %}
-                                            <p class="p-2 text-left text-danger">{{ res.error_message }}</p>                                            
+                                            <p class="p-2 text-left text-danger">{{ res.error_message }}</p>
                                         {% endif %}
                                     </div>
                                 </div>

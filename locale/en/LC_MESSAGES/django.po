@@ -3095,3 +3095,9 @@ msgstr "Please correct the errors."
 #: templates/pages/info/price_info.html:44
 msgid "Зависит от выбора платёжной системы"
 msgstr ""
+#: templates/pages/upload_research.html:180
+msgid "Remaining: "
+msgstr ""
+#: templates/pages/upload_research.html:180
+msgid " секунд"
+msgstr ""

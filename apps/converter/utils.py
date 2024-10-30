@@ -1,6 +1,7 @@
 import os
 import logging
 import shutil
+import traceback
 
 from django.core.mail import EmailMessage, DEFAULT_ATTACHMENT_MIME_TYPE
 from django.conf import settings
@@ -112,17 +113,20 @@ def unidecode_recursive(directory):
 
     Args:
         directory (str): Путь к начальной директории.
-        new_extension (str): Новое расширение файла (например, ".png").
     """
     counter = 0
 
     for root, dirs, files in os.walk(directory):
         for dir in dirs:
-            new_dir = unidecode(dir.replace(' ', ''))
-            old_dir = os.path.join(root, dir)
-            new_dir = os.path.join(root, new_dir)
-            os.rename(old_dir, new_dir)
-            counter += 1
+            try:
+                new_dir = unidecode(dir.replace(' ', ''))
+                old_dir = os.path.join(root, dir)
+                new_dir = os.path.join(root, new_dir)
+                os.rename(old_dir, new_dir)
+                # shutil.move(old_dir, new_dir)
+                counter += 1
+            except Exception as e:
+                print(traceback.format_exc())
             # print(f"Переименован: {old_dir} ->  {new_dir}")
 
     # print(f"Переименовано: {str(counter)} директорий")
