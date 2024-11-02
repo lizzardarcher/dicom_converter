@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+import apps.home.views as home_views
+
 urlpatterns = i18n_patterns(
     path('', include('apps.converter.urls')),
 

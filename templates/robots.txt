@@ -1,0 +1,9 @@
+```
+User-agent: *
+
+Disallow: /admin/
+
+Sitemap: https://galileos.pro/sitemap.xml
+
+Allow: /
+```

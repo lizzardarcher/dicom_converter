@@ -4,19 +4,54 @@
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<!-- Google Tag Manager (noscript) -->
 
+<!-- End Google Tag Manager (noscript) -->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>
         GalileosPro {% block title %}{% endblock %}
     </title>
-    
-    <!-- SEO Meta -->
+
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMRJRG93"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
     <link rel="canonical" href="https://galileos.pro{{ request.path }}">
 
-    <!-- Favicon -->
-    <meta charset="utf-8"/>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NMRJRG93');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">
+    <meta name="keywords"
+          content="{% blocktranslate %}Sirona Galileos, конвертация, DICOM, изображения, томограф, онлайн, преобразование{% endblocktranslate %}">
+
+    <meta property="og:title"
+          content="{% blocktranslate %}Конвертация изображений Sirona Galileos в DICOM - Galileos Pro{% endblocktranslate %}">
+    <meta property="og:description"
+          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">
+    <meta property="og:image" content="https://galileos.pro/static/img/favicon.png">
+    <meta property="og:url" content="https://galileos.pro">
+    <meta property="og:site_name" content="Galileos Pro">
+    <meta property="og:type" content="website">
+
     <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon.png' %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
@@ -27,7 +62,7 @@
 
     <!-- CSS Files -->
     <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet"/>
-{#    <link id="pagestyle_dark" href="{% static 'css/dark-theme-core.css' %}" rel="stylesheet"/>#}
+    {#    <link id="pagestyle_dark" href="{% static 'css/dark-theme-core.css' %}" rel="stylesheet"/>#}
 
     <link href="{% static 'css/widgets.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
@@ -37,7 +72,7 @@
     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
-{#    <script type="text/javascript" src="{% static 'cookie_consent/cookiebar.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'cookie_consent/cookiebar.js' %}"></script>#}
 
     {% block extrahead %}{% endblock extrahead %}
     {% block extrastyle %}{% endblock extrastyle %}

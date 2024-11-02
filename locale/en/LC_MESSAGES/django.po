@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-21 15:32+0500\n"
+"POT-Creation-Date: 2024-11-02 10:21+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: IVAN GORKOVENKOV <dltahiyan@gmail.com>\n"
 "Language-Team: LANGUAGE <dltahiyan@gmail.com>\n"
@@ -46,7 +46,7 @@ msgstr "10 CONVERSIONS"
 msgid "Сумма"
 msgstr "Amount"
 
-#: apps/payments/models.py:10 templates/pages/info/price_info.html:16
+#: apps/payments/models.py:10 templates/pages/info/price_info.html:17
 msgid "Описание"
 msgstr "Description"
 
@@ -91,7 +91,8 @@ msgstr "Successfully"
 msgid "Отменено"
 msgstr "Cancelled"
 
-#: apps/payments/models.py:24 templates/accounts/info/research.html:87
+#: apps/payments/models.py:24 templates/accounts/info/research.html:85
+#: templates/pages/upload_research.html:81
 msgid "Ошибка"
 msgstr "Error"
 
@@ -129,7 +130,7 @@ msgid "Информация об исследованиях"
 msgstr "Research Information"
 
 #: templates/accounts/info/empty-research.html:28
-#: templates/accounts/info/research.html:28 templates/pages/index.html:36
+#: templates/accounts/info/research.html:28 templates/pages/index.html:35
 #: templates/pages/upload_research.html:19
 msgid "Загрузить исследование"
 msgstr "Upload research"
@@ -161,11 +162,13 @@ msgstr "Date"
 msgid "Ссылка на готовое исследование"
 msgstr "Link to the completed study"
 
-#: templates/accounts/info/research.html:82
+#: templates/accounts/info/research.html:80
+#: templates/pages/upload_research.html:73
 msgid "Готово"
 msgstr "READY"
 
-#: templates/accounts/info/research.html:91
+#: templates/accounts/info/research.html:89
+#: templates/pages/upload_research.html:87
 msgid "В процессе"
 msgstr "IN PROCESS"
 
@@ -659,7 +662,7 @@ msgstr ""
 #: templates/components/media_carousel.html:53
 #: templates/components/media_carousel.html:63
 #: templates/components/media_carousel.html:73
-#: templates/components/media_carousel.html:98 templates/pages/index.html:90
+#: templates/components/media_carousel.html:98 templates/pages/index.html:89
 #: templates/payments/yookassa/process_payment.html:31
 msgid "Подробнее"
 msgstr "Read more"
@@ -682,7 +685,8 @@ msgid ""
 "\n"
 "                        Подробнее"
 msgstr ""
-
+"\n"
+"                        Details"
 #: templates/components/media_carousel.html:88
 msgid "Ez-Vision"
 msgstr ""
@@ -721,7 +725,7 @@ msgstr "Choose the appropriate conversion package"
 msgid "Стартовый"
 msgstr "Starting"
 
-#: templates/components/pricing.html:43 templates/pages/info/price_info.html:21
+#: templates/components/pricing.html:43 templates/pages/info/price_info.html:22
 msgid "конвертация"
 msgstr "conversion"
 
@@ -745,8 +749,8 @@ msgid "Продвинутый"
 msgstr "Advanced"
 
 #: templates/components/pricing.html:88 templates/components/pricing.html:133
-#: templates/pages/info/price_info.html:26
-#: templates/pages/info/price_info.html:31
+#: templates/pages/info/price_info.html:28
+#: templates/pages/info/price_info.html:34
 msgid "конвертаций"
 msgstr "conversions"
 
@@ -865,8 +869,7 @@ msgstr ""
 msgid "Подтвердить"
 msgstr "Confirm"
 
-#: templates/create.html:70 templates/pages/upload_research.html:71
-#: templates/pages/upload_research.html:77
+#: templates/create.html:70
 msgid "Скачать архив"
 msgstr "Download archive"
 
@@ -926,6 +929,23 @@ msgstr "GalileosPro. All rights reserved."
 msgid "Dashboard"
 msgstr ""
 
+#: templates/layouts/base.html:19 templates/layouts/base.html:26
+msgid ""
+"Преобразование изображений, полученных с помощью томографов Sirona Galileos, "
+"в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн."
+msgstr ""
+
+#: templates/layouts/base.html:21
+msgid ""
+"Sirona Galileos, конвертация, DICOM, изображения, томограф, онлайн, "
+"преобразование"
+msgstr ""
+"Sirona Galileos, conversion, DICOM, images, tomograph, online, "
+"conversion"
+#: templates/layouts/base.html:24
+msgid "Конвертация изображений Sirona Galileos в DICOM - Galileos Pro"
+msgstr "Converting Sirona Galileos images to DICOM - Galileos Pro"
+
 #: templates/pages/edit_profile.html:12
 msgid "Назад"
 msgstr "Back"
@@ -938,23 +958,23 @@ msgstr ""
 "A convenient way to convert medical data from Sirona GALAXIS/GALILEOS CBCT "
 "scanners to standard DICOM format."
 
-#: templates/pages/index.html:41 templates/pages/info/how_it_works.html:3
+#: templates/pages/index.html:40 templates/pages/info/how_it_works.html:3
 #: templates/pages/info/how_it_works.html:8
 #: templates/pages/info/sitemap.html:23
 msgid "Как это работает"
 msgstr "How does this work"
 
-#: templates/pages/index.html:63
+#: templates/pages/index.html:62
 msgid "Уникальное решение"
 msgstr "Unique solution"
 
-#: templates/pages/index.html:65
+#: templates/pages/index.html:64
 msgid ""
 "Мы единственный сервис осуществляющий конвертацию данных с томографов "
 "Galileos"
 msgstr "We are the only service that converts data from Galileos tomographs"
 
-#: templates/pages/index.html:68
+#: templates/pages/index.html:67
 msgid ""
 "Вам не придется долго ждать результата. Мы оптимизировали процесс "
 "конвертации, чтобы вы получили доступ к вашим данным максимально быстро."
@@ -962,11 +982,11 @@ msgstr ""
 "You won't have to wait long for the result. We have optimized the conversion "
 "process so that you can access your data as quickly as possible."
 
-#: templates/pages/index.html:83
+#: templates/pages/index.html:82
 msgid "Что такое GalileosPro?"
 msgstr "What is GalileosPro?"
 
-#: templates/pages/index.html:84
+#: templates/pages/index.html:83
 msgid ""
 "GalileosPro - это мощный, но простой в использовании веб сервис, который "
 "позволяет конвертировать данные с вашего томографа SIRONA GALILEOS в DICOM-"
@@ -975,7 +995,7 @@ msgstr ""
 "GalileosPro is a powerful yet easy-to-use web service that allows you to "
 "convert data from your SIRONA GALILEOS tomograph into DICOM files."
 
-#: templates/pages/index.html:85
+#: templates/pages/index.html:84
 msgid ""
 "DICOM (Digital Imaging and Communications in Medicine) -\n"
 "                                        это стандарт для хранения и обмена "
@@ -1648,7 +1668,7 @@ msgstr "Conversion Package"
 msgid "Количество конвертаций"
 msgstr "Number of conversions"
 
-#: templates/pages/info/oferta.html:33 templates/pages/info/price_info.html:15
+#: templates/pages/info/oferta.html:33 templates/pages/info/price_info.html:16
 msgid "Цена"
 msgstr "Price"
 
@@ -1729,26 +1749,44 @@ msgstr "For further information and consultation, please contact us:"
 msgid "Благодарим вас за выбор Galileos.pro!"
 msgstr "Thank you for choosing Galileos.pro!"
 
-#: templates/pages/info/price_info.html:14
+#: templates/pages/info/price_info.html:10
+msgid "Цены указаны в рублях и USD"
+msgstr ""
+
+#: templates/pages/info/price_info.html:15
 msgid "Услуга"
 msgstr "Service"
 
-#: templates/pages/info/price_info.html:23
+#: templates/pages/info/price_info.html:24
+#, fuzzy
+#| msgid ""
+#| "конвертация файлов Galileos в формат DICOM. Доступ к готовому "
+#| "исследованию 6 месяцев"
 msgid ""
-"конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 "
-"месяцев"
+"конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию "
+"6\n"
+"                    месяцев"
 msgstr ""
 "conversion of Galileos files to DICOM format. Access to the finished study 6 "
 "months"
 
-#: templates/pages/info/price_info.html:28
-#: templates/pages/info/price_info.html:33
+#: templates/pages/info/price_info.html:30
+#: templates/pages/info/price_info.html:36
+#, fuzzy
+#| msgid ""
+#| "конвертаций файлов Galileos в формат DICOM. Доступ к готовому "
+#| "исследованию 6 месяцев"
 msgid ""
-"конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 "
-"месяцев"
+"конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию "
+"6\n"
+"                    месяцев"
 msgstr ""
 "conversion of Galileos files to DICOM format. Access to the finished study 6 "
 "months"
+
+#: templates/pages/info/price_info.html:43
+msgid "Валюта зависит от выбора платёжной системы"
+msgstr ""
 
 #: templates/pages/info/privacy.html:3
 msgid "Политика в отношении обработки персональных данных\n"
@@ -2966,35 +3004,51 @@ msgstr "You have no conversions available."
 msgid "Готовые исследования"
 msgstr "Ready research"
 
-#: templates/pages/upload_research.html:170
-#: templates/pages/upload_research.html:175
+#: templates/pages/upload_research.html:71
+#: templates/pages/upload_research.html:79
+#: templates/pages/upload_research.html:85
+#, fuzzy
+#| msgid "Скачать архив"
+msgid "Скачать архив из облака"
+msgstr "Download archive"
+
+#: templates/pages/upload_research.html:197
+msgid " (осталось: "
+msgstr ""
+
+#: templates/pages/upload_research.html:197
+msgid " мин)"
+msgstr ""
+
+#: templates/pages/upload_research.html:203
+#: templates/pages/upload_research.html:208
 #, fuzzy
 #| msgid "Загрузка данных"
 msgid "Загружено"
 msgstr "Loading data"
 
-#: templates/pages/upload_research.html:170
+#: templates/pages/upload_research.html:203
 #, fuzzy
 #| msgid "Процесс конвертации прост:"
 msgid "Идёт процесс конвертации, подождите немного..."
 msgstr "The conversion process is simple:"
 
-#: templates/pages/upload_research.html:202
-#: templates/pages/upload_research.html:212
+#: templates/pages/upload_research.html:234
+#: templates/pages/upload_research.html:244
 msgid ""
 "Данные томографа GALILEOS сконвертированы в формат DICOM Ссылка на "
 "скачивание вскоре будет отправлена на вашу почту. Также вы можете скачать "
 "архив в "
 msgstr ""
 
-#: templates/pages/upload_research.html:202
-#: templates/pages/upload_research.html:212
+#: templates/pages/upload_research.html:234
+#: templates/pages/upload_research.html:244
 #, fuzzy
 #| msgid "Личный кабинет"
 msgid "личном кабинете"
 msgstr "Account"
 
-#: templates/pages/upload_research.html:217
+#: templates/pages/upload_research.html:249
 msgid "Произошла ошибка при загрузке файла. Пожалуйста, попробуйте позже."
 msgstr "There was an error loading the file. Please try again later."
 
@@ -3091,13 +3145,3 @@ msgstr "Please correct the errors."
 #~ msgstr ""
 #~ "Files can be uploaded from your computer, flash drive or any\n"
 #~ " other media."
-
-#: templates/pages/info/price_info.html:44
-msgid "Зависит от выбора платёжной системы"
-msgstr ""
-#: templates/pages/upload_research.html:180
-msgid "Remaining: "
-msgstr ""
-#: templates/pages/upload_research.html:180
-msgid " секунд"
-msgstr ""

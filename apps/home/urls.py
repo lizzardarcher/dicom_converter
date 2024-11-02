@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.templatetags.i18n import language_name
 from django.urls import path, include
 from apps.home import views
 
@@ -19,7 +20,10 @@ urlpatterns = [
     path('faq', views.FAQView.as_view(), name='faq'),
     path('how_it_works', views.HowItWorksView.as_view(), name='how_it_works'),
     path('contacts', views.ContactView.as_view(), name='contacts'),
-
+    path('yandex_32616eea4a88545b.html', views.YandexSeoView.as_view(), name='yandex_32616eea4a88545b'),
+    path('sitemap.xml', views.SiteMapXMLView.as_view(), name='sitemap.xml'),
+    path('robots.txt', views.RobotsTXTView.as_view(), name='robots.txt',),
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

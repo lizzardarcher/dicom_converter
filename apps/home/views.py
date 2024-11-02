@@ -9,6 +9,7 @@ from apps.converter.models import GlobalSettings
 from apps.home.forms import ContactForm
 
 
+
 class IndexView(SuccessMessageMixin, TemplateView):
     template_name = 'pages/index.html'
 
@@ -34,6 +35,18 @@ class HelpView(TemplateView):
 
 class SiteMapView(TemplateView):
     template_name = 'pages/info/sitemap.html'
+
+
+class SiteMapXMLView(TemplateView):
+    template_name = 'pages/info/sitemap.xml'
+
+
+class YandexSeoView(TemplateView):
+    template_name = 'pages/yandex_32616eea4a88545b.html'
+
+
+class RobotsTXTView(TemplateView):
+    template_name = 'robots.txt'
 
 
 class OfertaView(TemplateView):
