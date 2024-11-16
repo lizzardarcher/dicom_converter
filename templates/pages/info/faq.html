@@ -1,6 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% block title %} {% trans "Вопросы" %} {% endblock title %}
+{% block extrahead %}
+    <meta name="description" content="{% blocktranslate %}Часто задаваемые вопросы о конвертации данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+    <meta property="og:description" content="{% blocktranslate %}Часто задаваемые вопросы о конвертации данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+    <meta name="keywords" content="{% blocktranslate %}Часто задаваемые вопросы о конвертации данных Galileos pro, конвертация в DICOM, изображения, томограф, онлайн, преобразование, galileos viewer, DICOM{% endblocktranslate %}">
+    <meta property="og:title" content="{% blocktranslate %}Часто задаваемые вопросы о конвертации данных Galileos viewer в DICOM{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block content %}
 
     <div class="container">

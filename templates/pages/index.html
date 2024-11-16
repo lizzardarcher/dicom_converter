@@ -2,6 +2,19 @@
 {% load i18n %}
 {% load static %}
 {% block title %} {{ LANGUAGE_CODE|upper }} {% endblock title %}
+{% block extrahead %}
+
+    <meta name="description"
+              content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">
+    <meta name="keywords"
+          content="{% blocktranslate %}Sirona Galileos, конвертация, DICOM, изображения, томограф, онлайн, преобразование{% endblocktranslate %}">
+
+    <meta property="og:title"
+          content="{% blocktranslate %}Конвертация изображений Sirona Galileos в DICOM - Galileos Pro{% endblocktranslate %}">
+    <meta property="og:description"
+          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">
+
+{% endblock extrahead %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
@@ -21,7 +34,8 @@
                             <div class="fs-3 fw-light text-muted">
                                 {% translate 'Удобный способ конвертации медицинских данных из CBCT-сканеров Sirona GALAXIS/GALILEOS в стандартный формат DICOM.' %}
                             </div>
-                            <h1 class="display-3 text-dark fw-bolder mb-5"><span class="text-dark d-inline">GalileosPro</span></h1>
+                            <h1 class="display-3 text-dark fw-bolder mb-5"><span
+                                    class="text-dark d-inline">GalileosPro</span></h1>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
                                 <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
                                    href="{% url 'upload research' %}"
@@ -44,7 +58,8 @@
                     <div class="col-xxl-7">
                         <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                             <div class="profile bg-gradient-primary-to-secondary">
-                                <img class="d-none d-sm-block d-md-block profile-img" src="{% static 'img/dentist.png' %}"
+                                <img class="d-none d-sm-block d-md-block profile-img"
+                                     src="{% static 'img/dentist.png' %}"
                                      alt="logo">
                             </div>
                         </div>
@@ -59,12 +74,16 @@
                 <div class="col-xxl-8">
                     <div class="text-center my-5">
                         <h2 class="display-3 text-dark fw-bolder mb-5">
-                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное решение{% endblocktrans %}</span></h2>
+                            <span class="text-dark text-gradient d-inline">{% blocktrans %}Уникальное
+                                решение{% endblocktrans %}</span></h2>
                         <p class="lead fw-light mb-4">
-                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов Galileos{% endblocktrans %}
+                            {% blocktrans %}Мы единственный сервис осуществляющий конвертацию данных с томографов
+                                Galileos{% endblocktrans %}
                         </p>
                         <p class="text-muted">
-                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс конвертации, чтобы вы получили доступ к вашим данным максимально быстро.{% endblocktrans %}
+                            {% blocktrans %}Вам не придется долго ждать результата. Мы оптимизировали процесс
+                                конвертации, чтобы вы получили доступ к вашим данным максимально
+                                быстро.{% endblocktrans %}
                         </p>
                     </div>
                 </div>
@@ -80,7 +99,9 @@
                             <div class="col-lg-6">
                                 <div class="d-flex flex-column h-100">
                                     <h2 class="font-weight-bolder">{% trans 'Что такое GalileosPro?' %}</h2>
-                                    <p class="mb-2">{% blocktranslate %}GalileosPro - это мощный, но простой в использовании веб сервис, который позволяет конвертировать данные с вашего томографа SIRONA GALILEOS в DICOM-файлы. {% endblocktranslate %}</p>
+                                    <p class="mb-2">{% blocktranslate %}GalileosPro - это мощный, но простой в
+                                        использовании веб сервис, который позволяет конвертировать данные с вашего
+                                        томографа SIRONA GALILEOS в DICOM-файлы. {% endblocktranslate %}</p>
                                     <p> {% blocktranslate %}DICOM (Digital Imaging and Communications in Medicine) -
                                         это стандарт для хранения и обмена медицинскими изображениями, используемый в
                                         больницах и клиниках по всему миру.{% endblocktranslate %}</p>
@@ -111,7 +132,7 @@
         {% include 'components/media_carousel.html' %}
         <!-- MEDIA END -->
 
-   </div>
+    </div>
 
 {% endblock content %}
 
@@ -158,5 +179,5 @@
             });
         });
     </script>
-    
+
 {% endblock scripts %}

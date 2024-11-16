@@ -2,6 +2,12 @@
 {% load i18n %}
 {% load static %}
 {% block title %} {% blocktrans %}Конвертация данных GALILEOS в DICOM{% endblocktrans %}{% endblock title %}
+{% block extrahead %}
+    <meta name="description" content="{% blocktranslate %}Что такое GALILEOS? И что такое конвертации данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+    <meta property="og:description" content="{% blocktranslate %}Что такое GALILEOS? И что такое конвертации данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+    <meta name="keywords" content="{% blocktranslate %}Что такое GALILEOS, Galileos pro, конвертация в DICOM, изображения, томограф, онлайн, преобразование, galileos viewer, DICOM{% endblocktranslate %}">
+    <meta property="og:title" content="{% blocktranslate %}Конвертация данных GALILEOS в DICOM и конвертации изображений Galileos viewer в DICOM{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block content %}
     <div class="container">
 

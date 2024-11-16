@@ -38,15 +38,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">
-    <meta name="keywords"
-          content="{% blocktranslate %}Sirona Galileos, конвертация, DICOM, изображения, томограф, онлайн, преобразование{% endblocktranslate %}">
 
-    <meta property="og:title"
-          content="{% blocktranslate %}Конвертация изображений Sirona Galileos в DICOM - Galileos Pro{% endblocktranslate %}">
-    <meta property="og:description"
-          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">
+    {#    <meta name="description"#}
+    {#          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">#}
+    {#    <meta name="keywords"#}
+    {#          content="{% blocktranslate %}Sirona Galileos, конвертация, DICOM, изображения, томограф, онлайн, преобразование{% endblocktranslate %}">#}
+    {##}
+    {#    <meta property="og:title"#}
+    {#          content="{% blocktranslate %}Конвертация изображений Sirona Galileos в DICOM - Galileos Pro{% endblocktranslate %}">#}
+    {#    <meta property="og:description"#}
+    {#          content="{% blocktranslate %}Преобразование изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн.{% endblocktranslate %}">#}
+    {#   #}
+
+    {% block extrahead %}{% endblock extrahead %}
+
     <meta property="og:image" content="https://galileos.pro/static/img/favicon.png">
     <meta property="og:url" content="https://galileos.pro">
     <meta property="og:site_name" content="Galileos Pro">
@@ -74,7 +79,7 @@
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
     {#    <script type="text/javascript" src="{% static 'cookie_consent/cookiebar.js' %}"></script>#}
 
-    {% block extrahead %}{% endblock extrahead %}
+
     {% block extrastyle %}{% endblock extrastyle %}
 
 </head>

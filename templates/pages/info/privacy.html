@@ -2,6 +2,12 @@
 {% load i18n %}
 {% block title %}{% blocktrans %}Политика в отношении обработки персональных данных
 {% endblocktrans %}{% endblock title %}
+{% block extrahead %}
+        <meta name="description" content="{% blocktranslate %}Политика в отношении обработки персональных данных Galileos Pro{% endblocktranslate %}">
+        <meta name="keywords" content="{% blocktranslate %}Политика Galileos pro, конвертация в DICOM, изображения, томограф, онлайн, преобразование, galileos viewer{% endblocktranslate %}">
+        <meta property="og:title" content="{% blocktranslate %}Политика сайта - Galileos Pro{% endblocktranslate %}">
+        <meta property="og:description" content="{% blocktranslate %}Политика в отношении обработки персональных данных Galileos Pro{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block content %}
     <div class="container mt-5">
         <h1 class="text-center mb-5">{% blocktrans %} Политика в отношении обработки персональных

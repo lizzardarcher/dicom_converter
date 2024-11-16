@@ -1,6 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% block title %} {% blocktrans %}Карта сайта{% endblocktrans %} {% endblock title %}
+{% block extrahead %}
+        <meta name="description" content="{% blocktranslate %}Карта сайта по преобразованиею изображений, полученных с помощью томографов Sirona Galileos, Galileos viewer в стандартный формат DICOM онлайн.{% endblocktranslate %}">
+        <meta name="keywords" content="{% blocktranslate %}Карта сайта Galileos pro, конвертация, DICOM, изображения, томограф, онлайн, преобразование{% endblocktranslate %}">
+        <meta property="og:title" content="{% blocktranslate %}Карта сайта - Galileos Pro{% endblocktranslate %}">
+        <meta property="og:description" content="{% blocktranslate %}Карта сайта по преобразованию изображений, полученных с помощью томографов Sirona Galileos, в стандартный формат DICOM онлайн.{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block extrastyle %}
 {% endblock extrastyle %}
 

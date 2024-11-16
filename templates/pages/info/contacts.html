@@ -1,7 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% block title %}{% blocktrans %}Контакты - Конвертация данных GALILEOS в DICOM{% endblocktrans %}{% endblock title %}
-
+{% block extrahead %}
+    <meta name="description" content="{% blocktranslate %}Связаться с нами вы можете по Телефону или Email. Конвертация данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+    <meta property="og:description" content="{% blocktranslate %}Связаться с нами вы можете по Телефону или Email. Конвертация данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+    <meta name="keywords" content="{% blocktranslate %}Контакты, Galileos pro, конвертация в DICOM, изображения, томограф, онлайн, преобразование, galileos viewer, DICOM{% endblocktranslate %}">
+    <meta property="og:title" content="{% blocktranslate %}Конвертация данных GALILEOS viewer в формат DICOM{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block content %}
     <div class="container mt-5">
         <h1 class="text-center mb-4">{% blocktrans %}Свяжитесь с нами{% endblocktrans %}</h1>

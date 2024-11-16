@@ -1,7 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% block title %}{% blocktrans %}Публичная оферта{% endblocktrans %}{% endblock title %}
-
+{% block extrahead %}
+    <meta name="description" content="{% blocktranslate %}Публичная оферта на оказание услуг по конвертации данных с galileos viewer в DICOM в сервисе Galileos Pro{% endblocktranslate %}">
+    <meta property="og:description" content="{% blocktranslate %}Публичная оферта на оказание услуг по конвертации данных с galileos viewer в DICOM в сервисе Galileos Pro{% endblocktranslate %}">
+    <meta name="keywords" content="{% blocktranslate %}Публичная оферта на оказание услуг по конвертации данных Galileos pro, конвертация в DICOM, изображения, томограф, онлайн, преобразование, galileos viewer, DICOM{% endblocktranslate %}">
+    <meta property="og:title" content="{% blocktranslate %}Публичная оферта на оказание услуг по конвертации данных Galileos pro{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block extrastyle %}
     <style>
         body {

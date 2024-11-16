@@ -1,6 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load i18n %}
 {% block title %} {% blocktrans %}Как это работает{% endblocktrans %} {% endblock title %}
+{% block extrahead %}
+    <meta name="description" content="{% blocktranslate %}Конвертация данных GALILEOS в формат DICOM - это простой и эффективный процесс, который проходит в несколько этапов.{% endblocktranslate %}">
+    <meta property="og:description" content="{% blocktranslate %}Конвертация данных GALILEOS в формат DICOM - это простой и эффективный процесс, который проходит в несколько этапов.{% endblocktranslate %}">
+    <meta name="keywords" content="{% blocktranslate %}Как работает конвертации данных Galileos pro, конвертация в DICOM, изображения, томограф, онлайн, преобразование, galileos viewer, DICOM{% endblocktranslate %}">
+    <meta property="og:title" content="{% blocktranslate %}Как работает процесс конвертации данных Galileos viewer в DICOM{% endblocktranslate %}">
+{% endblock extrahead %}
 {% block content %}
 
     <div class="container">
