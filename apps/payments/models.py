@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils.html import html_safe
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 
@@ -31,7 +33,20 @@ class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, )
 
     def __str__(self):
-        return f"Платеж на {self.amount}p. {self.created_at.strftime('%Y-%m-%d %H:%M')} {str(self.status)} {str(self.user)} {str(self.paid)}"
+        if self.status == 'pending':
+            status = f"<span class='badge badge-warning'>{self.status}</span>"
+        elif self.status == 'succeeded':
+            status = f"<span class='badge badge-success'>{self.status}</span>"
+        elif self.status == 'canceled' or self.status == 'failed':
+            status = f"<span class='badge badge-danger'>{self.status}</span>"
+        else:
+            status = f"<span class='badge badge-secondary'>{self.status}</span>"
+
+        if self.paid:
+            paid = '✅'
+        else:
+            paid = '❌'
+        return mark_safe(f"Платеж на <span class='badge badge-info'>{self.amount}</span>p. {self.created_at.strftime('%Y-%m-%d %H:%M')} {status} {str(self.user)} {paid}")
 
     class Meta:
         verbose_name = 'Yookassa Payment'

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 22:50+0500\n"
+"POT-Creation-Date: 2024-11-29 13:51+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: IVAN GORKOVENKOV <dltahiyan@gmail.com>\n"
 "Language-Team: LANGUAGE <dltahiyan@gmail.com>\n"
@@ -42,65 +42,65 @@ msgstr "5 CONVERSIONS"
 msgid "10 КОНВЕРТАЦИЙ"
 msgstr "10 CONVERSIONS"
 
-#: apps/payments/models.py:9 templates/accounts/info/transaction.html:29
+#: apps/payments/models.py:11 templates/accounts/info/transaction.html:29
 msgid "Сумма"
 msgstr "Amount"
 
-#: apps/payments/models.py:10 templates/pages/info/price_info.html:23
+#: apps/payments/models.py:12 templates/pages/info/price_info.html:23
 msgid "Описание"
 msgstr "Description"
 
-#: apps/payments/models.py:12
+#: apps/payments/models.py:14
 msgid "Оплатить 1 конвертацию"
 msgstr "Pay for 1 conversion"
 
-#: apps/payments/models.py:13
+#: apps/payments/models.py:15
 msgid "Оплатить 5 конвертаций"
 msgstr "Pay for 5 conversions"
 
-#: apps/payments/models.py:14
+#: apps/payments/models.py:16
 msgid "Оплатить 10 конвертаций"
 msgstr "Pay for 10 conversions"
 
-#: apps/payments/models.py:16
+#: apps/payments/models.py:18
 msgid "ID платежа YooKassa"
 msgstr "YooKassa payment ID"
 
-#: apps/payments/models.py:17
+#: apps/payments/models.py:19
 msgid "Создано"
 msgstr "Created"
 
-#: apps/payments/models.py:18 templates/payments/yookassa/payment_info.html:19
+#: apps/payments/models.py:20 templates/payments/yookassa/payment_info.html:19
 msgid "Оплачено"
 msgstr ""
 
-#: apps/payments/models.py:19 templates/accounts/info/research.html:46
+#: apps/payments/models.py:21 templates/accounts/info/research.html:46
 #: templates/accounts/info/transaction.html:35
 msgid "Статус"
 msgstr "Paid"
 
-#: apps/payments/models.py:21
+#: apps/payments/models.py:23
 msgid "В ожидании"
 msgstr "Waiting"
 
-#: apps/payments/models.py:22
+#: apps/payments/models.py:24
 msgid "Успешно"
 msgstr "Successfully"
 
-#: apps/payments/models.py:23
+#: apps/payments/models.py:25
 msgid "Отменено"
 msgstr "Cancelled"
 
-#: apps/payments/models.py:24 templates/accounts/info/research.html:85
+#: apps/payments/models.py:26 templates/accounts/info/research.html:85
 #: templates/pages/upload_research.html:81
 msgid "Ошибка"
 msgstr "Error"
 
-#: apps/payments/models.py:25
+#: apps/payments/models.py:27
 msgid "Возврат"
 msgstr "Return"
 
-#: apps/payments/models.py:26
+#: apps/payments/models.py:28
 msgid "Захвачено"
 msgstr "Captured"
 
@@ -626,24 +626,18 @@ msgid "Русский"
 msgstr "Russian"
 
 #: templates/components/media_carousel.html:9
-#, fuzzy
-#| msgid "Гайд по использованию сервиса GalileosPro"
 msgid ""
 "Гайд по использованию сервиса\n"
 "            GalileosPro"
 msgstr "Guide for GalileosPro"
 
 #: templates/components/media_carousel.html:21
-#, fuzzy
-#| msgid "Копирование и архивирование папки Галилеос ZIP"
 msgid ""
 "Копирование и архивирование папки Галилеос\n"
 "                        ZIP"
 msgstr "Copying and archiving a folder Galileos"
 
 #: templates/components/media_carousel.html:32
-#, fuzzy
-#| msgid "Сохранение конвертированного исследования на компьютер"
 msgid ""
 "Сохранение конвертированного исследования на\n"
 "                        компьютер"
@@ -662,7 +656,7 @@ msgstr ""
 #: templates/components/media_carousel.html:53
 #: templates/components/media_carousel.html:63
 #: templates/components/media_carousel.html:73
-#: templates/components/media_carousel.html:98 templates/pages/index.html:110
+#: templates/components/media_carousel.html:98 templates/pages/index.html:107
 #: templates/payments/yookassa/process_payment.html:31
 msgid "Подробнее"
 msgstr "Read more"
@@ -939,7 +933,9 @@ msgid ""
 "Преобразование изображений, полученных с помощью томографов Sirona Galileos, "
 "в стандартный формат DICOM. Быстрая и точная конвертация, доступная онлайн."
 msgstr ""
-"Conversion of Sirona Galileos tomograph images to standard DICOM format. Fast and accurate conversion available online."
+"Conversion of Sirona Galileos tomograph images to standard DICOM format. "
+"Fast and accurate conversion available online."
+
 #: templates/pages/index.html:10
 msgid ""
 "Sirona Galileos, конвертация, DICOM, изображения, томограф, онлайн, "
@@ -966,44 +962,29 @@ msgid "Как это работает"
 msgstr "How does this work"
 
 #: templates/pages/index.html:77
-#, fuzzy
-#| msgid ""
-#| "Скачать\n"
-#| "                                        архив"
-msgid ""
-"Уникальное\n"
-"                                решение"
-msgstr "Download archive"
+msgid "Уникальное решение"
+msgstr "Unique solution"
 
-#: templates/pages/index.html:80
-#, fuzzy
-#| msgid ""
-#| "Мы единственный сервис осуществляющий конвертацию данных с томографов "
-#| "Galileos"
+#: templates/pages/index.html:79
 msgid ""
-"Мы единственный сервис осуществляющий конвертацию данных с томографов\n"
-"                                Galileos"
+"Мы единственный сервис осуществляющий конвертацию данных с томографов "
+"Galileos"
 msgstr "We are the only service that converts data from Galileos tomographs"
 
-#: templates/pages/index.html:84
-#, fuzzy
-#| msgid ""
-#| "Вам не придется долго ждать результата. Мы оптимизировали процесс "
-#| "конвертации, чтобы вы получили доступ к вашим данным максимально быстро."
+#: templates/pages/index.html:82
 msgid ""
 "Вам не придется долго ждать результата. Мы оптимизировали процесс\n"
 "                                конвертации, чтобы вы получили доступ к "
-"вашим данным максимально\n"
-"                                быстро."
+"вашим данным максимально быстро."
 msgstr ""
 "You won't have to wait long for the result. We have optimized the conversion "
 "process so that you can access your data as quickly as possible."
 
-#: templates/pages/index.html:101
+#: templates/pages/index.html:98
 msgid "Что такое GalileosPro?"
 msgstr "What is GalileosPro?"
 
-#: templates/pages/index.html:102
+#: templates/pages/index.html:99
 #, fuzzy
 #| msgid ""
 #| "GalileosPro - это мощный, но простой в использовании веб сервис, который "
@@ -1019,7 +1000,7 @@ msgstr ""
 "GalileosPro is a powerful yet easy-to-use web service that allows you to "
 "convert data from your SIRONA GALILEOS tomograph into DICOM files."
 
-#: templates/pages/index.html:105
+#: templates/pages/index.html:102
 msgid ""
 "DICOM (Digital Imaging and Communications in Medicine) -\n"
 "                                        это стандарт для хранения и обмена "
@@ -1260,15 +1241,17 @@ msgid ""
 "Что такое GALILEOS, Galileos pro, конвертация в DICOM, изображения, "
 "томограф, онлайн, преобразование, galileos viewer, DICOM"
 msgstr ""
-"What is GALILEOS, Galileos pro, convert to DICOM, images, "
-"tomograph, online, conversion, galileos viewer, DICOM"
+"What is GALILEOS, Galileos pro, convert to DICOM, images, tomograph, online, "
+"conversion, galileos viewer, DICOM"
+
 #: templates/pages/info/detailed_info.html:9
 msgid ""
 "Конвертация данных GALILEOS в DICOM и конвертации изображений Galileos "
 "viewer в DICOM"
 msgstr ""
-"GALILEOS data to DICOM conversion and Galileos image conversion"
-"viewer to DICOM"
+"GALILEOS data to DICOM conversion and Galileos image conversionviewer to "
+"DICOM"
+
 #: templates/pages/info/detailed_info.html:17 templates/pages/info/faq.html:23
 msgid "Что такое GALILEOS?"
 msgstr "What is GALILEOS?"
@@ -1454,11 +1437,13 @@ msgid ""
 msgstr ""
 "Frequently asked questions about Galileos pro data conversion, convert to "
 "DICOM, images, tomograph, online, conversion, galileos viewer, DICOM"
+
 #: templates/pages/info/faq.html:8
 #, fuzzy
 #| msgid "Программное обеспечение - Конвертер данных Galileos в DICOM"
 msgid "Часто задаваемые вопросы о конвертации данных Galileos viewer в DICOM"
-msgstr "Frequently asked questions about converting Galileos viewer data to DICOM"
+msgstr ""
+"Frequently asked questions about converting Galileos viewer data to DICOM"
 
 #: templates/pages/info/faq.html:29
 msgid ""
@@ -1638,8 +1623,9 @@ msgid ""
 "Помощь в конвертации данных Galileos pro, конвертация в DICOM, изображения, "
 "томограф, онлайн, преобразование, galileos viewer, DICOM"
 msgstr ""
-"Galileos pro data conversion help, DICOM conversion, images, "
-"tomograph, online, conversion, galileos viewer, DICOM"
+"Galileos pro data conversion help, DICOM conversion, images, tomograph, "
+"online, conversion, galileos viewer, DICOM"
+
 #: templates/pages/info/help.html:8
 #, fuzzy
 #| msgid "Контакты - Конвертация данных GALILEOS в DICOM"
@@ -1744,8 +1730,9 @@ msgid ""
 "Как работает конвертации данных Galileos pro, конвертация в DICOM, "
 "изображения, томограф, онлайн, преобразование, galileos viewer, DICOM"
 msgstr ""
-"How does Galileos pro data conversion work, conversion to DICOM, "
-"images, tomograph, online, conversion, galileos viewer, DICOM"
+"How does Galileos pro data conversion work, conversion to DICOM, images, "
+"tomograph, online, conversion, galileos viewer, DICOM"
+
 #: templates/pages/info/how_it_works.html:8
 #, fuzzy
 #| msgid "Программное обеспечение - Конвертер данных Galileos в DICOM"
@@ -1810,8 +1797,8 @@ msgid ""
 "Публичная оферта на оказание услуг по конвертации данных с galileos viewer в "
 "DICOM в сервисе Galileos Pro"
 msgstr ""
-"Public offer for rendering services for data conversion from galileos viewer to "
-"DICOM in Galileos Pro service"
+"Public offer for rendering services for data conversion from galileos viewer "
+"to DICOM in Galileos Pro service"
 
 #: templates/pages/info/oferta.html:7
 #, fuzzy
@@ -1824,8 +1811,9 @@ msgid ""
 "viewer, DICOM"
 msgstr ""
 "Public offer for the provision of services for converting Galileos pro data, "
-"conversion to DICOM, images, tomograph, online, conversion, galileos "
-"viewer, DICOM"
+"conversion to DICOM, images, tomograph, online, conversion, galileos viewer, "
+"DICOM"
+
 #: templates/pages/info/oferta.html:8
 #, fuzzy
 #| msgid "Публичная оферта на оказание услуг по конвертации данных"
@@ -1981,8 +1969,8 @@ msgid ""
 "Цены на услуги Galileos pro, конвертация в DICOM, изображения, томограф, "
 "онлайн, преобразование, galileos viewer, DICOM"
 msgstr ""
-"Galileos pro service prices, DICOM conversion, images, tomograph, "
-"online, conversion, galileos viewer, DICOM"
+"Galileos pro service prices, DICOM conversion, images, tomograph, online, "
+"conversion, galileos viewer, DICOM"
 
 #: templates/pages/info/price_info.html:8
 #, fuzzy
@@ -2036,6 +2024,7 @@ msgid ""
 msgstr ""
 "Prices for conversion of Galileos Pro service for converting images from "
 "galileos viewer to DICOM"
+
 #: templates/pages/info/prices.html:8
 #, fuzzy
 #| msgid ""
@@ -2047,6 +2036,7 @@ msgid ""
 msgstr ""
 "Galileos pro prices, DICOM conversion, images, tomograph, online, "
 "conversion, galileos viewer"
+
 #: templates/pages/info/prices.html:9
 #, fuzzy
 #| msgid "Что такое GalileosPro?"
@@ -3452,12 +3442,3 @@ msgstr "Change my password"
 msgid "Пожалуйста исправьте ошибки."
 msgstr "Please correct the errors."
 
-#~ msgid "Уникальное решение"
-#~ msgstr "Unique solution"
-
-#~ msgid ""
-#~ "Файлы могут быть загружены с вашего компьютера, флешки или любого\n"
-#~ "                                    другого носителя."
-#~ msgstr ""
-#~ "Files can be uploaded from your computer, flash drive or any\n"
-#~ " other media."
