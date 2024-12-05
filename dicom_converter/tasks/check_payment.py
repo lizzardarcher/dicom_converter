@@ -19,8 +19,8 @@ def update_yookassa_info():
     """
     Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
     Configuration.secret_key = settings.YOOKASSA_SECRET
-    payments = Payment.objects.filter(paid=False)
-
+    payments = Payment.objects.filter(paid=False).exclude(status__exact='canceled')
+    # print(payments)
     prices = GlobalSettings.objects.get(pk=1)
 
     for payment in payments:
@@ -39,13 +39,13 @@ def update_yookassa_info():
                 elif int(payment.amount) == prices.price_3_ru:
                     user_info.research_avail_count = count + 10
                 user_info.save()
-                print(user_info)
-                print(count)
-                print(payment.amount)
-                print(type(payment.amount))
-                print(prices.price_1_ru)
-                print(prices.price_2_ru)
-                print(prices.price_3_ru)
+                # print(user_info)
+                # print(count)
+                # print(payment.amount)
+                # print(type(payment.amount))
+                # print(prices.price_1_ru)
+                # print(prices.price_2_ru)
+                # print(prices.price_3_ru)
         except:
             print(traceback.format_exc())
 
