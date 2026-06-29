@@ -1,8 +1,8 @@
 import datetime
 import json
+from django.conf import settings
 from django.template import Context
 from django.utils import translation
-
 
 try:
     from django.apps.registry import apps
@@ -312,7 +312,7 @@ def get_menu_items(context):
     # pinned_apps = PinnedApplication.objects.filter(user=context['user'].pk).values_list('app_label', flat=True)
     pinned_apps = []
     original_app_list = OrderedDict(map(lambda app: (app['app_label'], app), get_original_menu_items(context)))
-    custom_app_list = None
+    custom_app_list = getattr(settings, 'ADMIN_SOFT_MENU', None)
     custom_app_list_deprecated = None
 
     if custom_app_list not in (None, False):
@@ -374,6 +374,8 @@ def get_menu_items(context):
 
             if 'items' in data:
                 item['items'] = list(map(lambda x: get_menu_item_app_model(app_label, x), data['items']))
+            elif 'models' in item:
+                item['items'] = item['models']
 
             if 'url' in data:
                 item['url'] = get_menu_item_url(data['url'], original_app_list)
@@ -438,8 +440,9 @@ def get_menu_items(context):
     current_found = False
 
     for app in app_list:
+        items = app.get('items', [])
         if not current_found:
-            for model in app['items']:
+            for model in items:
                 if not current_found and model.get('url') and context['request'].path.startswith(model['url']):
                     model['current'] = True
                     current_found = True

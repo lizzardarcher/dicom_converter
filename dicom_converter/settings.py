@@ -180,6 +180,7 @@ TIME_ZONE = 'Asia/Yekaterinburg'
 
 USE_I18N = True
 
+
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -199,3 +200,10 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ADMIN_SOFT_MENU = [
+    {'app_label': 'converter', 'label': 'Конвертер'},
+    {'app_label': 'payments', 'label': 'Платежи'},
+    {'app_label': 'auth', 'label': 'Пользователи'},
+    {'app_label': 'home', 'label': 'Логи'},
+]
