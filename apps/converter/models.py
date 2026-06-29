@@ -1,6 +1,8 @@
 import os
 import shutil
+import tempfile
 import traceback
+
 
 import patoolib
 from datetime import datetime
@@ -19,16 +21,29 @@ from apps.converter.utils import (
     ConversionError,
     extract_archive_safe,
     find_galileos_vol_dir,
-    search_file_in_dir,
     add_ext_recursive,
     unidecode_recursive,
-    copy_files,
-    find_folder,
-    find_directory,
     delete_file_recursively,
 )
 from apps.converter import galileos_converter
 
+
+def _get_tmp_dir() -> Path:
+    tmp = MEDIA_ROOT / 'converter' / 'tmp'
+    tmp.mkdir(parents=True, exist_ok=True)
+    return tmp
+
+
+def _cleanup_path(path, *, is_dir=False):
+    if not path:
+        return
+    try:
+        if is_dir and os.path.isdir(path):
+            shutil.rmtree(path)
+        elif not is_dir and os.path.isfile(path):
+            os.remove(path)
+    except OSError as e:
+        logger.critical("Cleanup error: %s - %s." % (getattr(e, 'filename', path), e.strerror))
 
 
 class Research(models.Model):
@@ -56,98 +71,85 @@ class Research(models.Model):
             self.slug = slugify(f'{self.user}{str(datetime.now())}')
         self.raw_archive.name = self.raw_archive.name.replace(' ', '')
         super(Research, self).save(*args, **kwargs)
+
+        archive_dir = os.path.join(str(MEDIA_ROOT), self.raw_archive.name)
+        output_dir = os.path.join(
+            str(MEDIA_ROOT),
+            'converter',
+            'extract_dir',
+            str(self.raw_archive.name).split('.')[0].replace('converter/raw/', ''),
+        )
+
+        staging_dir = None
+        temp_dcm = None
+        staging_archive = None
+
         try:
-            avail = UserSettings.objects.filter(user=self.user).last().research_avail_count
-            if avail:
-                """
-                    1. Получаем архив с исследованием с сайта (OK)
-    
-                    2. Разархивируем полученный архив (OK)
-                    Используем стороннюю библиотеку patoolib. Архив берется по пути, указанному в модели далее извлекается в
-                    динамически создающуюся директорию, соответствующую имени архива без расширения
-                """
-                archive_dir = f"{str(MEDIA_ROOT)}/{self.raw_archive.name}"
-                logger.info(f'2. [Директория с архивом] {archive_dir}')
+            user_settings = UserSettings.objects.filter(user=self.user).last()
+            avail = user_settings.research_avail_count if user_settings else 0
+            if not avail:
+                logger.warning(f'[CONVERTATION] skipped: no quota for user {self.user}')
+                return
 
-                output_dir = f"{str(MEDIA_ROOT)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
-                logger.info(f'3. [Директория разархивирования] {output_dir}')
+            logger.info(f'2. [Директория с архивом] {archive_dir}')
+            logger.info(f'3. [Директория разархивирования] {output_dir}')
 
-                extract_archive_safe(archive_dir, output_dir)
+            extract_archive_safe(archive_dir, output_dir)
 
-                # 2.1 Ищем название файла с исследованием
-                unidecode_recursive(MEDIA_ROOT.joinpath('converter').joinpath('extract_dir').__str__())
-                glx_src_dir = Path(find_galileos_vol_dir(output_dir))
-                logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
+            unidecode_recursive(str(MEDIA_ROOT / 'converter' / 'extract_dir'))
+            glx_src_dir = Path(find_galileos_vol_dir(output_dir))
+            logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
 
-                glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
-                logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
+            glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
+            logger.info(f'5. [Директория куда gxl2dicom отправляет готовые файлы] {glx_dstr_dir}')
 
-                # 3. Прогоняем архив через galileos_converter.py
-                galileos_converter.glx2dicom(srcdir=Path(f'{glx_src_dir}'), dstdir=Path(f'{glx_dstr_dir}'))
+            galileos_converter.glx2dicom(srcdir=Path(f'{glx_src_dir}'), dstdir=Path(f'{glx_dstr_dir}'))
+            add_ext_recursive(glx_dstr_dir.__str__(), '.dcm')
 
-                # 4. Прогоняем полученные файлы через renamer.py
-                add_ext_recursive(glx_dstr_dir.__str__(), '.dcm')
+            tmp_dir = _get_tmp_dir()
+            timestamp = datetime.now().strftime('%Y_%m_%d_%H_%M_')
+            ready_archive_name = f"{timestamp}{self.raw_archive.name.replace('converter/raw/', '')}"
+            staging_archive = str(tmp_dir / ready_archive_name)
+            logger.info(f"6. {ready_archive_name}")
+            logger.info(f"7. {glx_dstr_dir.__str__()}")
 
-                # 5. Архивируем полученное исследование
-                ready_archive = f"{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}{self.raw_archive.name.replace('converter/raw/', '')}"
-                logger.info(f"6. {ready_archive}")
-                logger.info(f"7. {glx_dstr_dir.__str__()}")
-
-                # Если одним фалом, то ...
-                if self.is_one_file:
-                    one_file = galileos_converter.merge_dicom(
-                        input_dir=f'{glx_dstr_dir.__str__()}',
-                        output_filename=f'{self.date_created.now().strftime('%Y_%m_%d_%H_%M_')}_research.dcm')
-
-                    patoolib.create_archive(
-                        archive=ready_archive,
-                        filenames=(one_file,))
-                else:
-                    try:
-                        cur_path = f'/{datetime.now().strftime("%Y%m%d%H%M%S")}'
-                        logger.info(f'[CURRENT PATH] [{cur_path}]')
-
-                        move = shutil.move(glx_dstr_dir.__str__(), cur_path)
-                        delete_file_recursively(cur_path, 'DICOMDIR.dcm')
-                        logger.info(f'[MOVED SUCCESS] [{move}]')
-                        patoolib.create_archive(
-                            archive=ready_archive,
-                            filenames=(cur_path,),
-                        )
-                        try:
-                            shutil.rmtree(cur_path)
-                            logger.info(f'[DELETED SUCCESS] [{cur_path}]')
-                        except OSError as e:
-                            logger.critical("Error: %s - %s." % (e.filename, e.strerror))
-
-                    except:
-                        logger.error(traceback.format_exc())
-                        patoolib.create_archive(
-                            archive=ready_archive,
-                            filenames=(glx_dstr_dir.__str__(),),
-                        )
-
-                file = search_file_in_dir(BASE_DIR, ready_archive)
-                logger.info(f"8. {file}")
-                os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready") / file.split('/')[-1]))
-
-
-                # 6. Сохраняем ссылку на архив в модель
-                Research.objects.filter(id=self.id).update( ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
-                UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
-
-
+            if self.is_one_file:
+                temp_dcm = str(tmp_dir / f'{timestamp}_research.dcm')
+                galileos_converter.merge_dicom(
+                    input_dir=f'{glx_dstr_dir.__str__()}',
+                    output_filename=temp_dcm,
+                )
+                patoolib.create_archive(archive=staging_archive, filenames=(temp_dcm,))
+            else:
+                staging_dir = tempfile.mkdtemp(dir=str(tmp_dir))
+                logger.info(f'[STAGING PATH] [{staging_dir}]')
+                shutil.move(glx_dstr_dir.__str__(), staging_dir)
+                delete_file_recursively(staging_dir, 'DICOMDIR.dcm')
                 try:
-                    os.remove(archive_dir)
-                    shutil.rmtree(output_dir)
-                except OSError as e:
-                    logger.critical("Error: %s - %s." % (e.filename, e.strerror))
+                    patoolib.create_archive(archive=staging_archive, filenames=(staging_dir,))
+                except Exception:
+                    logger.error(traceback.format_exc())
+                    patoolib.create_archive(
+                        archive=staging_archive,
+                        filenames=(glx_dstr_dir.__str__(),),
+                    )
 
-                file_path = ('/opt/dicom_converter/static/media/' + Research.objects.filter(id=self.id).last().ready_archive.name)
+            ready_dest = MEDIA_ROOT / 'converter' / 'ready' / os.path.basename(staging_archive)
+            ready_dest.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(staging_archive, str(ready_dest))
+            staging_archive = None
 
-                logger.info(f"9. [file_path attached to email] {file_path}")
-                logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
-                Log.objects.create(user=self.user, level='info', message='[CONVERTATION] [SUCCESS]')
+            with open(ready_dest, 'rb') as ready_file:
+                Research.objects.filter(id=self.id).update(
+                    ready_archive=File(ready_file, name=f'converter/ready/{ready_dest.name}')
+                )
+            UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
+
+            file_path = os.path.join(str(MEDIA_ROOT), Research.objects.filter(id=self.id).last().ready_archive.name)
+            logger.info(f"8. {ready_dest}")
+            logger.info(f"9. [file_path attached to email] {file_path}")
+            logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
+            Log.objects.create(user=self.user, level='info', message='[CONVERTATION] [SUCCESS]')
         except ConversionError as e:
             error_message = str(e)
             logger.error(f'[CONVERTATION] [FAIL] {error_message}')
@@ -159,7 +161,15 @@ class Research(models.Model):
         except Exception:
             Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}', status=False)
             Log.objects.create(user=self.user, level='error', message=f'{traceback.format_exc()}')
-
+        finally:
+            _cleanup_path(archive_dir)
+            _cleanup_path(output_dir, is_dir=True)
+            if staging_dir:
+                _cleanup_path(staging_dir, is_dir=True)
+            if temp_dcm:
+                _cleanup_path(temp_dcm)
+            if staging_archive:
+                _cleanup_path(staging_archive)
 
     class Meta:
         verbose_name = 'Исследование'

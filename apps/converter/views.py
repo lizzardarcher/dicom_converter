@@ -41,6 +41,12 @@ class UploadResearchView(LoginRequiredMixin, SuccessMessageMixin, CreateView, Vi
     def get_success_url(self):
         return '/accounts/profile/'
 
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def get_success_message(self, cleaned_data):
         return (f"Архив [ {cleaned_data['raw_archive'].name} ] успешно обработан.\n"
                 f"Данные томографа GALILEOS сконвертированы в формат DICOM\n"
