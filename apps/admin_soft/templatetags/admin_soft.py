@@ -1,7 +1,7 @@
 import re
 from django import template
 from django.utils.html import format_html
-from admin_soft.utils import get_menu_items
+from apps.admin_soft.utils import get_menu_items
 from django.utils.safestring import mark_safe
 from django.contrib.admin.views.main import (PAGE_VAR)
 

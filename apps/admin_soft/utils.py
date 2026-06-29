@@ -3,6 +3,7 @@ import json
 from django.template import Context
 from django.utils import translation
 
+
 try:
     from django.apps.registry import apps
 except ImportError:
@@ -37,7 +38,10 @@ except ImportError:
 
 
 default_apps_icon = {
-    'auth': 'fa fa-users'
+    'auth': 'fa fa-users',
+    'converter': 'fa fa-file-medical',
+    'payments': 'fa fa-credit-card',
+    'home': 'fa fa-list-alt',
 }
 
 

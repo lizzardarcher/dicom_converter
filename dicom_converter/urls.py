@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
@@ -21,6 +22,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 import apps.home.views as home_views
+
+admin.site.site_header = 'GalileosPro'
+admin.site.site_title = 'Админка'
+admin.site.index_title = 'Панель управления'
 
 urlpatterns = i18n_patterns(
     path('', include('apps.converter.urls')),

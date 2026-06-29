@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.admin_soft.context_processors.admin_soft_context',
             ],
         },
     },
@@ -116,6 +117,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 YANDEX_TOKEN= os.getenv('YANDEX_TOKEN')
 YANDEX_ID = os.getenv('YANDEX_ID')

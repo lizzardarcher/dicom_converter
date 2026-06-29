@@ -2,7 +2,6 @@
 {% load i18n static admin_soft %}
 
 {% block content %}
-
   {% include 'includes/navigation-fullscreen.html' %}
 
   <main class="main-content  mt-0">
@@ -14,13 +13,13 @@
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">
-                    Sign IN  
+                    {% trans 'Вход' %}
                   </h3>
                   <p class="mb-0">
                     {% if msg %}
                       <span class="text-danger">{{ msg | safe }}</span>
                     {% else %}
-                      Add your credentials
+                      {% trans 'Введите учётные данные' %}
                     {% endif %}                      
                   </p>
                 </div>
@@ -49,10 +48,10 @@
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
+                      <label class="form-check-label" for="rememberMe">{% trans 'Запомнить меня' %}</label>
                     </div>
                     <div class="text-center">
-                      <button class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                      <button class="btn bg-gradient-info w-100 mt-4 mb-0">{% trans 'Войти' %}</button>
                     </div>
                   </form>
                 </div>
