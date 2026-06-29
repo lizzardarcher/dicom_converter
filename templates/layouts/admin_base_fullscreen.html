@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static i18n %}
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <title>{% block title %}{% trans 'Вход' %}{% endblock %} | GalileosPro</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet"/>
+    <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet"/>
+    {% block stylesheets %}{% endblock stylesheets %}
+</head>
+<body class="">
+
+{% block content %}{% endblock content %}
+
+{% include "includes/scripts.html" %}
+{% block scripts %}{% endblock scripts %}
+<script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+{% block extrascript %}{% endblock extrascript %}
+
+</body>
+</html>

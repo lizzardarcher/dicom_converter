@@ -1,0 +1,40 @@
+{% load i18n static %}
+
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 border-radius-xl shadow-none position-sticky mt-4 top-1 z-index-sticky"
+     id="navbarBlur" navbar-scroll="true" data-scroll="true">
+    <div class="container-fluid py-1 px-3">
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3" href="{% url 'admin:index' %}">
+            <img class="icon icon-md rounded" src="{% static 'img/favicon.png' %}" alt="logo">
+            {{ site_header|default:"GalileosPro" }}
+        </a>
+
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item d-flex align-items-center">
+                    <a href="{% url 'index' %}" class="nav-link text-body font-weight-bold px-0">
+                        <span class="d-sm-inline d-none me-3">{% trans 'На сайт' %}</span>
+                    </a>
+                </li>
+
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item pe-2 d-flex align-items-center">
+                        <span class="nav-link text-body font-weight-bold px-0">
+                            <span class="d-sm-inline d-none me-3">{{ request.user.get_username }}</span>
+                        </span>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <form action="{% url 'admin:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button class="nav-link text-body font-weight-bold px-0 p-1"
+                                    style="padding: 0; border: none; font: inherit; color: inherit; background-color: transparent;"
+                                    type="submit">
+                                <span class="d-sm-inline d-none me-3">{% trans 'Выйти' %}</span>
+                            </button>
+                        </form>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

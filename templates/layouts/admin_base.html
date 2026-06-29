@@ -1,0 +1,63 @@
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"ru-ru" }}">
+<head>
+    <title>{% block title %}{% endblock %} | {{ site_header|default:"GalileosPro" }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block extrahead %}{% endblock extrahead %}
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet"/>
+    <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/widgets.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/fadeInUp.css' %}" rel="stylesheet"/>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    {% block extrastyle %}{% endblock extrastyle %}
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+{% if request.user.is_staff %}
+    {% include "includes/sidebar.html" %}
+{% endif %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+
+    {% include "includes/navigation_admin.html" %}
+
+    {% if messages %}
+        <div class="m-5 col-md-8 animated animatedFadeInUp fadeInUp">
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible text-white" role="alert">
+                    {{ message|safe }}
+                    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert"
+                            aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+
+</main>
+
+{% include 'includes/scripts.html' %}
+
+{% block scripts %}{% endblock scripts %}
+
+<script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+
+{% block extrascript %}{% endblock extrascript %}
+
+</body>
+</html>
