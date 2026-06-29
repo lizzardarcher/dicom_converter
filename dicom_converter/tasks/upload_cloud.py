@@ -48,8 +48,7 @@ def upload(file_path, email, research_id):
             Research.objects.filter(id=int(research_id)).update(cloud_url=link, is_cloud_upload=True)
 
         except Exception as e:
-            # logger.fatal(traceback.format_exc())
-            logger.fatal(e)
+            logger.critical(e)
 
 
 if __name__ == '__main__':

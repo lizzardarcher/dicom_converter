@@ -2,11 +2,10 @@ import uuid
 
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 
 from yookassa import Payment as YooKassaPayment, Configuration
 
@@ -23,25 +22,21 @@ class SelectPaymentView(TemplateView):
 class PaymentInfoYookassaView(TemplateView, LoginRequiredMixin):
     template_name = 'payments/yookassa/payment_info.html'
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update({
-            'payment_info': 'e'
-        })
+        context['payment_info'] = None
+        context['payment_error'] = None
         try:
             Configuration.account_id = int(settings.YOOKASSA_SHOP_ID)
             Configuration.secret_key = settings.YOOKASSA_SECRET
-            user = User.objects.get(pk=self.request.GET['user'])
-            payment = Payment.objects.filter(user=user).last()
-            yookassa_payment = YooKassaPayment.find_one(payment.payment_id)
-            context.update({
-                'payment_info': yookassa_payment,
-            })
-        except Exception as e:
-            context.update({
-                'payment_info': e
-            })
-
+            payment = Payment.objects.filter(user=self.request.user).last()
+            if not payment or not payment.payment_id:
+                context['payment_error'] = 'Платёж не найден.'
+                return context
+            context['payment_info'] = YooKassaPayment.find_one(payment.payment_id)
+        except Exception:
+            context['payment_error'] = 'Не удалось загрузить информацию о платеже.'
         return context
 
 
@@ -77,7 +72,7 @@ class ProcessPaymentYookassaView(FormView, LoginRequiredMixin):
             },
             'confirmation': {
                 'type': 'redirect',
-                'return_url': f'https://galileos.pro/payments/yookassa/payment_info?user={self.request.user.pk}',
+                'return_url': self.request.build_absolute_uri(reverse('payment_info')),
             },
             'capture': True,
             'description': description,

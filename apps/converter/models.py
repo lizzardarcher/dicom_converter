@@ -114,7 +114,7 @@ class Research(models.Model):
                             shutil.rmtree(cur_path)
                             logger.info(f'[DELETED SUCCESS] [{cur_path}]')
                         except OSError as e:
-                            logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+                            logger.critical("Error: %s - %s." % (e.filename, e.strerror))
 
                     except:
                         logger.error(traceback.format_exc())
@@ -131,11 +131,12 @@ class Research(models.Model):
                 Research.objects.filter(id=self.id).update( ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
                 UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
 
+
                 try:
                     os.remove(archive_dir)
                     shutil.rmtree(output_dir)
                 except OSError as e:
-                    logger.fatal("Error: %s - %s." % (e.filename, e.strerror))
+                    logger.critical("Error: %s - %s." % (e.filename, e.strerror))
 
                 file_path = ('/opt/dicom_converter/static/media/' + Research.objects.filter(id=self.id).last().ready_archive.name)
 
@@ -143,10 +144,10 @@ class Research(models.Model):
                 logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
                 Log.objects.create(user=self.user, level='info', message='[CONVERTATION] [SUCCESS]')
         except OSError:
-            Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}')
+            Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}', status=False)
             Log.objects.create(user=self.user, level='error', message=f'[CONVERTATION] [FAIL] {traceback.format_exc()}')
         except Exception as e:
-            Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}')
+            Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}', status=False)
             Log.objects.create(user=self.user, level='error', message=f'{traceback.format_exc()}')
 
 

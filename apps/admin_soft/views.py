@@ -34,6 +34,9 @@ class ProfileEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = '/accounts/profile'
     success_message = 'Successfully updated your profile.'
 
+    def get_object(self, queryset=None):
+        return self.request.user
+
 
 # Authentication
 class UserLoginView(LoginView):
@@ -70,6 +73,7 @@ class RegisterView(View):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
 
 
 class UserPasswordResetView(PasswordResetView):

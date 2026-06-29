@@ -3,6 +3,7 @@
 
 {% block content %}
 
+
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -10,6 +11,9 @@
                     {% translate 'Информация по платежу' %}
                 </h1>
                 <div class="card-body">
+                    {% if payment_error %}
+                        <p class="text-danger">{{ payment_error }}</p>
+                    {% elif payment_info %}
                     <h5>ID: {{ payment_info.id }}</h5>
                     <h5>{{ payment_info.payment_method.type }} {{ payment_info.description }}</h5>
                     <h5>{{ payment_info.created_at }}</h5>
@@ -22,6 +26,7 @@
                         <span class="badge badge-warning">{{ payment_info.status }}</span>
                     {% endif %}
                     </h5>
+                    {% endif %}
                 </div>
                 <div class="card-footer">
                     <h6>
