@@ -1,35 +1,12 @@
 import os
-import logging
 import shutil
 import traceback
+
 
 from django.core.mail import EmailMessage, DEFAULT_ATTACHMENT_MIME_TYPE
 from django.conf import settings
 
 from unidecode import unidecode
-
-class CustomFormatter(logging.Formatter):
-    grey = "\x1b[38;20m"
-    yellow = "\x1b[33;20m"
-    green = "\x1b[32;20m"
-    red = "\x1b[31;20m"
-    bold_red = "\x1b[31;1m"
-    reset = "\x1b[0m"
-    format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"
-
-    FORMATS = {
-        logging.DEBUG: grey + format + reset,
-        logging.INFO: green + format + reset,
-        logging.WARNING: yellow + format + reset,
-        logging.ERROR: red + format + reset,
-        logging.CRITICAL: bold_red + format + reset
-    }
-
-    def format(self, record):
-        log_fmt = self.FORMATS.get(record.levelno)
-        formatter = logging.Formatter(log_fmt)
-        return formatter.format(record)
-
 
 def find_dir_by_name_part(start_path: str, target_dir_name: str):
     """Ищет директорию с частью заданного имени в указанной директории и ее подкаталогах.
@@ -194,8 +171,6 @@ def find_folder(root_dir, folder_name):
 
 import patoolib
 
-from dicom_converter.logger.project_logger import logger
-
 
 class ConversionError(Exception):
     """Ошибка конвертации с понятным сообщением для пользователя."""
@@ -214,6 +189,8 @@ def _available_programs(programs: tuple[str, ...]) -> list[str]:
 
 def extract_archive_safe(archive_path: str, output_dir: str) -> None:
     """Распаковывает архив, создавая output_dir; для RAR перебирает unrar/rar/7z."""
+    from dicom_converter.logger.project_logger import logger
+
     os.makedirs(output_dir, exist_ok=True)
     archive_name = os.path.basename(archive_path).lower()
 

@@ -1,7 +1,9 @@
 import logging
-from apps.converter.utils import CustomFormatter
 
-### LOGGING
+from dicom_converter.logger.formatters import CustomFormatter
+
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 ch = logging.StreamHandler()
