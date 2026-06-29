@@ -8,7 +8,6 @@ from django.conf import settings
 
 from unidecode import unidecode
 
-
 class CustomFormatter(logging.Formatter):
     grey = "\x1b[38;20m"
     yellow = "\x1b[33;20m"
@@ -43,9 +42,10 @@ def find_dir_by_name_part(start_path: str, target_dir_name: str):
         str: Полный путь к найденной директории, или None, если директория не найдена.
     """
 
+    target_lower = target_dir_name.lower()
     for root, dirs, files in os.walk(start_path):
         for _ in dirs:
-            if target_dir_name in _:
+            if target_lower in _.lower():
                 return os.path.join(root, _)
 
     return None
@@ -193,6 +193,89 @@ def find_folder(root_dir, folder_name):
 
 
 import patoolib
+
+from dicom_converter.logger.project_logger import logger
+
+
+class ConversionError(Exception):
+    """Ошибка конвертации с понятным сообщением для пользователя."""
+
+
+RAR_EXTRACT_PROGRAMS = (
+    '/usr/bin/unrar',
+    '/usr/bin/rar',
+    '/usr/bin/7z',
+)
+
+
+def _available_programs(programs: tuple[str, ...]) -> list[str]:
+    return [program for program in programs if os.path.isfile(program)]
+
+
+def extract_archive_safe(archive_path: str, output_dir: str) -> None:
+    """Распаковывает архив, создавая output_dir; для RAR перебирает unrar/rar/7z."""
+    os.makedirs(output_dir, exist_ok=True)
+    archive_name = os.path.basename(archive_path).lower()
+
+    if '.rar' in archive_name:
+        programs = _available_programs(RAR_EXTRACT_PROGRAMS)
+        if not programs:
+            raise ConversionError(
+                'На сервере не установлены утилиты для распаковки RAR (unrar, rar или 7z). '
+                'Загрузите архив в формате ZIP или обратитесь в поддержку.'
+            )
+
+        errors = []
+        for program in programs:
+            try:
+                patoolib.extract_archive(archive=archive_path, outdir=output_dir, program=program)
+                logger.info(f'[EXTRACT] Успешно: {program} -> {output_dir}')
+                return
+            except Exception as exc:
+                errors.append(f'{os.path.basename(program)}: {exc}')
+                logger.warning(f'[EXTRACT] Не удалось через {program}: {exc}')
+
+        raise ConversionError(
+            'Не удалось распаковать RAR-архив. Файл может быть повреждён, защищён паролем '
+            'или создан в неподдерживаемом формате. Попробуйте пересобрать архив в ZIP. '
+            f'Детали: {"; ".join(errors)}'
+        )
+
+    if '.7z' in archive_name:
+        program = '/usr/bin/7z'
+        if not os.path.isfile(program):
+            raise ConversionError(
+                'На сервере не установлен 7z для распаковки .7z архивов. '
+                'Загрузите архив в формате ZIP или RAR.'
+            )
+        try:
+            patoolib.extract_archive(archive=archive_path, outdir=output_dir, program=program)
+            logger.info(f'[EXTRACT] Успешно: {program} -> {output_dir}')
+        except Exception as exc:
+            raise ConversionError(
+                f'Не удалось распаковать 7z-архив: {exc}'
+            ) from exc
+        return
+
+    try:
+        patoolib.extract_archive(archive=archive_path, outdir=output_dir)
+        logger.info(f'[EXTRACT] Успешно: patoolib -> {output_dir}')
+    except Exception as exc:
+        raise ConversionError(
+            f'Не удалось распаковать архив: {exc}'
+        ) from exc
+
+
+def find_galileos_vol_dir(start_path: str, target_dir_name: str = 'vol_0') -> str:
+    """Возвращает путь к vol_0 или поднимает ConversionError с понятным текстом."""
+    vol_dir = find_dir_by_name_part(start_path, target_dir_name)
+    if vol_dir is None:
+        raise ConversionError(
+            f'В архиве не найдена папка «{target_dir_name}». '
+            'Архив Galileos должен содержать директорию vol_0 с исходными изображениями. '
+            'Убедитесь, что вы архивируете экспорт с томографа целиком, а не отдельные файлы.'
+        )
+    return vol_dir
 
 
 def archive_images(source_dir, archive_path, root_prefix='/opt/dicom_converter/static/media/converter/'):

@@ -15,8 +15,18 @@ from django.core.validators import FileExtensionValidator
 from apps.home.models import Log
 from dicom_converter.logger.project_logger import logger
 from dicom_converter.settings import BASE_DIR, MEDIA_ROOT
-from apps.converter.utils import find_dir_by_name_part, search_file_in_dir, add_ext_recursive, unidecode_recursive, \
-    copy_files, find_folder, find_directory, delete_file_recursively
+from apps.converter.utils import (
+    ConversionError,
+    extract_archive_safe,
+    find_galileos_vol_dir,
+    search_file_in_dir,
+    add_ext_recursive,
+    unidecode_recursive,
+    copy_files,
+    find_folder,
+    find_directory,
+    delete_file_recursively,
+)
 from apps.converter import galileos_converter
 
 
@@ -62,17 +72,11 @@ class Research(models.Model):
                 output_dir = f"{str(MEDIA_ROOT)}/converter/extract_dir/{str(self.raw_archive.name).split('.')[0].replace('converter/raw/', '')}/"
                 logger.info(f'3. [Директория разархивирования] {output_dir}')
 
-                if '.rar' in self.raw_archive.name:
-                    patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/rar')
-                elif'.7z' in self.raw_archive.name:
-                    patoolib.extract_archive(archive=archive_dir, outdir=output_dir, program='/usr/bin/7z')
-                else:
-                    patoolib.extract_archive(archive=archive_dir, outdir=output_dir)
+                extract_archive_safe(archive_dir, output_dir)
 
                 # 2.1 Ищем название файла с исследованием
-                target_dir_name = 'vol_0'
                 unidecode_recursive(MEDIA_ROOT.joinpath('converter').joinpath('extract_dir').__str__())
-                glx_src_dir = Path(find_dir_by_name_part(start_path=output_dir, target_dir_name=target_dir_name))
+                glx_src_dir = Path(find_galileos_vol_dir(output_dir))
                 logger.info(f'4. [Директория откуда работает gxl2dicom] {glx_src_dir}')
 
                 glx_dstr_dir = Path(glx_src_dir).parent.joinpath('ready')
@@ -127,6 +131,7 @@ class Research(models.Model):
                 logger.info(f"8. {file}")
                 os.replace(file, str(MEDIA_ROOT.joinpath("converter/ready") / file.split('/')[-1]))
 
+
                 # 6. Сохраняем ссылку на архив в модель
                 Research.objects.filter(id=self.id).update( ready_archive=File(file, name=f"converter/ready/{file.split('/')[-1]}"))
                 UserSettings.objects.filter(user=self.user).update(research_avail_count=(avail - 1))
@@ -143,10 +148,15 @@ class Research(models.Model):
                 logger.info(f"9. [file_path attached to email] {file_path}")
                 logger.info(f'10. [SUCCESS] [PROCESS FINESHED IN] [{datetime.now() - start_time}]')
                 Log.objects.create(user=self.user, level='info', message='[CONVERTATION] [SUCCESS]')
+        except ConversionError as e:
+            error_message = str(e)
+            logger.error(f'[CONVERTATION] [FAIL] {error_message}')
+            Research.objects.filter(id=self.id).update(error_message=error_message, status=False)
+            Log.objects.create(user=self.user, level='error', message=f'[CONVERTATION] [FAIL] {error_message}')
         except OSError:
             Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}', status=False)
             Log.objects.create(user=self.user, level='error', message=f'[CONVERTATION] [FAIL] {traceback.format_exc()}')
-        except Exception as e:
+        except Exception:
             Research.objects.filter(id=self.id).update(error_message=f'{traceback.format_exc()}', status=False)
             Log.objects.create(user=self.user, level='error', message=f'{traceback.format_exc()}')
 
