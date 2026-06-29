@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from apps.payments.models import Payment
 
+
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'amount', 'description', 'status', 'paid', 'created_at')
@@ -11,7 +12,6 @@ class PaymentAdmin(admin.ModelAdmin):
         'amount', 'description', 'payment_id', 'created_at',
         'paid', 'status', 'currency', 'user',
     )
-    date_hierarchy = 'created_at'
     ordering = ('-created_at',)
     list_per_page = 25
 

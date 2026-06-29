@@ -8,14 +8,12 @@ from .models import Research, GlobalSettings, UserSettings, User
 admin.site.unregister(Group)
 admin.site.unregister(User)
 
-
 @admin.register(Research)
 class ResearchAdmin(admin.ModelAdmin):
     list_display = ('user', 'date_created', 'status', 'is_anonymous', 'slug')
     list_filter = ('date_created', 'is_anonymous', 'status')
     search_fields = ('user__username', 'slug')
     readonly_fields = ('slug', 'date_created', 'ready_archive',)
-    date_hierarchy = 'date_created'
     ordering = ('-date_created',)
     list_per_page = 25
 
