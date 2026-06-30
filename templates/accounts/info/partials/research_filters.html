@@ -1,0 +1,15 @@
+{% load i18n %}
+<div class="d-flex flex-wrap mb-3 px-3">
+    <a href="?status=all" class="research-filter-chip{% if status_filter == 'all' %} active{% endif %}">
+        {% blocktranslate %}Все{% endblocktranslate %}
+    </a>
+    <a href="?status=ready" class="research-filter-chip{% if status_filter == 'ready' %} active{% endif %}">
+        {% blocktranslate %}Готово{% endblocktranslate %}
+    </a>
+    <a href="?status=processing" class="research-filter-chip{% if status_filter == 'processing' %} active{% endif %}">
+        {% blocktranslate %}В процессе{% endblocktranslate %}
+    </a>
+    <a href="?status=error" class="research-filter-chip{% if status_filter == 'error' %} active{% endif %}">
+        {% blocktranslate %}Ошибка{% endblocktranslate %}
+    </a>
+</div>

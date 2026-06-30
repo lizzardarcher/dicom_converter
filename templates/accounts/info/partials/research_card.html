@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="research-mobile-card">
+    <div class="d-flex justify-content-between align-items-start mb-2">
+        <span class="text-xs text-secondary">{{ res.date_created|date:"d.m.Y, H:i" }}</span>
+        {% include 'accounts/info/partials/research_status_badge.html' with res=res %}
+    </div>
+    <p class="research-name mb-2">{{ res.archive_display_name }}</p>
+    <div>
+        {% include 'accounts/info/partials/research_action.html' with res=res %}
+    </div>
+</div>
