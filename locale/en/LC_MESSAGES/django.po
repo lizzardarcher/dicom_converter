@@ -1,7 +1,7 @@
 # Translation from Russian to English.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Galileos.pro project.
-### AUTHOR IVAN GORKOVENKOV  dltahiyan@gmail.com, 2024.
+#### AUTHOR IVAN GORKOVENKOV  dltahiyan@gmail.com, 2024.
 #
 #, fuzzy
 msgid ""
@@ -3523,4 +3523,14 @@ msgstr "Converting..."
 #: templates/accounts/info/partials/research_status_badge.html
 msgid "Загрузка в облако"
 msgstr "Uploading to cloud"
+
+#: apps/home/forms.py
+msgctxt "contacts"
+msgid "Имя"
+msgstr "Name"
+
+#: apps/home/forms.py
+msgctxt "contacts"
+msgid "Сообщение"
+msgstr "Message"
 
