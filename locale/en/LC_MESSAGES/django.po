@@ -1,7 +1,7 @@
 # Translation from Russian to English.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Galileos.pro project.
-# AUTHOR IVAN GORKOVENKOV  dltahiyan@gmail.com, 2024.
+### AUTHOR IVAN GORKOVENKOV  dltahiyan@gmail.com, 2024.
 #
 #, fuzzy
 msgid ""
@@ -74,10 +74,10 @@ msgstr "Created"
 msgid "Оплачено"
 msgstr ""
 
-#: apps/payments/models.py:21 templates/accounts/info/research.html:46
-#: templates/accounts/info/transaction.html:35
+#: apps/payments/models.py:21 templates/accounts/info/research.html:40
+#: templates/accounts/info/transaction.html:32
 msgid "Статус"
-msgstr "Paid"
+msgstr "Status"
 
 #: apps/payments/models.py:23
 msgid "В ожидании"
@@ -91,7 +91,8 @@ msgstr "Successfully"
 msgid "Отменено"
 msgstr "Cancelled"
 
-#: apps/payments/models.py:26 templates/accounts/info/research.html:85
+#: apps/payments/models.py:26 templates/accounts/info/partials/research_filters.html:13
+#: templates/accounts/info/partials/research_status_badge.html:12
 #: templates/pages/upload_research.html:81
 msgid "Ошибка"
 msgstr "Error"
@@ -129,9 +130,9 @@ msgstr "Contact us"
 msgid "Информация об исследованиях"
 msgstr "Research Information"
 
-#: templates/accounts/info/empty-research.html:28
-#: templates/accounts/info/research.html:28 templates/pages/index.html:49
-#: templates/pages/upload_research.html:19
+#: templates/accounts/info/empty-research.html:23
+#: templates/accounts/info/research.html:20
+#: templates/pages/index.html:49 templates/pages/upload_research.html:19
 msgid "Загрузить исследование"
 msgstr "Upload research"
 
@@ -148,13 +149,13 @@ msgstr "Information about completed transactions"
 msgid "Отсутствуют данные о проведённых транзакциях"
 msgstr "There is no data on the transactions carried out"
 
-#: templates/accounts/info/research.html:32
-#: templates/accounts/info/transaction.html:18
-msgid "Сводная талица"
+#: templates/accounts/info/research.html:24
+#: templates/accounts/info/transaction.html:17
+msgid "Сводная таблица"
 msgstr "Summary table"
 
-#: templates/accounts/info/research.html:40
-#: templates/accounts/info/transaction.html:26
+#: templates/accounts/info/research.html:34
+#: templates/accounts/info/transaction.html:23
 msgid "Дата"
 msgstr "Date"
 
@@ -162,26 +163,28 @@ msgstr "Date"
 msgid "Ссылка на готовое исследование"
 msgstr "Link to the completed study"
 
-#: templates/accounts/info/research.html:80
+#: templates/accounts/info/partials/research_filters.html:7
+#: templates/accounts/info/partials/research_status_badge.html:4
+#: templates/pages/profile.html:82
 #: templates/pages/upload_research.html:73
 msgid "Готово"
-msgstr "READY"
+msgstr "Ready"
 
-#: templates/accounts/info/research.html:89
+#: templates/accounts/info/partials/research_filters.html:10
+#: templates/accounts/info/partials/research_status_badge.html:8
+#: templates/pages/profile.html:88
 #: templates/pages/upload_research.html:87
 msgid "В процессе"
-msgstr "IN PROCESS"
+msgstr "In progress"
 
-#: templates/accounts/info/settings.html:46
+#: templates/accounts/info/empty-research.html:10
+#: templates/accounts/info/empty-transaction.html:10
+#: templates/accounts/info/research.html:11
+#: templates/accounts/info/settings.html:47
+#: templates/accounts/info/transaction.html:10
 #: templates/pages/edit_profile.html:15
 msgid "Редактировать профиль"
 msgstr "Edit profile"
-
-#: templates/accounts/info/settings.html:51
-#, fuzzy
-#| msgid "Подтверждение пароля"
-msgid "Изменить пароль<"
-msgstr "Confirm password"
 
 #: templates/accounts/login.html:3
 msgid "Вход"
@@ -223,6 +226,7 @@ msgstr ""
 msgid "Please correct the errors below."
 msgstr ""
 
+#: templates/accounts/info/settings.html:51
 #: templates/accounts/password_change.html:17
 #: templates/registration/password_change_done.html:11
 #: templates/registration/password_change_done.html:33
@@ -1987,35 +1991,25 @@ msgid "Услуга"
 msgstr "Service"
 
 #: templates/pages/info/price_info.html:30
-#, fuzzy
-#| msgid ""
-#| "конвертация файлов Galileos в формат DICOM. Доступ к готовому "
-#| "исследованию 6 месяцев"
 msgid ""
-"конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию "
-"6\n"
-"                    месяцев"
+"конвертация файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 "
+"месяцев"
 msgstr ""
-"conversion of Galileos files to DICOM format. Access to the finished study 6 "
-"months"
+"conversion of Galileos files to DICOM format. Access to the finished study for "
+"6 months"
 
 #: templates/pages/info/price_info.html:36
 #: templates/pages/info/price_info.html:42
-#, fuzzy
-#| msgid ""
-#| "конвертаций файлов Galileos в формат DICOM. Доступ к готовому "
-#| "исследованию 6 месяцев"
 msgid ""
-"конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию "
-"6\n"
-"                    месяцев"
+"конвертаций файлов Galileos в формат DICOM. Доступ к готовому исследованию 6 "
+"месяцев"
 msgstr ""
-"conversion of Galileos files to DICOM format. Access to the finished study 6 "
-"months"
+"conversions of Galileos files to DICOM format. Access to the finished study "
+"for 6 months"
 
 #: templates/pages/info/price_info.html:49
 msgid "Валюта зависит от выбора платёжной системы"
-msgstr ""
+msgstr "Currency depends on the selected payment system"
 
 #: templates/pages/info/prices.html:6 templates/pages/info/prices.html:7
 msgid ""
@@ -3275,34 +3269,26 @@ msgstr "Personal data processing policy"
 msgid "Доступно исследований:"
 msgstr "Available research:"
 
-#: templates/pages/profile.html:70
+#: templates/pages/profile.html:44
 msgid "Исследования"
 msgstr "Research"
 
-#: templates/pages/profile.html:95
+#: templates/pages/profile.html:51
 msgid "Транзакции"
 msgstr "Transactions"
 
-#: templates/pages/profile.html:123
+#: templates/pages/profile.html:58
 msgid "Настройки"
 msgstr "Settings"
 
 #: templates/pages/upload_research.html:21
-#, fuzzy
-#| msgid ""
-#| "Загрузите ваше исследование из томографа Galileos в формате .zip или .rar"
 msgid ""
-"Загрузите ваше исследование из томографа Galileos в формате .zip\n"
-"                            или .rar"
+"Загрузите ваше исследование из томографа Galileos в формате .zip или .rar"
 msgstr "Upload your study from the Galileos scanner in .zip or .rar format"
 
 #: templates/pages/upload_research.html:40
-#, fuzzy
-#| msgid "Сформировать одним файлом"
-msgid ""
-"Сформировать одним\n"
-"                                файлом"
-msgstr "Generate in one file"
+msgid "Сформировать одним файлом"
+msgstr "Generate as a single file"
 
 #: templates/pages/upload_research.html:57
 msgid "У вас нет доступных конвертаций"
@@ -3310,15 +3296,15 @@ msgstr "You have no conversions available."
 
 #: templates/pages/upload_research.html:63
 msgid "Готовые исследования"
-msgstr "Ready research"
+msgstr "Completed studies"
 
-#: templates/pages/upload_research.html:71
-#: templates/pages/upload_research.html:79
-#: templates/pages/upload_research.html:85
-#, fuzzy
-#| msgid "Скачать архив"
-msgid "Скачать архив из облака"
-msgstr "Download archive"
+#: templates/pages/upload_research.html:36
+msgid "Выбрать файл"
+msgstr "Choose file"
+
+#: templates/pages/upload_research.html:38
+msgid "Файл не выбран"
+msgstr "No file selected"
 
 #: templates/pages/upload_research.html:197
 msgid " (осталось: "
@@ -3441,4 +3427,100 @@ msgstr "Change my password"
 #: templates/registration/password_change_form.html:83
 msgid "Пожалуйста исправьте ошибки."
 msgstr "Please correct the errors."
+
+#: apps/admin_soft/views.py
+msgid "Профиль успешно обновлён."
+msgstr "Profile updated successfully."
+
+#: templates/pages/profile.html
+msgid "Купить конвертации"
+msgstr "Buy conversions"
+
+#: templates/pages/profile.html
+msgid "Доступно"
+msgstr "Available"
+
+#: templates/pages/profile.html
+msgid "Всего"
+msgstr "Total"
+
+#: templates/pages/profile.html
+msgid "С ошибкой"
+msgstr "With errors"
+
+#: templates/accounts/info/empty-research.html
+msgid "У вас пока нет исследований"
+msgstr "You don't have any studies yet"
+
+#: templates/accounts/info/empty-research.html
+msgid ""
+"Загрузите архив с томографа Galileos в формате .zip или .rar, чтобы начать "
+"конвертацию в DICOM."
+msgstr ""
+"Upload an archive from the Galileos scanner in .zip or .rar format to start "
+"DICOM conversion."
+
+#: templates/accounts/info/empty-transaction.html
+msgid "Здесь будут отображаться ваши платежи за конвертации."
+msgstr "Your conversion payments will appear here."
+
+#: templates/accounts/info/research.html
+msgid "Исследование"
+msgstr "Study"
+
+#: templates/accounts/info/research.html
+msgid "Действие"
+msgstr "Action"
+
+#: templates/accounts/info/research.html
+msgid "Нет исследований с выбранным статусом"
+msgstr "No studies with the selected status"
+
+#: templates/accounts/info/settings.html
+msgid "Базовый"
+msgstr "Basic"
+
+#: templates/accounts/info/settings.html
+msgid "Пользователь:"
+msgstr "User:"
+
+#: templates/accounts/info/settings.html
+msgid "Имя"
+msgstr "First name"
+
+#: templates/accounts/info/settings.html
+msgid "Фамилия"
+msgstr "Last name"
+
+#: templates/accounts/info/partials/research_pagination.html
+msgid "Навигация по страницам"
+msgstr "Page navigation"
+
+#: templates/accounts/info/partials/research_action.html
+msgid "Яндекс.Диск"
+msgstr "Yandex.Disk"
+
+#: templates/accounts/info/partials/research_action.html
+msgid "Скачать"
+msgstr "Download"
+
+#: templates/accounts/info/partials/research_action.html
+msgid "Ожидание"
+msgstr "Waiting"
+
+#: templates/accounts/info/partials/research_filters.html
+msgid "Все"
+msgstr "All"
+
+#: templates/accounts/info/partials/research_action.html
+msgid "Загрузка в облако..."
+msgstr "Uploading to cloud..."
+
+#: templates/accounts/info/partials/research_action.html
+msgid "Конвертация..."
+msgstr "Converting..."
+
+#: templates/accounts/info/partials/research_status_badge.html
+msgid "Загрузка в облако"
+msgstr "Uploading to cloud"
 

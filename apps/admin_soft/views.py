@@ -24,24 +24,31 @@ def _research_not_ready_q():
     return Q(ready_archive='') | Q(ready_archive__isnull=True)
 
 
+def _research_cloud_ready_q():
+    return ~Q(cloud_url='') & ~Q(cloud_url__isnull=True)
+
+
+def _research_error_q():
+    return Q(status=False) & _research_not_ready_q()
+
+
 def _filter_research_qs(qs, status_filter):
     if status_filter == 'ready':
-        return qs.exclude(_research_not_ready_q())
+        return qs.filter(_research_cloud_ready_q())
     if status_filter == 'error':
-        return qs.filter(status=False).filter(_research_not_ready_q())
+        return qs.filter(_research_error_q())
     if status_filter == 'processing':
-        return qs.filter(_research_not_ready_q()).exclude(status=False)
+        return qs.exclude(_research_cloud_ready_q()).exclude(_research_error_q())
     return qs
 
 
 def _research_stats(user):
     qs = Research.objects.filter(user=user)
-    not_ready = _research_not_ready_q()
     return {
         'total': qs.count(),
-        'ready': qs.exclude(not_ready).count(),
-        'processing': qs.filter(not_ready).exclude(status=False).count(),
-        'error': qs.filter(status=False).filter(not_ready).count(),
+        'ready': qs.filter(_research_cloud_ready_q()).count(),
+        'processing': qs.exclude(_research_cloud_ready_q()).exclude(_research_error_q()).count(),
+        'error': qs.filter(_research_error_q()).count(),
     }
 
 
@@ -79,6 +86,7 @@ class ProfileView(LoginRequiredMixin, TemplateView, SuccessMessageMixin):
             'transaction': Payment.objects.filter(user=user).order_by('-created_at'),
         })
         return context
+
 
 
 class ProfileEditView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

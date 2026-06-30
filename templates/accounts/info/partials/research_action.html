@@ -5,16 +5,15 @@
            class="btn btn-sm btn-outline-primary mb-0">
             <i class="fa fa-cloud-download-alt me-1"></i>{% blocktranslate %}Яндекс.Диск{% endblocktranslate %}
         </a>
-    {% elif res.ready_archive %}
-        <a href="{{ res.ready_archive.url }}" class="btn btn-sm btn-outline-success mb-0">
-            <i class="fa fa-download me-1"></i>{% blocktranslate %}Скачать{% endblocktranslate %}
-        </a>
     {% else %}
-        <span class="text-muted text-sm">—</span>
+
+        <span class="text-muted text-sm">
+            <i class="fa fa-cloud-upload-alt me-1"></i>{% blocktranslate %}Загрузка в облако...{% endblocktranslate %}
+        </span>
     {% endif %}
 {% elif res.conversion_status == 'processing' %}
     <span class="text-muted text-sm">
-        <i class="fa fa-clock me-1"></i>{% blocktranslate %}Ожидание{% endblocktranslate %}
+        <i class="fa fa-cog fa-spin me-1"></i>{% blocktranslate %}Конвертация...{% endblocktranslate %}
     </span>
 {% else %}
     <span class="text-muted text-sm">—</span>

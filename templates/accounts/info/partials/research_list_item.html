@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="research-list-item">
+    <div class="research-list-item-main">
+        <span class="text-xs text-secondary d-block mb-1">{{ res.date_created|date:"d.m.Y, H:i" }}</span>
+        <span class="research-name">{{ res.archive_display_name }}</span>
+    </div>
+
+    <div class="research-list-item-side text-end">
+        {% include 'accounts/info/partials/research_status_badge.html' with res=res %}
+        <div class="mt-2">
+            {% include 'accounts/info/partials/research_action.html' with res=res %}
+        </div>
+    </div>
+</div>

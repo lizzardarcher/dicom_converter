@@ -6,8 +6,10 @@
 {% block extrahead %}
 {% endblock extrahead %}
 {% block extrastyle %}
+    <link href="{% static 'css/profile.css' %}" rel="stylesheet"/>
 {% endblock extrastyle %}
 {% block content %}
+
 
     <body class="bg-light bg-gradient">
     <div class="container">
@@ -18,8 +20,7 @@
                         {% csrf_token %}
                         <h3 class="pt-5 pb-5">{% blocktrans %}Загрузить исследование{% endblocktrans %}</h3>
 
-                        <label class="">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip
-                            или .rar{% endblocktrans %}</label>
+                        <label class="form-label">{% blocktrans %}Загрузите ваше исследование из томографа Galileos в формате .zip или .rar{% endblocktrans %}</label>
                         {% if form.errors %}
                             <div class="col-12 justify-content-center">
                                 <div class="alert alert-light alert-dismissible fade show animated animatedFadeInUp fadeInUp"
@@ -30,15 +31,18 @@
                                 </div>
                             </div>
                         {% endif %}
-                        <div id="file_input" class="form-control p-3">
+                        <div id="file_input" class="custom-file-input p-3">
                             {{ form.raw_archive }}
+                            <label for="id_raw_archive" class="btn btn-outline-secondary btn-sm mb-0">
+                                <i class="fa fa-folder-open me-1"></i>{% blocktrans %}Выбрать файл{% endblocktrans %}
+                            </label>
+                            <span id="file-chosen" class="ms-2 text-muted text-sm">{% blocktrans %}Файл не выбран{% endblocktrans %}</span>
                         </div>
 
                         <div class="form-check form-switch pt-2">
                             {{ form.is_one_file }}
                             <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним
-                                файлом{% endblocktrans %}</label>
+                                   for="flexSwitchCheckDefault2">{% blocktrans %}Сформировать одним файлом{% endblocktrans %}</label>
                         </div>
 
                         <button id="submit_btn" type="submit" class="col-lg-4 btn bg-gradient-info mt-3">
@@ -59,37 +63,13 @@
                     {% include 'components/pricing.html' %}
                 {% endif %}
                 {% if research %}
-                    <div class="container-fluid mt-5">
-                        <h4>{% blocktrans %}Готовые исследования{% endblocktrans %}</h4>
-                        <ol>
+                    <div class="container-fluid mt-5 px-0">
+                        <h4 class="mb-3">{% blocktrans %}Готовые исследования{% endblocktrans %}</h4>
+                        <div class="research-list">
                             {% for r in research %}
-                                <li>
-                                    {% if r.ready_archive %}
-                                        {% if r.cloud_url %}
-                                            <a href="{{ r.cloud_url }}" target="_blank">
-                                                <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                                    {% blocktrans %}Скачать архив из облака{% endblocktrans %} <i
-                                                        class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
-                                                    <span class="badge badge-sm bg-success t">{% trans "Готово" %}</span>
-                                                </p>
-                                            </a>
-                                        {% endif %}
-                                    {% elif not r.status and not r.ready_archive %}
-                                        <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                            {% blocktrans %}Скачать архив из облака{% endblocktrans %} <i
-                                                class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
-                                            <span class="badge badge-sm bg-danger">{% trans "Ошибка" %}</span>
-                                        </p>
-                                    {% elif not r.ready_archive %}
-                                        <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                            {% blocktrans %}Скачать архив из облака{% endblocktrans %} <i
-                                                class="fa fa-download"></i> [ {{ r.date_created }} ] [ {{ r }} ]
-                                            <span class="badge badge-sm bg-warning">{% trans "В процессе" %}</span>
-                                        </p>
-                                    {% endif %}
-                                </li>
+                                {% include 'accounts/info/partials/research_list_item.html' with res=r %}
                             {% endfor %}
-                        </ol>
+                        </div>
                     </div>
                 {% endif %}
             </div>
@@ -110,6 +90,12 @@
             var spinner = document.getElementById('spinner');
             var pgb = $('#progress_bar');
             is_one_file.checked = false;
+
+            var fileNotChosenText = '{% filter escapejs %}{% blocktrans %}Файл не выбран{% endblocktrans %}{% endfilter %}';
+            $('#id_raw_archive').on('change', function () {
+                var fileName = this.files[0] ? this.files[0].name : fileNotChosenText;
+                $('#file-chosen').text(fileName);
+            });
 
             // Store the start time to calculate elapsed time
             const startTime = Date.now();

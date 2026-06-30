@@ -64,6 +64,7 @@
     border: none;
 }
 
+
 .research-filter-chip:not(.active) {
     background: transparent;
     color: #67748e;
@@ -115,4 +116,40 @@
     color: #67748e;
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
+}
+
+.custom-file-input input[type="file"] {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.research-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.research-list-item-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.research-list-item-side {
+    flex-shrink: 0;
+}
+
+.research-list-item .research-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    word-break: break-all;
 }

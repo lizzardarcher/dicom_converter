@@ -1,8 +1,15 @@
 {% load i18n %}
 {% if res.conversion_status == 'ready' %}
-    <span class="badge badge-sm bg-success">
-        <i class="fa fa-check me-1"></i>{% trans "Готово" %}
-    </span>
+    {% if res.cloud_url %}
+        <span class="badge badge-sm bg-success">
+            <i class="fa fa-check me-1"></i>{% trans "Готово" %}
+        </span>
+    {% else %}
+
+        <span class="badge badge-sm bg-info">
+            <i class="fa fa-cloud-upload-alt me-1"></i>{% blocktranslate %}Загрузка в облако{% endblocktranslate %}
+        </span>
+    {% endif %}
 {% elif res.conversion_status == 'processing' %}
     <span class="badge badge-sm bg-warning">
         <i class="fa fa-clock me-1"></i>{% trans "В процессе" %}
