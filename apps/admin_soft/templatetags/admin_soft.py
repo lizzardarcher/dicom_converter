@@ -8,7 +8,6 @@ from django.contrib.admin.views.main import (PAGE_VAR)
 register = template.Library()
 assignment_tag = register.assignment_tag if hasattr(register, 'assignment_tag') else register.simple_tag
 
-
 @register.filter
 def clean_text(value):
     res = value.replace('\n', ' ')
@@ -66,7 +65,11 @@ def paginator_number(cl, i):
     if i == cl.paginator.ELLIPSIS:
         return format_html('<span class="admin-pagination__page">…</span>')
     elif i == cl.page_num:
-        return format_html('<span class="admin-pagination__page is-current" aria-current="page">{}</span>', i)
+        return format_html(
+            '<span class="admin-pagination__page is-current" aria-current="page" aria-label="{}">{}</span>',
+            i,
+            i,
+        )
     else:
         return format_html(
             '<a href="{}" class="admin-pagination__page">{}</a>',
