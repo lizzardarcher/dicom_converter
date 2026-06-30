@@ -69,6 +69,15 @@ class Research(models.Model):
     def archive_display_name(self):
         return os.path.splitext(os.path.basename(str(self.raw_archive)))[0]
 
+
+    @property
+    def conversion_status(self):
+        if self.ready_archive:
+            return 'ready'
+        if self.status is False:
+            return 'error'
+        return 'processing'
+
     def save(self, *args, **kwargs):
         start_time = datetime.now()
         if not self.slug:

@@ -7,18 +7,16 @@
         <div class="col-md-4 text-end">
             <a href="{% url 'profile_edit' user_id %}">
                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                   data-bs-placement="top" title="Edit Profile"></i>
+                   data-bs-placement="top" title="{% blocktranslate %}Редактировать профиль{% endblocktranslate %}"></i>
             </a>
         </div>
     </div>
+
 </div>
-<div class="col-12">
-    <div class="card mb-4">
-        <div class="card-header pb-0">
-            <h6>{% blocktranslate %}Отсутствуют данные о проведённых транзакциях{% endblocktranslate %}</h6>
-        </div>
-        <div class="card-body">
-            <p>...</p>
-        </div>
+<div class="card-body">
+    <div class="profile-empty-state">
+        <i class="fa fa-receipt empty-icon"></i>
+        <h6>{% blocktranslate %}Отсутствуют данные о проведённых транзакциях{% endblocktranslate %}</h6>
+        <p>{% blocktranslate %}Здесь будут отображаться ваши платежи за конвертации.{% endblocktranslate %}</p>
     </div>
 </div>

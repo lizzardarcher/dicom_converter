@@ -7,92 +7,80 @@
         <div class="col-md-4 text-end">
             <a href="{% url 'profile_edit' user_id %}">
                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                   data-bs-placement="top" title="Редактировать профиль"></i>
+
+                   data-bs-placement="top" title="{% blocktranslate %}Редактировать профиль{% endblocktranslate %}"></i>
             </a>
         </div>
     </div>
 </div>
 
-<div class="col-12">
-    <div class="card mb-4">
-
-        <div class="card-header pb-0">
-            <a class="btn btn-primary col-lg-2 col-md-6 col-12"
-               href="{% url 'upload research' %}"
-               style="background: linear-gradient(to top right, #e24210, #e21b1d);">
-                <div class="row">
-                    <div class="col-3">
-                        <i class="fa fa-download p-1 rounded bg-gradient"
-                           style="font-size: 2.4rem; background-color: #ff274c"></i>
-                    </div>
-                    <div class="col-9">
-                        {% blocktranslate %}Загрузить исследование{% endblocktranslate %}
-                    </div>
-                </div>
-            </a>
-            <h6>{% blocktranslate %}Сводная талица{% endblocktranslate %}</h6>
-        </div>
-        <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive">
-                <table class="table align-items-center mb-0">
-                    <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            {% blocktranslate %}Дата{% endblocktranslate %}
-                        </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            {% blocktranslate %}Ссылка на готовое исследование{% endblocktranslate %}
-                        </th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            {% blocktranslate %}Статус{% endblocktranslate %}
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for res in research %}
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">{{ res.date_created }}</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-wrap">
-                                <div class="d-flex px-2 py-1">
-                                    <div class="d-flex flex-column justify-content-center">
-                                        {% if res.cloud_url %}
-                                            <a href="{{ res.cloud_url }}" target="_blank">
-                                                <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                                    <i class="fa fa-download"></i> {{ res.cloud_url }}</p>
-                                            </a>
-                                        {% else %}
-                                            <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                                <i class="fa fa-download"></i> {{ res.archive_display_name }}</p>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </td>
-                            {% if res.ready_archive %}
-                                <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-success">{% trans "Готово" %}</span>
-                                </td>
-                            {% endif %}
-                            {% if not res.status and not res.ready_archive %}
-                                <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-danger">{% trans "Ошибка" %}</span>
-                                </td>
-                            {% elif not res.ready_archive %}
-                                <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-warning">{% trans "В процессе" %}</span>
-                                </td>
-                            {% endif %}
-
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="card-body px-0 pt-0 pb-2">
+    <div class="px-3 pb-3">
+        <a class="btn btn-brand" href="{% url 'upload research' %}">
+            <i class="fa fa-upload me-2"></i>{% blocktranslate %}Загрузить исследование{% endblocktranslate %}
+        </a>
     </div>
+
+    <h6 class="px-3 mb-2">{% blocktranslate %}Сводная таблица{% endblocktranslate %}</h6>
+
+    {% include 'accounts/info/partials/research_filters.html' %}
+
+    {% if page_obj %}
+        <div class="d-none d-md-block table-responsive">
+            <table class="table align-items-center mb-0">
+                <thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">
+                        {% blocktranslate %}Дата{% endblocktranslate %}
+                    </th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        {% blocktranslate %}Исследование{% endblocktranslate %}
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        {% blocktranslate %}Статус{% endblocktranslate %}
+                    </th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        {% blocktranslate %}Действие{% endblocktranslate %}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for res in page_obj %}
+                    <tr>
+                        <td class="ps-3">
+                            <span class="text-sm">{{ res.date_created|date:"d.m.Y, H:i" }}</span>
+                        </td>
+                        <td>
+                            <span class="text-sm font-weight-bold">{{ res.archive_display_name }}</span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            {% include 'accounts/info/partials/research_status_badge.html' with res=res %}
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                            {% include 'accounts/info/partials/research_action.html' with res=res %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center text-secondary text-sm py-4">
+                            {% blocktranslate %}Нет исследований с выбранным статусом{% endblocktranslate %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-md-none px-3">
+            {% for res in page_obj %}
+                {% include 'accounts/info/partials/research_card.html' with res=res %}
+            {% empty %}
+                <p class="text-center text-secondary text-sm py-4">
+                    {% blocktranslate %}Нет исследований с выбранным статусом{% endblocktranslate %}
+                </p>
+            {% endfor %}
+        </div>
+
+        {% include 'accounts/info/partials/research_pagination.html' %}
+    {% endif %}
 </div>

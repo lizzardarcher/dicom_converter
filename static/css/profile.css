@@ -1,0 +1,118 @@
+
+.avatar-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 74px;
+    height: 74px;
+    border-radius: 0.75rem;
+    background: linear-gradient(to top right, #e24210, #e21b1d);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-stat-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.profile-stat-card .stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.profile-stat-card .stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #67748e;
+    letter-spacing: 0.03em;
+}
+
+.profile-stat-card.stat-ready .stat-value {
+    color: #82d616;
+}
+
+.profile-stat-card.stat-processing .stat-value {
+    color: #fbcf33;
+}
+
+.profile-stat-card.stat-error .stat-value {
+    color: #ea0606;
+}
+
+.research-filter-chip {
+    border-radius: 2rem;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.research-filter-chip.active {
+    background: linear-gradient(to top right, #e24210, #e21b1d);
+    color: #fff;
+    border: none;
+}
+
+.research-filter-chip:not(.active) {
+    background: transparent;
+    color: #67748e;
+    border: 1px solid #d2d6da;
+}
+
+.research-mobile-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.research-mobile-card .research-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    word-break: break-all;
+}
+
+.btn-brand {
+    background: linear-gradient(to top right, #e24210, #e21b1d);
+    color: #fff;
+    border: none;
+}
+
+.btn-brand:hover {
+    color: #fff;
+    opacity: 0.9;
+}
+
+.profile-empty-state {
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+.profile-empty-state .empty-icon {
+    font-size: 3.5rem;
+    color: #adb5bd;
+    margin-bottom: 1rem;
+}
+
+.profile-empty-state h6 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.profile-empty-state p {
+    color: #67748e;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}

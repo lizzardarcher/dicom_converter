@@ -7,32 +7,20 @@
         <div class="col-md-4 text-end">
             <a href="{% url 'profile_edit' user_id %}">
                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                   data-bs-placement="top" title="Редактировать профиль"></i>
+                   data-bs-placement="top" title="{% blocktranslate %}Редактировать профиль{% endblocktranslate %}"></i>
             </a>
         </div>
     </div>
 </div>
-<div class="col-12">
-    <div class="card mb-4">
 
-        <div class="card-header pb-0">
-            <a class="btn btn-primary col-lg-2 col-12"
-               href="{% url 'upload research' %}"
-               style="background: linear-gradient(to top right, #e24210, #e21b1d);">
-                <div class="row">
-                    <div class="col-3">
-                        <i class="fa fa-download p-1 rounded bg-gradient"
-                           style="font-size: 2.4rem; background-color: #ff274c"></i>
-                    </div>
-                    <div class="col-9">
-                        {% blocktranslate %}Загрузить исследование{% endblocktranslate %}
-                    </div>
-                </div>
-            </a>
-            <h6>{% blocktranslate %}Отсутствует информация об исследованиях{% endblocktranslate %}</h6>
-        </div>
-        <div class="card-body">
-                <p>...</p>
-        </div>
+
+<div class="card-body">
+    <div class="profile-empty-state">
+        <i class="fa fa-file-medical empty-icon"></i>
+        <h6>{% blocktranslate %}У вас пока нет исследований{% endblocktranslate %}</h6>
+        <p>{% blocktranslate %}Загрузите архив с томографа Galileos в формате .zip или .rar, чтобы начать конвертацию в DICOM.{% endblocktranslate %}</p>
+        <a class="btn btn-brand" href="{% url 'upload research' %}">
+            <i class="fa fa-upload me-2"></i>{% blocktranslate %}Загрузить исследование{% endblocktranslate %}
+        </a>
     </div>
 </div>

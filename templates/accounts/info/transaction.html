@@ -5,66 +5,64 @@
             <h6 class="mb-0">{% blocktranslate %}Информация о проведенных транзакциях{% endblocktranslate %}</h6>
         </div>
         <div class="col-md-4 text-end">
-
             <a href="{% url 'profile_edit' user_id %}">
                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                   data-bs-placement="top" title="Edit Profile"></i>
+                   data-bs-placement="top" title="{% blocktranslate %}Редактировать профиль{% endblocktranslate %}"></i>
             </a>
         </div>
     </div>
 </div>
-<div class="col-12">
-    <div class="card mb-4">
-        <div class="card-header pb-0">
-            <h6>{% blocktranslate %}Сводная талица{% endblocktranslate %}</h6>
-        </div>
-        <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                    <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                            {% blocktranslate %}Дата{% endblocktranslate %}
-                        </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            {% blocktranslate %}Сумма{% endblocktranslate %}
-                        </th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            ID
-                        </th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                            {% blocktranslate %}Статус{% endblocktranslate %}
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for trans in transaction %}
-                        <tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">{{ trans.created_at }}</h6>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0">{{ trans.amount }} {{ trans.currency }}</p>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0">{{ trans.payment_id }}</p>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                {% if trans.status == 'succeeded' %}
-                                    <span class="badge badge-success">{{ trans.status }}</span>
-                                {% else %}
-                                    <span class="badge badge-warning">{{ trans.status }}</span>
-                                {% endif %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+
+<div class="card-body px-0 pt-0 pb-2">
+    <h6 class="px-3 mb-2">{% blocktranslate %}Сводная таблица{% endblocktranslate %}</h6>
+    <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+            <thead>
+            <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">
+                    {% blocktranslate %}Дата{% endblocktranslate %}
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    {% blocktranslate %}Сумма{% endblocktranslate %}
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    {% blocktranslate %}ID{% endblocktranslate %}
+                </th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    {% blocktranslate %}Статус{% endblocktranslate %}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for trans in transaction %}
+                <tr>
+                    <td class="ps-3">
+                        <span class="text-sm">{{ trans.created_at|date:"d.m.Y, H:i" }}</span>
+                    </td>
+                    <td>
+                        <span class="text-xs font-weight-bold">{{ trans.amount }} {{ trans.currency }}</span>
+                    </td>
+                    <td>
+                        <span class="text-xs font-weight-bold">{{ trans.payment_id }}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                        {% if trans.status == 'succeeded' %}
+                            <span class="badge badge-success">
+                                <i class="fa fa-check me-1"></i>{{ trans.get_status_display }}
+                            </span>
+                        {% elif trans.status == 'pending' %}
+                            <span class="badge badge-warning">
+                                <i class="fa fa-clock me-1"></i>{{ trans.get_status_display }}
+                            </span>
+                        {% else %}
+                            <span class="badge badge-danger">
+                                <i class="fa fa-times me-1"></i>{{ trans.get_status_display }}
+                            </span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
