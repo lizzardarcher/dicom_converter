@@ -3,6 +3,7 @@
     <a class="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa fa-user cursor-pointer"> </i>
     </a>
+
     <ul class="dropdown-menu">
         <li class="m-2 nav-item  align-items-center">
             <a href="{% url 'detailed_info' %}" class="nav-link text-body font-weight-bold px-0">
@@ -17,6 +18,15 @@
         </li>
 
         {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <li class="m-2 nav-item d-flex align-items-center">
+                    <a href="{% url 'admin:index' %}" class="nav-link text-body font-weight-bold px-0">
+                        <span class="d-sm-inline me-3">
+                            <i class="fa fa-cog"></i> {% translate 'Админка' %}
+                        </span>
+                    </a>
+                </li>
+            {% endif %}
             <li class="m-2 nav-item pe-2 d-flex align-items-center">
                 <a href="{% url 'profile' %}" class="nav-link text-body font-weight-bold px-0"><span
                         class="d-sm-inline me-3">
