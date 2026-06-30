@@ -1,0 +1,25 @@
+{% load i18n %}
+<nav class="admin-section-nav" aria-label="{% translate 'Разделы админки' %}">
+    <div class="admin-section-nav__inner">
+        <a href="{% url 'admin:index' %}"
+           class="admin-section-nav__link{% if request.resolver_match.url_name == 'index' %} is-active{% endif %}">
+            {% translate 'Главная' %}
+        </a>
+        <a href="{% url 'admin:payments_payment_changelist' %}"
+           class="admin-section-nav__link{% if '/payments/' in request.path %} is-active{% endif %}">
+            {% translate 'Платежи' %}
+        </a>
+        <a href="{% url 'admin:converter_research_changelist' %}"
+           class="admin-section-nav__link{% if '/converter/research' in request.path %} is-active{% endif %}">
+            {% translate 'Исследования' %}
+        </a>
+        <a href="{% url 'admin:auth_user_changelist' %}"
+           class="admin-section-nav__link{% if '/auth/user' in request.path %} is-active{% endif %}">
+            {% translate 'Пользователи' %}
+        </a>
+        <a href="{% url 'admin:home_log_changelist' %}"
+           class="admin-section-nav__link{% if '/home/log' in request.path %} is-active{% endif %}">
+            {% translate 'Логи' %}
+        </a>
+    </div>
+</nav>

@@ -41,6 +41,7 @@ urlpatterns = i18n_patterns(
     path("cookies/", include("cookie_consent.urls")),
 
     path('payments/', include('apps.payments.urls')),
+
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

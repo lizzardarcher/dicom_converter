@@ -64,14 +64,13 @@ def paginator_number(cl, i):
     Generate an individual page index link in a paginated list.
     """
     if i == cl.paginator.ELLIPSIS:
-        return format_html('{} ', cl.paginator.ELLIPSIS)
+        return format_html('<span class="admin-pagination__page">…</span>')
     elif i == cl.page_num:
-        return format_html('<a href="" class="page-link">{}</a> ', i)
+        return format_html('<span class="admin-pagination__page is-current" aria-current="page">{}</span>', i)
     else:
         return format_html(
-            '<a href="{}" class="page-link {}">{}</a> ',
+            '<a href="{}" class="admin-pagination__page">{}</a>',
             cl.get_query_string({PAGE_VAR: i}),
-            mark_safe('end' if i == cl.paginator.num_pages else ''),
             i,
         )
 

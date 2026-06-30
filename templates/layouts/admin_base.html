@@ -1,6 +1,7 @@
 {% load i18n static %}
 {% get_current_language as LANGUAGE_CODE %}
 
+
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"ru-ru" }}">
 <head>
@@ -21,6 +22,7 @@
     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/admin-custom.css' %}" rel="stylesheet" type="text/css">
     {% block extrastyle %}{% endblock extrastyle %}
 </head>
 
@@ -33,7 +35,7 @@
     {% include "includes/navigation_admin.html" %}
 
     {% if messages %}
-        <div class="m-5 col-md-8 animated animatedFadeInUp fadeInUp">
+        <div class="px-3 pt-3 col-md-8 animated animatedFadeInUp fadeInUp">
             {% for message in messages %}
                 <div class="alert alert-info alert-dismissible text-white" role="alert">
                     {{ message|safe }}
@@ -46,7 +48,11 @@
         </div>
     {% endif %}
 
-    {% block content %}{% endblock content %}
+    <div class="admin-page">
+        {% include "admin/includes/section_nav.html" %}
+        {% block breadcrumbs %}{% endblock %}
+        {% block content %}{% endblock content %}
+    </div>
 
 </main>
 
