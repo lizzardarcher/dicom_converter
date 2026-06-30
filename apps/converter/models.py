@@ -63,7 +63,11 @@ class Research(models.Model):
     slug = models.SlugField(unique=True, max_length=200, blank=True)
 
     def __str__(self):
-        return str(self.raw_archive).split('/')[-1]
+        return self.archive_display_name
+
+    @property
+    def archive_display_name(self):
+        return os.path.splitext(os.path.basename(str(self.raw_archive)))[0]
 
     def save(self, *args, **kwargs):
         start_time = datetime.now()
@@ -133,6 +137,7 @@ class Research(models.Model):
                         archive=staging_archive,
                         filenames=(glx_dstr_dir.__str__(),),
                     )
+
 
             ready_dest = MEDIA_ROOT / 'converter' / 'ready' / os.path.basename(staging_archive)
             ready_dest.parent.mkdir(parents=True, exist_ok=True)

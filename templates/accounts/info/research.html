@@ -12,6 +12,7 @@
         </div>
     </div>
 </div>
+
 <div class="col-12">
     <div class="card mb-4">
 
@@ -63,14 +64,11 @@
                                         {% if res.cloud_url %}
                                             <a href="{{ res.cloud_url }}" target="_blank">
                                                 <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                                    <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
+                                                    <i class="fa fa-download"></i> {{ res.cloud_url }}</p>
                                             </a>
                                         {% else %}
                                             <p class="p-2 bg-gradient-faded-light rounded text-left text-dark text-bold mt-3">
-                                                <i class="fa fa-download"></i> {{ res.raw_archive }}</p>
-                                        {% endif %}
-                                        {% if res.error_message %}
-                                            <p class="p-2 text-left text-danger">{{ res.error_message }}</p>
+                                                <i class="fa fa-download"></i> {{ res.archive_display_name }}</p>
                                         {% endif %}
                                     </div>
                                 </div>
