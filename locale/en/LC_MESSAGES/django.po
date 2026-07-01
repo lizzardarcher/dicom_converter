@@ -3534,3 +3534,7 @@ msgctxt "contacts"
 msgid "Сообщение"
 msgstr "Message"
 
+
+#: templates/components/media_carousel.html
+msgid "Как работать с сервисом"
+msgstr "How to work with the service"

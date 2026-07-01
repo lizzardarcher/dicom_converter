@@ -12,7 +12,17 @@
         <div class="owl-carousel owl-theme " id="video-slider">
 
             <div class="card">
+                <div class="card-body">
+                    <video width="360" height="240" controls="controls" poster="" muted>
+                        <source src="{% static 'info/konvertirovanie-failov-galileos_yNohspO2.mp4' %}"
+                                type='video/mp4'>
+                    </video>
+                    <h5 class="card-title">{% blocktranslate %}Как работать с сервисом{% endblocktranslate %}</h5>
+                </div>
+            </div>
 
+
+            <div class="card">
                 <div class="card-body">
                     <video width="360" height="240" controls="controls" poster="" muted>
                         <source src="{% static 'info/Копирование-и-архивирование-папки-Галилеос.mp4' %}"
